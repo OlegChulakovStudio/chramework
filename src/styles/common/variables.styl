@@ -1,0 +1,38 @@
+get-max-widthHeight($breakpoint) {
+	if $breakpoint.width {
+		$width = '(max-width:' + $breakpoint.width + 'px)'
+	}
+	if $breakpoint.height {
+		$height = '(max-height:' + $breakpoint.height + 'px)'
+	}
+	if $breakpoint.width and !($breakpoint.height) {
+		$width
+	} else if !($breakpoint.width) and $breakpoint.height {
+		$height
+	} else {
+		$width +' and '+ $height
+	}
+}
+// durations
+$duration = 0.35s
+
+// fonts
+$fontFamily = 'Poppins', Helvetica, sans-serif
+// $fontSize = 16px
+$fontSize = 0.94vw // ~24px on 2560 width
+$lineHeight = 1.5
+
+
+$sidebarWidth = 320px
+
+// colors
+$colors = json('../config/colors.json', { hash: true })
+for $name, $color in $colors {
+	define('$' + $name + 'Color', $color)
+}
+
+// media queries
+$breakpoints = json('../config/breakpoints.json', { hash: true })
+for $name, $breakpoint in $breakpoints {
+	define('$' + $name, get-max-widthHeight($breakpoint))
+}

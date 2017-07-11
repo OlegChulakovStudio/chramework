@@ -1,0 +1,15 @@
+{
+	"text": "#fff",
+	"link": "#fff",
+	"linkHover": "#fc585d",
+	"brand": "#2c3e50",
+	"brandDark": "#0e2942",
+	"brandRedLight": "#fc4f08",
+	"brandRed": "#FC4349",
+	"button": "#533144",
+	"buttonBlue": "#5EA2BC",
+	"green" :"#17612e",
+	"turquoise" :"#35b2ac",
+	"secondaryBlue": "#6dbcdb",
+	"secondaryLightBlue": "#7DD8FC"
+}

@@ -1,0 +1,30 @@
+/*** --- Reset CSS --- ***/
+@import './reset.styl'
+
+/*** --- Variables --- ***/
+@import './common/variables.styl'
+
+
+
+/*** --- Document --- ***/
+html,
+body {
+	height 100%
+	background $brandColor
+	color $textColor
+	font 300 $fontSize/$lineHeight $fontFamily
+	-webkit-text-size-adjust 100%
+	-webkit-font-smoothing antialiased
+	-moz-osx-font-smoothing grayscale
+}
+
+body {
+
+}
+
+
+/*** --- Links --- ***/
+a {
+	color $linkColor
+	text-decoration none
+}
