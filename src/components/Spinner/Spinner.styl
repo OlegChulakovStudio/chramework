@@ -1,0 +1,49 @@
+$spinnerSize = 50px
+$spinnerWidth = 3px
+$spinnerColor = $linkColor
+
+// codepen.io/timohausmann/pen/mrFjh
+.spinner {
+  position relative
+  display inline-block
+  vertical-align top
+  width $spinnerSize
+  height $spinnerSize
+  border $spinnerWidth solid $spinnerColor
+  border-radius 50%
+  box-sizing border-box
+  animation spin 0.75s infinite linear
+
+  &::before,
+  &::after {
+    left (- $spinnerWidth)
+    top (- $spinnerWidth)
+    position absolute
+    content ''
+    width inherit
+    height inherit
+    border inherit
+    border-radius inherit
+    box-sizing border-box
+  }
+
+  &,
+  &:before {
+    display inline-block
+    border-color $spinnerColor transparent transparent transparent
+  }
+
+  &:before {
+    animation spin 1.5s infinite ease
+  }
+}
+
+// keyframe
+@keyframes spin {
+  from {
+    transform rotate(0deg)
+  }
+  to {
+    transform rotate(360deg)
+  }
+}

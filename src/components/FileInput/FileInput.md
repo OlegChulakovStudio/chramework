@@ -1,0 +1,1 @@
+    <FileInput label="Drop files here"/>

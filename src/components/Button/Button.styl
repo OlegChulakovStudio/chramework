@@ -1,0 +1,65 @@
+.button {
+  position relative
+  display inline-block
+  vertical-align middle
+  min-width 170px
+  box-sizing border-box
+  padding 18px 20px
+  border-radius 4px
+  font bold 14px/1 $fontFamily
+  text-transform uppercase
+  color #FFF
+  background-color $linkColor
+  cursor pointer
+  border none
+  outline none
+  user-select none
+  text-align center
+  transition background-color $duration, transform $duration, box-shadow $duration
+  box-shadow 0 2px 4px #ACC6F0
+  &:disabled {
+    opacity 0.5
+    cursor not-allowed
+    &:hover {
+      background-color $linkColor
+    }
+  }
+  &:hover {
+		background-color $linkHoverColor
+	}
+
+  &--small {
+		font-size 12px
+		padding 15px 18px 14px
+  }
+
+  &--danger,
+	&--success {
+		box-shadow 0 2px 4px 0 #CDD0D3
+	}
+
+	&--success {
+		background $greenColor
+
+		&:hover {
+			background darken($greenColor, 15%)
+		}
+	}
+
+	&--danger {
+		background $redColor
+
+		&:hover {
+			background darken($redColor, 15%)
+		}
+	}
+
+	&--secondary {
+		background-color #222629
+	}
+
+  &--active {
+		background $linkHoverColor
+		faster()
+	}
+}

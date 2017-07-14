@@ -249,7 +249,7 @@ module.exports = {
             options: {
               import: require.resolve('../src/styles/common.styl'),
               resolveUrl: true,
-               sourceMap: true
+              sourceMap: true
             }
           }
         ]

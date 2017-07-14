@@ -1,0 +1,28 @@
+$size = 50px
+
+.avatar {
+  display block
+  vertical-align top
+  min-width $size
+  width $size
+  height $size
+  border-radius 50%
+  background-color #00B2FC
+  color #FFF
+  overflow hidden
+  transition background-color $duration
+  &--loading {
+    background-color #DDD
+  }
+  &__image {
+    width 100%
+    height 100%
+  }
+  &__text {
+    font-family $fontFamily
+    font-size 14px
+    line-height $size
+    text-transform uppercase
+    text-align center
+  }
+}

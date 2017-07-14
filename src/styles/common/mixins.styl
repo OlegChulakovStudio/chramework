@@ -89,11 +89,10 @@ fullsize() {
 webfont($family, $file, $weight = normal, $style = normal) {
 	@font-face {
 		font-family $family
-		src url('../fonts/'+$file+'.eot')
-		src url('../fonts/'+$file+'.eot?#iefix') format('embedded-opentype'),
-			 url('../fonts/'+$file+'.woff') format('woff'),
-			 url('../fonts/'+$file+'.ttf') format('truetype'),
-			 url('../fonts/'+$file+'.svg'+$file) format('svg')
+		src url('../../fonts/'+$file+'.eot')
+		src url('../../fonts/'+$file+'.eot?#iefix') format('embedded-opentype'),
+			 url('../../fonts/'+$file+'.woff') format('woff'),
+			 url('../../fonts/'+$file+'.ttf') format('truetype')
 		font-weight $weight
 		font-style $style
 	}
@@ -118,12 +117,3 @@ icon($width, $height, $url) {
 	background url($url) center no-repeat
 	background-size contain
 }
-
-// convert values to rem units
-remify(value)
-	$maxBreakpoint = 2560;
-	$vwUnit = ($maxBreakpoint * .01) * 1px;
-	$fontSize = 0.94vw;
-	$fontInPx = $fontSize * $vwUnit;
-	
-	return unit(value/$fontInPx, rem)

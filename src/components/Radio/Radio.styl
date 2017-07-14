@@ -1,0 +1,61 @@
+.radio {
+  margin-right 80px
+  position relative
+  &:last-child {
+    margin-right 0
+  }
+
+  &__cover {
+    display inline-block
+    vertical-align top
+    width 21px
+    height 21px
+    padding 0
+    border-radius 50%
+    margin 0 10px 0 0
+    color $textColor
+    background #F2F2F2
+    outline none
+    cursor pointer
+    position relative
+    &:before {
+      content ''
+      display block
+      position absolute
+      width 11px
+      height 11px
+      border-radius 50%
+      top 5px
+      left 5px
+      background transparent
+      transition background-color $duration
+    }
+  }
+
+  &__field {
+    display none
+  }
+
+  &__label {
+    cursor pointer
+    display inline-block
+    align-items center
+    white-space nowrap
+    overflow hidden
+    text-overflow ellipsis
+    font-size 12px
+    font-family $fontFamily
+    line-height 21px
+    user-select none
+  }
+
+  &__field:checked + &__cover:before {
+    background-color $linkColor
+    faster()
+  }
+
+  &__label:hover &__field:checked + &__cover:before {
+    background-color $linkHoverColor
+    faster()
+  }
+}

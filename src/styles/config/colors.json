@@ -1,15 +1,15 @@
 {
-	"text": "#fff",
-	"link": "#fff",
-	"linkHover": "#fc585d",
-	"brand": "#2c3e50",
-	"brandDark": "#0e2942",
-	"brandRedLight": "#fc4f08",
-	"brandRed": "#FC4349",
-	"button": "#533144",
-	"buttonBlue": "#5EA2BC",
-	"green" :"#17612e",
-	"turquoise" :"#35b2ac",
-	"secondaryBlue": "#6dbcdb",
-	"secondaryLightBlue": "#7DD8FC"
+	"text": "#222629",
+	"secondText": "#B1B1B1",
+	"bg": "#FBFBFB",
+	"red": "#FA3A2F",
+	"green": "#00B257",
+	"orange": "#F67800",
+	"block": "#EEF1F2",
+	"divider": "#DBDBDB",
+	"border": "#979797",
+	"link": "#0066FF",
+	"linkHover": "#0047B3",
+	"brand": "#FFF45F",
+	"brandHover": "#007d84"
 }

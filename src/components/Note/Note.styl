@@ -1,0 +1,22 @@
+.note {
+  position relative
+  padding-top 16px
+  font-size 16px
+  font-family $fontFamily
+  line-height 1
+  color $textColor
+  &:before {
+    content ''
+    position absolute
+    top 0
+    left 0
+    background-color currentColor
+    width 40px
+    height 4px
+  }
+
+  &--right {
+    text-align right
+    float right
+  }
+}
