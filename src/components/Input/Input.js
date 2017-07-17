@@ -44,11 +44,11 @@ export default class Input extends Component {
   }
 
   onFocus = () => {
-    this.container.classList.add('input--focus');
+    this.container.classList.add('Input--focus');
   }
 
   onBlur = (e) => {
-    this.container.classList.remove('input--focus');
+    this.container.classList.remove('Input--focus');
     if(this.state.hasValue !== !!e.target.value.length) {
       this.setState({
         hasValue: !!e.target.value.length,
@@ -60,18 +60,18 @@ export default class Input extends Component {
     const { className, label, type, hasErrors, disabled, multiRows, maxRowsCount, value, ...otherProps } = this.props;
     return (
       <div className={classNames([
-        "input",
+        "Input",
         { 
-          "input--error": hasErrors,
-          "input--value": this.state.hasValue,
-          "input--disabled": disabled
+          "Input--error": hasErrors,
+          "Input--value": this.state.hasValue,
+          "Input--disabled": disabled
         },
         className
       ])} ref={ elem => this.container = elem }>
         {
           multiRows ?
             <TextArea
-              className="input__field"
+              className="Input__field"
               rows="1"
               maxRows={maxRowsCount}
               onFocus={this.onFocus}
@@ -82,7 +82,7 @@ export default class Input extends Component {
           :
             <input
               type={type}
-              className="input__field"
+              className="Input__field"
               onFocus={this.onFocus}
               onBlur={this.onBlur}
               disabled={disabled}
@@ -91,7 +91,7 @@ export default class Input extends Component {
         }
         {
           this.props.label &&
-          <label className="input__label">{ this.props.label }</label>
+          <label className="Input__label">{ this.props.label }</label>
         }
       </div>
     );

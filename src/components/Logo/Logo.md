@@ -1,9 +1,9 @@
-    <Logo />
+    <Logo url="http://chulakov.ru" external/>
 
 Black:
 
-    <Logo type="black" />
+    <Logo url="http://chulakov.ru" type="black" external/>
 
 Small:
 
-    <Logo size="small" />
+    <Logo url="http://chulakov.ru" size="small" external/>

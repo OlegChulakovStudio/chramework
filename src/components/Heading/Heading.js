@@ -24,8 +24,8 @@ export default class Heading extends Component {
     const RenderedComponent = tagName ? tagName : 'h' + level;
     return (
       <RenderedComponent className={classNames([
-        "heading",
-        { [`heading--level${level}`]: level },
+        "Heading",
+        { [`Heading--level-${level}`]: level },
         className
       ])}>
         {text}

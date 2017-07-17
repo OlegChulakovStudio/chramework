@@ -4,6 +4,13 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import './FileInput.styl';
 
+function getLabelText(files) {
+  const names = [];
+  Object.keys(files).forEach((index) => {
+    files[index].name && names.push(files[index].name);
+  });
+  return names.join(',');
+}
 export default class FileInput extends PureComponent {
   static propTypes = {
     /** allow specific types of files */
@@ -44,7 +51,6 @@ export default class FileInput extends PureComponent {
     this.setState({
       files: uploadedContent
     });
-    console.log('current state', this.state);
   }
 
   handleReset = () =>  {
@@ -55,25 +61,25 @@ export default class FileInput extends PureComponent {
   }
   render() {
     const { className } = this.props;
-    const innerText = this.state.files > 1 ? this.state.files : this.props.label
+    const innerText = this.state.files ? getLabelText(this.state.files) : this.props.label
     return (
       <div className={classNames([
-        "file-input",
+        "FileInput",
         className
       ])}>
         <Dropzone
           className={classNames({
-            "file-input__field": true,
-            "file-input__field--active": this.state.file !== null || this.hasFile,
+            "FileInput__field": true,
+            "FileInput__field--active": this.state.file !== null || this.hasFile,
           })}
           accept={this.props.accept}
           maxSize={this.props.maxSize}
           onDrop={ this.handleDropFile }
           multiple={true}
         >
-          <p>{ innerText }</p>
+          <p className="FileInput__innerText" title={ innerText }>{ innerText }</p>
           { (this.state.files) &&
-            <span className="file-input__reset" onClick={this.handleReset}></span>
+            <span className="FileInput__reset" onClick={this.handleReset}></span>
           }
         </Dropzone>
       </div>

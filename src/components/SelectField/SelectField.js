@@ -33,32 +33,40 @@ export default class SelectField extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      hasValue: false
+      hasValue: false,
+      value: this.props.value || null
     };
   }
 
   onFocus = () => {
-    this.container.classList.add('select-field--focus');
+    this.container.classList.add('SelectField--focus');
   }
 
   onBlur = (e) => {
-    this.container.classList.remove('select-field--focus');
-    if(this.state.hasValue !== !!e.target.value.length) {
-      this.setState({
-        hasValue: !!e.target.value.length,
-      });
+    if(!this.state.hasValue) {
+      this.container.classList.remove('SelectField--focus');
     }
+  }
+
+  onChange = (value) => {
+    if(this.props.onChange) {
+      this.props.onChange();
+    }
+    this.setState({
+      value,
+      hasValue: true
+    });
   }
 
   render() {
     const { className, disabled, hasErrors, label, ...otherProps } = this.props;
     return (
       <div className={classNames([
-        "select-field",
+        "SelectField",
         {
-          "select-field--disabled": disabled,
-          "select-field--error": hasErrors,
-          "select-field--value": this.state.hasValue
+          "SelectField--disabled": disabled,
+          "SelectField--error": hasErrors,
+          "SelectField--value": this.state.hasValue
         },
         className
       ])}
@@ -69,9 +77,11 @@ export default class SelectField extends Component {
           disabled={disabled}
           onFocus={this.onFocus}
           onBlur={this.onBlur}
+          onChange={this.onChange}
+          value={this.state.value}
           {...otherProps}
         />
-        <label className="select-field__label">{ label }</label>
+        <label className="SelectField__label">{ label }</label>
       </div>
     );
   }

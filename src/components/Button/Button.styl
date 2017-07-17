@@ -1,4 +1,4 @@
-.button {
+.Button {
   position relative
   display inline-block
   vertical-align middle
@@ -25,41 +25,41 @@
     }
   }
   &:hover {
-		background-color $linkHoverColor
-	}
+    background-color $linkHoverColor
+  }
 
   &--small {
-		font-size 12px
-		padding 15px 18px 14px
+    font-size 12px
+    padding 15px 18px 14px
   }
 
   &--danger,
-	&--success {
-		box-shadow 0 2px 4px 0 #CDD0D3
-	}
+  &--success {
+    box-shadow 0 2px 4px 0 #CDD0D3
+  }
 
-	&--success {
-		background $greenColor
+  &--success {
+    background $greenColor
 
-		&:hover {
-			background darken($greenColor, 15%)
-		}
-	}
+    &:hover {
+      background darken($greenColor, 15%)
+    }
+  }
 
-	&--danger {
-		background $redColor
+  &--danger {
+    background $redColor
 
-		&:hover {
-			background darken($redColor, 15%)
-		}
-	}
+    &:hover {
+      background darken($redColor, 15%)
+    }
+  }
 
-	&--secondary {
-		background-color #222629
-	}
+  &--secondary {
+    background-color #222629
+  }
 
   &--active {
-		background $linkHoverColor
-		faster()
-	}
+    background $linkHoverColor
+    faster()
+  }
 }

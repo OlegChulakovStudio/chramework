@@ -1,9 +1,5 @@
     <div>
-      <div style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        marginBottom: '20px'
-      }}>
+      <FormRow align="justify">
         <FormCol size="large">
           <Input label="This is large column" />
         </FormCol>
@@ -11,12 +7,9 @@
         <FormCol size="small">
           <Input label="This is small column" />
         </FormCol>
-      </div>
+      </FormRow>
 
-      <div style={{
-        display: 'flex',
-        justifyContent: 'space-between'
-      }}>
+      <FormRow align="justify">
         <FormCol size="medium">
           <Input label="This is medium column" />
         </FormCol>
@@ -24,5 +17,5 @@
         <FormCol size="medium">
           <Input label="This is medium column" />
         </FormCol>
-      </div>
+      </FormRow>
     </div>

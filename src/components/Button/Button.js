@@ -44,12 +44,12 @@ export default class Button extends Component {
     return(
       <RenderedComponent 
         className={classNames([
-          "button",
+          "Button",
           {
-            "button--active": this.props.active,
-            [`button--${this.props.indent}`]: this.props.indent,
-            "button--disabled": this.props.disabled,
-            [`button--${this.props.size}`]: this.props.size
+            "Button--active": this.props.active,
+            [`Button--${this.props.indent}`]: this.props.indent,
+            "Button--disabled": this.props.disabled,
+            [`Button--${this.props.size}`]: this.props.size
           },
           this.props.className
         ])}

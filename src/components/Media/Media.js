@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { Note } from '../../index.js';
 import './Media.styl';
 
 export default class Media extends Component {
@@ -9,6 +10,8 @@ export default class Media extends Component {
     className: PropTypes.string,
     /** this parameter must be set to 'true' if you want to add video */
     embedded: PropTypes.bool,
+    /** you can add some text under the media content */
+    note: PropTypes.string,
     /** local path or url to media content */
     url: PropTypes.string
   };
@@ -19,19 +22,20 @@ export default class Media extends Component {
   };
 
   render() {
-    const { embedded, url, className } = this.props;
+    const { embedded, url, className, note } = this.props;
     return (
       <figure className={classNames([
-        "media",
-        { "media--embedded": embedded },
+        "Media",
+        { "Media--embedded": embedded },
         className
       ])}>
-        <div className="media__content">
+        <div className="Media__content">
           {
-            embedded ? <iframe src={url} frameBorder="0" title=" "></iframe>
+            embedded ? <iframe src={url} frameBorder="0" title=""></iframe>
             : <img src={url} alt="" />
           }
         </div>
+        { note && <Note text={note} right /> }
       </figure>
     )
   }

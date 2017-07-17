@@ -16,8 +16,8 @@ export default class FormGroup extends Component {
   render() {
     return (
       <div className={classNames([
-        "form-group",
-        { [`form-group--${this.props.direction}`]: this.props.direction },
+        "FormGroup",
+        { [`FormGroup--${this.props.direction}`]: this.props.direction },
         this.props.className
       ])}>
         { this.props.children }

@@ -10,7 +10,7 @@ export default class Spinner extends PureComponent {
 
   render() {
     return (
-      <i className={"spinner " + this.props.className }></i>
+      <i className={"Spinner " + this.props.className }></i>
     )
   }
 }

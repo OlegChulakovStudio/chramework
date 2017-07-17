@@ -23,17 +23,17 @@ export default class Avatar extends Component {
     const { char, className, isLoading, photo } = this.props;
     return (
       <div className={classNames([
-        "avatar",
+        "Avatar",
         {
-          "avatar--loading": isLoading
+          "Avatar--loading": isLoading
         },
         className
       ])}>
         {
           photo ?
-            <img className="avatar__image" src={ photo } alt="" />
+            <img className="Avatar__image" src={ photo } alt="" />
           :
-            <div className="avatar__text">{ char }</div>
+            <div className="Avatar__text">{ char }</div>
         }
       </div>
     )

@@ -16,8 +16,8 @@ export default class Note extends PureComponent {
   render() {
     return (
       <div className={classNames([
-        "note",
-        { "note--right": this.props.right },
+        "Note",
+        { "Note--right": this.props.right },
         this.props.className
       ])}>
         {this.props.text}

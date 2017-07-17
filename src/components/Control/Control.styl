@@ -1,4 +1,4 @@
-.checkbox {
+.Control {
   margin-right 80px
   position relative
   &:last-child {
@@ -27,6 +27,13 @@
       left 5px
       background transparent
       transition background-color $duration
+    }
+
+    &--radio {
+      border-radius 50%
+      &:before {
+        border-radius 50%
+      }
     }
   }
 

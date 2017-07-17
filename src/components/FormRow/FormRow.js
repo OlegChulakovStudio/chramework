@@ -16,8 +16,8 @@ export default class FormRow extends Component {
   render() {
     return (
       <div className={classNames([
-        "form-row",
-        { [`form-row--${this.props.align}`]: this.props.align },
+        "FormRow",
+        { [`FormRow--${this.props.align}`]: this.props.align },
         this.props.className
       ])}>
         { this.props.children }

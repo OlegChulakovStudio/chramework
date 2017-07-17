@@ -11,7 +11,7 @@ export default class Preloader extends PureComponent {
 
   render() {
     return (
-      <div className={"preloader " + this.props.className }>
+      <div className={"Preloader " + this.props.className }>
         <Spinner />
       </div>
     );
