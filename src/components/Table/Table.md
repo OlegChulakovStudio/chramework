@@ -1,5 +1,5 @@
     <Table>
-      <TableHead>
+      <TableHeader>
         <TableRow>
           <TableCell headCell>Контрагент</TableCell>
           <TableCell headCell>Дата</TableCell>
@@ -7,7 +7,7 @@
           <TableCell headCell>Ответственный</TableCell>
           <TableCell headCell align="right">Комментарий</TableCell>
         </TableRow>
-      </TableHead>
+      </TableHeader>
       <TableContent>
         <TableRow>
           <TableCell>

@@ -16,7 +16,7 @@ import Spinner from './components/Spinner/Spinner.js';
 import Table from './components/Table/Table.js';
 import TableCell from './components/TableCell/TableCell.js';
 import TableContent from './components/TableContent/TableContent.js';
-import TableHead from './components/TableHead/TableHead.js';
+import TableHeader from './components/TableHeader/TableHeader.js';
 import TableRow from './components/TableRow/TableRow.js';
 
 export {
@@ -38,6 +38,6 @@ export {
   Table,
   TableCell,
   TableContent,
-  TableHead,
+  TableHeader,
   TableRow
 }

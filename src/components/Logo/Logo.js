@@ -12,7 +12,7 @@ export default class Logo extends Component {
     type: PropTypes.string,
     /**  */
     url: PropTypes.string,
-    /** set this param to true, if you want to add external link to http://chulakov.ru. */
+    /** set this param to true, if you want to add external link */
     external: PropTypes.bool
   };
 

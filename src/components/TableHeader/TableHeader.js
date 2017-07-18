@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import './TableHead.styl';
+import './TableHeader.styl';
 
-export default class TableHead extends Component {
+export default class TableHeader extends Component {
   static propTypes = {
     /** space delimited list of additional class names */
     className: PropTypes.string,
@@ -11,7 +11,7 @@ export default class TableHead extends Component {
   render() {
     return (
       <thead className={classNames([
-        "TableHead",
+        "TableHeader",
         this.props.className
       ])}>
         {this.props.children}
