@@ -3,7 +3,6 @@
 const autoprefixer = require('autoprefixer');
 const path = require('path');
 const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
@@ -12,6 +11,11 @@ const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const paths = require('./paths');
 const getClientEnvironment = require('./env');
 
+process.env.NODE_PATH = (process.env.NODE_PATH || '')
+  .split(path.delimiter)
+  .filter(folder => folder && !path.isAbsolute(folder))
+  .map(folder => path.resolve(appDirectory, folder))
+  .join(path.delimiter);
 // Webpack uses `publicPath` to determine where the app is being served from.
 // It requires a trailing slash, or the file assets will get an incorrect path.
 const publicPath = paths.servedPath;
@@ -24,7 +28,6 @@ const shouldUseRelativeAssetPaths = publicPath === './';
 const publicUrl = publicPath.slice(0, -1);
 // Get environment variables to inject into our app.
 const env = getClientEnvironment(publicUrl);
-
 // Assert this just to be safe.
 // Development builds of React are slow and not intended for production.
 if (env.stringified['process.env'].NODE_ENV !== '"production"') {
@@ -32,7 +35,7 @@ if (env.stringified['process.env'].NODE_ENV !== '"production"') {
 }
 
 // Note: defined here because it will be used more than once.
-const cssFilename = 'static/css/[name].css';
+const cssFilename = '[name].css';
 
 // ExtractTextPlugin expects the build output to be flat.
 // (See https://github.com/webpack-contrib/extract-text-webpack-plugin/issues/27)
@@ -47,8 +50,6 @@ const extractTextPluginOptions = shouldUseRelativeAssetPaths
 // It compiles slowly and is focused on producing a fast and minimal bundle.
 // The development configuration is different and lives in a separate file.
 module.exports = {
-  // Don't attempt to continue if there are any errors.
-  bail: true,
   // We generate sourcemaps in production. This is slow but gives good results.
   // You can exclude the *.map files from the build during deployment.
   devtool: 'source-map',
@@ -57,11 +58,12 @@ module.exports = {
   output: {
     // The build folder.
     path: paths.appBuild,
+    libraryTarget: 'commonjs2',
     // Generated JS file names (with nested folders).
     // There will be one main bundle, and one file per asynchronous chunk.
     // We don't currently advertise code splitting but Webpack supports it.
-    filename: 'static/js/[name].js',
-    chunkFilename: 'static/js/[name].chunk.js',
+    filename: '[name].js',
+    chunkFilename: '[name].chunk.js',
     // We inferred the "public path" (such as / or /my-project) from homepage.
     publicPath: publicPath,
     // Point sourcemap entries to original disk location (format as URL on Windows)
@@ -86,23 +88,8 @@ module.exports = {
     // `web` extension prefixes have been added for better support
     // for React Native Web.
     extensions: ['.web.js', '.js', '.json', '.web.jsx', '.jsx'],
-    alias: {
-      
-      // Support React Native Web
-      // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
-      'react-native': 'react-native-web',
-    },
-    plugins: [
-      // Prevents users from importing files from outside of src/ (or node_modules/).
-      // This often causes confusion because we only process files within src/ with babel.
-      // To fix this, we prevent you from importing files out of src/ -- if you'd like to,
-      // please link the files into your node_modules/ and let module-resolution kick in.
-      // Make sure your source files are compiled, as they will not be processed in any way.
-      new ModuleScopePlugin(paths.appSrc),
-    ],
   },
   module: {
-    strictExportPresence: true,
     rules: [
       // TODO: Disable require.ensure as it's not a standard language feature.
       // We are waiting for https://github.com/facebookincubator/create-react-app/issues/2176.
@@ -146,7 +133,7 @@ module.exports = {
         ],
         loader: require.resolve('file-loader'),
         options: {
-          name: 'static/media/[name].[ext]',
+          name: 'assets/[name].[ext]',
         },
       },
       // "url" loader works just like "file" loader but it also embeds
@@ -156,18 +143,14 @@ module.exports = {
         loader: require.resolve('url-loader'),
         options: {
           limit: 10000,
-          name: 'static/media/[name].[ext]',
+          name: 'assets/[name].[ext]',
         },
       },
       // Process JS with Babel.
       {
         test: /\.(js|jsx)$/,
         include: paths.appSrc,
-        loader: require.resolve('babel-loader'),
-        options: {
-          
-          compact: true,
-        },
+        loader: require.resolve('babel-loader')
       },
       // The notation here is somewhat confusing.
       // "postcss" loader applies autoprefixer to our CSS.
@@ -223,48 +206,58 @@ module.exports = {
         ),
         // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
       },
+
       {
         test: /\.styl$/,
-        use: [
-          require.resolve('style-loader'),
-          {
-            loader: require.resolve('css-loader'),
-            options: {
-              importLoaders: 1,
-              sourceMap: true
-            },
-          },
-          {
-            loader: require.resolve('postcss-loader'),
-            options: {
-              // Necessary for external CSS imports to work
-              // https://github.com/facebookincubator/create-react-app/issues/2677
-              ident: 'postcss',
-              sourceMap: true,
-              plugins: () => [
-                require('postcss-flexbugs-fixes'),
-                autoprefixer({
-                  browsers: [
-                    '>1%',
-                    'last 4 versions',
-                    'Firefox ESR',
-                    'not ie < 9', // React doesn't support IE8 anyway
-                  ],
-                  flexbox: 'no-2009',
-                }),
+        loader: ExtractTextPlugin.extract(
+          Object.assign(
+            {
+              fallback: require.resolve('style-loader'),
+              use: [
+                {
+                  loader: require.resolve('css-loader'),
+                  options: {
+                    importLoaders: 1,
+                    minimize: true,
+                    sourceMap: true,
+                  },
+                },
+                {
+                  loader: require.resolve('postcss-loader'),
+                  options: {
+                    // Necessary for external CSS imports to work
+                    // https://github.com/facebookincubator/create-react-app/issues/2677
+                    ident: 'postcss',
+                    sourceMap: true,
+                    plugins: () => [
+                      require('postcss-flexbugs-fixes'),
+                      autoprefixer({
+                        browsers: [
+                          '>1%',
+                          'last 4 versions',
+                          'Firefox ESR',
+                          'not ie < 9', // React doesn't support IE8 anyway
+                        ],
+                        flexbox: 'no-2009',
+                      }),
+                    ],
+                  },
+                },
+                {
+                  loader: require.resolve('stylus-loader'),
+                  options: {
+                    import: require.resolve('../src/styles/common.styl'),
+                    resolveUrl: true,
+                    sourceMap: true
+                  }
+                }
               ],
             },
-          },
-          {
-            loader: require.resolve('stylus-loader'),
-            options: {
-              import: require.resolve('../src/styles/common.styl'),
-              resolveUrl: true,
-              sourceMap: true
-            }
-          }
-        ]
-      }
+            extractTextPluginOptions
+          )
+        ),
+        // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
+      },
       // ** STOP ** Are you adding a new loader?
       // Remember to add the new extension(s) to the "file" loader exclusion list.
     ],
@@ -297,19 +290,11 @@ module.exports = {
     new ExtractTextPlugin({
       filename: cssFilename,
     }),
-    // Generate a manifest file which contains a mapping of all asset filenames
-    // to their corresponding output file so that tools can pick it up without
-    // having to parse `index.html`.
-    new ManifestPlugin({
-      fileName: 'asset-manifest.json',
-    }),
-    // Moment.js is an extremely popular library that bundles large locale files
-    // by default due to how Webpack interprets its code. This is a practical
-    // solution that requires the user to opt into importing specific locales.
-    // https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
-    // You can remove this if you don't use Moment.js:
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
   ],
+  externals: {
+    'react': 'commonjs react' // this line is just to use the React dependency of our parent-testing-project instead of using our own React.
+  },
   // Some libraries import Node modules but don't use them in the browser.
   // Tell Webpack to provide empty mocks for them so importing them works.
   node: {

@@ -40,4 +40,4 @@ export {
   TableContent,
   TableHeader,
   TableRow
-}
+};

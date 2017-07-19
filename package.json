@@ -1,10 +1,30 @@
 {
-  "name": "chulakov.chramework",
-  "main": "build/static/js/main.js",
-  "style": "build/static/css/main.css",
+  "name": "chramework",
+  "main": "dist/main.js",
+  "style": "dist/main.css",
   "version": "0.1.0",
   "author": "Oleg Chulakov Studio",
+  "description": "A React-based UI toolkit",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OlegChulakovStudio/chramework"
+  },
+  "scripts": {
+    "build": "node scripts/build.js",
+    "dev": "styleguidist server",
+    "styleguide:build": "styleguidist build"
+  },
   "dependencies": {
+    "classnames": "^2.2.5",
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1",
+    "react-dropzone": "^3.13.3",
+    "react-select": "^1.0.0-rc.5",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1"
+  },
+  "devDependencies": {
     "autoprefixer": "7.1.1",
     "babel-core": "6.25.0",
     "babel-eslint": "7.2.3",
@@ -33,19 +53,17 @@
     "react": "^15.6.1",
     "react-dev-utils": "^3.0.2",
     "react-dom": "^15.6.1",
-    "react-dropzone": "^3.13.3",
     "react-error-overlay": "^1.0.9",
     "react-router-dom": "^4.1.1",
-    "react-select": "^1.0.0-rc.5",
+    "react-styleguidist": "^5.5.5",
     "style-loader": "0.18.2",
     "url-loader": "0.5.9",
     "webpack": "2.6.1",
     "webpack-manifest-plugin": "1.1.0",
     "whatwg-fetch": "2.0.3"
   },
-  "scripts": {
-    "build": "node scripts/build.js",
-    "dev": "styleguidist server"
+  "peerDependencies": {
+    "react": "^0.14.0 || ^15.0.0"
   },
   "babel": {
     "presets": [
@@ -54,11 +72,5 @@
   },
   "eslintConfig": {
     "extends": "react-app"
-  },
-  "devDependencies": {
-    "prop-types": "^15.5.10",
-    "react-styleguidist": "^5.5.5",
-    "stylus": "^0.54.5",
-    "stylus-loader": "^3.0.1"
   }
 }
