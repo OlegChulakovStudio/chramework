@@ -20,9 +20,7 @@
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dropzone": "^3.13.3",
-    "react-select": "^1.0.0-rc.5",
-    "stylus": "^0.54.5",
-    "stylus-loader": "^3.0.1"
+    "react-select": "^1.0.0-rc.5"
   },
   "devDependencies": {
     "autoprefixer": "7.1.1",
@@ -57,6 +55,8 @@
     "react-router-dom": "^4.1.1",
     "react-styleguidist": "^5.5.5",
     "style-loader": "0.18.2",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1",
     "url-loader": "0.5.9",
     "webpack": "2.6.1",
     "webpack-manifest-plugin": "1.1.0",

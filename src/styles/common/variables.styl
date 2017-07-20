@@ -18,5 +18,7 @@ for $name, $color in $colors {
 // media queries
 $breakpoints = json('../config/breakpoints.json', { hash: true })
 for $name, $breakpoint in $breakpoints {
-	define('$' + $name, get-max-widthHeight($breakpoint))
+	define('$' + $name, get-max-width($breakpoint))
+	define('$' + $name + 'WithoutPhone', get-min-and-max-width($breakpoints.phone+1, $breakpoint))
 }
+$withoutPhone = get-min-width($breakpoints.phone+1);

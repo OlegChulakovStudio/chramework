@@ -3,8 +3,8 @@ A React-based UI toolkit
 
 ## Installation
 The easiest way to use Chramework is to install it from NPM and include it in your own React build process
-    
-    `npm install react-select --save`
+
+    npm install chramework --save
 
 And just import chramework and its styles in your application as follows:
 

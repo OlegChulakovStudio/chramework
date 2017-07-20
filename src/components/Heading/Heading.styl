@@ -1,23 +1,55 @@
+title-sizes($size){
+  & {
+    font-size $size
+  }
+  @media $notebook {
+    font-size 0.93*$size
+  }
+  @media $tablet {
+    font-size 0.8333*$size
+  }
+  @media $verticalTablet {
+    font-size 0.7*$size
+  }
+  @media $phone {
+    font-size 0.46*$size
+  }
+}
+title-offset(){
+  margin-left -0.07em
+}
+title($fontSize, $lineHeight = 0.9642) {
+  display block
+  title-sizes($fontSize)
+  font-weight $black
+  line-height $lineHeight
+  text-transform uppercase
+  title-offset()
+}
 .Heading {
   display block
-  font $black 130px $fontFamily
-  line-height 0.9642
+  font-family $fontFamily
+  title(130px)
+  title-sizes(130px)
   color $textColor
   text-transform uppercase
   margin 0 0 .6em -0.07em
+  &--level {
+    &-2 {
+      title(106px)
+    }
+    &-3 {
+      title(56px)
+    }
+    &-4 {
+      title(34px)
+      margin-bottom 1em
+    }
+    &-5 {
+      title(21px)
+    }
+  }
   &:last-child {
     margin-bottom 0
-  }
-  &--level-2 {
-    font-size 106px
-  }
-  &--level-3 {
-    font-size 56px
-  }
-  &--level-4 {
-    font-size 34px
-  }
-  &--level-5 {
-    font-size 21px
   }
 }

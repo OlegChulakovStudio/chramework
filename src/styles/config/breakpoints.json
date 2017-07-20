@@ -1,24 +1,6 @@
 {
-	"largeDesktop": {
-		"width": 1920
-	},
-	"midDesktop": {
-		"width": 1680
-	},
-	"notebook": {
-		"width": 1440
-	},
-	"tablet": {
-		"width": 1200
-	},
-	"verticalTablet": {
-		"width": 1023
-	},
-	"phone": {
-		"width": 767
-	},
-	"wideNotebook": {
-		"width": 1440,
-		"height": 768
-	}
+  "notebook": 1440,
+  "tablet": 1200,
+  "verticalTablet": 1023,
+  "phone": 767
 }
