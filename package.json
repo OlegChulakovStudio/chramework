@@ -2,7 +2,7 @@
   "name": "chramework",
   "main": "dist/main.js",
   "style": "dist/main.css",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Oleg Chulakov Studio",
   "description": "A React-based UI toolkit",
   "license": "MIT",
@@ -20,7 +20,8 @@
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dropzone": "^3.13.3",
-    "react-select": "^1.0.0-rc.5"
+    "react-select": "^1.0.0-rc.5",
+    "react-textarea-autosize": "^5.0.7"
   },
   "devDependencies": {
     "autoprefixer": "7.1.1",
