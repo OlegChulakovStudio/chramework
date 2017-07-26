@@ -39,29 +39,34 @@ export default class Input extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      hasValue: false
+      hasValue: props.value || false
     };
   }
 
   onFocus = () => {
     this.container.classList.add('Input--focus');
+    if(this.props.onFocus) {
+      this.props.onFocus(); 
+    }
   }
 
   onBlur = (e) => {
     this.container.classList.remove('Input--focus');
     if(this.state.hasValue !== !!e.target.value.length) {
       this.setState({
-        hasValue: !!e.target.value.length,
+        hasValue: !!e.target.value.length
       });
+    };
+    if(this.props.onBlur) {
+      this.props.onBlur(); 
     }
   }
-
   render() {
-    const { className, label, type, hasErrors, disabled, multiRows, maxRowsCount, value, ...otherProps } = this.props;
+    const { className, label, type, hasErrors, disabled, multiRows, maxRowsCount, value, onFocus, onBlur, meta, ...otherProps } = this.props;
     return (
       <div className={classNames([
         "Input",
-        { 
+        {
           "Input--error": hasErrors,
           "Input--value": this.state.hasValue,
           "Input--disabled": disabled
@@ -78,7 +83,7 @@ export default class Input extends Component {
               onBlur={this.onBlur}
               disabled={disabled}
               {...otherProps}
-            ></TextArea>
+            >{value}</TextArea>
           :
             <input
               type={type}
@@ -86,6 +91,7 @@ export default class Input extends Component {
               onFocus={this.onFocus}
               onBlur={this.onBlur}
               disabled={disabled}
+              value={value}
               {...otherProps}
             />
         }

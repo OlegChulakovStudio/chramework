@@ -18,7 +18,7 @@ process.env.NODE_PATH = (process.env.NODE_PATH || '')
   .join(path.delimiter);
 // Webpack uses `publicPath` to determine where the app is being served from.
 // It requires a trailing slash, or the file assets will get an incorrect path.
-const publicPath = paths.servedPath;
+const publicPath = '';
 // Some apps do not use client-side routing with pushState.
 // For these, "homepage" can be set to "." to enable relative asset paths.
 const shouldUseRelativeAssetPaths = publicPath === './';
@@ -43,7 +43,7 @@ const cssFilename = '[name].css';
 // To have this structure working with relative paths, we have to use custom options.
 const extractTextPluginOptions = shouldUseRelativeAssetPaths
   ? // Making sure that the publicPath goes back to to build folder.
-    { publicPath: Array(cssFilename.split('/').length).join('../') }
+    { publicPath: Array(cssFilename.split('/').length).join('../dist') }
   : {};
 
 // This is the production configuration.
@@ -67,10 +67,10 @@ module.exports = {
     // We inferred the "public path" (such as / or /my-project) from homepage.
     publicPath: publicPath,
     // Point sourcemap entries to original disk location (format as URL on Windows)
-    devtoolModuleFilenameTemplate: info =>
-      path
-        .relative(paths.appSrc, info.absoluteResourcePath)
-        .replace(/\\/g, '/'),
+    // devtoolModuleFilenameTemplate: info =>
+    //   path
+    //     .relative(paths.appSrc, info.absoluteResourcePath)
+    //     .replace(/\\/g, '/'),
   },
   resolve: {
     // This allows you to set a fallback for where Webpack should look for modules.
@@ -130,16 +130,18 @@ module.exports = {
           /\.gif$/, 
           /\.jpe?g$/,
           /\.png$/,
+          /\.svg$/,
         ],
         loader: require.resolve('file-loader'),
         options: {
-          name: 'assets/[name].[ext]',
+          name: './assets/[name].[ext]',
+          // useRelativePath: true
         },
       },
       // "url" loader works just like "file" loader but it also embeds
       // assets smaller than specified size as data URLs to avoid requests.
       {
-        test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+        test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/, /\.svg$/],
         loader: require.resolve('url-loader'),
         options: {
           limit: 10000,
@@ -176,8 +178,7 @@ module.exports = {
                   options: {
                     importLoaders: 1,
                     minimize: true,
-                    sourceMap: true,
-                    root: '../'
+                    sourceMap: true
                   },
                 },
                 {
@@ -218,7 +219,7 @@ module.exports = {
                 {
                   loader: require.resolve('css-loader'),
                   options: {
-                    importLoaders: 1,
+                    importLoaders: 2,
                     minimize: true,
                     sourceMap: true,
                   },
