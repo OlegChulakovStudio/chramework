@@ -9,8 +9,6 @@ export default class Input extends Component {
   static propTypes = {
     /** space delimited list of additional class names */
     className: PropTypes.string,
-    /** if this value set to 'true', component will receive value from its parent( for example, if you use this component inside 'Field' from Redux Forms you should receive value from parent component) */
-    controlled: PropTypes.bool,
     disabled: PropTypes.bool,
     hasErrors: PropTypes.bool,
     /** text over the input */
@@ -24,26 +22,25 @@ export default class Input extends Component {
     /** type of current input */
     type: PropTypes.string,
     /** value of text field */
-    value: PropTypes.string
+    defaultValue: PropTypes.string
   };
 
   static defaultProps = {
     className: '',
-    controlled: false,
     disabled: false,
     hasErrors: false,
     label: '',
     maxRowsCount: 5,
     multiRows: false,
     type: 'text',
-    value: ''
+    defaultValue: ''
   };
 
   constructor(props) {
     super(props);
     this.state = {
-      value: '',
-      hasValue: props.value || false
+      value: props.defaultValue || '',
+      hasValue: props.defaultValue || false
     };
   }
 
@@ -62,18 +59,16 @@ export default class Input extends Component {
   }
 
   onChange = (e) => {
-    if(!this.props.controlled) {
-      this.setState({
-        value: e.target.value,
-        hasValue: !!e.target.value.length
-      });
-    }
+    this.setState({
+      value: e.target.value,
+      hasValue: !!e.target.value.length
+    });
     if(this.props.onChange) {
       this.props.onChange(e); 
     }
   }
   render() {
-    const { className, label, type, hasErrors, disabled, multiRows, maxRowsCount, value, controlled, onFocus, onBlur, onChange, meta, ...otherProps } = this.props;
+    const { className, label, type, hasErrors, disabled, multiRows, maxRowsCount, defaultValue, onFocus, onBlur, onChange, meta, ...otherProps } = this.props;
     return (
       <div className={classNames([
         "Input",
@@ -94,7 +89,7 @@ export default class Input extends Component {
               onBlur={this.onBlur}
               onChange={this.onChange}
               disabled={disabled}
-              value={controlled ? value : this.state.value}
+              value={this.state.value}
               {...otherProps}
             />
           :
@@ -105,7 +100,7 @@ export default class Input extends Component {
               onBlur={this.onBlur}
               onChange={this.onChange}
               disabled={disabled}
-              value={controlled ? value : this.state.value}
+              value={this.state.value}
               {...otherProps}
             />
         }

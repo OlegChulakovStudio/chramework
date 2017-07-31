@@ -42,5 +42,7 @@ This repository has two folders: `styleguide` and `src`.
 To add new component to the package, you have to create folder with the same name as your new component in `src` folder and create `.js`, `.styl` and `.md` files here. Styleguide server will automatically add preview of this component to the styleguide page.
 
 ## Publishing to npm
-
-Use `npm publish` to publish the package to npm. But before it, you must change current version in `package.json`.
+1. Make production build `npm run build`
+2. Change current version in `package.json`.
+3. If you did some changes in styleguide styles, run `npm styleguide:build`
+4. Run `npm publish` to publish the package to npm.
