@@ -26,3 +26,21 @@ You can provide a custom `className` prop to each component.
 ```javascript
 <Spinner className="some-additional-class" />
 ```
+
+
+# Development
+First of all, clone this repository and install all packages.
+To run styleguide server, which allows you to see all your components at one page, type in terminal
+```
+npm run styleguide
+```
+This repository has two folders: `styleguide` and `src`. 
+`Styleguide` contains restyled components, which used at http://chulakov.chramework.ru. More examples about how to customize styleguide page read [here](https://github.com/styleguidist/react-styleguidist/tree/master/examples/customised)
+`Src` contains library components. Each component consist of 3 files: `.js` and `.styl` file for css styles and logic, and `.md` file for examples of component usage.
+
+##Adding new component
+To add new component to the package, you have to create folder with the same name as your new component in `src` folder and create `.js`, `.styl` and `.md` files here. Styleguide server will automatically add preview of this component to the styleguide page.
+
+## Publishing to npm
+
+Use `npm publish` to publish the package to npm. But before it, you must change current version in `package.json`.
