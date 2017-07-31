@@ -2,9 +2,8 @@
   position relative
   display inline-block
   vertical-align middle
-  min-width 170px
   box-sizing border-box
-  padding 18px 20px
+  padding 18px 60px
   border-radius 4px
   font bold 14px/1 $fontFamily
   text-transform uppercase
@@ -16,12 +15,13 @@
   user-select none
   text-align center
   transition background-color $duration, transform $duration, box-shadow $duration
-  box-shadow 0 2px 4px #ACC6F0
+  box-shadow 0 2px 4px #CDD0D3
   &:disabled {
-    opacity 0.5
     cursor not-allowed
+    background-color #f2f2f2
+    color #a3a5b1
     &:hover {
-      background-color $linkColor
+      background-color #f2f2f2
     }
   }
   &:hover {
@@ -30,7 +30,13 @@
 
   &--small {
     font-size 12px
-    padding 15px 18px 14px
+    padding 15px 30px 14px
+  }
+
+  &--active, &:active {
+    background-color darken($linkColor, 30%)
+    transform translateY(2px)
+    faster()
   }
 
   &--danger,
@@ -44,6 +50,9 @@
     &:hover {
       background darken($greenColor, 15%)
     }
+    &:active {
+      background-color darken($greenColor, 30%)
+    }
   }
 
   &--danger {
@@ -52,14 +61,12 @@
     &:hover {
       background darken($redColor, 15%)
     }
+    &:active {
+      background-color darken($redColor, 30%)
+    }
   }
 
   &--secondary {
     background-color #222629
-  }
-
-  &--active {
-    background $linkHoverColor
-    faster()
   }
 }

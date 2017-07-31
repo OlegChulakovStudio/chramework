@@ -11,16 +11,15 @@ export default class Heading extends Component {
     level: PropTypes.number,
     /** must be a valid tag name */
     tagName: PropTypes.string,
-    /** heading content */
-    text: PropTypes.string
+    /** text or some DOM elements */
+    children: PropTypes.any
   };
 
   static defaultProps = {
     level: 1,
-    text: ''
   }
   render() {
-    const { className, level, tagName, text } = this.props;
+    const { className, level, tagName, children } = this.props;
     const RenderedComponent = tagName ? tagName : 'h' + level;
     return (
       <RenderedComponent className={classNames([
@@ -28,7 +27,7 @@ export default class Heading extends Component {
         { [`Heading--level-${level}`]: level },
         className
       ])}>
-        {text}
+        {children}
       </RenderedComponent>
     )
   }

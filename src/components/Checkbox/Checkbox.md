@@ -1,1 +1,1 @@
-    <Checkbox label="Click me" defaultChecked />
+    <Checkbox label="Click me" defaultChecked name="test" />

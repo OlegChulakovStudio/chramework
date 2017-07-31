@@ -13,7 +13,7 @@ export default class Button extends Component {
     /** whether action is non-active */
     disabled: PropTypes.bool,
     /** visual intent color to apply to element. Avaliable values: ['secondary', 'success', 'danger'] */
-    indent: PropTypes.string,
+    intent: PropTypes.string,
     /** sets the button size. Avaliable values are: ['small'] */
     size: PropTypes.string,
     /** action text */
@@ -31,7 +31,7 @@ export default class Button extends Component {
     className: '',
     dark: false,
     disabled: false,
-    indent: '',
+    intent: '',
     size: '',
     text: '',
     to: '',
@@ -47,7 +47,7 @@ export default class Button extends Component {
           "Button",
           {
             "Button--active": this.props.active,
-            [`Button--${this.props.indent}`]: this.props.indent,
+            [`Button--${this.props.intent}`]: this.props.intent,
             "Button--disabled": this.props.disabled,
             [`Button--${this.props.size}`]: this.props.size
           },

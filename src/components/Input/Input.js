@@ -9,6 +9,8 @@ export default class Input extends Component {
   static propTypes = {
     /** space delimited list of additional class names */
     className: PropTypes.string,
+    /** if this value set to 'true', component will receive value from its parent( for example, if you use this component inside 'Field' from Redux Forms you should receive value from parent component) */
+    controlled: PropTypes.bool,
     disabled: PropTypes.bool,
     hasErrors: PropTypes.bool,
     /** text over the input */
@@ -27,6 +29,7 @@ export default class Input extends Component {
 
   static defaultProps = {
     className: '',
+    controlled: false,
     disabled: false,
     hasErrors: false,
     label: '',
@@ -39,30 +42,38 @@ export default class Input extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      value: '',
       hasValue: props.value || false
     };
   }
 
-  onFocus = () => {
+  onFocus = (e) => {
     this.container.classList.add('Input--focus');
     if(this.props.onFocus) {
-      this.props.onFocus(); 
+      this.props.onFocus(e); 
     }
   }
 
   onBlur = (e) => {
     this.container.classList.remove('Input--focus');
-    if(this.state.hasValue !== !!e.target.value.length) {
+    if(this.props.onBlur) {
+      this.props.onBlur(e); 
+    }
+  }
+
+  onChange = (e) => {
+    if(!this.props.controlled) {
       this.setState({
+        value: e.target.value,
         hasValue: !!e.target.value.length
       });
-    };
-    if(this.props.onBlur) {
-      this.props.onBlur(); 
+    }
+    if(this.props.onChange) {
+      this.props.onChange(e); 
     }
   }
   render() {
-    const { className, label, type, hasErrors, disabled, multiRows, maxRowsCount, value, onFocus, onBlur, meta, ...otherProps } = this.props;
+    const { className, label, type, hasErrors, disabled, multiRows, maxRowsCount, value, controlled, onFocus, onBlur, onChange, meta, ...otherProps } = this.props;
     return (
       <div className={classNames([
         "Input",
@@ -81,17 +92,20 @@ export default class Input extends Component {
               maxRows={maxRowsCount}
               onFocus={this.onFocus}
               onBlur={this.onBlur}
+              onChange={this.onChange}
               disabled={disabled}
+              value={controlled ? value : this.state.value}
               {...otherProps}
-            >{value}</TextArea>
+            />
           :
             <input
               type={type}
               className="Input__field"
               onFocus={this.onFocus}
               onBlur={this.onBlur}
+              onChange={this.onChange}
               disabled={disabled}
-              value={value}
+              value={controlled ? value : this.state.value}
               {...otherProps}
             />
         }

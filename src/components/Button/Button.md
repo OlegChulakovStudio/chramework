@@ -6,7 +6,7 @@ Simple button with `onClick` handler:
 
 Success button
     
-    <Button text="Подробнее" indent="success" />
+    <Button text="Подробнее" intent="success" />
 
 Disabled button
     
