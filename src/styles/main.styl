@@ -1,25 +1,24 @@
 /*** --- Reset CSS --- ***/
 @import './reset.styl'
 
-/*** --- Variables --- ***/
-@import './common/variables.styl'
+/*** --- Variables and mixins --- ***/
+@import './common.styl'
 
-
+/*** --- Webfonts --- ***/
+webfont('Graphik', 'Graphik-Regular-Web', $regular);
+webfont('Graphik', 'Graphik-Bold-Web', $bold);
+webfont('Graphik', 'Graphik-Black-Web', $black);
 
 /*** --- Document --- ***/
 html,
 body {
 	height 100%
-	background $brandColor
+	background $bgColor
 	color $textColor
 	font 300 $fontSize/$lineHeight $fontFamily
 	-webkit-text-size-adjust 100%
 	-webkit-font-smoothing antialiased
 	-moz-osx-font-smoothing grayscale
-}
-
-body {
-
 }
 
 

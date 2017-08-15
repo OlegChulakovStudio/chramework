@@ -7,6 +7,7 @@ import Styled from 'react-styleguidist/lib/rsg-components/Styled';
 const styles = ({ color, fontFamily, fontSize, space, mq }) => ({
   list: {
     margin: 0,
+    padding: 0,
   },
   item: {
     color: color.link,

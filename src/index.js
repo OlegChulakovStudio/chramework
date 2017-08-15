@@ -1,3 +1,5 @@
+import './styles/main.styl';
+
 import Avatar from './components/Avatar/Avatar.js';
 import Button from './components/Button/Button.js';
 import Checkbox from './components/Checkbox/Checkbox.js';
