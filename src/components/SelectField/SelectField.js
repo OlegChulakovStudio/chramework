@@ -48,7 +48,7 @@ export default class SelectField extends Component {
     }
   }
 
-  componentWillReciveProps(nextProps) {
+  componentWillReceiveProps(nextProps) {
     if (this.state.value !== nextProps.value) {
       this.setState({
         value: nextProps.value,
