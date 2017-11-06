@@ -7,7 +7,7 @@ import './SelectField.styl';
 
 export default class SelectField extends Component {
   static propTypes = {
-     /** space delimited list of additional class names */
+    /** space delimited list of additional class names */
     className: PropTypes.string,
     disabled: PropTypes.bool,
     hasErrors: PropTypes.bool,
@@ -18,7 +18,7 @@ export default class SelectField extends Component {
     onChange: PropTypes.func,
     /** value of text field */
     value: PropTypes.string,
-    valueKey: PropTypes.string,
+    valueKey: PropTypes.string
   };
 
   static defaultProps = {
@@ -34,54 +34,84 @@ export default class SelectField extends Component {
     super(props);
     this.state = {
       hasValue: false,
-      value: this.props.value || null
+      value: null
     };
+  }
+
+  componentWillMount() {
+    const { value } = this.props;
+    if (value) {
+      this.setState({
+        value,
+        hasValue: true
+      });
+    }
+  }
+
+  componentWillReciveProps(nextProps) {
+    if (this.state.value !== nextProps.value) {
+      this.setState({
+        value: nextProps.value,
+        hasValue: !!nextProps.value
+      });
+    }
   }
 
   onFocus = () => {
     this.container.classList.add('SelectField--focus');
-  }
+  };
 
-  onBlur = (e) => {
-    if(!this.state.hasValue) {
+  onBlur = e => {
+    if (!this.state.hasValue) {
       this.container.classList.remove('SelectField--focus');
     }
-  }
+  };
 
-  onChange = (value) => {
-    if(this.props.onChange) {
-      this.props.onChange();
+  onChange = selectedOption => {
+    const { value } = selectedOption;
+
+    if (this.props.onChange) {
+      this.props.onChange(value);
     }
     this.setState({
       value,
-      hasValue: true
+      hasValue: !!value
     });
-  }
+  };
 
   render() {
-    const { className, disabled, hasErrors, label, ...otherProps } = this.props;
+    const {
+      className,
+      disabled,
+      hasErrors,
+      label,
+      value,
+      ...otherProps
+    } = this.props;
+
     return (
-      <div className={classNames([
-        "SelectField",
-        {
-          "SelectField--disabled": disabled,
-          "SelectField--error": hasErrors,
-          "SelectField--value": this.state.hasValue
-        },
-        className
-      ])}
-        ref={ elem => this.container = elem }
+      <div
+        className={classNames([
+          'SelectField',
+          {
+            'SelectField--disabled': disabled,
+            'SelectField--error': hasErrors,
+            'SelectField--value': this.state.hasValue
+          },
+          className
+        ])}
+        ref={elem => (this.container = elem)}
       >
         <Select
+          {...otherProps}
           placeholder=""
           disabled={disabled}
           onFocus={this.onFocus}
           onBlur={this.onBlur}
           onChange={this.onChange}
           value={this.state.value}
-          {...otherProps}
         />
-        <label className="SelectField__label">{ label }</label>
+        <label className="SelectField__label">{label}</label>
       </div>
     );
   }
