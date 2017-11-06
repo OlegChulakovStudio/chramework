@@ -57,13 +57,19 @@ export default class SelectField extends Component {
     }
   }
 
-  onFocus = () => {
+  onFocus = e => {
     this.container.classList.add('SelectField--focus');
+    if (this.props.onFocus) {
+      this.props.onFocus(e);
+    }
   };
 
   onBlur = e => {
     if (!this.state.hasValue) {
       this.container.classList.remove('SelectField--focus');
+    }
+    if (this.props.onBlur) {
+      this.props.onBlur(e);
     }
   };
 
