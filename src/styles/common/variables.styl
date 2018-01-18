@@ -9,16 +9,21 @@ $black = 900
 //duration
 $duration = 0.35s
 
+// grid
+$columns = 10
+$grid = json('../config/grid.json', { hash: true })
+
 // colors
 $colors = json('../config/colors.json', { hash: true })
 for $name, $color in $colors {
-	define('$' + $name + 'Color', $color)
+  define('$' + $name + 'Color', $color)
 }
 
 // media queries
 $breakpoints = json('../config/breakpoints.json', { hash: true })
 for $name, $breakpoint in $breakpoints {
-	define('$' + $name, get-max-width($breakpoint))
-	define('$' + $name + 'WithoutPhone', get-min-and-max-width($breakpoints.phone+1, $breakpoint))
+  define('$' + $name, get-max-width($breakpoint))
+  define('$' + $name + 'WithoutPhone', get-min-and-max-width($breakpoints.phone+1, $breakpoint))
 }
-$withoutPhone = get-min-width($breakpoints.phone+1);
+$withoutPhone = get-min-width($breakpoints.phone + 1)
+$laptopHeight = '(max-height:' + 700 + 'px)'
