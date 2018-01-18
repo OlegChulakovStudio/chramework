@@ -22,5 +22,6 @@ module.exports = {
     PlaygroundRenderer: path.join(__dirname, 'styleguide/components/PlaygroundRenderer/PlaygroundRenderer.js'),
     StyleGuideRenderer: path.join(__dirname, 'styleguide/components/StyleGuideRenderer/StyleGuideRenderer.js'),
     Logo: path.join(__dirname, 'styleguide/components/Logo/Logo.js')
-  }
+  },
+  skipComponentsWithoutExample: true
 }; 

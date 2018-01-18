@@ -1,8 +1,10 @@
 import './styles/main.styl';
 
+import AppLink from './components/AppLink/AppLink.js';
 import Avatar from './components/Avatar/Avatar.js';
 import Button from './components/Button/Button.js';
 import Checkbox from './components/Checkbox/Checkbox.js';
+import Card from './components/Card/Card.js';
 import FileInput from './components/FileInput/FileInput.js';
 import FormCol from './components/FormCol/FormCol.js';
 import FormGroup from './components/FormGroup/FormGroup.js';
@@ -23,9 +25,11 @@ import TableHeader from './components/TableHeader/TableHeader.js';
 import TableRow from './components/TableRow/TableRow.js';
 
 export {
+  AppLink,
   Avatar,
   Button,
   Checkbox,
+  Card,
   FileInput,
   FormCol,
   FormGroup,
