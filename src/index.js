@@ -10,6 +10,7 @@ import FormCol from './components/FormCol/FormCol.js';
 import FormGroup from './components/FormGroup/FormGroup.js';
 import FormRow from './components/FormRow/FormRow.js';
 import Heading from './components/Heading/Heading.js';
+import Icon from './components/Icon/Icon.js';
 import Input from './components/Input/Input.js';
 import Logo from './components/Logo/Logo.js';
 import Media from './components/Media/Media.js';
@@ -18,6 +19,7 @@ import Preloader from './components/Preloader/Preloader.js';
 import Radio from './components/Radio/Radio.js';
 import SelectField from './components/SelectField/SelectField.js';
 import Spinner from './components/Spinner/Spinner.js';
+import Subtitle from './components/Subtitle/Subtitle.js';
 import Table from './components/Table/Table.js';
 import TableCell from './components/TableCell/TableCell.js';
 import TableContent from './components/TableContent/TableContent.js';
@@ -35,6 +37,7 @@ export {
   FormGroup,
   FormRow,
   Heading,
+  Icon,
   Input,
   Logo,
   Media,
@@ -43,6 +46,7 @@ export {
   Radio,
   SelectField,
   Spinner,
+  Subtitle,
   Table,
   TableCell,
   TableContent,

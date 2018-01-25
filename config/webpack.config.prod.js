@@ -43,7 +43,7 @@ const cssFilename = '[name].css';
 // To have this structure working with relative paths, we have to use custom options.
 const extractTextPluginOptions = shouldUseRelativeAssetPaths
   ? // Making sure that the publicPath goes back to to build folder.
-    { publicPath: Array(cssFilename.split('/').length).join('../dist') }
+  { publicPath: Array(cssFilename.split('/').length).join('../dist') }
   : {};
 
 // This is the production configuration.
@@ -104,12 +104,16 @@ module.exports = {
           {
             options: {
               formatter: eslintFormatter,
-              
+
             },
             loader: require.resolve('eslint-loader'),
           },
         ],
         include: paths.appSrc,
+      },
+      {
+        test: /\.svg$/,
+        loader: 'svg-sprite-loader',
       },
       // ** ADDING/UPDATING LOADERS **
       // The "file" loader handles all assets unless explicitly excluded.
@@ -127,7 +131,7 @@ module.exports = {
           /\.css$/,
           /\.json$/,
           /\.bmp$/,
-          /\.gif$/, 
+          /\.gif$/,
           /\.jpe?g$/,
           /\.png$/,
           /\.svg$/,

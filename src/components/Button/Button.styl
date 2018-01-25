@@ -1,72 +1,274 @@
 .Button {
-  position relative
-  display inline-block
-  vertical-align middle
-  box-sizing border-box
-  padding 18px 60px
-  border-radius 4px
-  font bold 14px/1 $fontFamily
-  text-transform uppercase
-  color #FFF
-  background-color $linkColor
-  cursor pointer
-  border none
-  outline none
-  user-select none
-  text-align center
-  transition background-color $duration, transform $duration, box-shadow $duration
-  box-shadow 0 2px 4px #CDD0D3
-  &:disabled {
-    cursor not-allowed
-    background-color #f2f2f2
-    color #a3a5b1
-    &:hover {
-      background-color #f2f2f2
-    }
-  }
-  &:hover {
-    background-color $linkHoverColor
-  }
+	grid-width(2, min-width)
+	position relative
+	display inline-block
+	vertical-align middle
+	box-sizing border-box
+	font bold 14px / 1 $fontFamily
+	text-transform uppercase
+	color #FFF
+	white-space nowrap
+	cursor pointer
+	border none
+	outline none
+	border-radius 4px
+	user-select none
+	text-align center
+	background-color transparent
+	padding 0
+	box-shadow none
+	transition color $duration
 
-  &--small {
-    font-size 12px
-    padding 15px 30px 14px
-  }
+	&:hover {
+		background-color transparent
+	}
+	&__inner {
+		position relative
+		display block
+		box-sizing border-box
+		padding 18px 24px
+		border-radius 4px
+		background-color $linkColor
+		transition background-color $duration, transform $duration, box-shadow $duration
+		z-index 1
 
-  &--active, &:active {
-    background-color darken($linkColor, 30%)
-    transform translateY(2px)
-    faster()
-  }
+		@media $notebook {
+			padding 18px 32px
+		}
+	}
+	&:before {
+		content ''
+		fullsize()
+		border-radius 4px
+		box-shadow 0 2px 4px darken(#cdd0d3, 80%)
+		transform-origin 50% 100%
+		background-color darken(#cdd0d3, 80%)
+		transform translateZ(0)
+		opacity 0.3
+		transition transform $duration, opacity $duration
+	}
+	&-wrapper {
+		position relative
+		display inline-block
+		vertical-align middle
+		box-shadow 0 2px 4px #CDD0D3
+		border-radius 4px
+	}
+	&:disabled {
+		cursor not-allowed
+		color #a3a5b1
 
-  &--danger,
-  &--success {
-    box-shadow 0 2px 4px 0 #CDD0D3
-  }
+		.Button__inner {
+			background-color #f2f2f2
+		}
+		&:hover {
+			.Button__inner {
+				background-color #f2f2f2
+			}
+		}
+	}
+	&:hover {
+		color #fff
 
-  &--success {
-    background $greenColor
+		.Button__inner {
+			background-color $linkHoverColor
+			faster()
+		}
+		@media $phone {
+			.Button__inner {
+				background-color $linkColor
+			}
+		}
+	}
+	// &__arrow-wrapper {
+	// 	position absolute
+	// 	top 50%
+	// 	margin-top -10px
+	// 	right 22px
+	// 	overflow hidden
+	// 	width 40px
+	// 	height 20px
+	// 	display flex
+	// }
+	&__arrow {
+		position absolute
+		top 50%
+		margin-top -10px
+		right 22px
+		fill currentColor
+		transition transform $duration
+		transition-timing-function $easeInOutSine
+		width 34px
+	}
+	&__text {
+		display inline-block
+		transition transform $duration $easeInOutQuart
+		transform translateZ(0)
+		transform-origin center
+	}
+	&--arrow {
+		text-align left
 
-    &:hover {
-      background darken($greenColor, 15%)
-    }
-    &:active {
-      background-color darken($greenColor, 30%)
-    }
-  }
+		.Button__inner {
+			background-color transparent
+			padding-right 80px
+		}
+		@media $withoutPhone {
+			&:hover {
+				.Button__arrow {
+					transform translateX(3px) translateZ(0)
+					faster()
+				}
+			}
+		}
+	}
+	&--small {
+		font-size 12px
 
-  &--danger {
-    background $redColor
+		.Button__inner {
+			padding 15px 30px 14px
+		}
+	}
+	&--bordered {
+		text-transform none
+		color $linkColor
 
-    &:hover {
-      background darken($redColor, 15%)
-    }
-    &:active {
-      background-color darken($redColor, 30%)
-    }
-  }
+		&:before {
+			display none
+		}
+		&:active {
+			.Button__inner {
+				// transform translateY(1px) !important
+			}
+		}
+		.Button__inner {
+			border-style solid
+			border-width 2px
+			border-color $linkColor
+			background-color transparent
+		}
+		@media $withoutPhone {
+			&:hover {
+				color #fff
 
-  &--secondary {
-    background-color #222629
-  }
+				.Button__inner {
+					background-color $linkColor
+					faster()
+				}
+			}
+		}
+		@media $phone {
+			&:hover {
+				color $linkColor
+
+				.Button__inner {
+					background-color transparent
+				}
+			}
+		}
+		&.Button--active, &:active {
+			// background-color transparent
+			// color $textColor
+			color #fff
+			// transform none
+
+			.Button__inner {
+				background-color $linkColor
+			}
+		}
+	}
+	&--white {
+		color #fff
+		text-transform none
+
+		.Button__inner {
+			border-color #fff
+		}
+		@media $withoutPhone {
+			&:hover {
+				color $textColor !important
+				// faster()
+
+				.Button__inner {
+					background-color #fff
+					border-color #fff
+				}
+			}
+		}
+		@media $phone {
+			&:hover {
+				color #fff
+
+				.Button__inner {
+					border-color #fff
+				}
+			}
+		}
+		&.Button--active, &:active {
+			color $textColor !important
+
+			.Button__inner {
+				transform none
+				background-color #fff
+				border-color #fff
+			}
+		}
+	}
+	&--active, &:active {
+		background-color transparent
+		transform none
+		// background-color darken($linkColor, 30%)
+
+		.Button__inner {
+			transform translateY(2px)
+			faster()
+		}
+
+		&:before {
+			transform scale(0.98, 0.96) translateZ(0)
+			opacity 1
+			faster()
+		}
+	}
+	&--danger, &--success {
+		&:before {
+			box-shadow 0 2px 4px 0 #CDD0D3
+		}
+	}
+	&--success {
+		.Button__inner {
+			background $greenColor
+		}
+		&:hover {
+			.Button__inner {
+				background darken($greenColor, 15%)
+			}
+		}
+		&:active {
+			.Button__inner {
+				background-color darken($greenColor, 30%)
+			}
+		}
+	}
+	&--danger {
+		.Button__inner {
+			background $redColor
+		}
+
+		&:hover {
+			.Button__inner {
+				background darken($redColor, 15%)
+			}
+		}
+		&:active {
+			.Button__inner {
+				background-color darken($redColor, 30%)
+			}
+		}
+	}
+	&--secondary {
+		.Button__inner {
+			background-color #222629
+		}
+	}
 }

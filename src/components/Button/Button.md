@@ -8,9 +8,9 @@ Success button
     
     <Button text="Подробнее" intent="success" />
 
-Disabled button
+Bordered button with arrow
     
-    <Button text="Подробнее" disabled />
+    <Button text="Подробнее" arrow bordered />
 
 Small button
 

@@ -1,16 +1,28 @@
 .logo {
-  display block
-  width 140px
-  height 32px
-  background url(assets/logo.svg) no-repeat 50% 50%/contain
-  vertical-align top
-  text-decoration none
-  &--black {
-    background-image url(assets/logo-black.svg)
+	display block
+	width 120px
+	height 28px
+	vertical-align top
+	text-decoration none
+  font-size 0
+  svg {
+    width 100%
+    height 100%
   }
 
-  &--small {
-    width 110px
-    height 25px
-  }
+	.Icon {
+		fill #FFF45F
+		// display block
+		transition fill 0.2s
+	}
+	&__light {
+		.Icon {
+			fill #fff
+		}
+	}
+
+	&--small {
+		width 110px
+		height 25px
+	}
 }

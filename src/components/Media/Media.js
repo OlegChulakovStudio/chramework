@@ -31,11 +31,11 @@ export default class Media extends Component {
       ])}>
         <div className="Media__content">
           {
-            embedded ? <iframe src={url} frameBorder="0" title=""></iframe>
-            : <img src={url} alt="" />
+            embedded ? <iframe src={url} frameBorder="0" title="title"></iframe>
+              : <img src={url} alt="" />
           }
         </div>
-        { note && <Note text={note} right /> }
+        {note && <Note text={note} right />}
       </figure>
     )
   }

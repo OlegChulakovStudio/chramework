@@ -1,55 +1,71 @@
-title-sizes($size){
-  & {
-    font-size $size
-  }
-  @media $notebook {
-    font-size 0.93*$size
-  }
-  @media $tablet {
-    font-size 0.8333*$size
-  }
-  @media $verticalTablet {
-    font-size 0.7*$size
-  }
-  @media $phone {
-    font-size 0.46*$size
-  }
-}
-title-offset(){
-  margin-left -0.07em
-}
-title($fontSize, $lineHeight = 0.9642) {
-  display block
-  title-sizes($fontSize)
-  font-weight $black
-  line-height $lineHeight
-  text-transform uppercase
-  title-offset()
-}
 .Heading {
   display block
   font-family $fontFamily
-  title(130px)
-  title-sizes(130px)
   color $textColor
-  text-transform uppercase
   margin 0 0 .6em -0.07em
   &--level {
+    &-1 {
+      font-size 80px
+      font-weight $black
+      line-height 1
+      margin-bottom 40px
+      @media $phone {
+        font-size 42px 
+        line-height 1.1
+        margin-bottom 24px
+      }
+    }
     &-2 {
-      title(106px)
+      font-size 45px
+      font-weight $black
+      line-height 1.2
+      margin-bottom 24px
+      @media $phone  {
+        font-size 34px 
+        line-height 1.2
+      }
     }
     &-3 {
-      title(56px)
+      font-size 28px
+      font-weight $bold
+      line-height 1.2
+      margin-bottom 16px
+      @media $phone {
+        line-height 1.1  
+      }
     }
     &-4 {
-      title(34px)
-      margin-bottom 1em
+      font-size 18px
+      font-weight $bold
+      line-height 1.5
+      margin-bottom 8px
+      @media $phone  {
+        font-size 20px
+        line-height 1.4
+      }
     }
     &-5 {
-      title(21px)
+      font-size 16px
+      font-weight $bold
+      line-height 1.5
+      margin-bottom 8px
+      @media $phone  {
+        font-size 18px 
+        line-height 1.5
+      }
+    }
+    &-6 {
+        font-size 14px
+        font-weight $bold
+        line-height 1.5
+        margin-bottom 8px
+        @media $phone  {
+          font-size 16px
+          line-height 1.5 
+        }
     }
   }
   &:last-child {
-    margin-bottom 0
+    margin-bottom 0  
   }
 }

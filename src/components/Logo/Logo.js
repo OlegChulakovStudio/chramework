@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
-import './Logo.styl';
+import logo from './assets/logo.svg';
+import Icon from '../Icon/Icon';
+import style from './Logo.styl';
 
 export default class Logo extends Component {
+
   static propTypes = {
     /** Avaliable values: ['small',''] */
     size: PropTypes.string,
@@ -13,45 +16,41 @@ export default class Logo extends Component {
     /**  */
     url: PropTypes.string,
     /** set this param to true, if you want to add external link */
-    external: PropTypes.bool
+    external: PropTypes.bool,
   };
 
   static defaultProps = {
     size: '',
     type: '',
-    url: '/'
+    url: '/',
   };
 
-  renderLink() {
-    return (
-      <Link
-        to={this.props.url}
-        className={classNames([
-          "logo",
-          { 
-            "logo--small": this.props.size === 'small',
-            "logo--black": this.props.type === 'black',
-          }
-        ])}
-      >&nbsp;</Link>
-    )
-  }
+  renderLink = () => (
+    <Link
+      {...this.props}
+      to={this.props.url}
+      className={classNames({
+        [style.Logo]: true,
+        [style.Logo__light]: this.props.type === 'light',
+      })}>
+      <Icon glyph={logo} width={120} height={28} />
+    </Link>
+  );
 
-  renderExternalLink() {
-    return (
-      <a
-        href={this.props.url}
-        target="_blank"
-        className={classNames([
-          "logo",
-          { 
-            "logo--small": this.props.size === 'small',
-            "logo--black": this.props.type === 'black',
-          }
-        ])}
-      >&nbsp;</a>
-    )
-  }
+  renderExternalLink = () => (
+    <a
+      href={this.props.url}
+      target="_blank"
+      className={classNames({
+        logo: true,
+        'logo--small': this.props.size === 'small',
+        [`logo--${this.props.type}`]: this.props.type,
+      })}>
+      &nbsp;
+			<Icon glyph={logo} width={120} height={28} />
+    </a>
+  );
+
   render() {
     return this.props.external ? this.renderExternalLink() : this.renderLink();
   }
