@@ -111,10 +111,6 @@ module.exports = {
         ],
         include: paths.appSrc,
       },
-      {
-        test: /\.svg$/,
-        loader: 'svg-sprite-loader',
-      },
       // ** ADDING/UPDATING LOADERS **
       // The "file" loader handles all assets unless explicitly excluded.
       // The `exclude` list *must* be updated with every change to loader extensions.
@@ -158,6 +154,11 @@ module.exports = {
         test: /\.(js|jsx)$/,
         include: paths.appSrc,
         loader: require.resolve('babel-loader')
+      },
+
+      {
+        test: /\.svg$/,
+        loader: 'svg-sprite-loader',
       },
       // The notation here is somewhat confusing.
       // "postcss" loader applies autoprefixer to our CSS.
