@@ -40,9 +40,9 @@
 		content ''
 		fullsize()
 		border-radius 4px
-		box-shadow 0 2px 4px darken(#cdd0d3, 80%)
+		box-shadow 0 2px 4px $linkColor
 		transform-origin 50% 100%
-		background-color darken(#cdd0d3, 80%)
+		// background-color $linkColor
 		transform translateZ(0)
 		opacity 0.3
 		transition transform $duration, opacity $duration
@@ -236,6 +236,9 @@
 		}
 	}
 	&--success {
+		&:before {
+			box-shadow: 0 2px 4px 0 $greenColor
+		}
 		.Button__inner {
 			background $greenColor
 		}
