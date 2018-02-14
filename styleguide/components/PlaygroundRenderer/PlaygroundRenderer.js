@@ -7,10 +7,10 @@ const styles = ({ space, color, borderRadius }) => ({
     marginBottom: '74px'
   },
   preview: {
-    padding: space[2],
-    border: [[1, color.border, 'solid']],
+    outline: [[1, color.border, 'solid']],
     borderRadius,
-    marginBottom: '15px',
+    margin: [[space[2], space[2], space[2] + 15, space[2]]],
+    outlineOffset: 15,
   },
   controls: {
     display: 'flex',

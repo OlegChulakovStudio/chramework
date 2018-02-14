@@ -11,6 +11,7 @@ const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
+const svgoConfig = require('./svgoConfig');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -179,7 +180,16 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        loader: 'svg-sprite-loader',
+        // loader: 'svg-sprite-loader',
+        use: [
+          "babel-loader",
+          {
+            loader: "react-svg-loader",
+            options: {
+              svgo: svgoConfig
+            }
+          }
+        ],
       },
       // "postcss" loader applies autoprefixer to our CSS.
       // "css" loader resolves paths in CSS and adds assets as dependencies.
