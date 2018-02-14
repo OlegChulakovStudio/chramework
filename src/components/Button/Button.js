@@ -53,7 +53,7 @@ class Button extends Component {
   onTouchStart = () => {
     this.setState({ active: true });
   };
-  onTouchStart = () => {
+  onTouchEnd = () => {
     this.setState({ active: false });
   };
   render() {
@@ -77,7 +77,7 @@ class Button extends Component {
           },
           className,
         ])}
-        type={RenderedComponent === 'button' ? type : undefined}
+        type={RenderedComponent === 'button' ? (type || 'button') : undefined}
         onTouchCancel={this.onTouchEnd}
         onTouchEnd={this.onTouchEnd}
         onTouchStart={this.onTouchStart}
