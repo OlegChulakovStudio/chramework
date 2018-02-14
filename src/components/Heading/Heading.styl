@@ -3,69 +3,28 @@
   font-family $fontFamily
   color $textColor
   margin 0 0 .6em -0.07em
+
   &--level {
     &-1 {
-      font-size 80px
-      font-weight $black
-      line-height 1
-      margin-bottom 40px
-      @media $phone {
-        font-size 42px 
-        line-height 1.1
-        margin-bottom 24px
-      }
+      heading1()
     }
     &-2 {
-      font-size 45px
-      font-weight $black
-      line-height 1.2
-      margin-bottom 24px
-      @media $phone  {
-        font-size 34px 
-        line-height 1.2
-      }
+      heading2()
     }
     &-3 {
-      font-size 28px
-      font-weight $bold
-      line-height 1.2
-      margin-bottom 16px
-      @media $phone {
-        line-height 1.1  
-      }
+      heading3()
     }
     &-4 {
-      font-size 18px
-      font-weight $bold
-      line-height 1.5
-      margin-bottom 8px
-      @media $phone  {
-        font-size 20px
-        line-height 1.4
-      }
+      heading4()
     }
     &-5 {
-      font-size 16px
-      font-weight $bold
-      line-height 1.5
-      margin-bottom 8px
-      @media $phone  {
-        font-size 18px 
-        line-height 1.5
-      }
+      heading5()
     }
     &-6 {
-        font-size 14px
-        font-weight $bold
-        line-height 1.5
-        margin-bottom 8px
-        @media $phone  {
-          font-size 16px
-          line-height 1.5 
-        }
+      heading6()
     }
   }
   &:last-child {
-    margin-bottom 0  
+    margin-bottom 0
   }
 }

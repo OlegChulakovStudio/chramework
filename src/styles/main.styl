@@ -23,7 +23,14 @@ body {
 
 
 /*** --- Links --- ***/
+
 a {
-	color $linkColor
 	text-decoration none
+	color $linkColor
+	transition color $duration
+
+	&:hover {
+		color $linkHoverColor
+		faster()
+	}
 }
