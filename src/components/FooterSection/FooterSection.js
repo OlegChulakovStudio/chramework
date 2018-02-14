@@ -75,9 +75,9 @@ const FooterSection = ({ text, light, offsetLeft, offsetRight, email, showButton
 					</div>
 					{showButton && <div className="FooterSection__feedback">
 						<Button
+							text="Заполнить бриф"
 							{...showButton}
 							className="FooterSection__feedback-button"
-							text="Заполнить бриф"
 						/>
 					</div>}
 				</div>
