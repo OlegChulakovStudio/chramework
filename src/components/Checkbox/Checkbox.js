@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Control from '../Control/Control.js';
+import Control from '../Control/Control';
 
 export default class Checkbox extends Component {
   static propTypes = {
@@ -16,6 +16,6 @@ export default class Checkbox extends Component {
   };
 
   render() {
-    return <Control type="checkbox" {...this.props} />
+    return <Control {...this.props} type="checkbox" />
   }
 }

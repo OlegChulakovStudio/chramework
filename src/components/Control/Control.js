@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import reactHtmlParser from 'react-html-parser';
 import './Control.styl';
 
 export default class Control extends Component {
@@ -19,25 +20,18 @@ export default class Control extends Component {
   };
 
   render() {
-    const { className, label, type, ...otherProps } = this.props;
+    const { className, label, type, complexLabel, ...otherProps } = this.props;
     return (
-      <div className={classNames([
-        "Control",
-        className
-      ])}>
-        <label className="Control__label" title={label}>
-          <input
-            type={type}
-            className="Control__field"
-            {...otherProps}
-          />
-          <i className={classNames([
-            "Control__cover",
-            { "Control__cover--radio": type && type === 'radio' }
-          ])}></i>
-          { label }
-        </label>
-      </div>
+      <label className={classNames([ "Control", className, {
+        [`Control_${type}`]: type
+      } ])} title={label}>
+        <input
+          {...otherProps}
+          type={type}
+          className="Control__field"
+        />
+        <span className="Control__caption">{complexLabel || reactHtmlParser(label)}</span>
+      </label>
     )
   }
 }
