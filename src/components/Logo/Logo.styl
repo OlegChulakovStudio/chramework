@@ -1,23 +1,40 @@
-.logo {
-	display block
+.Logo {
+	position relative
 	width 120px
 	height 28px
+	display inline-block
 	vertical-align top
 	text-decoration none
-  font-size 0
-  svg {
-    width 100%
-    height 100%
-  }
 
-	.Icon {
-		fill #FFF45F
-		// display block
-		transition fill 0.2s
+	&__link {
+		fullsize()
 	}
-	&__light {
-		.Icon {
-			fill #fff
+	&__icon {
+		fill #FFF45F
+		display block
+		width 100%
+		height 100%
+
+		.Logo__rectBg {
+			transition fill 0.2s 0.1s
+			fill $brandColor
+		}
+		.Logo__text {
+			fill $textColor
+		}
+		.Logo--light & {
+			.Logo__rectBg {
+				fill #fff
+				transition fill 0.2s
+			}
+		}
+		.Logo--black & {
+			.Logo__rectBg {
+				fill $textColor
+			}
+			.Logo__text {
+				fill #fff
+			}
 		}
 	}
 

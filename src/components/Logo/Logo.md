@@ -1,5 +1,9 @@
     <Logo url="http://chulakov.ru" external/>
 
+Light:
+
+    <Logo url="http://chulakov.ru" mod="light" external/>
+
 Black:
 
     <Logo url="http://chulakov.ru" type="black" external/>
