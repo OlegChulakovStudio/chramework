@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import Icon from '../Icon/Icon';
 import reactHtmlParser from 'react-html-parser';
-import arrowIcon from './icons/arrow-link.svg';
+import ArrowIcon from './icons/arrow-link.svg';
 import './Button.styl';
 
 class Button extends Component {
@@ -35,18 +34,18 @@ class Button extends Component {
   };
 
   static defaultProps = {
-    className: '',
+    className: undefined,
     white: false,
     disabled: false,
-    intent: '',
-    size: '',
-    text: '',
-    to: '',
-    href: '',
+    intent: undefined,
+    size: undefined,
+    text: undefined,
+    to: undefined,
+    href: undefined,
     bordered: false,
     arrow: false,
     type: 'button',
-    onClick: () => { },
+    onClick: undefined,
   };
   state = {
     active: false,
@@ -60,9 +59,11 @@ class Button extends Component {
   render() {
     const RenderedComponent =
       !this.props.to && !this.props.href ? 'button' : this.props.href ? 'a' : Link;
-    const { bordered, intent, disabled, white, size, arrow, className } = this.props;
+    const { bordered, intent, white, size, arrow, className, text, type, ...rest } = this.props;
+
     return (
       <RenderedComponent
+        {...rest}
         className={classNames([
           'Button',
           {
@@ -70,23 +71,20 @@ class Button extends Component {
             'Button--bordered': bordered,
             'Button--arrow': arrow,
             [`Button--${intent}`]: intent,
-            'Button--disabled': disabled,
+            'Button--disabled': this.props.disabled,
             'Button--white': white,
             [`Button--${size}`]: size,
           },
           className,
         ])}
-        to={this.props.to}
-        href={this.props.href}
-        disabled={this.props.disabled}
-        type={this.props.type}
+        type={RenderedComponent === 'button' ? type : undefined}
         onTouchCancel={this.onTouchEnd}
         onTouchEnd={this.onTouchEnd}
         onTouchStart={this.onTouchStart}
-        onClick={this.props.onClick}>
+      >
         <span className="Button__inner">
-          <span className="Button__text">{reactHtmlParser(this.props.text)}</span>
-          {this.props.arrow && <Icon glyph={arrowIcon} className="Button__arrow" />}
+          <span className="Button__text">{reactHtmlParser(text)}</span>
+          {arrow && <ArrowIcon className="Button__arrow" />}
         </span>
       </RenderedComponent>
     );
