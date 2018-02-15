@@ -25,7 +25,7 @@ const LinkElement = ({
 	if (to) {
 		linkProps = { to };
 	} else if (href) {
-		linkProps = { href };
+		linkProps = { href, target: external ? '_blank' : undefined };
 	}
 
 	return (

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import reactHtmlParser from 'react-html-parser';
 import './Paragraph.styl';
 
 export default class Paragraph extends Component {
@@ -21,7 +20,6 @@ export default class Paragraph extends Component {
 			mod,
 			className,
 			children,
-			text,
 			...rest
 		} = this.props;
 
@@ -30,7 +28,7 @@ export default class Paragraph extends Component {
 		});
 
 		return (
-			<TagName {...rest} className={paragraphStyle}>{text && reactHtmlParser(text)}{children}</TagName>
+			<TagName {...rest} className={paragraphStyle}>{children}</TagName>
 		);
 	}
 }

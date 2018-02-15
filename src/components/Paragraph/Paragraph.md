@@ -1,31 +1,31 @@
 Subtitle:
 
-	<Paragraph mod="subtitle" text="Создаем digital-сервисы" />
+	<Paragraph mod="subtitle">Создаем digital-сервисы</Paragraph>
 
 Body:
 
-	<Paragraph mod="body" text="Создаем digital-сервисы" />
+	<Paragraph mod="body">Создаем digital-сервисы</Paragraph>
 
 BodyTable:
 
-	<Paragraph mod="bodyTable" text="Создаем digital-сервисы" />
+	<Paragraph mod="bodyTable">Создаем digital-сервисы</Paragraph>
 
 BodySmallBlack:
 
-	<Paragraph mod="bodySmallBlack" text="Создаем digital-сервисы" />
+	<Paragraph mod="bodySmallBlack">Создаем digital-сервисы</Paragraph>
 
 BodySmall:
 
-	<Paragraph mod="bodySmall" text="Создаем digital-сервисы" />
+	<Paragraph mod="bodySmall">Создаем digital-сервисы</Paragraph>
 
 BodySmallItalic:
 
-	<Paragraph mod="bodySmallItalic" text="Создаем digital-сервисы" />
+	<Paragraph mod="bodySmallItalic">Создаем digital-сервисы</Paragraph>
 
 BoldMedium:
 
-	<Paragraph mod="boldMedium" text="Создаем digital-сервисы" />
+	<Paragraph mod="boldMedium">Создаем digital-сервисы</Paragraph>
 
 BoldSmall:
 
-	<Paragraph mod="boldSmall" text="Создаем digital-сервисы" />
+	<Paragraph mod="boldSmall">Создаем digital-сервисы</Paragraph>
