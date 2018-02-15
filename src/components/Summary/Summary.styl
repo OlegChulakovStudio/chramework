@@ -1,0 +1,191 @@
+.Summary {
+	font-size 0
+
+	&_career {
+		padding-top 18px
+	}
+	&__wrapper {
+		margin-bottom 80px
+
+		@media $notebook {
+			margin-bottom 64px
+		}
+		@media $verticalTablet {
+			margin-bottom 48px
+		}
+		@media $phone {
+			margin-bottom 40px
+		}
+		&:last-child {
+			margin-bottom 0
+		}
+	}
+	@media $notebook {}
+	@media $verticalTablet {
+		text-align left
+	}
+	@media $phone {
+		margin 0 -16px
+	}
+	&__content {
+		display inline-block
+		vertical-align middle
+		width 100%
+	}
+	&__item {
+		font-size 16px
+		display inline-block
+		vertical-align top
+		padding 0 40px
+		box-sizing border-box
+
+		&:first-child {
+			padding-left 0
+		}
+		.Link__target-blank {
+		}
+		@media $notebook {
+			padding 0 25px
+		}
+		@media $tablet {}
+		@media $verticalTablet {
+			width 50%
+			padding 0 40px 0 0
+
+			&:last-child {
+				margin-right 0
+			}
+		}
+		@media $verticalTablet {
+			margin-bottom 32px
+			padding 0
+			vertical-align top
+		}
+		&_medal {
+			display inline-block
+			min-width 268px
+			text-align center
+
+			@media $verticalTablet {
+				margin-bottom 0
+				min-width 0
+			}
+		}
+		&_counter {
+			text-align center
+			font-weight bold
+
+			.Summary__text {
+				font-size 16px
+			}
+			@media $verticalTablet {
+				width 50%
+				margin 0
+				margin-bottom 40px
+			}
+		}
+
+		&_inline {
+			@media $phone {
+				float left
+				width 50%
+			}
+		}
+		&:last-child {
+			margin-bottom 0
+		}
+	}
+	&__number {
+		font-size 60px
+		font-weight $bold
+		line-height 1
+		margin-bottom 3px
+
+		&__plus {
+			font-weight normal
+		}
+		@media $phone {
+			font-size 40px
+		}
+	}
+	&__text {
+		font-size 14px
+		text-align center
+
+		@media $phone {
+			display: flex
+			flex-direction: column
+			align-items: center
+			font-size 14px
+			line-height 1.5
+		}
+		&-link {
+			line-height 1.25 !important
+
+			@media $phone {
+				font-size 14px !important
+				margin-right -5px
+
+				.Link__target-blank svg {
+					margin-right -3px
+				}
+			}
+		}
+	}
+	&__count {
+		text-align center
+		display block
+		margin-bottom 0
+
+		@media $verticalTablet {
+			display inline-block
+		}
+		@media $phone {
+			.Text {
+				line-height 1.4
+			}
+		}
+	}
+	&__title {
+		text-align center
+		box-sizing border-box
+		padding-top 6px
+		vertical-align middle
+
+		@media $verticalTablet {
+			height auto
+			padding-top 0
+		}
+		@media $phone {
+			max-width 160px
+			margin 0 auto
+		}
+	}
+	&__img {
+		display block
+		margin-right 8px
+		width 60px
+		margin 0 auto
+		vertical-align top
+		margin-top -18px
+		margin-bottom 4px
+
+		@media $verticalTablet {
+			margin-top 0
+		}
+		@media $phone {
+			margin-top 0
+			margin-bottom 6px
+		}
+	}
+	&--medal {
+		padding-left 0
+
+		.Summary__item_medal {
+			@media $phone {
+				margin-left 0
+				margin-right 0
+			}
+		}
+	}
+}

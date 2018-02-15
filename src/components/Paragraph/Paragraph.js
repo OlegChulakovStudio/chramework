@@ -30,7 +30,7 @@ export default class Paragraph extends Component {
 		});
 
 		return (
-			<TagName {...rest} className={paragraphStyle}>{Paragraph && reactHtmlParser(text)}{children}</TagName>
+			<TagName {...rest} className={paragraphStyle}>{text && reactHtmlParser(text)}{children}</TagName>
 		);
 	}
 }

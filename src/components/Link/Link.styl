@@ -1,0 +1,72 @@
+.Link {
+	display inline
+	color $linkColor
+	transition color $duration
+	line-height 1.2
+	cursor pointer
+
+	@media $phone {
+		font-size 18px
+		line-height 1.5
+	}
+	&:last-child {
+		margin-bottom 0
+	}
+	&:hover {
+		.Link__target-blank {
+			fill $linkHoverColor
+			faster()
+		}
+	}
+	&__target-blank {
+		position relative
+		width 24px
+		height 24px
+		display inline-block
+		vertical-align middle
+		fill $linkColor
+		transition $duration
+		margin-left -2px
+		margin-top -2px
+
+		svg {
+			position absolute
+			top 0
+			left 0
+			width 100%
+			height 100%
+		}
+	}
+	&_bold {
+		font-weight $bold
+		font-size 16px
+
+		@media $phone {
+			font-size 18px
+		}
+	}
+	&_light {
+		color #FFFFFF
+	}
+	&__icon {
+		opacity 0
+		vertical-align bottom
+		transition opacity $duration
+		margin -4px 0 -2px
+
+		@media $phone {
+			opacity 1
+		}
+	}
+	&:hover {
+		color $linkHoverColor
+		faster()
+
+		&:after {
+			opacity 1
+		}
+	}
+	&_external {
+		white-space nowrap
+	}
+}
