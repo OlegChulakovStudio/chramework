@@ -1,74 +1,67 @@
+SubtitlePhone() {
+	font-size 22px
+	line-height 33px
+	font-weight normal
+}
+
 Subtitle() {
 	font-size 24px
 	line-height 36px
 	font-weight normal
 
 	@media $phone {
+		SubtitlePhone()
 	}
 }
 
 Body() {
 	font-size 18px
-	line-height 27px
+	line-height 29px
 	font-weight normal
 
 	@media $phone {
 	}
 }
-
-BodyTable() {
+BodyMedium() {
 	font-size 16px
 	line-height 24px
 	font-weight normal
 
 	@media $phone {
+		font-size 18px
 	}
 }
-
-BodySmallBlack() {
-	font-size 14px
-	font-weight normal
-	line-height 21px
-
-	@media $phone {
-	}
-}
-
 BodySmall() {
 	font-size 14px
 	font-weight normal
-	line-height 21px
-	color $secondTextColor
+	line-height 18px
 
 	@media $phone {
+		font-size 16px
 	}
 }
-
-BodySmallItalic() {
-	font-size 14px
+BodyXS() {
+	font-size 12px
 	font-weight normal
-	line-height 21px
-	color $secondTextColor
-	font-style italic
+	line-height 16px
 
 	@media $phone {
+		font-size 14px
 	}
 }
 
+Bold() {
+	font-size 18px
+	font-weight $bold
+	line-height 24px
+}
 BoldMedium() {
 	font-size 16px
 	font-weight $bold
 	line-height 17px
-
-	@media $phone {
-	}
 }
-
 BoldSmall() {
 	font-size 14px
 	font-weight $bold
 	line-height 17px
-
-	@media $phone {
-	}
 }

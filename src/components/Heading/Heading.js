@@ -19,10 +19,10 @@ export default class Heading extends Component {
     level: 1,
   }
   render() {
-    const { className, level, tagName, children } = this.props;
+    const { className, level, tagName, children, ...rest } = this.props;
     const RenderedComponent = tagName ? tagName : 'h' + level;
     return (
-      <RenderedComponent className={classNames([
+      <RenderedComponent {...rest} className={classNames([
         "Heading",
         { [`Heading--level-${level}`]: level },
         className

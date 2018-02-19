@@ -6,21 +6,21 @@ Body:
 
 	<Paragraph mod="body">Создаем digital-сервисы</Paragraph>
 
-BodyTable:
+BodyMedium:
 
-	<Paragraph mod="bodyTable">Создаем digital-сервисы</Paragraph>
-
-BodySmallBlack:
-
-	<Paragraph mod="bodySmallBlack">Создаем digital-сервисы</Paragraph>
+	<Paragraph mod="bodyMedium">Создаем digital-сервисы</Paragraph>
 
 BodySmall:
 
 	<Paragraph mod="bodySmall">Создаем digital-сервисы</Paragraph>
 
-BodySmallItalic:
+BodyXS:
 
-	<Paragraph mod="bodySmallItalic">Создаем digital-сервисы</Paragraph>
+	<Paragraph mod="bodyXS">Создаем digital-сервисы</Paragraph>
+
+Bold:
+
+	<Paragraph mod="bold">Создаем digital-сервисы</Paragraph>
 
 BoldMedium:
 
