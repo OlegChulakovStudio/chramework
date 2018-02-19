@@ -27,14 +27,14 @@ const data = [{
 	tel: '+78633036191'
 }];
 
-const FooterSection = ({ text, light, offsetLeft, offsetRight, email, showButton }) => {
-	const blockStyle = classNames('FooterSection', {
+const FooterSection = ({ text, light, offsetLeft, offsetRight, email, className, showButton, ...rest }) => {
+	const blockStyle = classNames('FooterSection', className, {
 		'FooterSection--light': light,
 		'FooterSection--offsetLeft': offsetLeft,
 		'FooterSection--offsetRight': offsetRight,
 	});
 	return (
-		<div className={blockStyle}>
+		<div {...rest} className={blockStyle}>
 			<div className="FooterSection__container">
 				<div className="FooterSection__top">
 					<div className="FooterSection__top-title">{reactHtmlParser(text)}</div>
