@@ -19,15 +19,15 @@
 		}
 	}
 	&__target-blank {
-		position relative
+		position absolute
 		width 1.714em
 		height 1.714em
 		display inline-block
 		vertical-align middle
 		fill $linkColor
 		transition $duration
-		margin-left -0.1428em
-		margin-top -0.1428em
+		// margin-left -0.1428em
+		margin-top -0.31em
 
 		svg {
 			position absolute
@@ -56,5 +56,8 @@
 			opacity 1
 		}
 	}
-	&_external {}
+	&_external {
+		position relative
+		padding-right 1.714em
+	}
 }
