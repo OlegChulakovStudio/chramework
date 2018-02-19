@@ -7,18 +7,13 @@ import './CheckboxGroup.styl';
 
 class CheckboxGroup extends Component {
 	static propTypes = {
-		label: PropTypes.string,
-		meta: PropTypes.object,
 		className: PropTypes.string,
-		type: PropTypes.string,
 		input: PropTypes.object,
 		options: PropTypes.array,
 		name: PropTypes.string,
 	};
 	static defaultProps = {
-		label: '',
 		className: '',
-		type: '',
 		options: undefined,
 		input: undefined,
 		name: '',
@@ -47,33 +42,31 @@ class CheckboxGroup extends Component {
 	};
 
 	render() {
-		const { input, label, className, options, meta, name, ...rest } = this.props;
-		const blockClassName = classNames({
-			'CheckboxGroup': true,
-			[`${className}`]: className,
-		});
+		const { input, className, options, name, ...rest } = this.props;
+		const blockClassName = classNames(['CheckboxGroup', className]);
 
-		return (!!options && <div className={blockClassName}>
+		return (!!options && <div {...rest} className={blockClassName}>
 				{options.map((option, i) => {
+					const {value, label, ...itemRest} = option;
 					const props = {};
 					if (input) {
-						props.checked = input.value && input.value.indexOf(option.value) !== -1;
+						props.checked = input.value && input.value.indexOf(value) !== -1;
 					} else {
-						props.checked = this.state.value && this.state.value.indexOf(option.value) !== -1;
+						props.checked = this.state.value && this.state.value.indexOf(value) !== -1;
 					}
 					const keyId = `checkbox-${i}`;
 					const inputName = input ? input.name : name;
 
 					return (
 						<Checkbox
-							{...rest}
+							{...itemRest}
 							{...props}
 							key={keyId}
 							className="CheckboxGroup__label"
 							name={inputName+'[]'}
-							value={option.value}
-							onChange={() => this.handleChange(option.value)}
-							label={option.label}
+							value={value}
+							onChange={() => this.handleChange(value)}
+							label={label}
 						/>
 					);
 				})}
