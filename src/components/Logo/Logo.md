@@ -11,3 +11,7 @@ Black:
 Small:
 
     <Logo url="http://chulakov.ru" size="small" external/>
+
+With text:
+
+    <Logo url="http://chulakov.ru" external text="media"/>
