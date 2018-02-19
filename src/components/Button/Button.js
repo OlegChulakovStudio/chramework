@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import Link from '../Link/Link';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import reactHtmlParser from 'react-html-parser';
@@ -58,7 +58,8 @@ class Button extends Component {
   };
   render() {
     const RenderedComponent =
-      !this.props.to && !this.props.href ? 'button' : this.props.href ? 'a' : Link;
+      !this.props.to && !this.props.href ? 'button' : Link;
+
     const { bordered, intent, white, size, arrow, className, text, type, ...rest } = this.props;
 
     return (
