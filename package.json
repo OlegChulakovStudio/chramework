@@ -25,6 +25,7 @@
     "react-dom": "^16.0.0",
     "react-dropzone": "^3.13.3",
     "react-html-parser": "^2.0.2",
+    "react-id-swiper": "^1.5.8",
     "react-select": "^1.0.0-rc.5",
     "react-svg-loader": "^2.1.0",
     "react-textarea-autosize": "^5.0.7",

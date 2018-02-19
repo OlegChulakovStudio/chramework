@@ -1,0 +1,233 @@
+.Reviews {
+	position relative
+	// grid-width(8)
+	box-sizing border-box
+	overflow hidden
+
+	&:before {
+		content ''
+		fullsize()
+		background-color #fff
+		border-radius 4px
+	}
+	@media $tablet {
+		width 100%
+	}
+	@media $phone {
+		width auto
+		margin-left -8px
+		margin-right -8px
+
+		.swiper-container {
+			overflow visible
+		}
+	}
+	&__container {
+		display flex
+		width 100%
+		transition-timing-function cubic-bezier(0.39, 0.58, 0.57, 1)
+	}
+	&__item {
+		color $textColor
+		padding 32px 0
+		padding-bottom 90px
+		box-sizing border-box
+		grid-width(8)
+
+		&_disable {
+			opacity 0.1
+		}
+		@media $tablet {
+			// width 25%
+		}
+		@media $verticalTablet {
+			// width 33.33%
+		}
+		@media $phone {
+			// width 50%
+			padding 20px
+			padding-bottom 90px
+		}
+		svg {
+			max-width 100%
+		}
+	}
+	&__inner {
+		position relative
+		display flex
+
+		@media $phone {
+			display block
+		}
+	}
+	&__avatar {
+		grid-width(2)
+		flex-shrink 0
+		box-sizing border-box
+		display block
+
+		@media $tablet {
+			box-sizing content-box
+			padding 0 15px
+		}
+		img {
+			display block
+			margin 0 auto
+			border-radius 50%
+			width 83px
+			height 83px
+			margin-bottom 24px
+			overflow hidden
+		}
+	}
+	&__content {
+		flex-grow 1
+	}
+	&__footer {
+		display flex
+		justify-content space-between
+		align-items center
+		padding-right 60px
+
+		@media $phone {
+			padding-right 0
+		}
+	}
+	&__info {}
+	&__name {
+		margin-bottom 8px
+		font-weight bold
+		font-size 16px
+
+		@media $phone {
+			margin-bottom 0
+		}
+	}
+	&__logo {
+		// position absolute
+		// top 0
+		// left 0
+
+		svg {
+			display block
+		}
+		@media $phone {
+			// right auto
+			top 0
+			left 0
+
+			svg {
+				width 140px
+				height 62px
+			}
+		}
+	}
+	&__position {
+		max-width 250px
+		font-size 14px
+		margin 0 auto
+		color $secondaryTextColor
+	}
+	&__text {
+		padding-right 60px
+		margin-bottom 27px
+		text-align left
+		text-indent -0.54em
+
+		@media $phone {
+			margin-bottom 16px
+			padding-right 0
+
+			.Subtitle {
+				font-size 18px
+			}
+		}
+	}
+	&__pagination {
+		height 56px
+		font-size 12px
+		padding 8px 16px
+		box-sizing border-box
+		line-height 40px
+		color $textColor
+
+		@media $phone {
+			padding 8px 0
+		}
+		&__item {
+			display inline-block
+			box-sizing border-box
+			width 24px
+			text-align center
+
+			&--count {
+				color $secondTextColor
+			}
+		}
+		&-divider {
+			color $secondTextColor
+		}
+	}
+	&__nav {
+		position relative
+		grid-width(2, 'left')
+		z-index 100
+		position absolute
+		bottom 8px
+		// left 50%
+		transform translateX(-8px)
+		height 56px
+		margin-top -10px
+		display flex
+
+		@media $tablet {
+			transform translateX(22px)
+		}
+		@media $phone {
+			// transform none
+			// left auto
+			// right 0
+			margin-top 0
+			bottom 5px
+			left 50%
+			transform translateX(-50%)
+		}
+		&-btn {
+			position relative
+			user-select none
+			display block
+			transition opacity $duration
+			padding 8px
+			cursor pointer
+			width 32px
+			height 56px
+			box-sizing border-box
+			z-index 100
+			background-position center center
+			background-size 24px 40px
+			background-repeat no-repeat
+			@media $phone {
+				padding 8px
+			}
+			svg {
+				position absolute
+				top 50%
+				left 50%
+				transform translate(-50%, -50%)
+				width 24px
+				height 40px
+				vertical-align middle
+			}
+			&:hover {
+				opacity 1
+			}
+			&_prev {
+				// left 0
+			}
+			&_next {
+				// right 0
+				transform scaleX(-1)
+			}
+		}
+	}
+}

@@ -25,6 +25,8 @@ import TableCell from './components/TableCell/TableCell.js';
 import TableContent from './components/TableContent/TableContent.js';
 import TableHeader from './components/TableHeader/TableHeader.js';
 import TableRow from './components/TableRow/TableRow.js';
+import Slider from './components/Slider/Slider.js';
+import Reviews from './components/Reviews/Reviews.js';
 
 export {
   AppLink,
@@ -51,5 +53,7 @@ export {
   TableCell,
   TableContent,
   TableHeader,
-  TableRow
+  TableRow,
+  Slider,
+  Reviews
 };
