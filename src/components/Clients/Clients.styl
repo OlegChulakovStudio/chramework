@@ -1,0 +1,114 @@
+.Clients {
+	position relative
+	box-sizing border-box
+	grid-width(8)
+	margin-bottom -50px
+
+	&__container {
+		position relative
+		display block
+	}
+	&__item {
+		width 25%
+		box-sizing border-box
+		display inline-block
+		margin-bottom 50px
+		vertical-align middle
+		transition opacity $duration
+
+		@media $tablet {
+			width 25%
+		}
+		@media $verticalTablet {
+			width 33.33%
+		}
+		@media $phone {
+			width 50%
+			padding 0
+			margin-bottom 24px
+		}
+		svg {
+			max-width 100%
+			height 100%
+			display block
+
+			.Clients_reverse & {
+				fill #fff
+			}
+		}
+	}
+	&_row {
+		padding-right 0
+		margin-bottom 0
+		width 100%
+
+		.Clients {
+			&__container {
+				display flex
+			}
+			&__item {
+				width 1%
+				flex-grow 1
+				max-width 180px
+				margin-bottom 0
+			}
+		}
+	}
+	&_filter {
+		width 100%
+		grid-width(1, padding-right)
+		margin-bottom -32px
+
+		@media $tablet {
+			padding-right 0
+		}
+		@media $phone {
+			width auto
+			margin 0 -5px -24px -5px
+		}
+		.Clients {
+			&__item {
+				margin-bottom 32px
+
+				@media $phone {
+					margin-bottom 24px
+				}
+				&_disable {
+					opacity 0.1
+				}
+			}
+		}
+	}
+}
+.ClientsFilter {
+	position absolute
+	top 0
+	left 100%
+	font-size 14px
+	min-width 150px
+
+	@media $tablet {
+		display none
+	}
+	&__item {
+		opacity 0.6
+		transition opacity $duration
+		cursor pointer
+		padding 5px
+		transform translateZ(0)
+		display block
+		color $textColor
+
+		&:hover {
+			opacity 1
+			color $textColor
+		}
+		.Clients_reverse & {
+			color #fff
+
+			&:hover {
+				color #fff
+			}
+		}
+	}
+}
