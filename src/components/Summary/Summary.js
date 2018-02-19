@@ -16,14 +16,14 @@ const design = {
 	internal: {to: { pathname: '/life/top2', fromHome: true }}
 }
 
-const Summary = ({ awards, className, external }) => {
+const Summary = ({ awards, className, external, ...rest }) => {
 	const blockStyle = classNames(['Summary', className]);
 
 	const productionLink = external ? production.external : production.internal;
 	const designLink = external ? design.external : design.internal;
 
 	return (
-		<div className={blockStyle}>
+		<div {...rest} className={blockStyle}>
 			{!awards && <div className="Summary__item Summary__item_counter" key="counter1">
 				<div className="Summary__number">70</div>
 				<Paragraph mod="boldMedium" className="Summary__title">специалистов</Paragraph>
