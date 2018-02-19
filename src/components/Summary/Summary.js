@@ -8,11 +8,11 @@ import PropTypes from 'prop-types';
 import Link from '../Link/Link';
 
 const production = {
-	external: { href: 'https://chulakov.ru/life/top8', external: true},
+	external: { href: 'https://chulakov.ru/life/top8'},
 	internal: {to: { pathname: '/life/top8', fromHome: true }}
 }
 const design = {
-	external: {href: 'https://chulakov.ru/life/top2', external: true},
+	external: {href: 'https://chulakov.ru/life/top2'},
 	internal: {to: { pathname: '/life/top2', fromHome: true }}
 }
 

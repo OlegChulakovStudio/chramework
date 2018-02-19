@@ -8,7 +8,6 @@ import './Link.styl';
 const LinkElement = ({
 	to,
 	children,
-	external,
 	bold,
 	className,
 	light,
@@ -18,20 +17,20 @@ const LinkElement = ({
 	const linkStyle = classNames(['Link', className, {
 		Link_bold: bold,
 		Link_light: light,
-		Link_external: external,
+		Link_external: href,
 	}]);
 	const RenderedComponent = to ? NavLink : href ? 'a' : 'span';
 	let linkProps = {};
 	if (to) {
 		linkProps = { to };
 	} else if (href) {
-		linkProps = { href, target: external ? '_blank' : undefined };
+		linkProps = { href, target: '_blank' };
 	}
 
 	return (
-		<RenderedComponent  {...rest} className={linkStyle} {...linkProps}>
+		<RenderedComponent {...rest} className={linkStyle} {...linkProps}>
 			{children}
-			{external && <TargetBlank className="Link__target-blank" />}
+			{href && <TargetBlank className="Link__target-blank" />}
 		</RenderedComponent>
 	);
 };
@@ -42,7 +41,6 @@ LinkElement.defaultProps = {
 	children: null,
 	bold: undefined,
 	light: undefined,
-	external: undefined,
 };
 
 LinkElement.propTypes = {
@@ -52,7 +50,6 @@ LinkElement.propTypes = {
 	children: PropTypes.node,
 	bold: PropTypes.any,
 	light: PropTypes.bool,
-	external: PropTypes.bool,
 };
 
 export default LinkElement;

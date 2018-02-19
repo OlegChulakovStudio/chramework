@@ -20,14 +20,14 @@
 	}
 	&__target-blank {
 		position relative
-		width 24px
-		height 24px
+		width 1.714em
+		height 1.714em
 		display inline-block
 		vertical-align middle
 		fill $linkColor
 		transition $duration
-		margin-left -2px
-		margin-top -2px
+		margin-left -0.1428em
+		margin-top -0.1428em
 
 		svg {
 			position absolute
@@ -48,16 +48,6 @@
 	&_light {
 		color #FFFFFF
 	}
-	&__icon {
-		opacity 0
-		vertical-align bottom
-		transition opacity $duration
-		margin -4px 0 -2px
-
-		@media $phone {
-			opacity 1
-		}
-	}
 	&:hover {
 		color $linkHoverColor
 		faster()
@@ -66,7 +56,5 @@
 			opacity 1
 		}
 	}
-	&_external {
-		white-space nowrap
-	}
+	&_external {}
 }
