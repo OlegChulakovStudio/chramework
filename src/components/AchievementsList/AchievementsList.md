@@ -1,0 +1,1 @@
+	<AchievementsList mod="bodyMedium" />

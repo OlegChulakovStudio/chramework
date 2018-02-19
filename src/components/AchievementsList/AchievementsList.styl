@@ -1,0 +1,138 @@
+.AchievementsList {
+	margin-bottom 64px
+
+	@media $tablet {
+		width auto
+	}
+	@media $phone {
+		margin-bottom 54px
+	}
+	&__head {
+		width 100%
+		font-weight bold !important
+		margin-bottom 24px
+
+		@media $phone {
+			margin-bottom 18px
+			line-height 1
+		}
+	}
+	&__wrapper {
+		display flex
+		justify-content space-between
+		flex-wrap wrap
+	}
+	&__item {
+		vertical-align top
+		display inline-block
+		grid-width(2)
+		font-size 14px
+		line-height (20/14)
+		width 25%
+
+		&:last-child {
+			margin-right 0
+		}
+		@media $phone {
+			align-items center
+			width 100%
+			display flex
+			padding 20px 16px
+			margin-bottom 0px
+			border-bottom 1px solid rgba(#979797, .23)
+		}
+	}
+	&__logo {
+		display inline-block
+		height 50px
+		width 100%
+		max-width 50px
+		vertical-align top
+		background-position center center
+		background-size contain
+		background-repeat no-repeat
+
+		&_eda {
+			background-image url('/src/assets/achievements/eda.svg')
+		}
+		&_fwa {
+			max-width 100px
+			background-image url('/src/assets/achievements/fwa.svg')
+		}
+		&_awwwards {
+			background-image url('/src/assets/achievements/awwwards.svg')
+		}
+		&_cssda {
+			background-image url('/src/assets/achievements/cssda.svg')
+		}
+		@media $verticalTablet {
+			margin-bottom 16px
+		}
+		@media $phone {
+			display inline-block
+			height 30px
+			width 50px
+			margin-bottom 0
+			margin-left -8px
+		}
+		svg {
+			display inline-block
+			vertical-align middle
+			height 100%
+
+			@media $phone {
+				width 100%
+			}
+		}
+	}
+	&__label {
+		margin-bottom 16px
+		text-transform uppercase
+		color #383838
+
+		@media $phone {
+			max-width 120px
+			display inline-block
+			margin-bottom 0
+		}
+	}
+	&__count {
+		font-size 16px
+		line-height (19/16)
+		color $textColor
+		font-weight $bold
+
+		@media $phone {
+			font-size 18px
+			display inline-block
+			align-self flex-end
+		}
+	}
+	&__content {
+		display inline-flex
+		flex-direction column
+		justify-content space-between
+		vertical-align top
+		padding-left 24px
+
+		@media $tablet{
+			padding-left 10px
+		}
+		@media $verticalTablet {
+			display flex
+			padding-left 0
+		}
+		@media $phone {
+			width 100%
+			height auto
+			padding-left 16px
+			flex-direction row
+			justify-content space-between
+		}
+	}
+	&--medal {
+		.AchievementsList__head {
+			font-size 22px
+		}
+	}
+}
