@@ -30,26 +30,22 @@ class ServicesItem extends Component {
 			this.initAnimate()
 		}
 	}
-
 	componentWillReceiveProps(nextProps) {
 		if (this.props.animation !== nextProps.animation && nextProps.animation) {
 			this.initAnimate();
 		}
 	}
-
 	componentWillUnmount() {
 		if (this.animation) {
 			this.animation.tl.kill();
 		}
 	}
-
 	initAnimate = () => {
 		this.lottie = require('lottie-web');
 		this.animation = {};
 		this.animation.animData = this.props.animation.animData;
 		this.animation.tl = this.getTlAnimIcon();
 	}
-
 	getTlAnimIcon = () => {
 		if (this.animation && this.block) {
 			const tl = new TimelineMax({ paused: true });

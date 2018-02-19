@@ -1,6 +1,7 @@
 .ServicesList {
 	grid-width(-1, margin-left)
 	display block
+	margin-bottom -24px
 
 	@media $notebook {
 		margin-right -60px
@@ -8,8 +9,33 @@
 	@media $tablet {
 		margin-right 0
 		margin-left 0
+		margin-bottom -8px
 	}
 	@media $phone {
 		margin 0 -8px
+	}
+	@media $verticalTablet {
+		margin-bottom -16px
+	}
+
+	.ServicesItem {
+		margin-right 24px
+		margin-bottom 24px
+
+		&:last-child {
+			margin-right 0
+
+			@media $verticalTablet {
+				margin-left 0
+			}
+		}
+		@media $tablet {
+			margin-right 8px
+			margin-bottom 8px
+		}
+		@media $verticalTablet {
+			margin-bottom 16px
+			margin-right 0
+		}
 	}
 }

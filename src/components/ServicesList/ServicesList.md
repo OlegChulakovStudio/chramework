@@ -1,3 +1,3 @@
-	<div style={{paddingLeft: 120}}>
+	<div style={{paddingLeft: 110}}>
 	    <ServicesList />
 	</div>
