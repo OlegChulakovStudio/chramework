@@ -78,8 +78,13 @@ $top = 20px
     faster()
   }
 
+  &--value:after {
+    transform scaleX(1)
+    background-color $textColor
+  }
   &--focus:after {
     transform scaleX(1)
+    background-color $linkColor
   }
 
   &--value &__label,
@@ -91,8 +96,9 @@ $top = 20px
     cursor not-allowed
   }
 
-  &--error {
-    border-color #f26b6c
+  &--error:after {
+    transform scaleX(1)
+    background-color #f26b6c
   }
 
   &--valid {
