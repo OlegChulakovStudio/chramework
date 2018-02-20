@@ -33,8 +33,8 @@ export default class TextGroup extends Component {
 		const TextGroupStyle = classNames('TextGroup', className, {
 			[`TextGroup_${mod}`]: mod,
 		});
-		const titleMod = mod === "boldTitle" ? "boldMedium" : "gray";
-		const subtitleMod = mod === "boldTitle" ? "grayItalic" : "subtitle";
+		const titleMod = mod === "boldTitle" ? "boldMedium" : "bodySmallGray";
+		const subtitleMod = mod === "boldTitle" ? "bodySmallGrayItalic" : "subtitle";
 		return (
 			<div className={TextGroupStyle}>
 				{title && <Paragraph mod={titleMod} className="TextGroup__title">

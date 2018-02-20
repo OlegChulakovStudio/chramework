@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import TextGroup from "../TextGroup/TextGroup.js";
 import Swiper from "react-id-swiper";
 
-import Paragraph from "../Paragraph/Paragraph.js";
+import TextGroup from "../TextGroup/TextGroup.js";
 import ArrowIcon from './icons/arrow.svg';
 
 import "./Slider.styl";
@@ -71,58 +70,55 @@ class Slider extends Component {
 		};
 
 		return (
-				<div {...rest} className={sliderClass}>
-					<div
-						className="Slider__container"
-						style={this.state.transformFix ? { transform: "none" } : {}}
-					>
-						<Swiper {...props} ref={this.getSwiperNode}>
-							{slides.map((slide, i) => {
-								const key = `slide-${i}`;
-								return (
-									<div className="Slider__item" key={key}>
-										<img className="Slider__img" src={slide.photo} alt="" />
-									</div>
-								);
-							})}
-						</Swiper>
-						<div className="Slider__navArea" onClick={this.slidePrev} />
-						<div className="Slider__navArea" onClick={this.slideNext} />
-					</div>
-				<div className="Slider__content Slider__content--active">
-
-					<div className="Slider__bottom">
-						{(description || slides[0].description) &&
-							(
-								<div className="Slider__content Slider__content--active">
-									<TextGroup
-										title={description ? description.label : slides[indexActive].description.label}
-										subtitle={description ? description.text : slides[indexActive].description.text}
-										mod="boldTitle"
-									/>
+			<div {...rest} className={sliderClass}>
+				<div
+					className="Slider__container"
+					style={this.state.transformFix ? { transform: "none" } : {}}
+				>
+					<Swiper {...props} ref={this.getSwiperNode}>
+						{slides.map((slide, i) => {
+							const key = `slide-${i}`;
+							return (
+								<div className="Slider__item" key={key}>
+									<img className="Slider__img" src={slide.photo} alt="" />
 								</div>
-							)
-						}
-
-						<div className={navStyle}>
-							<div className="Slider__nav-btn Slider__nav-btn_prev" onClick={this.slidePrev}>
-								<ArrowIcon />
+							);
+						})}
+					</Swiper>
+					<div className="Slider__navArea" onClick={this.slidePrev} />
+					<div className="Slider__navArea" onClick={this.slideNext} />
+				</div>
+				<div className="Slider__bottom">
+					{(description || slides[0].description) &&
+						(
+							<div className="Slider__content Slider__content--active">
+								<TextGroup
+									title={description ? description.label : slides[indexActive].description.label}
+									subtitle={description ? description.text : slides[indexActive].description.text}
+									mod="boldTitle"
+								/>
 							</div>
-							<div className="Slider__pagination">
-								<div className="Slider__pagination__item">
-									{this.showIndex(indexActive)}
-								</div>
-								<span className="Slider__pagination-divider">/</span>
-								<div className="Slider__pagination__item Slider__pagination__item--count">
-									{countSlides < 10 ? `0${countSlides}` : countSlides}
-								</div>
+						)
+					}
+					<div className={navStyle}>
+						<div className="Slider__nav-btn Slider__nav-btn_prev" onClick={this.slidePrev}>
+							<ArrowIcon />
+						</div>
+						<div className="Slider__pagination">
+							<div className="Slider__pagination__item">
+								{this.showIndex(indexActive)}
 							</div>
-							<div className="Slider__nav-btn Slider__nav-btn_next" onClick={this.slideNext}>
-								<ArrowIcon />
+							<span className="Slider__pagination-divider">/</span>
+							<div className="Slider__pagination__item Slider__pagination__item--count">
+								{countSlides < 10 ? `0${countSlides}` : countSlides}
 							</div>
+						</div>
+						<div className="Slider__nav-btn Slider__nav-btn_next" onClick={this.slideNext}>
+							<ArrowIcon />
 						</div>
 					</div>
 				</div>
+			</div>
 		);
 	}
 }
