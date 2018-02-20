@@ -1,6 +1,5 @@
 .Reviews {
 	position relative
-	// grid-width(8)
 	box-sizing border-box
 	overflow hidden
 
@@ -95,12 +94,10 @@
 	}
 	&__info {}
 	&__name {
-		margin-bottom 8px
-		font-weight bold
-		font-size 16px
+		margin-bottom 16px
 
 		@media $phone {
-			margin-bottom 0
+			margin-bottom 8px
 		}
 	}
 	&__logo {
@@ -124,9 +121,7 @@
 	}
 	&__position {
 		max-width 250px
-		font-size 14px
 		margin 0 auto
-		color $secondaryTextColor
 	}
 	&__text {
 		padding-right 60px
@@ -135,12 +130,9 @@
 		text-indent -0.54em
 
 		@media $phone {
+			body()
 			margin-bottom 16px
 			padding-right 0
-
-			.Subtitle {
-				font-size 18px
-			}
 		}
 	}
 	&__pagination {

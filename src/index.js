@@ -19,7 +19,6 @@ import Preloader from './components/Preloader/Preloader.js';
 import Radio from './components/Radio/Radio.js';
 import SelectField from './components/SelectField/SelectField.js';
 import Spinner from './components/Spinner/Spinner.js';
-import Subtitle from './components/Subtitle/Subtitle.js';
 import Table from './components/Table/Table.js';
 import TableCell from './components/TableCell/TableCell.js';
 import TableContent from './components/TableContent/TableContent.js';
@@ -48,7 +47,6 @@ export {
   Radio,
   SelectField,
   Spinner,
-  Subtitle,
   Table,
   TableCell,
   TableContent,
