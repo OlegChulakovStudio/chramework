@@ -26,6 +26,7 @@ import TableHeader from './components/TableHeader/TableHeader.js';
 import TableRow from './components/TableRow/TableRow.js';
 import Slider from './components/Slider/Slider.js';
 import Reviews from './components/Reviews/Reviews.js';
+import TextGroup from './components/TextGroup/TextGroup.js';
 
 export {
   AppLink,
@@ -53,5 +54,6 @@ export {
   TableHeader,
   TableRow,
   Slider,
+  TextGroup,
   Reviews
 };

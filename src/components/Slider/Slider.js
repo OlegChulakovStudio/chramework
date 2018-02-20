@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import reactHtmlParser from "react-html-parser";
+import TextGroup from "../TextGroup/TextGroup.js";
 import Swiper from "react-id-swiper";
 
 import Paragraph from "../Paragraph/Paragraph.js";
@@ -89,17 +89,17 @@ class Slider extends Component {
 						<div className="Slider__navArea" onClick={this.slidePrev} />
 						<div className="Slider__navArea" onClick={this.slideNext} />
 					</div>
+				<div className="Slider__content Slider__content--active">
 
 					<div className="Slider__bottom">
 						{(description || slides[0].description) &&
 							(
 								<div className="Slider__content Slider__content--active">
-									<Paragraph mod="boldMedium" className="Slider__label">
-										{reactHtmlParser(description ? description.label : slides[indexActive].description.label)}
-									</Paragraph>
-									<Paragraph mod="bodySmallGrayItalic" className="Slider__text">
-										{reactHtmlParser(description ? description.text : slides[indexActive].description.text)}
-									</Paragraph>
+									<TextGroup
+										title={description ? description.label : slides[indexActive].description.label}
+										subtitle={description ? description.text : slides[indexActive].description.text}
+										mod="boldTitle"
+									/>
 								</div>
 							)
 						}
