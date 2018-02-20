@@ -18,4 +18,4 @@ With text:
 
 With subline:
 
-    <Logo url="http://chulakov.ru" external text="media" subline="в составе <a href='https://group.chulakov.ru/' target='_blank'>Chulakov Group</a>" />
+    <Logo url="http://chulakov.ru" external text="media" ingroup />

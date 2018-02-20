@@ -5,6 +5,7 @@
 	text-decoration none
 	height 28px
 	font-size 0
+
 	&__text {
 		font-weight $bold
 		text-transform uppercase
@@ -25,6 +26,7 @@
 		width 120px
 		height 28px
 		font-size 0
+
 		.Logo__rectBg {
 			transition fill 0.2s 0.1s
 			fill $brandColor
@@ -50,6 +52,7 @@
 
 	&--small {
 		height 25px
+
 		.Logo__icon {
 			height 25px
 			width 110px
@@ -60,12 +63,10 @@
 			padding-top 6px
 		}
 	}
-	&--withsubline {
+	&--ingroup {
 		height auto
-		.Logo__icon {
-		}
 	}
-	&__subline {
+	&__ingroup {
 		position relative
 		z-index 10
 		font-size 9px
@@ -75,8 +76,10 @@
 		text-transform uppercase
 		letter-spacing: 1.57px
 		padding-top 8px
+
 		a {
 			color $secondTextColor
+
 			&:hover {
 				color $linkColor
 			}

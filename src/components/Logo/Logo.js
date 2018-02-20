@@ -23,20 +23,20 @@ export default class Logo extends Component {
     /** set this param to true, if you want to add text after logo */
     text: PropTypes.string,
     /** set this param to true, if you want to add text after logo */
-    subline: PropTypes.string,
+    ingroup: PropTypes.bool,
   };
 
   static defaultProps = {
-    size: '',
-    mod: '',
-    type: '',
-    text: '',
-    subline: '',
+    size: undefined,
+    mod: undefined,
+    type: undefined,
+    text: undefined,
+    ingroup: undefined,
     url: '/',
   };
 
   render() {
-    const { url, mod, size, type, external, className, text, subline, ...rest } = this.props;
+    const { url, mod, size, type, external, className, text, ingroup, ...rest } = this.props;
     const LinkComponent = this.props.external ? 'a' : Link;
     const linkProps = {
       [external ? 'href' : 'to']: url
@@ -51,15 +51,15 @@ export default class Logo extends Component {
             [`Logo--${size}`]: size,
             [`Logo--${type}`]: type,
             [`Logo--${mod}`]: mod,
-            [`Logo--withsubline`]: subline
+            [`Logo--ingroup`]: ingroup
           }
         ])}>
         <LogoIcon className="Logo__icon" width={120} height={28} />
         {text && <span className="Logo__text">{text}</span>}
         {url && <LinkComponent {...linkProps} className="Logo__link" />}
-        {subline && <span className="Logo__subline">
-            {reactHtmlParser(subline)}
-          </span>}
+        {ingroup && <span className="Logo__ingroup">
+          {reactHtmlParser('в составе <a href="https://group.chulakov.ru/" target="_blank">Chulakov Group</a>')}
+        </span>}
       </div>;
   }
 }
