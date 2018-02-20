@@ -31,7 +31,7 @@ const exampleReviews = [
 class Reviews extends Component {
   static propTypes = {
     className: PropTypes.string,
-    reviews: PropTypes.array.string
+    reviews: PropTypes.array
   };
   static defaultProps = {
     className: "",

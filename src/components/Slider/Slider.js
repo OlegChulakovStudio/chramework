@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import Paragraph from "../Paragraph/Paragraph.js";
-import reactHtmlParser from "react-html-parser";
+import TextGroup from "../TextGroup/TextGroup.js";
 import Swiper from "react-id-swiper";
 import ArrowIcon from './icons/arrow.svg';
 import "./Slider.styl";
@@ -113,16 +112,11 @@ class Slider extends Component {
             {(description || slides[0].description) &&
               (
                 <div className={descriptionStyle}>
-                  <span className="Slider__label">
-                    <Paragraph mod="boldSmall" >
-                      {reactHtmlParser(description ? description.label : slides[indexActive].description.label)}
-                    </Paragraph>
-                  </span>
-                  <span className="Slider__text">
-                    <Paragraph mod="bodySmallItalic" >
-                      {reactHtmlParser(description ? description.text : slides[indexActive].description.text)}
-                    </Paragraph>
-                  </span>
+                  <TextGroup
+                    title={description ? description.label : slides[indexActive].description.label}
+                    subtitle={description ? description.text : slides[indexActive].description.text}
+                    mod="boldTitle"
+                  />
                 </div>
               )
             }
