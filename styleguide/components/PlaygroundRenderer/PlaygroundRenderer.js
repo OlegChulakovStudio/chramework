@@ -11,6 +11,7 @@ const styles = ({ space, color, borderRadius }) => ({
     borderRadius,
     margin: [[space[2], space[2], space[2] + 15, space[2]]],
     outlineOffset: 15,
+    overflow: 'auto',
   },
   controls: {
     display: 'flex',
@@ -27,6 +28,9 @@ const styles = ({ space, color, borderRadius }) => ({
     },
     '.cm-s-base16-light div.CodeMirror-selected': {
       backgroundColor: '#eee',
+    },
+    '[data-preview="SelectField"], [data-preview="Heading"], [data-preview="Spinner"]': {
+      overflow: 'visible'
     }
   }
 });

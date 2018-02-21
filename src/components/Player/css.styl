@@ -1,0 +1,479 @@
+
+.vjs-poster,
+.vjs-tech {
+	position absolute
+	left -0.25%
+	top -0.25%
+	height 100.5%
+	width 100.5%
+	cursor pointer
+}
+.vjs-slider {
+	height 100%
+}
+.vjs-quality-container {
+	position absolute
+	right 0
+	bottom 0
+}
+.vjs-tech {
+	&::-webkit-media-controls-panel {
+		display none !important
+		-webkit-appearance none
+	}
+	&::-webkit-media-controls-play-button {
+		display none !important
+		-webkit-appearance none
+	}
+	&::-webkit-media-controls-start-playback-button {
+		display none !important
+		-webkit-appearance none
+	}
+}
+.vjs-poster {
+	background-repeat no-repeat
+	background-position center
+	background-size contain
+	opacity 1
+	visibility visible
+	transition opacity $duration, visibility 0s
+
+	@media $phone {
+		background-size cover
+	}
+	.vjs-has-started & {
+		opacity 0
+		visibility hidden
+		transition opacity $duration, visibility 0s $duration
+	}
+}
+.vjs-control-bar {
+	position absolute
+	box-sizing border-box
+	padding 0 10px
+	bottom 0
+	left 0
+	width 100%
+	height 36px
+	transform translateZ(0)
+	opacity 0
+	transition opacity $duration*4, visibility $duration*4
+	visibility hidden
+	display block
+
+	.vjs-has-started:not(.vjs-user-inactive) & {
+		opacity 1
+		visibility visible
+		transition-duration $duration*1.5
+	}
+	&:before {
+		content ''
+		position absolute
+		left 0
+		width 100%
+		height 200%
+		bottom 0
+		background linear-gradient(to top, #000, alpha(#000, 0%))
+		opacity 0.125
+		user-select none
+
+		.player_theme_dark & {
+			display none
+		}
+	}
+	.vjs-using-native-controls & {
+		display none
+	}
+	.vjs-has-started & {
+		display block
+	}
+}
+.vjs-control {
+	cursor pointer
+	outline none
+	color inherit
+}
+.Player_ios .vjs-control {
+	display none !important
+	opacity 0
+}
+.vjs-button {
+	border none
+	padding 0
+	margin 0
+	background none
+}
+.vjs-play-control {
+	float left
+	position relative
+	margin-right 5px
+	width 36px
+	height 36px
+
+	.vjs-paused &:before {
+		position absolute
+		top 50%
+		left 50%
+		margin-top -8px
+		margin-left -6px
+		width 0
+		height 0
+		border-style solid
+		border-width 8px 0 8px 13px
+		border-color transparent transparent transparent currentColor
+		content ''
+	}
+
+	.vjs-playing &:after, .vjs-playing &:before {
+		position absolute
+		top 50%
+		width 4px
+		height 16px
+		margin-top -8px
+		content ''
+		background-color currentColor
+	}
+	.vjs-playing &:before {
+		right 50%
+		margin-right 2px
+	}
+	.vjs-playing &:after {
+		left 50%
+		margin-left 2px
+	}
+}
+.vjs-loading-spinner {
+	display none !important
+}
+.vjs-volume-panel {
+	float left
+	position relative
+	width 36px
+	height 36px
+
+	&__path {
+		fill currentColor
+		opacity 0
+		transition opacity $duration
+
+		&_0, .vjs-vol-1 &_1, .vjs-vol-2 &_1, .vjs-vol-3 & {
+			opacity 1
+		}
+	}
+}
+.vjs-volume-bar {
+	position absolute
+	left 100%
+	width 55px
+	top 50%
+	height 5px
+	margin-top -3px
+	opacity 0
+
+	.vjs-volume-panel:hover & {
+		opacity 1
+	}
+	.d-mobile & {
+		display none
+	}
+	&:before {
+		content ''
+		opacity 0.33
+		background currentColor
+	}
+	&:after {
+		content ''
+		position absolute
+		left 0
+		top -12px
+		bottom -12px
+		width 100%
+	}
+}
+$shift = 8px
+$hover-shift = 1px
+.vjs-fullscreen-control {
+	float right
+	position relative
+	width 36px
+	height 36px
+
+	&__decor {
+		transition transform ($duration/2)
+		position absolute
+		border 2px solid currentColor
+		width 4px
+		height 4px
+
+		&_1, &_2 {
+			top 50%
+			margin-top -($shift)
+			border-bottom none
+		}
+		&_3, &_4 {
+			bottom 50%
+			margin-bottom -($shift)
+			border-top none
+		}
+		&_1, &_3 {
+			left 50%
+			margin-left -($shift)
+			border-right none
+		}
+		&_2, &_4 {
+			right 50%
+			border-left none
+			margin-right -($shift)
+		}
+	}
+
+	&:hover:not(:active) &__decor {
+		&_1 {
+			transform translateX(-($hover-shift)) translateY(-($hover-shift))
+		}
+		&_2 {
+			transform translateX($hover-shift) translateY(-($hover-shift))
+		}
+		&_3 {
+			transform translateX(-($hover-shift)) translateY($hover-shift)
+		}
+		&_4 {
+			transform translateX($hover-shift) translateY($hover-shift)
+		}
+	}
+}
+.vjs-progress-control {
+	position absolute
+	left 0
+	width 100%
+	bottom 100%
+	height 5px
+}
+.vjs-progress-holder,
+.vjs-volume-bar {
+	transform scaleY(0.6)
+	transition transform ($duration/2), opacity ($duration/2)
+	will-change transform, opacity
+
+	&:hover, &.vjs-sliding {
+		transform scaleY(1)
+	}
+}
+.vjs-progress-holder {
+	&:before {
+		content ''
+		position absolute
+		left 0
+		width 100%
+		top -8px
+		bottom -8px
+	}
+	.vjs-load-progress,
+	.vjs-play-progress,
+	.vjs-volume-level {
+		position absolute
+		left 0
+		top 0
+		width 0
+		height 100%
+		background-color currentColor
+	}
+	.vjs-volume-level {
+		width 100%
+	}
+	.vjs-load-progress {
+		opacity 0.33
+	}
+	.vjs-time-tooltip,
+	.vjs-mouse-display,
+	.vjs-control-text,
+	.vjs-duration,
+	.vjs-time-control,
+	.vjs-current-time,
+	.vjs-live-control,
+	.vjs-remaining-time,
+	.vjs-custom-control-spacer,
+	.vjs-descriptions-button,
+	.vjs-subtitles-button,
+	.vjs-captions-button,
+	.vjs-audio-button,
+	.vjs-playback-rate,
+	.vjs-error-display,
+	.vjs-caption-settings,
+	.vjs-chapters-button {
+		display none
+	}
+
+	// fullscreen
+	.video-js {
+		&:-moz-full-screen {
+			position absolute
+		}
+		&:-webkit-full-screen {
+			width 100% !important
+			height 100% !important
+		}
+	}
+	.vjs-full-window .video-js.vjs-fullscreen {
+		position fixed
+		z-index 1000
+		left 0
+		top 0
+		bottom 0
+		right 0
+	}
+	.video-js.vjs-fullscreen {
+		width 100% !important
+		height 100% !important
+		padding 0 !important
+		margin 0 !important
+		top 0 !important
+	}
+}
+.vjs-load-progress,
+.vjs-play-progress,
+.vjs-volume-level {
+	position absolute
+	left 0
+	top 0
+	width 0
+	height 100%
+	background-color currentColor
+}
+.vjs-volume-level {
+	width 100%
+}
+.vjs-load-progress {
+	opacity 0.33
+}
+.vjs-big-play-button {
+	display block
+	position absolute
+	top 50%
+	left 50%
+	background none
+	margin -38px 0 0 -38px
+	padding 0
+	border none
+	cursor pointer
+	transform translateZ(0)
+	background $linkColor
+	border-radius 50%
+	width 76px
+	height 76px
+	will-change transform
+	transition background $duration, transform $duration
+
+	@media $phone {
+		margin-top -30px
+		margin-left -30px
+		width 60px
+		height 60px
+
+		&:before {
+			border-width 11px 0 11px 18px
+			margin-left 19px
+		}
+	}
+
+	&__icon {
+		width 100%
+		height 100%
+		fill #FFF
+		transition fill $duration
+	}
+
+	.Player__video:hover & {
+		background #FFF
+
+		svg {
+			fill $linkColor
+		}
+	}
+	.Player__video:active & {
+		transform scale(0.95) translateZ(0)
+
+		@media $phone {
+			transform scale(0.9) translateZ(0)
+		}
+	}
+
+	.vjs-has-playing &, .vjs-has-started & {
+		display none
+	}
+	.vjs-using-native-controls.vjs-paused & {
+		display block
+
+		&:after {
+			position absolute
+			left -1000px
+			right -1000px
+			bottom -1000px
+			top -1000px
+			content ''
+		}
+	}
+	.vjs-using-native-controls.vjs-paused.vjs-has-started & {
+		display none
+	}
+}
+
+.vjs-mouse-display,
+.vjs-control-text,
+.vjs-duration,
+.vjs-time-control,
+.vjs-current-time,
+.vjs-live-control,
+.vjs-remaining-time,
+.vjs-custom-control-spacer,
+.vjs-descriptions-button,
+.vjs-subtitles-button,
+.vjs-captions-button,
+.vjs-audio-button,
+.vjs-playback-rate,
+.vjs-error-display,
+.vjs-caption-settings,
+.vjs-chapters-button,
+.vjs-subs-caps-button,
+.vjs-modal-dialog {
+	display none
+}
+
+// fullscreen
+.video-js {
+	&:-moz-full-screen {
+	position absolute
+	}
+	&:-webkit-full-screen {
+	width 100% !important
+	height 100% !important
+	}
+}
+.vjs-full-window .video-js.vjs-fullscreen {
+	position fixed
+	// overflow hidden
+	z-index 1000
+	left 0
+	top 0
+	bottom 0
+	right 0
+}
+.video-js.vjs-fullscreen {
+	width 100% !important
+	height 100% !important
+	padding 0 !important
+	margin 0 !important
+	top 0 !important
+}
+
+
+.vjs-using-native-controls.vjs-has-started + .Share {
+	transform translateX(-58px)
+	transition transform $duration*0.5
+}
+.vjs-using-native-controls .vjs-poster {
+	display block
+}
+.vjs-using-native-controls .vjs-has-started + .vjs-poster {
+	display none
+}
