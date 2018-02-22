@@ -10,6 +10,7 @@ const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const paths = require('./paths');
 const getClientEnvironment = require('./env');
+const svgoConfig = require('./svgoConfig');
 
 process.env.NODE_PATH = (process.env.NODE_PATH || '')
   .split(path.delimiter)
