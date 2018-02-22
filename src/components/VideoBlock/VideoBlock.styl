@@ -1,0 +1,71 @@
+.VideoBlock {
+	margin-bottom 64px
+	position relative
+	grid-width(8)
+
+	@media $tablet {
+		width 100%
+	}
+	@media $phone {
+		width auto
+		margin 0 -8px 40px
+
+		.TextBlock {
+			padding 0 8px
+		}
+	}
+	&_lg {
+		grid-width(8)
+		color #FFF
+		margin-bottom 40px
+
+		.VideoBlock__logo .Icon {
+			fill #FFF
+		}
+	}
+	&:last-child {
+		margin-bottom 0
+	}
+	svg {
+		max-width 100%
+	}
+	&__visual {
+		margin-bottom 16px
+	}
+	&__head {
+		display flex
+		justify-content space-between
+		margin-bottom 24px
+
+		@media $phone {
+			margin-bottom 16px
+			padding-left 8px
+		}
+		&:last-child {
+			margin-bottom 0
+		}
+	}
+	&__text {
+		width 100%
+		max-width 610px
+	}
+	&__logo {
+		margin-top -22px
+		margin-bottom -20px
+		margin-right -10px
+		fill $textColor
+
+		@media $phone {
+			display none
+		}
+	}
+	&__info {
+		grid-width(5)
+
+		@media $phone {
+			.Text {
+				font-size 16px
+			}
+		}
+	}
+}

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import { TimelineMax, Cubic } from 'gsap';
+import { TweenMax, TimelineMax, Cubic } from 'gsap';
 import Waypoint from 'react-waypoint';
 import { isPhone, isPad, isIos, iosVersion, isAndroid, isMobile } from '../../utils/devices';
 import { checkSpeed } from '../../utils/helpers';
@@ -202,8 +202,15 @@ class Player extends Component {
 		}
 	};
 
+	hidePoster = () => {
+		return TweenMax.to(this.poster, 0.2, { autoAlpha: 0 });
+	};
+
 	slideDown = () => {
-		if (!this.state.isCollapsed) return false;
+		if (!this.state.isCollapsed) {
+			this.hidePoster();
+			return false;
+		}
 
 		this.setState({ isCollapsed: false });
 		const ratio = this.props.fullhd ? (2.35 / 1) : (840 / 475);
@@ -212,8 +219,8 @@ class Player extends Component {
 
 		timeline
 			.set(this.videoJsBox, { opacity: 0 })
-			.to(this.poster, 0.2, { autoAlpha: 0 })
 			.add(() => this.video.removeAttribute('poster'))
+			.add(this.hidePoster())
 			.to(this.playerBox, 0.3, {
 				height: !isPad() ? this.playerBox.offsetWidth / ratio : undefined,
 				ease: Cubic.easeOut,
@@ -410,7 +417,7 @@ class Player extends Component {
 
 					{shareURL && (
 						<ShareBlock
-							url={`${window.location.origin}${shareURL}`}
+							url={shareURL}
 							onClick={isIos() ? this.toggleShare : undefined}
 							isOpened={this.state.shareOpened}
 						/>
