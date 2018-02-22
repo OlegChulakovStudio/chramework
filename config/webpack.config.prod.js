@@ -142,7 +142,7 @@ module.exports = {
       // "url" loader works just like "file" loader but it also embeds
       // assets smaller than specified size as data URLs to avoid requests.
       {
-        test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/, /\.svg$/],
+        test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
         loader: require.resolve('url-loader'),
         options: {
           limit: 10000,
@@ -158,7 +158,15 @@ module.exports = {
 
       {
         test: /\.svg$/,
-        loader: 'svg-sprite-loader',
+        use: [
+          "babel-loader",
+          {
+            loader: "react-svg-loader",
+            options: {
+              svgo: svgoConfig
+            }
+          }
+        ],
       },
       // The notation here is somewhat confusing.
       // "postcss" loader applies autoprefixer to our CSS.
