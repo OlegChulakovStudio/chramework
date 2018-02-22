@@ -1,0 +1,213 @@
+$width = 30px
+
+.WorkItem {
+	width 100%
+	vertical-align top
+	grid-width(0.5, margin-bottom)
+	background alpha(#FFF, 75%)
+	cursor pointer
+
+	&:last-child {
+		margin-bottom 0
+	}
+	@media $laptopHeight {
+		margin-bottom 60px
+	}
+	@media $tablet {
+		margin-bottom 48px
+	}
+	@media $phone {
+		margin-bottom 48px
+		width auto
+	}
+	&__visual {
+		display block
+		position relative
+		overflow hidden
+		float left
+		cursor pointer
+		padding-right 0
+		grid-width(6)
+
+		@media $phone {
+			width auto
+			float none
+			height auto
+			margin 0 8px 16px !important
+
+			&.Link {
+				margin-bottom 16px
+			}
+		}
+		.WorkItem__poster {
+			display block
+			width 100%
+
+			@media $verticalTablet {
+				display none
+			}
+			&_mini {
+				display none
+
+				@media $verticalTablet {
+					display block
+				}
+			}
+		}
+	}
+	&__box:before {
+		content ''
+		display block
+		padding-bottom 28.571429%
+
+		@media $notebook {
+			padding-bottom 35.4%
+		}
+	}
+	&__media {
+		height 100%
+		position absolute
+		width 100%
+		top 0
+		z-index 2
+
+		&__action {
+			position absolute
+			top 50%
+			left 50%
+			margin -($width) 0 0 -($width)
+			width 0
+			height 0
+			border-style solid
+			border-width $width 0 $width $width*2
+			border-color transparent transparent transparent #fff
+		}
+	}
+	&__video {
+		position absolute
+		width 100%
+		top 0
+		height 100%
+
+		&__player {
+			position absolute
+			width 100%
+			top 0
+			height 100%
+		}
+	}
+	&__inner {
+		display block
+		clearfix()
+	}
+	&__content {
+		display block
+		position relative
+		float left
+		grid-width(3)
+		color $textColor !important
+		box-sizing border-box
+		padding-left 64px
+		padding-top 24px
+		font-size 14px
+
+		&, &:hover {
+			color inherit
+			color $linkColor
+		}
+		@media $notebook {
+			padding-top 16px
+			padding-left 32px
+		}
+		@media $verticalTablet {
+			width 253px
+		}
+		@media $phone {
+			float none
+			width auto
+			padding-top 0
+			padding-left 16px
+			padding-right 16px
+
+			&:before {
+				display none
+			}
+		}
+		&:before {
+			content ''
+			left auto
+			position absolute
+			top 0
+			width 32px
+			height 4px
+			background-color currentColor
+		}
+		.Link__target-blank {
+			display none
+		}
+	}
+
+	&__title {
+		display block
+		margin-bottom 8px
+		font-weight $bold
+		font-size 20px
+		line-height 1.1
+		transition color $duration*2
+
+		@media $phone {
+			font-size 20px
+			margin-bottom 4px
+			line-height (24/20)
+		}
+		.WorkItem_link:hover &,
+		.WorkItem__content:hover & {
+			color $linkColor
+			transition-duration $duration
+		}
+	}
+	&__tags {
+		opacity 0.3
+	}
+	&__header {
+		margin-bottom 16px
+
+		@media $notebook {
+			margin-bottom 8px
+		}
+	}
+	&__info {
+		margin-bottom 16px
+		color $textColor
+
+		&:last-child {
+			margin-bottom 0
+		}
+		@media $tablet {
+			max-width 350px
+		}
+		@media $phone {
+			body()
+		}
+	}
+	&__client {
+		&__name {
+			font-weight $bold
+		}
+		@media $phone {
+			display none
+		}
+	}
+	&__more {
+		color $linkColor
+		transition color $duration*2
+
+		@media $phone {
+			bold()
+		}
+		&:hover {
+			color $linkHoverColor
+			transition-duration $duration
+		}
+	}
+}

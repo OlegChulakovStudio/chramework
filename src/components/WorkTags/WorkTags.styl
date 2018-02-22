@@ -1,0 +1,19 @@
+.WorkTags {
+	text-transform lowercase
+
+	&__item {
+		color $secondTextColor
+
+		&:first-child {
+			text-transform capitalize
+		}
+		&:last-child {
+			&:after {
+				display none
+			}
+		}
+		&:after {
+			content ', '
+		}
+	}
+}
