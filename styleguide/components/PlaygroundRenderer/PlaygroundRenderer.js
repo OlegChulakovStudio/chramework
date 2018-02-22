@@ -7,10 +7,9 @@ const styles = ({ space, color, borderRadius }) => ({
     marginBottom: '74px'
   },
   preview: {
-    outline: [[1, color.border, 'solid']],
+    border: [[1, color.border, 'solid']],
     borderRadius,
-    margin: [[space[2], space[2], space[2] + 15, space[2]]],
-    outlineOffset: 15,
+    marginBottom: 15,
     overflow: 'auto',
   },
   controls: {
@@ -29,8 +28,16 @@ const styles = ({ space, color, borderRadius }) => ({
     '.cm-s-base16-light div.CodeMirror-selected': {
       backgroundColor: '#eee',
     },
-    '[data-preview="SelectField"], [data-preview="Heading"], [data-preview="Spinner"]': {
+    '[data-preview="SelectField"]': {
       overflow: 'visible'
+    },
+    '[data-preview="Clients"]': {
+      backgroundColor: '#222631'
+    },
+    '.preview > div': {
+    },
+    '.preview > div > div': {
+      padding: 20
     }
   }
 });
@@ -38,7 +45,7 @@ const styles = ({ space, color, borderRadius }) => ({
 export function PlaygroundRenderer({ classes, name, preview, tabButtons, tabBody, toolbar }) {
   return (
     <div className={classes.root}>
-      <div className={classes.preview} data-preview={name}>
+      <div className={`${classes.preview} preview`} data-preview={name}>
         {preview}
       </div>
       <div className={classes.controls}>

@@ -4,12 +4,8 @@ Simple button with `onClick` handler:
       alert('pushed');
     }}/>
 
-Success button
-    
-    <Button text="Подробнее" intent="success" />
-
 Bordered button with arrow
-    
+
     <Button text="Подробнее" arrow bordered />
 
 Small button
