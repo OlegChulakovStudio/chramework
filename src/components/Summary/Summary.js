@@ -2,8 +2,6 @@ import React from 'react';
 import classNames from 'classnames';
 import './Summary.styl';
 import Paragraph from '../Paragraph/Paragraph';
-import medal2 from './medal_2.png';
-import medal8 from './medal_8.png';
 import PropTypes from 'prop-types';
 import Link from '../Link/Link';
 
@@ -34,29 +32,30 @@ const Summary = ({ awards, className, external, ...rest }) => {
 					<Paragraph mod="boldMedium">лет опыта</Paragraph>
 				</div>
 			</div>}
-			<div className="Summary__item Summary__item_medal">
-				<img className="Summary__img" src={medal2} alt="" />
+			<div className="Summary__item Summary__item_medal Summary__item_medal2">
 				<div className="Summary__content">
 					<Paragraph mod="boldMedium" className="Summary__title">Топ-2 <nobr>дизайн-студий</nobr></Paragraph>
 					<Paragraph mod="bodySmall" className="Summary__text">
 						в&nbsp;digital по&nbsp;версии{' '}
 						<Link
 							{...designLink}
-							className="Summary__text-link">
+							className="Summary__text-link"
+						>
 							Tagline
 						</Link>
 					</Paragraph>
 				</div>
 			</div>
-			<div className="Summary__item Summary__item_medal">
-				<img className="Summary__img" src={medal8} alt="" />
+			<div className="Summary__item Summary__item_medal Summary__item_medal8">
+				{/* <img className="Summary__img" src={medal8} alt="" /> */}
 				<div className="Summary__content">
 					<Paragraph mod="boldMedium" className="Summary__title">Топ-8 <nobr>digital production</nobr></Paragraph>
 					<Paragraph mod="bodySmall" className="Summary__text">
 						по версии{' '}
 						<Link
 							{...productionLink}
-							className="Summary__text-link">
+							className="Summary__text-link"
+						>
 							Tagline
 						</Link>
 					</Paragraph>
