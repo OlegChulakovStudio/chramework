@@ -5,7 +5,7 @@ import Link from '../Link/Link';
 import Demo from '../../assets/clients/tele2.svg';
 import './Clients.styl';
 
-const filterData = {
+const filterDemo = {
 	finance: {
 		name: 'Финансы',
 		linkProps: { href: 'https://chulakov.ru/clients/#finance' }
@@ -17,49 +17,48 @@ const filterData = {
 	ecommerce: {
 		name: 'E-commerce',
 		linkProps: { href: 'https://chulakov.ru/clients/#ecommerce' }
-	},
+	}
 };
 
-const demo = {
-	bcs: {
+const demo = [
+	{
 		icon: Demo,
 		type: 'finance'
 	},
-	tinkoff: {
+	{
 		icon: Demo,
 		type: 'finance'
 	},
-	'alfa-bank': {
+	{
 		icon: Demo,
 		type: 'telecom'
 	},
-	otkritie: {
+	{
 		icon: Demo,
 		type: 'telecom'
 	},
-	'home-credit': {
+	{
 		icon: Demo,
 		type: 'ecommerce'
 	},
-	tele2: {
+	{
 		icon: Demo,
 		type: 'ecommerce'
 	}
-}
+];
 
 class FilterItem extends Component {
 	mouseEnter = () => {
-		this.props.mouseEnter(this.props.label);
-	}
+		this.props.mouseEnter(this.props.filterKey);
+	};
 	render() {
-		const { label } = this.props;
+		const { label, linkProps } = this.props;
 		return (
 			<Link
-				{...filterData[label].linkProps}
+				{...linkProps}
 				className="ClientsFilter__item"
-				onMouseEnter={this.mouseEnter}
-			>
-				{filterData[label].name}
+				onMouseEnter={this.mouseEnter}>
+				{label}
 			</Link>
 		);
 	}
@@ -67,20 +66,22 @@ class FilterItem extends Component {
 
 class Clients extends Component {
 	static propTypes = {
-		filter: PropTypes.bool,
+		filter: PropTypes.object,
+		filterOn: PropTypes.bool,
 		list: PropTypes.object,
 		reverse: PropTypes.bool,
-		row: PropTypes.bool,
+		row: PropTypes.bool
 	};
 	static defaultProps = {
-		filter: false,
+		filter: undefined,
+		filterOn: false,
 		list: undefined,
 		reverse: undefined,
 		row: undefined
 	};
 
 	state = {
-		activeFilter: null,
+		activeFilter: null
 	};
 
 	mouseEnter = key => {
@@ -90,35 +91,59 @@ class Clients extends Component {
 		this.setState({ activeFilter: null });
 	};
 
-	renderIcon = (client, name, activeFilter) => {
+	renderIcon = (client, key, activeFilter) => {
 		const Icon = client.icon;
-		const itemStyle = classNames(['Clients__item', {
-			Clients__item_disable: activeFilter && activeFilter !== client.type,
-		}]);
+		const itemStyle = classNames([
+			'Clients__item',
+			{
+				Clients__item_disable: activeFilter && activeFilter !== client.type
+			}
+		]);
 		return (
-			<div key={name} className={itemStyle}>
+			<div key={key} className={itemStyle}>
 				<Icon className="Clients__icon" />
 			</div>
 		);
 	};
 	render() {
 		const { activeFilter } = this.state;
-		const { filter, reverse, row, className, ...rest } = this.props;
-		const dataList = this.props.list || demo;
-		const ClientsStyle = classNames(['Clients', className, {
-			Clients_reverse: reverse,
-			Clients_filter: filter,
-			Clients_row: row,
-		}]);
+		const {
+			filter,
+			filterOn,
+			reverse,
+			row,
+			className,
+			clients,
+			...rest
+		} = this.props;
+		const clientsList = clients || demo;
+		const filterData = filter || filterDemo;
+		const ClientsStyle = classNames([
+			'Clients',
+			className,
+			{
+				Clients_reverse: reverse,
+				Clients_filter: filterOn,
+				Clients_row: row
+			}
+		]);
 		return (
 			<div {...rest} className={ClientsStyle}>
 				<div className="Clients__container">
-					{filter && (
+					{filterOn && (
 						<div className="ClientsFilter" onMouseLeave={this.mouseLeave}>
-							{Object.keys(filterData).map(key => <FilterItem key={key} label={key} mouseEnter={this.mouseEnter} />)}
+							{Object.keys(filterData).map(key => (
+								<FilterItem
+									key={key}
+									label={filterData[key].name}
+									filterKey={key}
+									mouseEnter={this.mouseEnter}
+									linkProps={filterData[key].linkProps}
+								/>
+							))}
 						</div>
 					)}
-					{Object.keys(dataList).map(key => this.renderIcon(dataList[key], key, activeFilter))}
+					{clientsList.map((item, i) => this.renderIcon(item, i, activeFilter))}
 				</div>
 			</div>
 		);
