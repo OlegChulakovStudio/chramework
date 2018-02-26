@@ -4,33 +4,24 @@ import reactHtmlParser from 'react-html-parser';
 import classNames from 'classnames';
 import Paragraph from '../Paragraph/Paragraph';
 
-import EdaIcon from '../../assets/achievements/eda.svg'
-import FwaIcon from '../../assets/achievements/fwa.svg'
-import AwwwardsIcon from '../../assets/achievements/awwwards.svg'
-import CssdaIcon from '../../assets/achievements/cssda.svg'
-
 import './AchievementsList.styl';
 
 const content = {
 	eda: {
 		label: "EUROPEAN<br />DESIGN AWARDS",
 		count: 3,
-		icon: EdaIcon
 	},
 	fwa: {
 		label: "FWA",
 		count: 3,
-		icon: FwaIcon
 	},
 	awwwards: {
 		label: "AWWWARDS",
 		count: 8,
-		icon: AwwwardsIcon
 	},
 	cssda: {
 		label: "CSSDA",
 		count: 7,
-		icon: CssdaIcon
 	}
 };
 
@@ -45,11 +36,11 @@ const AchievementsList = ({ mod, className, ...rest }) => {
 					const logoStyle = classNames(['AchievementsList__logo', {
 						[`AchievementsList__logo_${key}`]: key,
 					}]);
-					const Icon = item.icon;
+					// const Icon = item.icon;
 					return (
 						<div key={item.label} className="AchievementsList__item">
-							{/* <div className={logoStyle} /> */}
-							<Icon className={logoStyle} />
+							{<div className={logoStyle} />}
+							{/* <Icon className={logoStyle} /> */}
 							<div className="AchievementsList__content">
 								<div className="AchievementsList__label">
 									{reactHtmlParser(item.label)}
