@@ -1,4 +1,5 @@
 .VideoBlock {
+	margin-bottom 64px
 	position relative
 
 	@media $tablet {
@@ -6,7 +7,7 @@
 	}
 	@media $phone {
 		width auto
-		margin 0 -8px
+		margin 0 -8px 40px
 
 		.TextBlock {
 			padding 0 8px
@@ -58,7 +59,9 @@
 		}
 	}
 	&_lg {
+		grid-width(8)
 		color #FFF
+		margin-bottom 40px
 
 		.VideoBlock__logo .Icon {
 			fill #FFF
