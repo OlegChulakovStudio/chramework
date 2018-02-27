@@ -1,198 +1,197 @@
 $ratio = 1.92;
 
 .Slider {
-  margin-bottom 100px
-  position relative
-  transform translateZ(0)
-  overflow hidden
+	margin-bottom 100px
+	position relative
+	transform translateZ(0)
+	overflow hidden
 
-  &:last-child {
-    margin-bottom 0
-  }
-  @media $phone {
-    .swiper-container {
-      overflow: visible
-    }
-  }
-  @media $verticalTablet {
-    width auto
-  }
-  @media $phone {
-    margin 0 -16px
-  }
-  &:hover {}
-  * {
-    user-select none
-  }
-  &__container {
-    position relative
-    margin-bottom 16px
-    transform translateZ(0)
+	* {
+		user-select none
+	}
+	&:last-child {
+		margin-bottom 0
+	}
+	@media $phone {
+		.swiper-container {
+			overflow: visible
+		}
+	}
+	@media $verticalTablet {
+		width auto
+	}
+	@media $phone {
+		margin 0 -16px
+	}
+	&__container {
+		position relative
+		margin-bottom 16px
+		transform translateZ(0)
 
-    .swiper-container {
-      transform translateZ(0)
-    }
+		.swiper-container {
+			transform translateZ(0)
+		}
+		@media $phone {
+			padding 0 8px
+		}
+	}
+	&__wrapper {
+		display flex
+		width 1000%
+		position relative
+		will-change transform
+		transition-timing-function cubic-bezier(0.39, 0.58, 0.57, 1)
 
-    @media $phone {
-      padding 0 8px
-    }
-  }
-  &__wrapper {
-    display flex
-    width 1000%
-    position relative
-    will-change transform
-    transition-timing-function cubic-bezier(0.39, 0.58, 0.57, 1)
+		@media $phone {
+			margin-bottom 8px
+		}
+	}
+	&__navArea {
+		position absolute
+		top 0
+		width 80px
+		height 100%
+		left 0
+		z-index 1000
+		cursor pointer
 
-    @media $phone {
-      margin-bottom 8px
-    }
-  }
-  &__navArea {
-    position absolute
-    top 0
-    width 80px
-    height 100%
-    left 0
-    z-index 1000
-    cursor pointer
+		&:last-child {
+			left auto
+			right 0
+		}
+	}
+	&__item {
+		grid-width(7)
+	}
+	&__img {
+		display block
+		width 100%
+	}
+	&__nav {
+		position relative
+		height 56px
+		margin-top -10px
+		display flex
 
-    &:last-child {
-      left auto
-      right 0
-    }
-  }
-  &__item {
-    grid-width(7)
-  }
-  &__img {
-    display block
-    width 100%
-  }
-  &__nav {
-    & {
-      position relative
-      height 56px
-      margin-top -10px
-      display flex
+		@media $phone {
+			margin-top 0
+			font-size 12px
+			padding 0 8px
+		}
+		&_empty {
+			margin-left auto
 
-      @media $phone {
-        margin-top 0
-        font-size 12px
-        padding 0 8px
-      }
-    }
-    &_empty {
-      margin-left auto
+			@media $phone {
+				margin-right auto
+				margin-left 0
+			}
+		}
+		&-btn {
+			position relative
+			user-select none
+			display block
+			transition opacity $duration
+			padding 8px
+			cursor pointer
+			width 32px
+			height 56px
+			box-sizing border-box
+			z-index 100
+			background-position center center
+			background-size 24px 40px
+			background-repeat no-repeat
 
-      @media $phone {
-        margin-right auto
-        margin-left 0
-      }
-    }
-    &-btn {
-      position relative
-      user-select none
-      display block
-      transition opacity $duration
-      padding 8px
-      cursor pointer
-      width 32px
-      height 56px
-      box-sizing border-box
-      z-index 100
-      background-position center center
-      background-size 24px 40px
-      background-repeat no-repeat
-      @media $phone {
-        padding 8px
-      }
-      &:hover {
-        opacity 1
-      }
-      &_prev {
-        // left 0
-      }
-      &_next {
-        transform scaleX(-1)
-      }
-    }
-  }
-  &__pagination {
-    height 56px
-    font-size 12px
-    padding 8px 16px
-    box-sizing border-box
-    line-height 40px
-    min-width 90px
+			@media $phone {
+				padding 8px
+			}
+			&:hover {
+				opacity 1
+			}
+			svg {
+				width 100%
+				height 100%
+			}
+			&_prev {}
+			&_next {
+				transform scaleX(-1)
+			}
+		}
+	}
+	&__pagination {
+		height 56px
+		font-size 12px
+		padding 8px 16px
+		box-sizing border-box
+		line-height 40px
+		min-width 90px
 
-    &__item {
-      display inline-block
-      box-sizing border-box
-      width 24px
-      text-align center
+		@media $phone {
+			padding 8px 0
+			text-align center
+		}
+		&__item {
+			display inline-block
+			box-sizing border-box
+			width 24px
+			text-align center
 
-      &--count {
-        color $secondTextColor
-      }
-    }
-    &-divider {
-      color $secondTextColor
-    }
-    @media $phone {
-      padding 8px 0
-      text-align center
-    }
-  }
-  &__footer {
-    display flex
-    justify-content space-between
+			&--count {
+				color $secondTextColor
+			}
+		}
+		&-divider {
+			color $secondTextColor
+		}
+	}
+	&__footer {
+		display flex
+		justify-content space-between
 
-    @media $phone {
-      padding 0 16px
-    }
-  }
-  &__content {
-    font-size 14px
-    user-select none
-    display inline-block
-    display none
-    height 64px
-    width 100%
-    max-width 550px
-    box-sizing border-box
+		@media $phone {
+			padding 0 16px
+		}
+	}
+	&__content {
+		font-size 14px
+		user-select none
+		display inline-block
+		display none
+		height 64px
+		width 100%
+		max-width 550px
+		box-sizing border-box
 
-    @media $verticalTablet {
-      max-width 400px
-    }
-    &--active {
-      display block
-    }
-    @media $phone {
-      max-width 100%
-      height auto
-      padding 0 16px
-      margin-top 0
-    }
-  }
-  &__label {
-    display block
-    margin-bottom 8px
+		@media $verticalTablet {
+			max-width 400px
+		}
+		@media $phone {
+			max-width 100%
+			height auto
+			padding 0 16px
+			margin-top 0
+		}
+		&--active {
+			display block
+		}
+	}
+	&__label {
+		display block
+		margin-bottom 8px
 
-    @media $phone {
-      margin-bottom 4px
-    }
-  }
-  &__text {
-    display block
-  }
-  &__bottom {
-    position relative
-    display flex
-    justify-content space-between
+		@media $phone {
+			margin-bottom 4px
+		}
+	}
+	&__text {
+		display block
+	}
+	&__bottom {
+		position relative
+		display flex
+		justify-content space-between
 
-    @media $phone {
-      flex-direction column
-    }
-  }
+		@media $phone {
+			flex-direction column
+		}
+	}
 }

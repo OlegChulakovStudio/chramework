@@ -1,26 +1,15 @@
 .VideoBlock {
-	margin-bottom 64px
 	position relative
-	grid-width(8)
 
 	@media $tablet {
 		width 100%
 	}
 	@media $phone {
 		width auto
-		margin 0 -8px 40px
+		margin 0 -8px
 
 		.TextBlock {
 			padding 0 8px
-		}
-	}
-	&_lg {
-		grid-width(8)
-		color #FFF
-		margin-bottom 40px
-
-		.VideoBlock__logo .Icon {
-			fill #FFF
 		}
 	}
 	&:last-child {
@@ -66,6 +55,13 @@
 			.Text {
 				font-size 16px
 			}
+		}
+	}
+	&_lg {
+		color #FFF
+
+		.VideoBlock__logo .Icon {
+			fill #FFF
 		}
 	}
 }

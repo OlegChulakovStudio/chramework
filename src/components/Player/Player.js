@@ -4,7 +4,14 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { TweenMax, TimelineMax, Cubic } from 'gsap';
 import Waypoint from 'react-waypoint';
-import { isPhone, isPad, isIos, iosVersion, isAndroid, isMobile } from '../../utils/devices';
+import {
+	isPhone,
+	isPad,
+	isIos,
+	iosVersion,
+	isAndroid,
+	isMobile
+} from '../../utils/devices';
 import { checkSpeed } from '../../utils/helpers';
 
 import ShareBlock from './ShareBlock/ShareBlock';
@@ -21,7 +28,7 @@ let calculatedQuality = undefined;
 const calculateQuality = new Promise((resolve, reject) => {
 	if (typeof window !== 'undefined') {
 		window.onload = () => {
-			checkSpeed((speed) => {
+			checkSpeed(speed => {
 				switch (true) {
 					case speed > 400 && speed <= 1000:
 						calculatedQuality = 'low';
@@ -29,11 +36,12 @@ const calculateQuality = new Promise((resolve, reject) => {
 					case speed > 1000:
 						calculatedQuality = 'hight';
 						break;
-					default: break;
+					default:
+						break;
 				}
 				resolve(calculatedQuality);
 			});
-		}
+		};
 	} else {
 		resolve(isIos() ? 'mob' : 'hight');
 	}
@@ -41,7 +49,10 @@ const calculateQuality = new Promise((resolve, reject) => {
 
 class PlayIconInject extends Component {
 	render() {
-		return ReactDOM.createPortal(<PlayIcon className="vjs-big-play-button__icon" />, this.props.renderNode);
+		return ReactDOM.createPortal(
+			<PlayIcon className="vjs-big-play-button__icon" />,
+			this.props.renderNode
+		);
 	}
 }
 class Player extends Component {
@@ -58,7 +69,7 @@ class Player extends Component {
 		fullhd: PropTypes.bool,
 		banners: PropTypes.bool,
 		images: PropTypes.object,
-		src: PropTypes.object,
+		src: PropTypes.any,
 		shareURL: PropTypes.string
 	};
 	state = {
@@ -76,7 +87,7 @@ class Player extends Component {
 		renderedVideoNode: false,
 
 		shareOpened: false,
-		changeQualityOpened: false,
+		changeQualityOpened: false
 	};
 	player = null;
 
@@ -84,9 +95,13 @@ class Player extends Component {
 		this.videojs = require('video.js');
 
 		if (!calculatedQuality) {
-			calculateQuality.then((typeQuality) => {
+			calculateQuality.then(typeQuality => {
 				if (this.player) {
-					if (this.player.paused() && this.props.src && this.props.src[typeQuality]) {
+					if (
+						this.player.paused() &&
+						this.props.src &&
+						this.props.src[typeQuality]
+					) {
 						this.player.src(this.props.src[typeQuality]);
 					}
 				} else {
@@ -110,19 +125,22 @@ class Player extends Component {
 		} else if (typeof this.props.images === 'string') {
 			posterSrc = this.props.images;
 		}
-		this.setState({
-			compact: !isPad() && this.props.compact,
-			poster: posterSrc,
-		}, () => {
-			if (isAndroid()) this.initPlayer();
-		});
+		this.setState(
+			{
+				compact: !isPad() && this.props.compact,
+				poster: posterSrc
+			},
+			() => {
+				if (isAndroid()) this.initPlayer();
+			}
+		);
 	};
 
 	getQualityLabel = key => {
 		const names = {
 			hight: '1080p',
 			low: '720p',
-			mob: '360p',
+			mob: '360p'
 		};
 		return names[key];
 	};
@@ -130,7 +148,7 @@ class Player extends Component {
 		const index = {
 			hight: '3',
 			low: '2',
-			mob: '1',
+			mob: '1'
 		};
 		return index[key];
 	};
@@ -146,43 +164,51 @@ class Player extends Component {
 	initPlayer = () => {
 		const { src, banners } = this.props;
 
-		this.player = this.videojs(this.video, {
-			preload: 'none',
-			autoPlay: false,
-			controls: true,
-			// poster: banners ? poster : undefined,
-			loop: banners,
-			sources: [{
-				src: typeof src === 'object' ? src[this.state.currentQuality] : src,
-				type: 'video/mp4',
-			}],
-			playsinline: banners ? 'playsinline' : undefined,
-			nativeControlsForTouch: banners ? false : iosVersion() >= 11,
-		}, () => {
-			this._injectVolumeIcon();
-			this._injectFullscreenIcon();
-			// this._injectPlayerIcon();
-		});
+		this.player = this.videojs(
+			this.video,
+			{
+				preload: 'none',
+				autoPlay: false,
+				controls: true,
+				// poster: banners ? poster : undefined,
+				loop: banners,
+				sources: [
+					{
+						src: typeof src === 'object' ? src[this.state.currentQuality] : src,
+						type: 'video/mp4'
+					}
+				],
+				playsinline: banners ? 'playsinline' : undefined,
+				nativeControlsForTouch: banners ? false : iosVersion() >= 11
+			},
+			() => {
+				this._injectVolumeIcon();
+				this._injectFullscreenIcon();
+			}
+		);
 		if (isAndroid()) this.player.poster(this.state.poster);
 		this.player.on('play', this.onPlay);
 
 		this.videoJsBox = this.playerBox.getElementsByClassName('Player__video');
 		const qualityList = {};
-		if (src) {
+		if (typeof src === 'object') {
 			Object.keys(src).map(
-				key => qualityList[this.getQualityIndex(key)] = {
-					name: key,
-					label: this.getQualityLabel(key),
-				}
+				key =>
+					(qualityList[this.getQualityIndex(key)] = {
+						name: key,
+						label: this.getQualityLabel(key)
+					})
 			);
+			this.setState({
+				qualityList,
+				playerConrolNode: this.playerBox.getElementsByClassName(
+					'vjs-control-bar'
+				)[0]
+			});
 		}
-		this.setState({
-			qualityList,
-			playerConrolNode: this.playerBox.getElementsByClassName('vjs-control-bar')[0],
-		});
 	};
 
-	changeQuality = (type) => {
+	changeQuality = type => {
 		if (this.props.src[type]) {
 			this.curentTime = this.player.currentTime();
 			this.setState({ hideVideo: true, currentQuality: type }, () => {
@@ -213,7 +239,7 @@ class Player extends Component {
 		}
 
 		this.setState({ isCollapsed: false });
-		const ratio = this.props.fullhd ? (2.35 / 1) : (840 / 475);
+		const ratio = this.props.fullhd ? 2.35 / 1 : 840 / 475;
 
 		const timeline = new TimelineMax();
 
@@ -223,7 +249,7 @@ class Player extends Component {
 			.add(this.hidePoster())
 			.to(this.playerBox, 0.3, {
 				height: !isPad() ? this.playerBox.offsetWidth / ratio : undefined,
-				ease: Cubic.easeOut,
+				ease: Cubic.easeOut
 			})
 			.to(this.videoJsBox, 0.3, { opacity: 1 }, '-=0.3');
 
@@ -241,7 +267,7 @@ class Player extends Component {
 			.to(this.poster, 0.3, { opacity: 1 }, 0)
 			.to(this.playerBox, 0.3, {
 				height: this.playerBox.offsetWidth / collapsedRatio,
-				ease: Cubic.easeOut,
+				ease: Cubic.easeOut
 			})
 			.to(this.video, 0.3, { opacity: 1 });
 
@@ -255,7 +281,7 @@ class Player extends Component {
 		path.setAttributeNS(
 			null,
 			'class',
-			`vjs-volume-panel__path vjs-volume-panel__path_${index}`,
+			`vjs-volume-panel__path vjs-volume-panel__path_${index}`
 		);
 		svg.appendChild(path);
 	};
@@ -270,11 +296,15 @@ class Player extends Component {
 		svg.setAttribute('width', '36');
 		svg.setAttribute('height', '36');
 		svg.setAttribute('class', 'vjs-volume-panel__icon');
-		svg.setAttributeNS('http://www.w3.org/2000/xmlns/', 'xmlns:xlink', 'http://www.w3.org/1999/xlink');
+		svg.setAttributeNS(
+			'http://www.w3.org/2000/xmlns/',
+			'xmlns:xlink',
+			'http://www.w3.org/1999/xlink'
+		);
 		const pathes = [
 			'M8,21 L12,21 L17,26 L17,10 L12,15 L8,15 L8,21 Z',
 			'M19,14 L19,22 C20.48,21.32 21.5,19.77 21.5,18 C21.5,16.26 20.48,14.74 19,14 Z',
-			'M19,11.29 C21.89,12.15 24,14.83 24,18 C24,21.17 21.89,23.85 19,24.71 L19,26.77 C23.01,25.86 26,22.28 26,18 C26,13.72 23.01,10.14 19,9.23 L19,11.29 Z',
+			'M19,11.29 C21.89,12.15 24,14.83 24,18 C24,21.17 21.89,23.85 19,24.71 L19,26.77 C23.01,25.86 26,22.28 26,18 C26,13.72 23.01,10.14 19,9.23 L19,11.29 Z'
 		];
 		pathes.forEach((d, index) => {
 			this._addPath(svg, index, d);
@@ -283,34 +313,21 @@ class Player extends Component {
 
 		$volume[0].appendChild(svg);
 	};
-	_injectPlayerIcon = () => {
-		const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-		svg.setAttribute('width', '76');
-		svg.setAttribute('height', '76');
-		svg.setAttribute('viewBox', '0 0 76 76');
-		svg.setAttribute('class', 'vjs-big-play-button__icon');
-		svg.setAttributeNS('http://www.w3.org/2000/xmlns/', 'xmlns:xlink', 'http://www.w3.org/1999/xlink');
-
-		this._addUse(svg, 'play');
-		const $play = this.playerBox.querySelectorAll('.Player__video .vjs-big-play-button');
-		$play[0].appendChild(svg);
-	};
 	_addFullscreenIconDecor = ($icon, index) => {
 		const decor = document.createElement('span', {
-			className: `vjs-fullscreen-control__decor vjs-fullscreen-control__decor_${index}`,
+			className: `vjs-fullscreen-control__decor vjs-fullscreen-control__decor_${index}`
 		});
 		decor.className = `vjs-fullscreen-control__decor vjs-fullscreen-control__decor_${index}`;
 		$icon[0].appendChild(decor);
 	};
 	_injectFullscreenIcon = () => {
 		const $fullscreen = this.playerBox.getElementsByClassName(
-			'vjs-fullscreen-control',
+			'vjs-fullscreen-control'
 		);
 		for (let i = 1; i <= 4; i++) {
 			this._addFullscreenIconDecor($fullscreen, i);
 		}
 	};
-
 
 	initAndPlay = () => {
 		this.setState({ renderedVideoNode: true }, () => {
@@ -343,7 +360,7 @@ class Player extends Component {
 		}
 	};
 	// For Waypoint
-	onEnter = (e) => {
+	onEnter = e => {
 		this.timer = setTimeout(() => {
 			this.initAndPlay();
 		}, 300);
@@ -352,18 +369,19 @@ class Player extends Component {
 		clearTimeout(this.timer);
 	};
 
-	isPosterShow = () => !isAndroid() && this.state.poster && !this.state.hideInitPoster;
+	isPosterShow = () =>
+		!isAndroid() && this.state.poster && !this.state.hideInitPoster;
 
 	toggleShare = () => {
 		this.setState({
 			shareOpened: !this.state.shareOpened,
-			changeQualityOpened: false,
+			changeQualityOpened: false
 		});
 	};
 	toggleChangeQuality = () => {
 		this.setState({
 			shareOpened: false,
-			changeQualityOpened: !this.state.changeQualityOpened,
+			changeQualityOpened: !this.state.changeQualityOpened
 		});
 	};
 
@@ -375,10 +393,23 @@ class Player extends Component {
 
 	renderVideoNode = () => {
 		if (!isAndroid()) {
-			if (this.state.renderedVideoNode) return <video data-vjs-player ref={this.getPlayerNode} className="Player__video" />;
+			if (this.state.renderedVideoNode)
+				return (
+					<video
+						data-vjs-player
+						ref={this.getPlayerNode}
+						className="Player__video"
+					/>
+				);
 			return null;
 		}
-		return <video data-vjs-player ref={this.getPlayerNode} className="Player__video" />
+		return (
+			<video
+				data-vjs-player
+				ref={this.getPlayerNode}
+				className="Player__video"
+			/>
+		);
 	};
 
 	renderPlayer = () => {
@@ -394,20 +425,27 @@ class Player extends Component {
 			Player_fullhd: fullhd,
 			Player_shrareOpened: this.state.shareOpened,
 			Player_changeQualityOpened: this.state.changeQualityOpened,
-			Player_hideVideo: this.state.hideVideo,
+			Player_hideVideo: this.state.hideVideo
 		});
 		const posterStyle = classNames({
 			Player__poster: true,
-			Player__poster_hide: !this.isPosterShow(),
+			Player__poster_hide: !this.isPosterShow()
 		});
 
-		const setPoster = () => this.state.poster ? { backgroundImage: `url(${this.state.poster})` } : undefined;
+		const setPoster = () =>
+			this.state.poster
+				? { backgroundImage: `url(${this.state.poster})` }
+				: undefined;
 
 		return (
 			<div className={banners ? 'wrapper-player' : ''}>
 				<div className={playerStyle} ref={this.getPlayerBox}>
 					{!isAndroid() && (
-						<div style={setPoster()} onClick={this.onClick} className={posterStyle} ref={this.getPosterNode}>
+						<div
+							style={setPoster()}
+							onClick={this.onClick}
+							className={posterStyle}
+							ref={this.getPosterNode}>
 							<button className="vjs-big-play-button" type="button">
 								<PlayIcon />
 							</button>
@@ -433,22 +471,27 @@ class Player extends Component {
 								onClick={isIos() ? this.toggleChangeQuality : undefined}
 								isOpened={this.state.changeQualityOpened}
 							/>
-					)}
+						)}
 
-					{this.state.playerConrolNode && isAndroid() &&
-						<PlayIconInject renderNode={this.playerBox.getElementsByClassName('vjs-big-play-button')[0]} />
-					}
-
+					{this.state.playerConrolNode &&
+						isAndroid() && (
+							<PlayIconInject
+								renderNode={
+									this.playerBox.getElementsByClassName(
+										'vjs-big-play-button'
+									)[0]
+								}
+							/>
+						)}
 				</div>
 			</div>
 		);
 	};
 	render() {
-		return (isIos()) ? (
+		return isIos() ? (
 			<Waypoint
 				onEnter={!this.state.renderedVideoNode ? this.onEnter : this.noop}
-				onLeave={!this.state.renderedVideoNode ? this.onLeave : this.noop}
-			>
+				onLeave={!this.state.renderedVideoNode ? this.onLeave : this.noop}>
 				{this.renderPlayer()}
 			</Waypoint>
 		) : (

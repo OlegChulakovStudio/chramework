@@ -29,11 +29,12 @@ const ServicesList = (props) => {
 	const ServicesStyle = classNames(['ServicesList', className]);
 	return (
 		<div {...rest} className={ServicesStyle}>
-			{(data || example).map((item, i) => (
-				<ErrorBoundary key={`serviceItem${i}`} errorComponent={ServicesItem} errorProps={extend({}, item, {error: true})}>
-					<ServicesItem {...item} />
-				</ErrorBoundary>
-			))
+			{
+				(data || example).map((item, i) => (
+					<ErrorBoundary key={`serviceItem${i}`} errorComponent={ServicesItem} errorProps={extend({}, item, {error: true})}>
+						<ServicesItem {...item} />
+					</ErrorBoundary>
+				))
 			}
 		</div>
 	);

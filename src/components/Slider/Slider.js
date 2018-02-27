@@ -4,7 +4,7 @@ import classNames from "classnames";
 import Swiper from "react-id-swiper";
 
 import TextGroup from "../TextGroup/TextGroup.js";
-import ArrowIcon from './icons/arrow.svg';
+import ArrowIcon from '../../assets/arrow.svg';
 
 import "./Slider.styl";
 

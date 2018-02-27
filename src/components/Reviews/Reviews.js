@@ -1,31 +1,34 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
-import Swiper from "react-id-swiper";
-import reactHtmlParser from "react-html-parser";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import Swiper from 'react-id-swiper';
+import reactHtmlParser from 'react-html-parser';
 
-import ArrowIcon from "./icons/arrow.svg";
-import DemoIcon from "./icons/megalabs.svg";
-import Paragraph from "../Paragraph/Paragraph.js";
+import ArrowIcon from '../../assets/arrow.svg';
+import DemoIcon from '../../assets/clients/megalabs.svg';
+import Paragraph from '../Paragraph/Paragraph.js';
 
-import "react-id-swiper/src/styles/css/swiper.css";
-import "./Reviews.styl";
+import 'react-id-swiper/src/styles/css/swiper.css';
+import './Reviews.styl';
 
-const exampleReviews = [{
-	icon: DemoIcon,
-	avatar: "https://chulakov.ru/work/megalabs/images/avatar.jpg",
-	name: "Ян Кухальский",
-	position: "Генеральный Директор MegaLabs",
-	text:
-		"Хотелось&nbsp;бы отметить глубокую аналитическую работу, которая проводится перед выполнением каждой задачи. Это позволяет оптимизировать рабочий процесс и&nbsp;добиться высокого качества готового продукта. Рекомендуем Студию Олега Чулакова как надежного партнера в&nbsp;разработке веб-сайтов и&nbsp;сложных сервисных систем"
-}, {
-	icon: DemoIcon,
-	avatar: "https://chulakov.ru/work/bcs/images/avatar.jpg",
-	name: "Дмитрий Костенко",
-	position: "Директор департамента развития корпоративного бизнеса БКС",
-	text:
-		"Студия Олега Чулакова разрабатывает для АО&nbsp;&#8222;БКС&nbsp;Банк&#8221; онлайн-сервис Личный кабинет для малого бизнеса. За&nbsp;время сотрудничества компания зарекомендовала себя как эксперт в&nbsp;области разработки сложных сервисов и&nbsp;интегрированных систем"
-}];
+const exampleReviews = [
+	{
+		icon: DemoIcon,
+		avatar: 'https://chulakov.ru/work/megalabs/images/avatar.jpg',
+		name: 'Ян Кухальский',
+		position: 'Генеральный Директор MegaLabs',
+		text:
+			'Хотелось&nbsp;бы отметить глубокую аналитическую работу, которая проводится перед выполнением каждой задачи. Это позволяет оптимизировать рабочий процесс и&nbsp;добиться высокого качества готового продукта. Рекомендуем Студию Олега Чулакова как надежного партнера в&nbsp;разработке веб-сайтов и&nbsp;сложных сервисных систем'
+	},
+	{
+		icon: DemoIcon,
+		avatar: 'https://chulakov.ru/work/bcs/images/avatar.jpg',
+		name: 'Дмитрий Костенко',
+		position: 'Директор департамента развития корпоративного бизнеса БКС',
+		text:
+			'Студия Олега Чулакова разрабатывает для АО&nbsp;&#8222;БКС&nbsp;Банк&#8221; онлайн-сервис Личный кабинет для малого бизнеса. За&nbsp;время сотрудничества компания зарекомендовала себя как эксперт в&nbsp;области разработки сложных сервисов и&nbsp;интегрированных систем'
+	}
+];
 
 class Reviews extends Component {
 	static propTypes = {
@@ -41,7 +44,7 @@ class Reviews extends Component {
 		if (node) {
 			this.swiper = node.swiper;
 		}
-	}
+	};
 	slidePrev = () => this.swiper.slidePrev();
 	slideNext = () => this.swiper.slideNext();
 	render() {
@@ -50,9 +53,13 @@ class Reviews extends Component {
 		const currentReviews = reviews || exampleReviews;
 		const countSlides = currentReviews.length;
 		const classes = classNames(['Reviews', className]);
-		const nextBtnClass = classNames(['Reviews__nav-btn', 'Reviews__nav-btn_next', {
-			'Reviews__nav-btn_disable': indexActive === currentReviews.length - 1
-		}]);
+		const nextBtnClass = classNames([
+			'Reviews__nav-btn',
+			'Reviews__nav-btn_next',
+			{
+				'Reviews__nav-btn_disable': indexActive === currentReviews.length - 1
+			}
+		]);
 		const props = {
 			slidesPerView: 1,
 			grabCursor: true,
@@ -89,7 +96,9 @@ class Reviews extends Component {
 												<Paragraph mod="boldMedium" className="Reviews__name">
 													{reactHtmlParser(client.name)}
 												</Paragraph>
-												<Paragraph mod="bodySmall" className="Reviews__position">
+												<Paragraph
+													mod="bodySmall"
+													className="Reviews__position">
 													{reactHtmlParser(client.position)}
 												</Paragraph>
 											</div>
@@ -104,7 +113,9 @@ class Reviews extends Component {
 					})}
 				</Swiper>
 				<div className="Reviews__nav">
-					<div className="Reviews__nav-btn Reviews__nav-btn_prev" onClick={this.slidePrev}>
+					<div
+						className="Reviews__nav-btn Reviews__nav-btn_prev"
+						onClick={this.slidePrev}>
 						<ArrowIcon />
 					</div>
 					<div className="Reviews__pagination">

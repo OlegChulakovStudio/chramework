@@ -33,22 +33,15 @@
 		box-sizing border-box
 		grid-width(8)
 
-		&_disable {
-			opacity 0.1
-		}
-		@media $tablet {
-			// width 25%
-		}
-		@media $verticalTablet {
-			// width 33.33%
-		}
 		@media $phone {
-			// width 50%
 			padding 20px
 			padding-bottom 90px
 		}
 		svg {
 			max-width 100%
+		}
+		&_disable {
+			opacity 0.1
 		}
 	}
 	&__inner {
@@ -101,15 +94,11 @@
 		}
 	}
 	&__logo {
-		// position absolute
-		// top 0
-		// left 0
 
 		svg {
 			display block
 		}
 		@media $phone {
-			// right auto
 			top 0
 			left 0
 
@@ -166,7 +155,6 @@
 		z-index 100
 		position absolute
 		bottom 8px
-		// left 50%
 		transform translateX(-8px)
 		height 56px
 		margin-top -10px
@@ -176,9 +164,6 @@
 			transform translateX(22px)
 		}
 		@media $phone {
-			// transform none
-			// left auto
-			// right 0
 			margin-top 0
 			bottom 5px
 			left 50%
@@ -198,26 +183,19 @@
 			background-position center center
 			background-size 24px 40px
 			background-repeat no-repeat
+
 			@media $phone {
 				padding 8px
 			}
 			svg {
-				position absolute
-				top 50%
-				left 50%
-				transform translate(-50%, -50%)
-				width 24px
-				height 40px
-				vertical-align middle
+				width 100%
+				height 100%
 			}
 			&:hover {
 				opacity 1
 			}
-			&_prev {
-				// left 0
-			}
+			&_prev {}
 			&_next {
-				// right 0
 				transform scaleX(-1)
 			}
 		}

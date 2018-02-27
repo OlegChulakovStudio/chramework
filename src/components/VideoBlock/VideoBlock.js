@@ -4,7 +4,6 @@ import classNames from 'classnames';
 
 import Player from '../Player/Player';
 import TextGroup from '../TextGroup/TextGroup';
-import DemoIcon from '../../assets/clients/tele2.svg';
 
 import './VideoBlock.styl';
 
@@ -24,26 +23,7 @@ const VideoBlock = ({ Icon, lg, video, title, subtitle, url, children, ...react 
 					subtitle={subtitle}
 					url={url}
 				/>
-
-				{/* <div className="VideoBlock__info">
-					{linkToWork ? (
-						<Link to={`/work/${work.url}`} className="VideoBlock__title VideoBlock__title_link">
-							<Paragraph mod="boldMedium">{currentTitle}</Paragraph>
-						</Link>
-					) : (
-						<div className="VideoBlock__title">
-							<Paragraph mod="boldMedium">{currentTitle}</Paragraph>
-						</div>
-					)}
-					{currentSubtitle && (
-						<div className="VideoBlock__subtitle">
-							<Paragraph mod="italicText">{currentSubtitle}</Paragraph>
-						</div>
-					)}
-				</div> */}
-
-				<Icon className="Icon VideoBlock__logo" />
-
+				{Icon && <Icon className="Icon VideoBlock__logo" />}
 			</div>
 			{children}
 		</div>
@@ -51,7 +31,7 @@ const VideoBlock = ({ Icon, lg, video, title, subtitle, url, children, ...react 
 };
 
 VideoBlock.defaultProps = {
-	Icon: DemoIcon,
+	Icon: undefined,
 	lg: undefined,
 	video: undefined,
 	title: undefined,
