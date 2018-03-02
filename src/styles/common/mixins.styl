@@ -150,18 +150,3 @@ grid-width($count = $columns, $property = width, $addGaps = 0) {
 		grid-width-vertical-tablet($count, $property, $addGaps)
 	}
 }
-
-// Layouts
-pageBlockMargins() {
-	margin-bottom 80px
-
-	@media $notebook {
-		margin-bottom 64px
-	}
-	@media $phone {
-		margin-bottom 48px
-	}
-	&:last-child {
-		margin-bottom 0
-	}
-}

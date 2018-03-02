@@ -1,0 +1,34 @@
+// Layouts
+layout1() {
+	margin-bottom 80px
+
+	@media $notebook {
+		margin-bottom 64px
+	}
+	@media $verticalTablet {
+		margin-bottom 40px
+	}
+	&:last-child {
+		margin-bottom 0
+	}
+}
+layout2() {
+	margin-bottom 64px
+
+	@media $notebook {
+		margin-bottom 40px
+	}
+	&:last-child {
+		margin-bottom 0
+	}
+}
+layout3() {
+	margin-bottom 40px
+
+	@media $notebook {
+		margin-bottom 24px
+	}
+	&:last-child {
+		margin-bottom 0
+	}
+}

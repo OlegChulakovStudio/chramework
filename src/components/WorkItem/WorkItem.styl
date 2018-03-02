@@ -1,28 +1,23 @@
 .WorkItem {
 	width 100%
 	vertical-align top
-	grid-width(0.5, margin-bottom)
 	background alpha(#FFF, 75%)
 	cursor pointer
+	layout2()
 
-	&:last-child {
-		margin-bottom 0
-	}
-	@media $laptopHeight {
-		margin-bottom 60px
-	}
-	@media $tablet {
-		margin-bottom 48px
-	}
 	@media $phone {
-		margin-bottom 48px
 		width auto
+	}
+	&__inner {
+		display flex
+
+		@media $phone {
+			display block
+		}
 	}
 	&__visual {
 		display block
 		position relative
-		overflow hidden
-		float left
 		cursor pointer
 		padding-right 0
 		grid-width(6)
@@ -51,6 +46,53 @@
 					display block
 				}
 			}
+		}
+		.Link__target-blank {
+			display none
+		}
+	}
+	&__content {
+		display block
+		position relative
+		grid-width(3)
+		color $textColor
+		box-sizing border-box
+		padding-left 64px
+		padding-top 24px
+		font-size 14px
+
+		&:hover {
+			color $linkColor
+		}
+		@media $notebook {
+			padding-top 16px
+			padding-left 32px
+		}
+		@media $verticalTablet {
+			width 253px
+		}
+		@media $phone {
+			float none
+			width auto
+			padding-top 0
+			padding-left 16px
+			padding-right 16px
+
+			&:before {
+				display none
+			}
+		}
+		&:before {
+			content ''
+			left auto
+			position absolute
+			top 0
+			width 32px
+			height 4px
+			background-color currentColor
+		}
+		.Link__target-blank {
+			display none
 		}
 	}
 	&__box:before {
@@ -93,55 +135,6 @@
 			width 100%
 			top 0
 			height 100%
-		}
-	}
-	&__inner {
-		display block
-		clearfix()
-	}
-	&__content {
-		display block
-		position relative
-		float left
-		grid-width(3)
-		color $textColor
-		box-sizing border-box
-		padding-left 64px
-		padding-top 24px
-		font-size 14px
-
-		&:hover {
-			color $linkColor
-		}
-		@media $notebook {
-			padding-top 16px
-			padding-left 32px
-		}
-		@media $verticalTablet {
-			width 253px
-		}
-		@media $phone {
-			float none
-			width auto
-			padding-top 0
-			padding-left 16px
-			padding-right 16px
-
-			&:before {
-				display none
-			}
-		}
-		&:before {
-			content ''
-			left auto
-			position absolute
-			top 0
-			width 32px
-			height 4px
-			background-color currentColor
-		}
-		.Link__target-blank {
-			display none
 		}
 	}
 

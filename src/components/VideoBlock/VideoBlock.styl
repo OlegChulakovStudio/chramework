@@ -1,5 +1,5 @@
 .VideoBlock {
-	margin-bottom 64px
+	layout2()
 	position relative
 
 	@media $tablet {
@@ -7,14 +7,12 @@
 	}
 	@media $phone {
 		width auto
-		margin 0 -8px 40px
+		margin-left -8px
+		margin-right -8px
 
 		.TextBlock {
 			padding 0 8px
 		}
-	}
-	&:last-child {
-		margin-bottom 0
 	}
 	svg {
 		max-width 100%

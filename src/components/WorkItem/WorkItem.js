@@ -51,9 +51,7 @@ class WorkItem extends Component {
 		return (
 			<div {...rest} className={workItemClasses}>
 				<div className="WorkItem__inner">
-
-					<div>{this.renderVisual()}</div>
-
+					{this.renderVisual()}
 					<Link {...url} className="WorkItem__content">
 						<div className="WorkItem__header">
 							<Paragraph TagName="div" mod="bold" className="WorkItem__title">

@@ -431,55 +431,58 @@ class Player extends Component {
 				? { backgroundImage: `url(${this.state.poster})` }
 				: undefined;
 
-		return (
-			<div className={banners ? 'wrapper-player' : ''}>
-				<div className={playerStyle} ref={this.getPlayerBox}>
-					{!isAndroid() && (
-						<div
-							style={setPoster()}
-							onClick={this.onClick}
-							className={posterStyle}
-							ref={this.getPosterNode}>
-							<button className="vjs-big-play-button" type="button">
-								<PlayIcon />
-							</button>
-						</div>
-					)}
-					{this.renderVideoNode()}
+		const renderInner = () => (
+			<div className={playerStyle} ref={this.getPlayerBox}>
+				{!isAndroid() && (
+					<div
+						style={setPoster()}
+						onClick={this.onClick}
+						className={posterStyle}
+						ref={this.getPosterNode}>
+						<button className="vjs-big-play-button" type="button">
+							<PlayIcon />
+						</button>
+					</div>
+				)}
+				{this.renderVideoNode()}
 
-					{shareURL && (
-						<ShareBlock
-							url={shareURL}
-							onClick={isIos() ? this.toggleShare : undefined}
-							isOpened={this.state.shareOpened}
+				{shareURL && (
+					<ShareBlock
+						url={shareURL}
+						onClick={isIos() ? this.toggleShare : undefined}
+						isOpened={this.state.shareOpened}
+					/>
+				)}
+
+				{this.state.playerConrolNode &&
+					Boolean(Object.keys(this.state.qualityList).length) && (
+						<ChangeQuality
+							qualityList={this.state.qualityList}
+							renderNode={this.state.playerConrolNode}
+							currentQuality={this.state.currentQuality}
+							onChangeQuality={this.changeQuality}
+							onClick={isIos() ? this.toggleChangeQuality : undefined}
+							isOpened={this.state.changeQualityOpened}
 						/>
 					)}
 
-					{this.state.playerConrolNode &&
-						Boolean(Object.keys(this.state.qualityList).length) && (
-							<ChangeQuality
-								qualityList={this.state.qualityList}
-								renderNode={this.state.playerConrolNode}
-								currentQuality={this.state.currentQuality}
-								onChangeQuality={this.changeQuality}
-								onClick={isIos() ? this.toggleChangeQuality : undefined}
-								isOpened={this.state.changeQualityOpened}
-							/>
-						)}
-
-					{this.state.playerConrolNode &&
-						isAndroid() && (
-							<PlayIconInject
-								renderNode={
-									this.playerBox.getElementsByClassName(
-										'vjs-big-play-button'
-									)[0]
-								}
-							/>
-						)}
-				</div>
+				{this.state.playerConrolNode &&
+					isAndroid() && (
+						<PlayIconInject
+							renderNode={
+								this.playerBox.getElementsByClassName(
+									'vjs-big-play-button'
+								)[0]
+							}
+						/>
+					)}
 			</div>
 		);
+		return banners ? (
+			<div className="wrapper-player">
+				{renderInner()}
+			</div>
+		) : renderInner();
 	};
 	render() {
 		return isIos() ? (
