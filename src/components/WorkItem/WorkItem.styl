@@ -104,14 +104,13 @@
 		position relative
 		float left
 		grid-width(3)
-		color $textColor !important
+		color $textColor
 		box-sizing border-box
 		padding-left 64px
 		padding-top 24px
 		font-size 14px
 
-		&, &:hover {
-			color inherit
+		&:hover {
 			color $linkColor
 		}
 		@media $notebook {
@@ -152,18 +151,17 @@
 		font-weight $bold
 		font-size 20px
 		line-height 1.1
-		transition color $duration*2
+		color currentColor
 
 		@media $phone {
 			font-size 20px
 			margin-bottom 4px
 			line-height (24/20)
 		}
-		.WorkItem_link:hover &,
-		.WorkItem__content:hover & {
-			color $linkColor
-			transition-duration $duration
-		}
+		// .WorkItem_link:hover &,
+		// .WorkItem__content:hover & {
+		// 	color currentColor
+		// }
 	}
 	&__tags {
 		opacity 0.3
@@ -198,15 +196,10 @@
 		}
 	}
 	&__more {
-		color $linkColor
-		transition color $duration*2
+		link()
 
 		@media $phone {
 			bold()
-		}
-		&:hover {
-			color $linkHoverColor
-			transition-duration $duration
 		}
 	}
 }

@@ -1,3 +1,14 @@
+link() {
+	color $linkColor
+	transition color $duration
+	cursor pointer
+
+	&:hover {
+		color $linkHoverColor
+		faster()
+	}
+}
+
 subtitlePhone() {
 	font-size 22px
 	line-height (33 / 22)

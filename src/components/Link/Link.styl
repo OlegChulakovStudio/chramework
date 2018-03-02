@@ -1,7 +1,5 @@
 .Link {
-	color $linkColor
-	transition color $duration
-	cursor pointer
+	link()
 
 	@media $phone {
 		font-size 18px
@@ -9,21 +7,15 @@
 	&:last-child {
 		margin-bottom 0
 	}
-	&:hover {
-		.Link__target-blank {
-			fill $linkHoverColor
-			faster()
-		}
-	}
 	&__target-blank {
 		position absolute
+		bottom 0
+		transform translateY(0.25em)
 		width 1.714em
 		height 1.714em
 		display inline-block
 		vertical-align middle
-		fill $linkColor
-		transition $duration
-		margin-top -0.31em
+		fill currentColor
 
 		svg {
 			position absolute
@@ -43,14 +35,6 @@
 	}
 	&_light {
 		color #FFFFFF
-	}
-	&:hover {
-		color $linkHoverColor
-		faster()
-
-		&:after {
-			opacity 1
-		}
 	}
 	&_external {
 		position relative
