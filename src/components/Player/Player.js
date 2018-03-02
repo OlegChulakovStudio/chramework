@@ -74,7 +74,7 @@ class Player extends Component {
 	};
 	state = {
 		isCollapsed: this.props.compact,
-		compact: false,
+		compact: !isPad() && this.props.compact,
 
 		poster: undefined,
 		hideInitPoster: false,
@@ -125,15 +125,9 @@ class Player extends Component {
 		} else if (typeof this.props.images === 'string') {
 			posterSrc = this.props.images;
 		}
-		this.setState(
-			{
-				compact: !isPad() && this.props.compact,
-				poster: posterSrc
-			},
-			() => {
-				if (isAndroid()) this.initPlayer();
-			}
-		);
+		this.setState({ poster: posterSrc }, () => {
+			if (isAndroid()) this.initPlayer();
+		});
 	};
 
 	getQualityLabel = key => {

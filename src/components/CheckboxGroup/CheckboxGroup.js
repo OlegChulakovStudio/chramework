@@ -42,7 +42,7 @@ class CheckboxGroup extends Component {
 	};
 
 	render() {
-		const { input, className, options, name, ...rest } = this.props;
+		const { input, className, options, name, meta, ...rest } = this.props;
 		const blockClassName = classNames(['CheckboxGroup', className]);
 
 		return (!!options && <div {...rest} className={blockClassName}>

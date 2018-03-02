@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import reactHtmlParser from 'react-html-parser';
 import classNames from 'classnames';
+
 import Paragraph from '../Paragraph/Paragraph';
 
 import './AchievementsList.styl';
@@ -36,11 +37,9 @@ const AchievementsList = ({ mod, className, ...rest }) => {
 					const logoStyle = classNames(['AchievementsList__logo', {
 						[`AchievementsList__logo_${key}`]: key,
 					}]);
-					// const Icon = item.icon;
 					return (
 						<div key={item.label} className="AchievementsList__item">
-							{<div className={logoStyle} />}
-							{/* <Icon className={logoStyle} /> */}
+							<div className={logoStyle} />
 							<div className="AchievementsList__content">
 								<div className="AchievementsList__label">
 									{reactHtmlParser(item.label)}

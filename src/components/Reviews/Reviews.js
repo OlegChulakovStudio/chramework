@@ -48,8 +48,8 @@ class Reviews extends Component {
 	slidePrev = () => this.swiper.slidePrev();
 	slideNext = () => this.swiper.slideNext();
 	render() {
-		const { className, reviews } = this.props;
-		const indexActive = this.state.indexActive;
+		const { className, reviews, ...rest } = this.props;
+		const { indexActive } = this.state;
 		const currentReviews = reviews || exampleReviews;
 		const countSlides = currentReviews.length;
 		const classes = classNames(['Reviews', className]);
@@ -77,7 +77,7 @@ class Reviews extends Component {
 			}
 		};
 		return (
-			<div className={classes}>
+			<div {...rest} className={classes}>
 				<Swiper {...props} ref={this.getSwiperNode}>
 					{currentReviews.map(client => {
 						const Icon = client.icon;
