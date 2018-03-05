@@ -16,6 +16,7 @@ import FormRow from './components/FormRow/FormRow.js';
 import Heading from './components/Heading/Heading.js';
 import Icon from './components/Icon/Icon.js';
 import Input from './components/Input/Input.js';
+import Link from './components/Link/Link.js';
 import Logo from './components/Logo/Logo.js';
 import Media from './components/Media/Media.js';
 import Note from './components/Note/Note.js';
@@ -55,6 +56,7 @@ export {
 	Heading,
 	Icon,
 	Input,
+	Link,
 	Logo,
 	Media,
 	Note,

@@ -158,6 +158,7 @@ class Player extends Component {
 	initPlayer = () => {
 		const { src, banners } = this.props;
 
+		console.log(typeof src === 'object' ? src[this.state.currentQuality] : src);
 		this.player = this.videojs(
 			this.video,
 			{
@@ -173,8 +174,7 @@ class Player extends Component {
 					}
 				],
 				playsinline: banners ? 'playsinline' : undefined,
-				nativeControlsForTouch: banners ? false : iosVersion() >= 11,
-				techOrder: ['html5']
+				nativeControlsForTouch: banners ? false : iosVersion() >= 11
 			},
 			() => {
 				this._injectVolumeIcon();
@@ -337,7 +337,6 @@ class Player extends Component {
 	};
 
 	onPlay = () => {
-		console.log(this.player.src);
 		this.setState({ hideVideo: false });
 		if (window.innerWidth > 768) this.slideDown();
 		if (currentPlayer && currentPlayer !== this.player) {
