@@ -173,7 +173,8 @@ class Player extends Component {
 					}
 				],
 				playsinline: banners ? 'playsinline' : undefined,
-				nativeControlsForTouch: banners ? false : iosVersion() >= 11
+				nativeControlsForTouch: banners ? false : iosVersion() >= 11,
+				techOrder: ['html5']
 			},
 			() => {
 				this._injectVolumeIcon();
@@ -336,6 +337,7 @@ class Player extends Component {
 	};
 
 	onPlay = () => {
+		console.log(this.player.src);
 		this.setState({ hideVideo: false });
 		if (window.innerWidth > 768) this.slideDown();
 		if (currentPlayer && currentPlayer !== this.player) {
