@@ -12,6 +12,7 @@ const LinkElement = ({
 	className,
 	light,
 	href,
+	disableBlank,
 	...rest
 }) => {
 	const linkStyle = classNames(['Link', className, {
@@ -30,7 +31,7 @@ const LinkElement = ({
 	return (
 		<RenderedComponent {...rest} className={linkStyle} {...linkProps}>
 			{children}
-			{href && <TargetBlank className="Link__target-blank" />}
+			{href && !disableBlank && <TargetBlank className="Link__target-blank" />}
 		</RenderedComponent>
 	);
 };
@@ -41,6 +42,7 @@ LinkElement.defaultProps = {
 	children: null,
 	bold: undefined,
 	light: undefined,
+	disableBlank: false
 };
 
 LinkElement.propTypes = {
@@ -50,6 +52,7 @@ LinkElement.propTypes = {
 	children: PropTypes.node,
 	bold: PropTypes.any,
 	light: PropTypes.bool,
+	disableBlank: PropTypes.bool
 };
 
 export default LinkElement;

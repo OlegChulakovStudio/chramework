@@ -8,6 +8,16 @@ link() {
 		faster()
 	}
 }
+textLink() {
+	color $textColor
+	transition color $duration
+	cursor pointer
+
+	&:hover {
+		color $linkColor
+		faster()
+	}
+}
 
 subtitlePhone() {
 	font-size 22px
@@ -66,6 +76,10 @@ bodyXS() {
 		font-size 14px
 		line-height (16 / 14)
 	}
+}
+bodyXSGray() {
+	bodyXS()
+	color $secondTextColor
 }
 
 bold() {

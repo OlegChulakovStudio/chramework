@@ -10,9 +10,9 @@
 	&__target-blank {
 		position absolute
 		bottom 0
-		transform translateY(0.25em)
-		width 1.714em
-		height 1.714em
+		transform translateX(0.1em) translateY(-0.14em)
+		width 0.86em
+		height 0.86em
 		display inline-block
 		vertical-align middle
 		fill currentColor
@@ -27,17 +27,13 @@
 	}
 	&_bold {
 		font-weight $bold
-		font-size 16px
-
-		@media $phone {
-			font-size 18px
-		}
 	}
 	&_light {
 		color #FFFFFF
 	}
 	&_external {
+		line-height 1
 		position relative
-		padding-right 1.714em
+		padding-right 1.114em
 	}
 }
