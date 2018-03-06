@@ -18,7 +18,7 @@ const LinkElement = ({
 	const linkStyle = classNames(['Link', className, {
 		Link_bold: bold,
 		Link_light: light,
-		Link_external: href,
+		Link_external: href && !disableBlank,
 	}]);
 	const RenderedComponent = to ? NavLink : href ? 'a' : 'span';
 	let linkProps = {};
