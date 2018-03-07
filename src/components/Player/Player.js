@@ -126,7 +126,7 @@ class Player extends Component {
 			posterSrc = this.props.images;
 		}
 		this.setState({ poster: posterSrc }, () => {
-			if (isAndroid()) this.initPlayer();
+			if (this.optimisationOff()) this.initPlayer();
 		});
 	};
 
@@ -181,7 +181,7 @@ class Player extends Component {
 				this._injectFullscreenIcon();
 			}
 		);
-		if (isAndroid()) this.player.poster(this.state.poster);
+		if (this.optimisationOff()) this.player.poster(this.state.poster);
 		this.player.on('play', this.onPlay);
 
 		this.videoJsBox = this.playerBox.getElementsByClassName('Player__video');
@@ -269,6 +269,8 @@ class Player extends Component {
 		return true;
 	};
 
+	optimisationOff = () => isAndroid() || this.props.origin;
+
 	_addPath = (svg, index, d) => {
 		const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
 		path.setAttributeNS(null, 'd', d);
@@ -327,7 +329,7 @@ class Player extends Component {
 	initAndPlay = () => {
 		this.setState({ renderedVideoNode: true }, () => {
 			this.initPlayer();
-			if (!isIos() && !isAndroid()) {
+			if (!isIos() && !this.optimisationOff()) {
 				setTimeout(() => {
 					this.setState({ hideInitPoster: true });
 					this.player.play();
@@ -365,7 +367,7 @@ class Player extends Component {
 	};
 
 	isPosterShow = () =>
-		!isAndroid() && this.state.poster && !this.state.hideInitPoster;
+		!this.optimisationOff() && this.state.poster && !this.state.hideInitPoster;
 
 	toggleShare = () => {
 		this.setState({
@@ -387,7 +389,7 @@ class Player extends Component {
 	getPosterNode = i => (this.poster = i);
 
 	renderVideoNode = () => {
-		if (!isAndroid()) {
+		if (!this.optimisationOff()) {
 			if (this.state.renderedVideoNode)
 				return (
 					<video
@@ -408,7 +410,7 @@ class Player extends Component {
 	};
 
 	renderPlayer = () => {
-		const { theme, fullhd, banners, shareURL } = this.props;
+		const { theme, fullhd, banners, shareURL, origin } = this.props;
 		const playerStyle = classNames({
 			Player: true,
 			player: true,
@@ -416,6 +418,7 @@ class Player extends Component {
 			[`player_theme_${theme}`]: theme,
 			Player_compact: this.state.compact,
 			Player_banners: banners,
+			Player_originSize: origin,
 			Player_ios: iosVersion() >= 11,
 			Player_fullhd: fullhd,
 			Player_shrareOpened: this.state.shareOpened,
@@ -434,7 +437,7 @@ class Player extends Component {
 
 		const renderInner = () => (
 			<div className={playerStyle} ref={this.getPlayerBox}>
-				{!isAndroid() && (
+				{!this.optimisationOff() && (
 					<div
 						style={setPoster()}
 						onClick={this.onClick}
@@ -468,7 +471,7 @@ class Player extends Component {
 					)}
 
 				{this.state.playerConrolNode &&
-					isAndroid() && (
+					this.optimisationOff() && (
 						<PlayIconInject
 							renderNode={
 								this.playerBox.getElementsByClassName(

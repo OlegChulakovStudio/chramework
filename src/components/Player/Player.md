@@ -1,4 +1,4 @@
-	<Player compact {...{
+	<Player origin {...{
 	  shareURL: 'https://chulakov.ru/video/raiffeisen',
 	  theme: 'dark',
 	  images: {

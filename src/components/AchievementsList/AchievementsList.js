@@ -2,38 +2,55 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import reactHtmlParser from 'react-html-parser';
 import classNames from 'classnames';
+import { pluralize } from '../../utils/helpers';
 
 import Paragraph from '../Paragraph/Paragraph';
 
+import data from './data.json';
+
 import './AchievementsList.styl';
 
-const content = {
+const awardsList = {
 	eda: {
-		label: "EUROPEAN<br />DESIGN AWARDS",
-		count: 3,
+		label: "EUROPEAN<br />DESIGN AWARDS"
 	},
 	fwa: {
-		label: "FWA",
-		count: 3,
+		label: "FWA"
 	},
 	awwwards: {
-		label: "AWWWARDS",
-		count: 8,
+		label: "AWWWARDS"
 	},
 	cssda: {
-		label: "CSSDA",
-		count: 7,
+		label: "CSSDA"
 	}
 };
 
+Object.keys(data.awards).forEach(key => {
+	const dataAwardsItem = data.awards[key];
+	Object.keys(awardsList).some(awardKey => {
+		if (dataAwardsItem[awardKey]) {
+			const awardsListItem = awardsList[awardKey];
+			if (typeof awardsListItem.count === 'undefined') awardsListItem.count = 1;
+			else awardsListItem.count += 1;
+			return true;
+		}
+		return false;
+	});
+});
+
+const primaryTitle = ['награда', 'награды', 'наград'];
+
 const AchievementsList = ({ mod, className, ...rest }) => {
 	const blockStyle = classNames(['AchievementsList', className]);
+
 	return (
 		<div {...rest} className={blockStyle}>
-			<Paragraph mod={mod} className="AchievementsList__head">91 награда</Paragraph>
+			<Paragraph mod={mod} className="AchievementsList__head">
+				{`${data.awards.length} ${pluralize(data.awards.length, primaryTitle)}`}
+			</Paragraph>
 			<div className="AchievementsList__wrapper">
-				{Object.keys(content).map(key => {
-					const item = content[key];
+				{Object.keys(awardsList).map(key => {
+					const item = awardsList[key];
 					const logoStyle = classNames(['AchievementsList__logo', {
 						[`AchievementsList__logo_${key}`]: key,
 					}]);

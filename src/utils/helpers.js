@@ -1,5 +1,14 @@
 /*eslint no-undef: 0*/
 /*eslint new-cap: 0*/
+
+export const pluralize = (n, forms) => {
+	return forms[
+		n % 10 === 1 && n % 100 !== 11
+			? 0
+			: n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2
+	];
+};
+
 const buttons = [];
 const initLike = (vkButtonId, url, title, image, pageId) => {
 	const buttonElement = document.getElementById(vkButtonId);

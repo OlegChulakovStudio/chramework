@@ -40,8 +40,11 @@ import TextGroup from './components/TextGroup/TextGroup.js';
 import VideoBlock from './components/VideoBlock/VideoBlock';
 import WorkItem from './components/WorkItem/WorkItem';
 
+import AchievementsData from './components/AchievementsList/data.json';
+
 export {
 	AchievementsList,
+	AchievementsData,
 	AppLink,
 	Avatar,
 	Button,
