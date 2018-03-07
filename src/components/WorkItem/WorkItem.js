@@ -32,11 +32,9 @@ class WorkItem extends Component {
 		const { video, posters, url } = this.props;
 
 		return video ? (
-			<div className="WorkItem__visual">
-				<Player {...video} images={posters} compact />
-			</div>
+			<Player {...video} images={posters} compact />
 		) : (
-			<Link {...url} className="WorkItem__visual">
+			<Link {...url} disableBlank>
 				<img src={posters.thumb} alt="" className="WorkItem__poster WorkItem__poster_thumb" />
 				<img src={posters['poster-mini']} alt="" className="WorkItem__poster WorkItem__poster_mini" />
 			</Link>
@@ -51,8 +49,8 @@ class WorkItem extends Component {
 		return (
 			<div {...rest} className={workItemClasses}>
 				<div className="WorkItem__inner">
-					{this.renderVisual()}
-					<Link {...url} className="WorkItem__content">
+					<div className="WorkItem__visual">{this.renderVisual()}</div>
+					<Link {...url} className="WorkItem__content" disableBlank>
 						<div className="WorkItem__header">
 							<Paragraph TagName="div" mod="bold" className="WorkItem__title">
 								{reactHtmlParser(title)}

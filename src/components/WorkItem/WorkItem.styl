@@ -47,6 +47,11 @@
 				}
 			}
 		}
+		.WorkItem_link & {
+			.Link {
+				display block
+			}
+		}
 		.Link__target-blank {
 			display none
 		}
@@ -62,6 +67,9 @@
 		font-size 14px
 
 		&:hover {
+			color $linkColor
+		}
+		.WorkItem_link .WorkItem__visual:hover + & {
 			color $linkColor
 		}
 		@media $notebook {
@@ -89,7 +97,7 @@
 			top 0
 			width 32px
 			height 4px
-			background-color currentColor
+			background-color $textColor
 		}
 		.Link__target-blank {
 			display none
@@ -122,19 +130,6 @@
 			border-style solid
 			border-width $width 0 $width $width*2
 			border-color transparent transparent transparent #fff
-		}
-	}
-	&__video {
-		position absolute
-		width 100%
-		top 0
-		height 100%
-
-		&__player {
-			position absolute
-			width 100%
-			top 0
-			height 100%
 		}
 	}
 

@@ -8,6 +8,7 @@ import Card from './components/Card/Card.js';
 import Checkbox from './components/Checkbox/Checkbox.js';
 import CheckboxGroup from './components/CheckboxGroup/CheckboxGroup';
 import Clients from './components/Clients/Clients';
+import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
 import FileInput from './components/FileInput/FileInput.js';
 import FooterSection from './components/FooterSection/FooterSection';
 import FormCol from './components/FormCol/FormCol.js';
@@ -48,6 +49,7 @@ export {
 	Checkbox,
 	CheckboxGroup,
 	Clients,
+	ErrorBoundary,
 	FileInput,
 	FooterSection,
 	FormCol,

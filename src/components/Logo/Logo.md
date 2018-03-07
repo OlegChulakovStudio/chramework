@@ -1,21 +1,21 @@
-    <Logo url="http://chulakov.ru" external/>
+    <Logo linkProps={{href: "http://chulakov.ru"}} />
 
 Light:
 
-    <Logo url="http://chulakov.ru" mod="light" external/>
+    <Logo linkProps={{href: "http://chulakov.ru"}} mod="light" />
 
 Black:
 
-    <Logo url="http://chulakov.ru" type="black" external/>
+    <Logo linkProps={{href: "http://chulakov.ru"}} type="black" />
 
 Small:
 
-    <Logo url="http://chulakov.ru" size="small" external/>
+    <Logo linkProps={{href: "http://chulakov.ru"}} size="small" />
 
 With text:
 
-    <Logo url="http://chulakov.ru" external text="media"/>
+    <Logo linkProps={{href: "http://chulakov.ru"}} text="media" />
 
 With subline:
 
-    <Logo url="http://chulakov.ru" external text="media" ingroup />
+    <Logo linkProps={{href: "http://chulakov.ru"}} text="media" ingroup />

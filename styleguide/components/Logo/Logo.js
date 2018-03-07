@@ -17,7 +17,7 @@ const styles = ({ color, fontFamily, fontSize }) => ({
 export function LogoRenderer({ classes, children }) {
   return (
     <h1 className={classes.logo}>
-      <StyledLogo url="http://chulakov.ru" external/>
+      <StyledLogo linkProps={{href:"http://chulakov.ru"}} />
     </h1>
   );
 }
