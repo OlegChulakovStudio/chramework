@@ -47,14 +47,12 @@ const calculateQuality = new Promise((resolve, reject) => {
 	}
 });
 
-class PlayIconInject extends Component {
-	render() {
-		return ReactDOM.createPortal(
-			<PlayIcon className="vjs-big-play-button__icon" />,
-			this.props.renderNode
-		);
-	}
-}
+const PlayIconInject = ({ renderNode }) =>
+	ReactDOM.createPortal(
+		<PlayIcon className="vjs-big-play-button__icon" />,
+		renderNode
+	);
+
 class Player extends Component {
 	static defaultProps = {
 		compact: false,
@@ -83,7 +81,7 @@ class Player extends Component {
 		qualityList: {},
 		currentQuality: calculatedQuality || (isIos() ? 'mob' : 'hight'),
 
-		playerConrolNode: null,
+		playerInited: false,
 		renderedVideoNode: false,
 
 		shareOpened: false,
@@ -158,18 +156,22 @@ class Player extends Component {
 	initPlayer = () => {
 		const { src, banners } = this.props;
 
-		console.log(typeof src === 'object' ? src[this.state.currentQuality] : src);
+		if (typeof this.state.currentQuality === 'undefined') {
+			console.log(src, this.state.currentQuality);
+		}
 		this.player = this.videojs(
 			this.video,
 			{
 				preload: 'none',
 				autoPlay: false,
 				controls: true,
-				// poster: banners ? poster : undefined,
 				loop: banners,
 				sources: [
 					{
-						src: typeof src === 'object' ? src[this.state.currentQuality] : src,
+						src:
+							typeof src === 'object'
+								? src[this.state.currentQuality || (isIos() ? 'mob' : 'hight')]
+								: src,
 						type: 'video/mp4'
 					}
 				],
@@ -181,7 +183,10 @@ class Player extends Component {
 				this._injectFullscreenIcon();
 			}
 		);
-		if (this.optimisationOff()) this.player.poster(this.state.poster);
+		if (this.optimisationOff()) {
+			this.player.poster(this.state.poster);
+			this.poster = this.playerBox.getElementsByClassName('vjs-poster')[0];
+		}
 		this.player.on('play', this.onPlay);
 
 		this.videoJsBox = this.playerBox.getElementsByClassName('Player__video');
@@ -194,13 +199,15 @@ class Player extends Component {
 						label: this.getQualityLabel(key)
 					})
 			);
-			this.setState({
-				qualityList,
-				playerConrolNode: this.playerBox.getElementsByClassName(
-					'vjs-control-bar'
-				)[0]
-			});
+			this.setState({ qualityList });
 		}
+		this.playerConrolNode = this.playerBox.getElementsByClassName(
+			'vjs-control-bar'
+		)[0];
+		this.playButtonNode = this.playerBox.getElementsByClassName(
+			'vjs-big-play-button'
+		)[0];
+		this.setState({ playerInited: true });
 	};
 
 	changeQuality = type => {
@@ -269,7 +276,7 @@ class Player extends Component {
 		return true;
 	};
 
-	optimisationOff = () => isAndroid() || this.props.origin;
+	optimisationOff = () => isAndroid() || !!this.props.origin;
 
 	_addPath = (svg, index, d) => {
 		const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
@@ -458,11 +465,11 @@ class Player extends Component {
 					/>
 				)}
 
-				{this.state.playerConrolNode &&
+				{this.state.playerInited &&
 					Boolean(Object.keys(this.state.qualityList).length) && (
 						<ChangeQuality
 							qualityList={this.state.qualityList}
-							renderNode={this.state.playerConrolNode}
+							renderNode={this.playerConrolNode}
 							currentQuality={this.state.currentQuality}
 							onChangeQuality={this.changeQuality}
 							onClick={isIos() ? this.toggleChangeQuality : undefined}
@@ -470,23 +477,17 @@ class Player extends Component {
 						/>
 					)}
 
-				{this.state.playerConrolNode &&
+				{this.state.playerInited &&
 					this.optimisationOff() && (
-						<PlayIconInject
-							renderNode={
-								this.playerBox.getElementsByClassName(
-									'vjs-big-play-button'
-								)[0]
-							}
-						/>
+						<PlayIconInject renderNode={this.playButtonNode} />
 					)}
 			</div>
 		);
 		return banners ? (
-			<div className="wrapper-player">
-				{renderInner()}
-			</div>
-		) : renderInner();
+			<div className="wrapper-player">{renderInner()}</div>
+		) : (
+			renderInner()
+		);
 	};
 	render() {
 		return isIos() ? (

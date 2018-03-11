@@ -275,23 +275,22 @@ $compact-player-ratio = (240/840*100%)
 
 		&:before {
 			display none
-			padding 0
 			content none
 		}
-		& .vjs-poster, & .vjs-tech {
+		.vjs-poster {
+			fullsize()
+		}
+		.vjs-tech {
 			display block
-			position relative !important
-			left auto !important
-			right auto !important
-			top auto !important
-			bottom auto !important
+			position static
+			width 100%
+			height auto
 		}
 		.Player__video {
 			position relative
 			margin 0
 
 			&:before {
-				padding 0
 				display none
 			}
 		}

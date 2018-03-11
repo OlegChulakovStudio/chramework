@@ -33,19 +33,16 @@
 .vjs-poster {
 	background-repeat no-repeat
 	background-position center
-	background-size contain
-	opacity 1
-	visibility visible
-	transition opacity $duration, visibility 0s
+	background-size cover
 
 	@media $phone {
 		background-size cover
 	}
-	.vjs-has-started & {
-		opacity 0
-		visibility hidden
-		transition opacity $duration, visibility 0s $duration
-	}
+	// .vjs-has-started & {
+	// 	opacity 0
+	// 	visibility hidden
+	// 	transition opacity $duration, visibility 0s $duration
+	// }
 }
 .vjs-control-bar {
 	position absolute
