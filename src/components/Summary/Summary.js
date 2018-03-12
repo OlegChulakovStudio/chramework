@@ -21,7 +21,9 @@ const usability = {
 }
 
 const Summary = ({ awards, className, external, ...rest }) => {
-	const blockStyle = classNames(['Summary', className]);
+	const blockStyle = classNames(['Summary', className, {
+		'Summary_awards': awards
+	}]);
 
 	const productionLink = external ? production.external : production.internal;
 	const designLink = external ? design.external : design.internal;
