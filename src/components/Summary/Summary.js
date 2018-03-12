@@ -9,15 +9,15 @@ import './Summary.styl';
 
 const production = {
 	external: { href: 'https://chulakov.ru/life/top8' },
-	internal: { to: { pathname: '/life/top8', fromHome: true } }
+	internal: { to: { pathname: '/life/top8', state: { fromHome: true } } }
 }
 const design = {
 	external: { href: 'https://chulakov.ru/life/top2' },
-	internal: { to: { pathname: '/life/top2', fromHome: true } }
+	internal: { to: { pathname: '/life/top2', state: { fromHome: true } } }
 }
 const usability = {
 	external: { href: 'https://chulakov.ru/life/best-usability' },
-	internal: { to: { pathname: '/life/best-usability', fromHome: true } }
+	internal: { to: { pathname: '/life/best-usability', state: { fromHome: true } } }
 }
 
 const Summary = ({ awards, className, external, ...rest }) => {
