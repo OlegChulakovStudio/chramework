@@ -8,12 +8,16 @@ import Link from '../Link/Link';
 import './Summary.styl';
 
 const production = {
-	external: { href: 'https://chulakov.ru/life/top8'},
-	internal: {to: { pathname: '/life/top8', fromHome: true }}
+	external: { href: 'https://chulakov.ru/life/top8' },
+	internal: { to: { pathname: '/life/top8', fromHome: true } }
 }
 const design = {
-	external: {href: 'https://chulakov.ru/life/top2'},
-	internal: {to: { pathname: '/life/top2', fromHome: true }}
+	external: { href: 'https://chulakov.ru/life/top2' },
+	internal: { to: { pathname: '/life/top2', fromHome: true } }
+}
+const usability = {
+	external: { href: 'https://chulakov.ru/life/best-usability' },
+	internal: { to: { pathname: '/life/best-usability', fromHome: true } }
 }
 
 const Summary = ({ awards, className, external, ...rest }) => {
@@ -21,6 +25,7 @@ const Summary = ({ awards, className, external, ...rest }) => {
 
 	const productionLink = external ? production.external : production.internal;
 	const designLink = external ? design.external : design.internal;
+	const usabilityLink = external ? usability.external : usability.internal;
 
 	return (
 		<div {...rest} className={blockStyle}>
@@ -30,10 +35,16 @@ const Summary = ({ awards, className, external, ...rest }) => {
 			</div>}
 			{!awards && <div className="Summary__item Summary__item_counter" key="counter2">
 				<div className="Summary__number">9</div>
-				<div className="Summary__title">
-					<Paragraph mod="boldMedium">лет опыта</Paragraph>
-				</div>
+				<Paragraph className="Summary__title" mod="boldMedium">лет опыта</Paragraph>
 			</div>}
+			<div className="Summary__item Summary__item_medal Summary__item_medal1">
+				<div className="Summary__content">
+					<Paragraph mod="boldMedium" className="Summary__title">Лучший usability/UX</Paragraph>
+					<Paragraph mod="bodySmall" className="Summary__text">
+						по версии <nobr>«<Link {...usabilityLink} className="Summary__text-link">Золотого сайта</Link>»</nobr>
+					</Paragraph>
+				</div>
+			</div>
 			<div className="Summary__item Summary__item_medal Summary__item_medal2">
 				<div className="Summary__content">
 					<Paragraph mod="boldMedium" className="Summary__title">Топ-2 <nobr>дизайн-студий</nobr></Paragraph>
