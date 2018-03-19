@@ -6,6 +6,7 @@ heading1() {
 
 	@media $phone {
 		font-size 42px
+		margin-bottom 24px
 	}
 }
 heading2() {
@@ -17,6 +18,7 @@ heading2() {
 	@media $phone {
 		font-size 34px
 		line-height 38px
+		margin-bottom 16px
 	}
 }
 heading3() {
@@ -24,6 +26,10 @@ heading3() {
 	font-weight $bold
 	line-height 34px
 	margin-bottom 16px
+
+	@media $phone {
+		margin-bottom 8px
+	}
 }
 heading4() {
 	font-size 18px

@@ -29,6 +29,16 @@
 	],
 	"awards": [
 		{
+			"name": "Рейтинг Рунета",
+			"link": "Золото",
+			"icon": "ratingruneta",
+			"note": "Развлечение и&nbsp;спорт",
+			"project": "Baku City Circuit",
+			"international": false,
+			"russian": true,
+			"festival": false
+		},
+		{
 			"name": "Золотой сайт",
 			"link": "Золото",
 			"icon": "goldensite",
@@ -62,8 +72,8 @@
 			"name": "Золотой сайт",
 			"link": "Серебро",
 			"icon": "goldensite",
-			"note": "Сайт спортивной организации, клуба, проекта, мероприятия",
-			"project": "Baku City Circuit",
+			"note": "Сервис, портал в&nbsp;области строительства и&nbsp;недвижимости",
+			"project": "Тинькофф Недвижимость",
 			"international": false,
 			"russian": true,
 			"festival": false
@@ -72,8 +82,28 @@
 			"name": "Золотой сайт",
 			"link": "Серебро",
 			"icon": "goldensite",
-			"note": "Сервис, портал в&nbsp;области строительства и&nbsp;недвижимости",
-			"project": "Тинькофф Недвижимость",
+			"note": "Cайт digital-агентства/продакшена",
+			"project": "Сайт Студии Олега Чулакова",
+			"international": false,
+			"russian": true,
+			"festival": false
+		},
+		{
+			"name": "Золотой сайт",
+			"link": "Серебро",
+			"icon": "goldensite",
+			"note": "Сайт вендора, платформы, сервиса",
+			"project": "Adcombo",
+			"international": false,
+			"russian": true,
+			"festival": false
+		},
+		{
+			"name": "Золотой сайт",
+			"link": "Бронза",
+			"icon": "goldensite",
+			"note": "Сайт спортивной организации, клуба, проекта, мероприятия",
+			"project": "Baku City Circuit",
 			"international": false,
 			"russian": true,
 			"festival": false
@@ -84,26 +114,6 @@
 			"icon": "goldensite",
 			"note": "Сайт банка или страховой компании",
 			"project": "МегаФон.Банк",
-			"international": false,
-			"russian": true,
-			"festival": false
-		},
-		{
-			"name": "Золотой сайт",
-			"link": "Бронза",
-			"icon": "goldensite",
-			"note": "Cайт digital-агентства/продакшена",
-			"project": "Сайт Студии Олега Чулакова",
-			"international": false,
-			"russian": true,
-			"festival": false
-		},
-		{
-			"name": "Золотой сайт",
-			"link": "Бронза",
-			"icon": "goldensite",
-			"note": "Сайт вендора, платформы, сервиса",
-			"project": "Adcombo",
 			"international": false,
 			"russian": true,
 			"festival": false
