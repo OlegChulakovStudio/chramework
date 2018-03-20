@@ -43,7 +43,7 @@ const calculateQuality = new Promise((resolve, reject) => {
 			});
 		});
 		document.addEventListener('keypress', e => {
-			if (e.target.tagName !== 'TEXTAREA' && e.target.tagName !== 'INPUT') {
+			if (e.target.tagName !== 'TEXTAREA' && e.target.tagName !== 'INPUT' && !e.target.classList.contains('vjs-play-control')) {
 				if (e.keyCode === 32) {
 					if (currentPlayer) {
 						e.preventDefault();
@@ -224,6 +224,10 @@ class Player extends Component {
 			'vjs-big-play-button'
 		)[0];
 		this.setState({ playerInited: true });
+
+		this.playerConrolNode.addEventListener('click', (e) => {
+			this.playerBox.getElementsByClassName('vjs-fullscreen-control')[0].blur();
+		});
 	};
 
 	changeQuality = type => {
