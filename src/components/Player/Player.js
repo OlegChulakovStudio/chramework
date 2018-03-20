@@ -59,7 +59,8 @@ class Player extends Component {
 		fullhd: false,
 		banners: false,
 		theme: 'light',
-		shareURL: undefined
+		shareURL: undefined,
+		hideBar: false
 	};
 	static propTypes = {
 		compact: PropTypes.bool,
@@ -68,7 +69,8 @@ class Player extends Component {
 		banners: PropTypes.bool,
 		images: PropTypes.object,
 		src: PropTypes.any,
-		shareURL: PropTypes.string
+		shareURL: PropTypes.string,
+		hideBar: PropTypes.bool
 	};
 	state = {
 		isCollapsed: this.props.compact,
@@ -389,7 +391,7 @@ class Player extends Component {
 		});
 	};
 
-	noop = () => {};
+	noop = () => { };
 
 	getPlayerBox = i => (this.playerBox = i);
 	getPlayerNode = i => (this.video = i);
@@ -417,7 +419,7 @@ class Player extends Component {
 	};
 
 	renderPlayer = () => {
-		const { theme, fullhd, banners, shareURL, origin } = this.props;
+		const { theme, fullhd, banners, shareURL, origin, hideBar } = this.props;
 		const playerStyle = classNames({
 			Player: true,
 			player: true,
@@ -425,6 +427,7 @@ class Player extends Component {
 			[`player_theme_${theme}`]: theme,
 			Player_compact: this.state.compact,
 			Player_banners: banners,
+			Player_hideBar: hideBar,
 			Player_originSize: origin,
 			Player_ios: iosVersion() >= 11,
 			Player_fullhd: fullhd,
@@ -486,8 +489,8 @@ class Player extends Component {
 		return banners ? (
 			<div className="wrapper-player">{renderInner()}</div>
 		) : (
-			renderInner()
-		);
+				renderInner()
+			);
 	};
 	render() {
 		return isIos() ? (
@@ -497,8 +500,8 @@ class Player extends Component {
 				{this.renderPlayer()}
 			</Waypoint>
 		) : (
-			this.renderPlayer()
-		);
+				this.renderPlayer()
+			);
 	}
 }
 export default Player;
