@@ -27,7 +27,7 @@ let currentPlayer = null; // For pausing active player
 let calculatedQuality = undefined;
 const calculateQuality = new Promise((resolve, reject) => {
 	if (typeof window !== 'undefined') {
-		window.onload = () => {
+		window.addEventListener('load', () => {
 			checkSpeed(speed => {
 				switch (true) {
 					case speed > 400 && speed <= 1000:
@@ -41,7 +41,21 @@ const calculateQuality = new Promise((resolve, reject) => {
 				}
 				resolve(calculatedQuality);
 			});
-		};
+		});
+		document.addEventListener('keypress', e => {
+			if (e.target.tagName !== 'TEXTAREA' && e.target.tagName !== 'INPUT') {
+				if (e.keyCode === 32) {
+					if (currentPlayer) {
+						e.preventDefault();
+						if (currentPlayer.paused()) {
+							currentPlayer.play();
+						} else {
+							currentPlayer.pause();
+						}
+					}
+				}
+			}
+		});
 	} else {
 		resolve(isIos() ? 'mob' : 'hight');
 	}
