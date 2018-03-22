@@ -41,7 +41,7 @@ const Summary = ({ awards, className, external, ...rest }) => {
 			</div>}
 			<div className="Summary__item Summary__item_medal Summary__item_medal1">
 				<div className="Summary__content">
-					<Paragraph mod="boldMedium" className="Summary__title">Лучший usability/UX</Paragraph>
+					<Paragraph mod="boldMedium" className="Summary__title">Лучший usability / UX</Paragraph>
 					<Paragraph mod="bodySmall" className="Summary__text">
 						по версии <nobr>«<Link {...usabilityLink} className="Summary__text-link">Золотого сайта</Link>»</nobr>
 					</Paragraph>
