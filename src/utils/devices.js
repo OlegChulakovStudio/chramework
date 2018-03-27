@@ -35,12 +35,8 @@ export const isFirefox = () => (/firefox/i).test(navigator.userAgent);
 
 export const iosVersion = () => {
 	const navigator = getNavigator();
-	if (isIos() && typeof window !== 'undefined') {
-		const v = navigator ? navigator.appVersion.match(/OS (\d+)_(\d+)_?(\d+)?/) : null;
-		if (v !== null) {
-			return parseInt(v[1], 10);
-		}
-		return null;
+	if (navigator && /(iPhone|iPod|iPad)/i.test(navigator.userAgent)) {
+		return navigator.userAgent.match(/OS [\d_]+/i)[0].substr(3).split('_').map(n => parseInt(n, 10))[0];
 	}
 	return null;
 };
