@@ -8,9 +8,6 @@ import Button from '../Button/Button';
 import Copyright from '../Copyright/Copyright.js';
 import moscow from '../../assets/contacts/moscow.svg';
 import rostov from '../../assets/contacts/rostov.svg';
-import facebook from '../../assets/socials/facebook.svg';
-import vkontakte from '../../assets/socials/vkontakte.svg';
-import instagram from '../../assets/socials/instagram.svg';
 
 import './FooterSection.styl';
 
@@ -30,18 +27,11 @@ const data = [{
 	tel: '+78633036191'
 }];
 
-const socials = [
-	{
-		icon: facebook,
-		link: 'https://www.facebook.com/OlegChulakovStudio/'
-	}, {
-		icon: vkontakte,
-		link: 'https://vk.com/olegchulakovstudio'
-	}, {
-		icon: instagram,
-		link: 'https://www.instagram.com/chulakov_ru/'
-	}];
-
+const socials = {
+	facebook: 'https://www.facebook.com/OlegChulakovStudio/',
+	vkontakte: 'https://vk.com/olegchulakovstudio',
+	instagram: 'https://www.instagram.com/chulakov_ru/'
+}
 const FooterSection = ({ text, light, offsetLeft, offsetRight, email, className, showButton, ...rest }) => {
 	const blockStyle = classNames('FooterSection', className, {
 		'FooterSection--light': light,
