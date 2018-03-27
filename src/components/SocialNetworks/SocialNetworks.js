@@ -28,7 +28,7 @@ const SocialNetworks = ({ data, mod }) => {
 };
 
 SocialNetworks.propTypes = {
-	data: PropTypes.object
+	data: PropTypes.array
 }
 
 export default SocialNetworks;
