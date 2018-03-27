@@ -49,7 +49,7 @@ export default class Logo extends Component {
 					}
 				])}>
 				<LogoIcon className="Logo__icon" width={120} height={28} />
-				{text && <span className="Logo__text">{text}</span>}
+				{text && <span className="Logo__sufix">{text}</span>}
 				{linkProps && <Link {...linkProps} disableBlank className="Logo__link" />}
 				{ingroup && <span className="Logo__ingroup">
 					{reactHtmlParser('в составе <a href="https://group.chulakov.ru/" target="_blank">Chulakov Group</a>')}

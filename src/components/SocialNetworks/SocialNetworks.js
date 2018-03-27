@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import './SocialNetworks.styl';
+
 import telegram from '../../assets/socials/telegram.svg';
 import facebook from '../../assets/socials/facebook.svg';
 import vkontakte from '../../assets/socials/vkontakte.svg';
 import instagram from '../../assets/socials/instagram.svg';
+
+import './SocialNetworks.styl';
 
 const socialIcons = {
 	telegram,
@@ -22,7 +24,6 @@ const SocialNetworks = ({ data, mod }) => {
 		<div className={blockStyl}>
 			{
 				Object.keys(data).map((key, i) => {
-					console.log(socialIcons[key])
 					const Icon = socialIcons[key];
 					const id = `social${i}`;
 					return (
@@ -41,7 +42,7 @@ const SocialNetworks = ({ data, mod }) => {
 };
 
 SocialNetworks.propTypes = {
-	data: PropTypes.array
+	data: PropTypes.object
 }
 
 export default SocialNetworks;

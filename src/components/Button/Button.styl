@@ -19,8 +19,31 @@
 	box-shadow none
 	transition color $duration
 
-	&:hover {
+	&:hover, &--hover {
 		background-color transparent
+		color #fff
+
+		.Button__inner {
+			background-color $linkHoverColor
+			faster()
+
+			@media $phone {
+				background-color $linkColor
+			}
+		}
+	}
+	&:disabled {
+		cursor not-allowed
+		color #a3a5b1
+
+		.Button__inner {
+			background-color #f2f2f2
+		}
+		&:hover, .Button--hover& {
+			.Button__inner {
+				background-color #f2f2f2
+			}
+		}
 	}
 	&__inner {
 		position relative
@@ -42,7 +65,6 @@
 		border-radius 4px
 		box-shadow 0 2px 4px $linkColor
 		transform-origin 50% 100%
-		// background-color $linkColor
 		transform translateZ(0)
 		opacity 0.3
 		transition transform $duration, opacity $duration
@@ -54,42 +76,6 @@
 		box-shadow 0 2px 4px #CDD0D3
 		border-radius 4px
 	}
-	&:disabled {
-		cursor not-allowed
-		color #a3a5b1
-
-		.Button__inner {
-			background-color #f2f2f2
-		}
-		&:hover {
-			.Button__inner {
-				background-color #f2f2f2
-			}
-		}
-	}
-	&:hover {
-		color #fff
-
-		.Button__inner {
-			background-color $linkHoverColor
-			faster()
-		}
-		@media $phone {
-			.Button__inner {
-				background-color $linkColor
-			}
-		}
-	}
-	// &__arrow-wrapper {
-	// 	position absolute
-	// 	top 50%
-	// 	margin-top -10px
-	// 	right 22px
-	// 	overflow hidden
-	// 	width 40px
-	// 	height 20px
-	// 	display flex
-	// }
 	&__arrow {
 		position absolute
 		top 50%
@@ -117,7 +103,7 @@
 			padding-right 80px
 		}
 		@media $withoutPhone {
-			&:hover {
+			&:hover, &.Button--hover {
 				.Button__arrow {
 					transform translateX(3px) translateZ(0)
 					faster()
@@ -139,11 +125,6 @@
 		&:before {
 			display none
 		}
-		&:active {
-			.Button__inner {
-				// transform translateY(1px) !important
-			}
-		}
 		.Button__inner {
 			border-style solid
 			border-width 2px
@@ -151,7 +132,7 @@
 			background-color transparent
 		}
 		@media $withoutPhone {
-			&:hover {
+			&:hover, &.Button--hover {
 				color #fff
 
 				.Button__inner {
@@ -161,7 +142,7 @@
 			}
 		}
 		@media $phone {
-			&:hover {
+			&:hover, &.Button--hover {
 				color $linkColor
 
 				.Button__inner {
@@ -170,10 +151,7 @@
 			}
 		}
 		&.Button--active, &:active {
-			// background-color transparent
-			// color $textColor
 			color #fff
-			// transform none
 
 			.Button__inner {
 				background-color $linkColor
@@ -188,7 +166,7 @@
 			border-color #fff
 		}
 		@media $withoutPhone {
-			&:hover {
+			&:hover, &.Button--hover {
 				color $textColor !important
 				// faster()
 
@@ -199,7 +177,7 @@
 			}
 		}
 		@media $phone {
-			&:hover {
+			&:hover, &.Button--hover {
 				color #fff
 
 				.Button__inner {
@@ -245,12 +223,12 @@
 		.Button__inner {
 			background $greenColor
 		}
-		&:hover {
+		&:hover, &.Button--hover {
 			.Button__inner {
 				background darken($greenColor, 15%)
 			}
 		}
-		&:active {
+		&:active, &.Button--active {
 			.Button__inner {
 				background-color darken($greenColor, 30%)
 			}
@@ -261,12 +239,12 @@
 			background $redColor
 		}
 
-		&:hover {
+		&:hover, &.Button--hover {
 			.Button__inner {
 				background darken($redColor, 15%)
 			}
 		}
-		&:active {
+		&:active, &.Button--active {
 			.Button__inner {
 				background-color darken($redColor, 30%)
 			}
