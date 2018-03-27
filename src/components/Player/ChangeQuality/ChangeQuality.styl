@@ -168,15 +168,13 @@
 				opacity 0.4
 			}
 			&__button {
-				opacity 0.6
-
-				&& > svg, &&:hover > svg {
-					fill rgb(255, 255, 255)
+				^[0]& > svg, ^[0]&:hover > svg {
+					fill rgb(195,192,190)
 					transition transform 150ms
 					will-change transform
 				}
-				&&:active > svg {
-					fill rgb(255, 255, 255)
+				^[0]&:active > svg {
+					fill rgb(195,192,190)
 					transform scale(0.89)
 				}
 			}

@@ -87,7 +87,7 @@ class Player extends Component {
 		hideBar: PropTypes.bool
 	};
 	state = {
-		isCollapsed: this.props.compact,
+		isCollapsed: !isPad() && this.props.compact,
 		compact: !isPad() && this.props.compact,
 
 		poster: undefined,
@@ -206,6 +206,8 @@ class Player extends Component {
 		this.player.on('play', this.onPlay);
 
 		this.videoJsBox = this.playerBox.getElementsByClassName('Player__video');
+
+		// qualityList init
 		const qualityList = {};
 		if (typeof src === 'object') {
 			Object.keys(src).map(
@@ -217,12 +219,9 @@ class Player extends Component {
 			);
 			this.setState({ qualityList });
 		}
-		this.playerConrolNode = this.playerBox.getElementsByClassName(
-			'vjs-control-bar'
-		)[0];
-		this.playButtonNode = this.playerBox.getElementsByClassName(
-			'vjs-big-play-button'
-		)[0];
+
+		this.playerConrolNode = this.playerBox.getElementsByClassName('vjs-control-bar')[0];
+		this.playButtonNode = this.playerBox.getElementsByClassName('vjs-big-play-button')[0];
 		this.setState({ playerInited: true });
 
 		this.playerConrolNode.addEventListener('click', (e) => {
@@ -367,7 +366,7 @@ class Player extends Component {
 
 	onPlay = () => {
 		this.setState({ hideVideo: false });
-		if (window.innerWidth > 768) this.slideDown();
+		this.slideDown();
 		if (currentPlayer && currentPlayer !== this.player) {
 			currentPlayer.pause();
 		}
@@ -507,8 +506,8 @@ class Player extends Component {
 		return banners ? (
 			<div className="wrapper-player">{renderInner()}</div>
 		) : (
-				renderInner()
-			);
+			renderInner()
+		);
 	};
 	render() {
 		return isIos() ? (
