@@ -1,22 +1,15 @@
 import React from 'react';
-import facebook from '../../assets/socials/facebook.svg';
-import vkontakte from '../../assets/socials/vkontakte.svg';
-import instagram from '../../assets/socials/instagram.svg';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import './SocialNetworks.styl';
 
-const data = [{
-	icon: facebook,
-	link: 'https://www.facebook.com/OlegChulakovStudio/'
-}, {
-	icon: vkontakte,
-	link: 'https://vk.com/olegchulakovstudio'
-}, {
-	icon: instagram,
-	link: 'https://www.instagram.com/chulakov_ru/'
-}];
-const SocialNetworks = () => {
+
+const SocialNetworks = ({ data, mod }) => {
+	const blockStyl = classNames("SocialNetworks", {
+		[`SocialNetworks_${mod}`]: mod,
+	})
 	return (
-		<div className="SocialNetworks">
+		<div className={blockStyl}>
 			{data.map((item, i) => {
 				const Icon = item.icon;
 				const key = `social${i}`;
@@ -33,5 +26,9 @@ const SocialNetworks = () => {
 		</div>
 	);
 };
+
+SocialNetworks.propTypes = {
+	data: PropTypes.object
+}
 
 export default SocialNetworks;
