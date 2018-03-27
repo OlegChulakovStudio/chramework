@@ -28,6 +28,7 @@ const data = [{
 }];
 
 const socials = {
+	telegram: 'https://www.facebook.com/OlegChulakovStudio/',
 	facebook: 'https://www.facebook.com/OlegChulakovStudio/',
 	vkontakte: 'https://vk.com/olegchulakovstudio',
 	instagram: 'https://www.instagram.com/chulakov_ru/'
