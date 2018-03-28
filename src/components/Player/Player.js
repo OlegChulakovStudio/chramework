@@ -80,6 +80,7 @@ class Player extends Component {
 		compact: PropTypes.bool,
 		theme: PropTypes.string,
 		fullhd: PropTypes.bool,
+		loop: PropTypes.bool,
 		banners: PropTypes.bool,
 		images: PropTypes.object,
 		src: PropTypes.any,
@@ -170,7 +171,7 @@ class Player extends Component {
 		}
 	}
 	initPlayer = () => {
-		const { src, banners } = this.props;
+		const { src, loop, banners } = this.props;
 
 		if (typeof this.state.currentQuality === 'undefined') {
 			console.log(src, this.state.currentQuality);
@@ -181,7 +182,7 @@ class Player extends Component {
 				preload: 'none',
 				autoPlay: false,
 				controls: true,
-				loop: banners,
+				loop: loop,
 				sources: [
 					{
 						src:
@@ -506,8 +507,8 @@ class Player extends Component {
 		return banners ? (
 			<div className="wrapper-player">{renderInner()}</div>
 		) : (
-			renderInner()
-		);
+				renderInner()
+			);
 	};
 	render() {
 		return isIos() ? (
