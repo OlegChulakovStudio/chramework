@@ -66,17 +66,20 @@ $compact-player-ratio = (240/840*100%)
 		display block
 		position relative
 	}
-	&__video, &__poster {
-		&:hover .Player__play {
-			background-color #fff
-			faster()
+	&__poster, &__video {
+		&:hover .vjs-big-play-button {
+			background #FFF
+			transform scale(1.05)
+
+			svg {
+				fill $linkHoverColor
+			}
+		}
+		&:active .vjs-big-play-button {
+			transform scale(0.95) translateZ(0)
 
 			@media $phone {
-				background transparent
-			}
-			.Player__icon {
-				fill $linkColor
-				faster()
+				transform scale(0.9) translateZ(0)
 			}
 		}
 	}
@@ -107,22 +110,6 @@ $compact-player-ratio = (240/840*100%)
 			display none !important
 		}
 	}
-	&__poster, &__video {
-		&:hover .vjs-big-play-button {
-			background #FFF
-
-			svg {
-				fill $linkColor
-			}
-		}
-		&:active .vjs-big-play-button {
-			transform scale(0.95) translateZ(0)
-
-			@media $phone {
-				transform scale(0.9) translateZ(0)
-			}
-		}
-	}
 	&__poster {
 		fullsize()
 		cursor pointer
@@ -146,7 +133,7 @@ $compact-player-ratio = (240/840*100%)
 			svg {
 				width 100%
 				height 100%
-				fill #FFF
+				fill $linkColor
 				transition fill $duration
 			}
 		}

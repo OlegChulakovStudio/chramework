@@ -354,7 +354,7 @@ $hover-shift = 1px
 	border none
 	cursor pointer
 	transform translateZ(0)
-	background $linkColor
+	background #fff
 	border-radius 50%
 	width 76px
 	height 76px
@@ -370,28 +370,6 @@ $hover-shift = 1px
 		&:before {
 			border-width 11px 0 11px 18px
 			margin-left 19px
-		}
-	}
-
-	&__icon {
-		width 100%
-		height 100%
-		fill #FFF
-		transition fill $duration
-	}
-
-	.Player__video:hover & {
-		background #FFF
-
-		svg {
-			fill $linkColor
-		}
-	}
-	.Player__video:active & {
-		transform scale(0.95) translateZ(0)
-
-		@media $phone {
-			transform scale(0.9) translateZ(0)
 		}
 	}
 
