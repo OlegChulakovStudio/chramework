@@ -37,6 +37,7 @@ const calculateQuality = new Promise((resolve, reject) => {
 						calculatedQuality = 'hight';
 						break;
 					default:
+						calculatedQuality = 'mob';
 						break;
 				}
 				resolve(calculatedQuality);
