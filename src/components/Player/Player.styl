@@ -67,6 +67,14 @@ $compact-player-ratio = (240/840*100%)
 		position relative
 	}
 	&__poster, &__video {
+		.vjs-big-play-button {
+			svg {
+				width 100%
+				height 100%
+				fill $linkColor
+				transition fill $duration
+			}
+		}
 		&:hover .vjs-big-play-button {
 			background #FFF
 			transform scale(1.05)
@@ -129,14 +137,6 @@ $compact-player-ratio = (240/840*100%)
 				transition opacity 0.2s, visibility 0s 0.2s
 			}
 		}
-		.vjs-big-play-button {
-			svg {
-				width 100%
-				height 100%
-				fill $linkColor
-				transition fill $duration
-			}
-		}
 	}
 	.vjs-poster, .vjs-tech {
 		position absolute
@@ -163,7 +163,7 @@ $compact-player-ratio = (240/840*100%)
 			background-repeat no-repeat
 		}
 		.vjs-volume-panel, .vjs-fullscreen-control {
-			display: none
+			display none
 		}
 	}
 	&_hideVideo {
