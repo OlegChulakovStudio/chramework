@@ -31,17 +31,9 @@ const Summary = ({ awards, className, external, ...rest }) => {
 
 	return (
 		<div {...rest} className={blockStyle}>
-			{!awards && <div className="Summary__item Summary__item_counter" key="counter1">
-				<div className="Summary__number">70</div>
-				<Paragraph mod="boldMedium" className="Summary__title">специалистов</Paragraph>
-			</div>}
-			{!awards && <div className="Summary__item Summary__item_counter" key="counter2">
-				<div className="Summary__number">9</div>
-				<Paragraph className="Summary__title" mod="boldMedium">лет опыта</Paragraph>
-			</div>}
 			<div className="Summary__item Summary__item_medal Summary__item_medal1">
 				<div className="Summary__content">
-					<Paragraph mod="boldMedium" className="Summary__title">Лучший usability / UX</Paragraph>
+					<Paragraph mod="boldMedium" className="Summary__title">Лучший <nobr>usability / UX</nobr></Paragraph>
 					<Paragraph mod="bodySmall" className="Summary__text">
 						по версии <nobr>«<Link {...usabilityLink} className="Summary__text-link">Золотого сайта</Link>»</nobr>
 					</Paragraph>
@@ -69,6 +61,14 @@ const Summary = ({ awards, className, external, ...rest }) => {
 					</Paragraph>
 				</div>
 			</div>
+			{!awards && <div className="Summary__item Summary__item_counter" key="counter2">
+				<div className="Summary__number">9</div>
+				<Paragraph className="Summary__title" mod="boldMedium">лет опыта</Paragraph>
+			</div>}
+			{!awards && <div className="Summary__item Summary__item_counter" key="counter1">
+				<div className="Summary__number">70</div>
+				<Paragraph mod="boldMedium" className="Summary__title">специалистов</Paragraph>
+			</div>}
 		</div>
 	);
 };
