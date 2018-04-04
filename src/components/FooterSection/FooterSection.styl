@@ -12,6 +12,9 @@
 		@media $verticalTablet {
 			width auto
 			margin-bottom 32px
+			&:last-child {
+				margin-bottom 0	
+			}
 		}
 		@media $phone {
 			flex-direction column
@@ -250,5 +253,9 @@
 	}
 	&--light {
 		background-color #fff
+	}
+	*::selection {
+		background-color: rgba(255,255,255,0.99)
+ 		color: $textColor
 	}
 }
