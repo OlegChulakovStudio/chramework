@@ -17,12 +17,14 @@ class WorkItem extends Component {
 		url: PropTypes.object.isRequired,
 		title: PropTypes.string.isRequired,
 		description: PropTypes.string,
+		onDark: PropTypes.bool,
 		tags: PropTypes.array.isRequired,
 	};
 	static defaultProps = {
 		video: undefined,
 		posters: undefined,
 		url: undefined,
+		onDark: false,
 		title: undefined,
 		description: undefined,
 		tags: undefined,
@@ -34,36 +36,38 @@ class WorkItem extends Component {
 		return video ? (
 			<Player {...video} images={posters} compact />
 		) : (
-			<Link {...url} disableBlank>
-				<img src={posters.thumb} alt="" className="WorkItem__poster WorkItem__poster_thumb" />
-				<img src={posters['poster-mini']} alt="" className="WorkItem__poster WorkItem__poster_mini" />
-			</Link>
-		);
+				<Link {...url} disableBlank>
+					<img src={posters.thumb} alt="" className="WorkItem__poster WorkItem__poster_thumb" />
+					<img src={posters['poster-mini']} alt="" className="WorkItem__poster WorkItem__poster_mini" />
+				</Link>
+			);
 	};
 	render() {
-		const { title, description, tags, url, video, posters, className, ...rest } = this.props;
+		const { title, description, onDark, tags, url, video, posters, className, ...rest } = this.props;
 		const workItemClasses = classNames(['WorkItem', className, {
 			WorkItem_video: video,
 			WorkItem_link: !video,
+			WorkItem_onDark: onDark,
 		}]);
+		const RenderComponent = url ? Link : "div";
 		return (
 			<div {...rest} className={workItemClasses}>
 				<div className="WorkItem__inner">
 					<div className="WorkItem__visual">{this.renderVisual()}</div>
-					<Link {...url} className="WorkItem__content" disableBlank>
+					<RenderComponent {...url} className="WorkItem__content" disableBlank>
 						<div className="WorkItem__header">
 							<Paragraph TagName="div" mod="bold" className="WorkItem__title">
 								{reactHtmlParser(title)}
 							</Paragraph>
-							<WorkTags list={tags} />
+							{tags && <WorkTags list={tags} />}
 						</div>
 						{description && (
 							<Paragraph TagName="div" mod="bodySmall" className="WorkItem__info">
 								{reactHtmlParser(description)}
 							</Paragraph>
 						)}
-						<Paragraph TagName="div" mod="boldSmall" className="WorkItem__more">Узнать подробности</Paragraph>
-					</Link>
+						{url && <Paragraph TagName="div" mod="boldSmall" className="WorkItem__more">Узнать подробности</Paragraph>}
+					</RenderComponent>
 				</div>
 			</div>
 		);

@@ -1,10 +1,8 @@
 .WorkItem {
 	width 100%
 	vertical-align top
-	background alpha(#FFF, 75%)
-	cursor pointer
 	layout2()
-
+	color $textColor
 	@media $phone {
 		width auto
 	}
@@ -21,6 +19,7 @@
 		cursor pointer
 		padding-right 0
 		grid-width(6)
+		background alpha(#FFF, 75%)
 
 		@media $phone {
 			width auto
@@ -60,14 +59,15 @@
 		display block
 		position relative
 		grid-width(3)
-		color $textColor
 		box-sizing border-box
 		padding-left 64px
 		padding-top 24px
 		font-size 14px
-
-		&:hover {
-			color $linkColor
+		&.Link {
+			color $textColor
+			&:hover {
+				color $linkColor
+			}	
 		}
 		.WorkItem_link .WorkItem__visual:hover + & {
 			color $linkColor
@@ -139,8 +139,7 @@
 		font-weight $bold
 		font-size 20px
 		line-height 1.1
-		color currentColor
-
+		// color currentColor
 		@media $phone {
 			font-size 20px
 			margin-bottom 4px
@@ -164,7 +163,6 @@
 	&__info {
 		margin-bottom 16px
 		color $textColor
-
 		&:last-child {
 			margin-bottom 0
 		}
@@ -188,6 +186,30 @@
 
 		@media $phone {
 			bold()
+		}
+	}
+
+	&_onDark {
+		color #ffffff
+		.WorkItem__info {
+			color #ffffff
+		}
+		.WorkItem__content {
+			&:before {
+				background-color #ffffff	
+			}
+			&.Link {
+				color #ffffff
+				&:hover {
+					color $linkColor	
+				}	
+			}
+		}
+		.WorkItem__more {
+			color #ffffff
+			&:hover {
+				color $linkColor	
+			}
 		}
 	}
 }
