@@ -75,7 +75,8 @@ class Player extends Component {
 		banners: false,
 		theme: 'light',
 		shareURL: undefined,
-		hideBar: false
+		hideBar: false,
+		muted: false
 	};
 	static propTypes = {
 		compact: PropTypes.bool,
@@ -86,7 +87,8 @@ class Player extends Component {
 		images: PropTypes.object,
 		src: PropTypes.any,
 		shareURL: PropTypes.string,
-		hideBar: PropTypes.bool
+		hideBar: PropTypes.bool,
+		muted: PropTypes.bool
 	};
 	state = {
 		isCollapsed: !isPad() && this.props.compact,
@@ -172,7 +174,7 @@ class Player extends Component {
 		}
 	}
 	initPlayer = () => {
-		const { src, loop, banners } = this.props;
+		const { src, loop, banners, muted } = this.props;
 
 		if (typeof this.state.currentQuality === 'undefined') {
 			console.log(src, this.state.currentQuality);
@@ -184,6 +186,7 @@ class Player extends Component {
 				autoPlay: false,
 				controls: true,
 				loop: loop,
+				muted: muted,
 				sources: [
 					{
 						src:
@@ -197,7 +200,9 @@ class Player extends Component {
 				nativeControlsForTouch: banners ? false : iosVersion() >= 11
 			},
 			() => {
-				this._injectVolumeIcon();
+				if (!muted) {
+					this._injectVolumeIcon();
+				}
 				this._injectFullscreenIcon();
 			}
 		);

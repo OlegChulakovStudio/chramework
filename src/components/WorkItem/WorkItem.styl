@@ -19,7 +19,9 @@
 		cursor pointer
 		padding-right 0
 		grid-width(6)
-		background alpha(#FFF, 75%)
+		.vjs-has-started {
+			background alpha(#FFFFFF, 75%)
+		}
 
 		@media $phone {
 			width auto
@@ -67,7 +69,7 @@
 			color $textColor
 			&:hover {
 				color $linkColor
-			}	
+			}
 		}
 		.WorkItem_link .WorkItem__visual:hover + & {
 			color $linkColor
@@ -196,19 +198,19 @@
 		}
 		.WorkItem__content {
 			&:before {
-				background-color #ffffff	
+				background-color #ffffff
 			}
 			&.Link {
 				color #ffffff
 				&:hover {
-					color $linkColor	
-				}	
+					color $linkColor
+				}
 			}
 		}
 		.WorkItem__more {
 			color #ffffff
 			&:hover {
-				color $linkColor	
+				color $linkColor
 			}
 		}
 	}
