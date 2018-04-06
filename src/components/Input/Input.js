@@ -47,7 +47,10 @@ export default class Input extends Component {
 			error: false
 		};
 	}
-
+	state={
+		focused: false,
+		value: '',
+	}
 	componentWillReceiveProps(nextProps) {
 		if (this.state.value !== nextProps.value) {
 			this.setState({

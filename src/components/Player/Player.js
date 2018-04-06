@@ -443,7 +443,7 @@ class Player extends Component {
 	};
 
 	renderPlayer = () => {
-		const { theme, fullhd, banners, shareURL, origin, hideBar } = this.props;
+		const { theme, fullhd, banners, shareURL, muted, origin, hideBar } = this.props;
 		const playerStyle = classNames({
 			Player: true,
 			player: true,
@@ -451,6 +451,7 @@ class Player extends Component {
 			[`player_theme_${theme}`]: theme,
 			Player_compact: this.state.compact,
 			Player_banners: banners,
+			Player_muted: muted,
 			Player_hideBar: hideBar,
 			Player_originSize: origin,
 			Player_ios: iosVersion() >= 11,
