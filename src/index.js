@@ -5,6 +5,7 @@ import AppLink from './components/AppLink/AppLink.js';
 import Avatar from './components/Avatar/Avatar.js';
 import Button from './components/Button/Button.js';
 import Card from './components/Card/Card.js';
+import Control from './components/Control/Control.js';
 import Checkbox from './components/Checkbox/Checkbox.js';
 import CheckboxGroup from './components/CheckboxGroup/CheckboxGroup';
 import Clients from './components/Clients/Clients';
@@ -84,5 +85,6 @@ export {
 	Reviews,
 	VideoBlock,
 	WorkItem,
+	Control,
 	SocialNetworks
 };
