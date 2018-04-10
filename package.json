@@ -2,7 +2,7 @@
   "name": "chramework",
   "main": "dist/main.js",
   "style": "dist/main.css",
-  "version": "1.0.61",
+  "version": "1.0.62",
   "author": "Oleg Chulakov Studio",
   "description": "A React-based UI toolkit",
   "license": "MIT",
@@ -79,10 +79,10 @@
   },
   "babel": {
     "presets": [
-      "react-app"
+      "react"
     ]
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react"
   }
 }
