@@ -158,7 +158,22 @@ module.exports = {
 				test: /\.svg$/,
 				exclude: [/\.bg\.svg$/],
 				use: [
-					'babel-loader',
+					{
+						loader: 'babel-loader',
+						options: {
+							presets: [
+								["env", {
+									"es2015": {
+										"modules": false
+									},
+									"targets": {
+										"browsers": ["last 2 versions", "safari >= 7"]
+									}
+								}],
+								"react"
+							]
+						}
+					},
 					{
 						loader: 'react-svg-loader',
 						options: {

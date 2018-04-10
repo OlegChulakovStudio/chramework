@@ -79,10 +79,10 @@
   },
   "babel": {
     "presets": [
-      "react"
+      "react-app"
     ]
   },
   "eslintConfig": {
-    "extends": "react"
+    "extends": "react-app"
   }
 }
