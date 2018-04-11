@@ -5,7 +5,7 @@
 	text-decoration none
 	height 28px
 	font-size 0
-
+	user-select none
 	&__sufix {
 		font-weight $bold
 		text-transform uppercase
@@ -74,6 +74,17 @@
 			padding-top 6px
 		}
 	}
+	&--light {
+		.Logo__ingroup {
+			color #ffffff
+			a {
+				color #ffffff
+				&:hover {
+					color $linkColor	
+				}
+			}
+		}	
+	}
 	&--ingroup {
 		height auto
 	}
@@ -85,14 +96,23 @@
 		color $secondTextColor
 		display block
 		text-transform uppercase
-		letter-spacing: 1.57px
+		letter-spacing: 1.55px
 		padding-top 8px
+		@media $phone {
+			font-size 7px
+			padding-top 5px	
+		}
 
 		a {
-			color $secondTextColor
-
+			color $linkColor
+			@media $phone {
+				color $secondTextColor
+			}
 			&:hover {
-				color $linkColor
+				color $linkHoverColor
+				@media $phone {
+					color $linkColor	
+				}
 			}
 		}
 	}
