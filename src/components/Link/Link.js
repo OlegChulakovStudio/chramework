@@ -34,7 +34,7 @@ const LinkElement = ({
 	return (
 		<RenderedComponent {...rest} className={linkStyle} {...linkProps}>
 			{children}
-			{href && !disableBlank && <TargetBlank className="Link__target-blank" />}
+			{((href && !disableBlank) || noLink) && <TargetBlank className="Link__target-blank" />}
 		</RenderedComponent>
 	);
 };
