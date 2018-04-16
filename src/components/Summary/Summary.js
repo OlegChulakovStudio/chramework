@@ -44,9 +44,9 @@ const Summary = ({ awards, className, external, ...rest }) => {
 					<Paragraph mod="boldMedium" className="Summary__title">Топ-2 <nobr>дизайн-студий</nobr></Paragraph>
 					<Paragraph mod="bodySmall" className="Summary__text">
 						в&nbsp;digital по&nbsp;версии{' '}
-						<Link {...designLink} className="Summary__text-link">
+						<nobr><Link {...designLink} className="Summary__text-link">
 							Tagline
-						</Link>
+						</Link></nobr>
 					</Paragraph>
 				</div>
 			</div>
@@ -55,9 +55,9 @@ const Summary = ({ awards, className, external, ...rest }) => {
 					<Paragraph mod="boldMedium" className="Summary__title">Топ-8 <nobr>digital production</nobr></Paragraph>
 					<Paragraph mod="bodySmall" className="Summary__text">
 						по версии{' '}
-						<Link {...productionLink} className="Summary__text-link">
+						<nobr><Link {...productionLink} className="Summary__text-link">
 							Tagline
-						</Link>
+						</Link></nobr>
 					</Paragraph>
 				</div>
 			</div>
