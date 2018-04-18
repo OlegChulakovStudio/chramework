@@ -1,40 +1,45 @@
 .Card {
-  height auto
-  width 100%
-  position relative
   display block
-  box-sizing border-box
-  border-radius 4px
-  background-color #FFFFFF
-  padding 32px 30px 24px
-
-  &--link{
-    cursor pointer
-    transition transform $duration
-    color $textColor
-    
-    &:before{
-      content ''
-      box-shadow 0 12px 15px 0 rgba(161,185,220,0.38)
-      opacity 0
-      position absolute
-      top 0
-      left 0
+  position relative
+  width 100%
+  height 220px
+  &__inner {
+      padding 32px 24px 24px 32px
       height 100%
-      width 100%
+      background-color #fff
       border-radius 4px
-      transition opacity $duration
+      box-sizing border-box
+  }
+  @media $phone {
+    height auto
+    padding 24px
+  }
+	&_bigCard {
+    width 50%
+    .Card__inner {
+      padding 32px 70px 24px 32px
     }
-    
-    &:hover{
-      &:before{
-        opacity 1
-      }
+		@media $phone {
+			padding 24px	
+		}
+	}
+  &_disabled {
+    background-color transparent
+    border 1px solid $grayLightColor
+  }
+  &_gray {
+    .Card__inner {
+       background-color $grayLighterColor
     }
-    &:active {
-      transform translateY(2px)
-      faster()
-    }
-
+  }
+  &_gap {
+    padding 12px
+    box-sizing border-box
+  }
+  &_half {
+    width 50%  
+  }
+  &_quarter {
+    width 25%  
   }
 }

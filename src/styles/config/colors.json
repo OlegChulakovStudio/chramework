@@ -8,6 +8,8 @@
 	"red": "#E00909",
 	"green": "#417505",
 	"orange": "#F5A623",
+	"grayLighter": "#FAFAFA",
+	"grayLight": "#E0E0E0",
 
 	"bg": "#FFFFFF",
 	"block": "#EEF1F2",
