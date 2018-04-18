@@ -7,8 +7,8 @@ import TextGroup from '../TextGroup/TextGroup';
 
 import './VideoBlock.styl';
 
-const VideoBlock = ({ Icon, lg, video, title, subtitle, url, children, ...react }) => {
-	const playerStyle = classNames(['VideoBlock', { VideoBlock_lg: lg }]);
+const VideoBlock = ({ Icon, lg, video, title, subtitle, url, children, className, ...react }) => {
+	const playerStyle = classNames(['VideoBlock', { VideoBlock_lg: lg }, className]);
 
 	return (
 		<div {...react} className={playerStyle}>
@@ -36,6 +36,7 @@ VideoBlock.defaultProps = {
 	video: undefined,
 	title: undefined,
 	subtitle: undefined,
+	className: undefined,
 	url: undefined,
 };
 
@@ -45,6 +46,7 @@ VideoBlock.propTypes = {
 	video: PropTypes.object,
 	title: PropTypes.string,
 	subtitle: PropTypes.string,
+	className: PropTypes.string,
 	url: PropTypes.object,
 };
 

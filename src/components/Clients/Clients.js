@@ -67,6 +67,7 @@ class FilterItem extends Component {
 class Clients extends Component {
 	static propTypes = {
 		filter: PropTypes.object,
+		className: PropTypes.string,
 		filterOn: PropTypes.bool,
 		list: PropTypes.object,
 		reverse: PropTypes.bool,
@@ -77,6 +78,7 @@ class Clients extends Component {
 		filterOn: false,
 		list: undefined,
 		reverse: undefined,
+		className: undefined,
 		row: undefined
 	};
 
