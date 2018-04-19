@@ -1,80 +1,91 @@
 .Card {
-  display block
-  @media $phone {
-    height auto
-    padding 24px
-  }
-  &__inner {
-      position relative
-      padding 32px 24px 24px 32px
-      height 220px
-      background-color #fff
-      border-radius 4px
-      box-sizing border-box
-  }
-  &_disabled {
-    color $secondTextColor !important
+	display block
+	&__inner {
+		position relative
+		padding 32px 24px 24px 32px
+		height 220px
+		background-color #fff
+		border-radius 4px
+		box-sizing border-box
+		@media $phone {
+			height auto
+			padding 24px
+		}
+	}
+	&_disabled {
+		color $secondTextColor !important
 
-    .Card__inner {
-      background-color transparent
-      border 1px solid $grayLightColor
-    }
-  }
-  &_gray {
-    .Card__inner {
-       background-color $grayLighterColor
-    }
-  }
-  &_gap {
-    padding 12px
-    box-sizing border-box
-  }
-  &_half {
-    width 50%
-    @media $tablet {
-      width 100%  
-    }  
-  }
-  &_quarter {
-    width 25%
-    @media $tablet {
-      width 50%  
-    } 
-  }
-  &_isLink {
-    color initial
-    &:hover {
-       .Card__targetBlank {
-         &_hover {
-            opacity 1
-            faster()
-          }
-          &_normal {
-            fill $linkColor
-          }
-       } 
-    }
-    .Card__targetBlank {
-      position absolute
-      width 24px
-      height 24px
-      top 8px
-      right 8px
-      &_hover {
-        opacity 0
-        fill $linkColor 
-        transition $duration
-      }  
-    }
-    .Heading {
-      transition color $duration
-    }
-    &:hover {
-      color initial
-      .Heading {
-        color $linkColor
-        faster()  
-      }
-    }  
-  }
+		.Card__inner {
+			background-color transparent
+			border 1px solid $grayLightColor
+		}
+	}
+	&_gray {
+		.Card__inner {
+			background-color $grayLighterColor
+		}
+	}
+	&_gap {
+		padding 12px
+		box-sizing border-box
+	}
+	&_half {
+		width 50%
+		@media $tablet {
+			width 100%  
+		}  
+	}
+	&_quarter {
+		width 25%
+		@media $tablet {
+			width 50%  
+		} 
+		@media $phone {
+			width 100%  
+		} 
+	}
+	&_isLink {
+		color initial
+		&:hover {
+			.Card__targetBlank {
+				&_hover {
+				opacity 1
+				faster()
+				}
+				&_normal {
+				fill $linkColor
+				}
+			} 
+		}
+		.Card__targetBlank {
+			position absolute
+			width 24px
+			height 24px
+			top 8px
+			right 8px
+			&_hover {
+				opacity 0
+				fill $linkColor 
+				transition $duration
+				@media $phone {
+					opacity 1  
+				}
+			}
+			&_normal {
+				@media $phone {
+					fill $linkColor  
+				} 
+			} 
+		}
+		.Heading {
+			transition color $duration
+		}
+		&:hover {
+			color initial
+			.Heading {
+				color $linkColor
+				faster()  
+			}
+		}  
+	}
 }
