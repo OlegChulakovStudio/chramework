@@ -13,12 +13,11 @@
       box-sizing border-box
   }
   &_disabled {
-    background-color transparent
-    border 1px solid $grayLightColor
     color $secondTextColor !important
-    
+
     .Card__inner {
-      background-color transparent  
+      background-color transparent
+      border 1px solid $grayLightColor
     }
   }
   &_gray {
@@ -31,10 +30,16 @@
     box-sizing border-box
   }
   &_half {
-    width 50%  
+    width 50%
+    @media $tablet {
+      width 100%  
+    }  
   }
   &_quarter {
-    width 25%  
+    width 25%
+    @media $tablet {
+      width 50%  
+    } 
   }
   &_isLink {
     color initial
