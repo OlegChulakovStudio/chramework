@@ -29,9 +29,9 @@ const Card = ({ children, className, disabled, gray, gap, quarter, half, link })
     <RenderComponent {...linkProps} className={cardStyle}>
       <div className={'Card__inner'}>
         {children}
+        {link && link.href && <TargetBlankHover className={classNames('Card__targetBlank', 'Card__targetBlank_hover')} />}
+        {link && link.href && <TargetBlank className={classNames('Card__targetBlank', 'Card__targetBlank_normal')} />}
       </div>
-      {link.href && <TargetBlankHover className={classNames('Card__targetBlank', 'Card__targetBlank_hover')} />}
-      {link.href && <TargetBlank className={classNames('Card__targetBlank', 'Card__targetBlank_normal')} />}
     </RenderComponent>
   );
 };
