@@ -3,6 +3,10 @@
   position relative
   width 100%
   height 220px
+  @media $phone {
+    height auto
+    padding 24px
+  }
   &__inner {
       padding 32px 24px 24px 32px
       height 100%
@@ -10,19 +14,6 @@
       border-radius 4px
       box-sizing border-box
   }
-  @media $phone {
-    height auto
-    padding 24px
-  }
-	&_bigCard {
-    width 50%
-    .Card__inner {
-      padding 32px 70px 24px 32px
-    }
-		@media $phone {
-			padding 24px	
-		}
-	}
   &_disabled {
     background-color transparent
     border 1px solid $grayLightColor
@@ -41,5 +32,41 @@
   }
   &_quarter {
     width 25%  
+  }
+  &_isLink {
+    color initial
+    &:hover {
+       .Card__targetBlank {
+         &_hover {
+            opacity 1
+            faster()
+          }
+          &_normal {
+            fill $linkColor
+          }
+       } 
+    }
+    .Card__targetBlank {
+      position absolute
+      width 24px
+      height 24px
+      top 8px
+      right 8px
+      &_hover {
+        opacity 0
+        fill $linkColor 
+        transition $duration
+      }  
+    }
+    .Heading {
+      transition color $duration
+    }
+    &:hover {
+      color initial
+      .Heading {
+        color $linkColor
+        faster()  
+      }
+    }  
   }
 }
