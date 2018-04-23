@@ -1,0 +1,48 @@
+.FooterMini {
+	padding-top 40px
+	padding-bottom 40px
+	background-color #ffffff
+	&__inner {
+		display flex
+		align-items flex-end
+		grid-width()
+		margin 0 auto
+		box-sizing border-box
+		@media $phone {
+			flex-wrap wrap
+			padding 0 16px	
+		}
+	}
+	&__item {
+		margin-right 64px
+		&:last-child {
+			margin-right 0	
+		}
+		&_note {
+			font-weight $bold
+			@media $phone {
+				width 100%
+				margin-bottom 16px
+			}
+			&.Note {
+				line-height inherit	
+			}	
+		}
+		&_phone {
+			&.Link {
+				color $textColor	
+				&:hover {
+					color $linkColor	
+				}
+			}
+		}
+	}
+	&_offset {
+		.FooterMini__inner {
+			grid-width(1, padding-left)
+			@media $verticalTablet {
+				padding-left 0	
+			}
+		}
+	}
+}

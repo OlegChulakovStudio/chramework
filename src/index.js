@@ -41,6 +41,7 @@ import TextGroup from './components/TextGroup/TextGroup.js';
 import VideoBlock from './components/VideoBlock/VideoBlock';
 import WorkItem from './components/WorkItem/WorkItem';
 import SocialNetworks from './components/SocialNetworks/SocialNetworks';
+import FooterMini from './components/FooterMini/FooterMini';
 
 import AchievementsData from './components/AchievementsList/data.json';
 
@@ -86,5 +87,6 @@ export {
 	VideoBlock,
 	WorkItem,
 	Control,
-	SocialNetworks
+	SocialNetworks,
+	FooterMini
 };
