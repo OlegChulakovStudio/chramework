@@ -9,12 +9,16 @@
 		margin 0 auto
 		box-sizing border-box
 		@media $phone {
-			flex-wrap wrap
+			flex-direction column
+			align-items flex-start
 			padding 0 16px	
 		}
 	}
 	&__item {
 		margin-right 64px
+		@media $phone {
+			margin-right 0	
+		}
 		&:last-child {
 			margin-right 0	
 		}
@@ -29,6 +33,9 @@
 			}	
 		}
 		&_phone {
+			@media $phone {
+				margin-bottom 16px
+			}
 			&.Link {
 				color $textColor	
 				&:hover {
