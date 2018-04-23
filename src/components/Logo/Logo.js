@@ -22,7 +22,10 @@ export default class Logo extends Component {
 		/** set this param to true, if you want to add text after logo */
 		text: PropTypes.string,
 		/** set this param to true, if you want to add text after logo */
-		ingroup: PropTypes.bool,
+		ingroup: PropTypes.oneOfType([
+			PropTypes.object,
+			PropTypes.bool
+		]),
 	};
 
 	static defaultProps = {
@@ -36,23 +39,24 @@ export default class Logo extends Component {
 
 	render() {
 		const { linkProps, mod, size, type, className, text, ingroup, ...rest } = this.props;
-
+		const currentGroupText = typeof ingroup === 'object' ? ingroup.text : 'Chulakov Group';
+		const currentGroupLink = typeof ingroup === 'object' ? ingroup.url : 'https://group.chulakov.ru/';
 		return (
 			<div {...rest} className={classNames([
-					'Logo',
-					className,
-					{
-						[`Logo--${size}`]: size,
-						[`Logo--${type}`]: type,
-						[`Logo--${mod}`]: mod,
-						[`Logo--ingroup`]: ingroup
-					}
-				])}>
+				'Logo',
+				className,
+				{
+					[`Logo--${size}`]: size,
+					[`Logo--${type}`]: type,
+					[`Logo--${mod}`]: mod,
+					[`Logo--ingroup`]: ingroup,
+				}
+			])}>
 				<LogoIcon className="Logo__icon" width={120} height={28} />
 				{text && <span className="Logo__sufix">{text}</span>}
 				{linkProps && <Link {...linkProps} disableBlank className="Logo__link" />}
 				{ingroup && <span className="Logo__ingroup">
-					{reactHtmlParser('в составе <a href="https://group.chulakov.ru/" target="_blank">Chulakov Group</a>')}
+					{reactHtmlParser(`в составе <a href="${currentGroupLink}" target="_blank">${currentGroupText}</a>`)}
 				</span>}
 			</div>
 		);
