@@ -88,11 +88,7 @@ export {
 	VideoBlock,
 	WorkItem,
 	Control,
-<<<<<<< HEAD
 	SocialNetworks,
-	FooterMini
-=======
+	FooterMini,
 	Block,
-	SocialNetworks
->>>>>>> 72425f29b48c04b389ba6143eb7ed5966b76bd93
 };
