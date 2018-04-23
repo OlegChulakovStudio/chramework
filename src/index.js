@@ -40,6 +40,7 @@ import Reviews from './components/Reviews/Reviews.js';
 import TextGroup from './components/TextGroup/TextGroup.js';
 import VideoBlock from './components/VideoBlock/VideoBlock';
 import WorkItem from './components/WorkItem/WorkItem';
+import Block from './components/Block/Block';
 import SocialNetworks from './components/SocialNetworks/SocialNetworks';
 import FooterMini from './components/FooterMini/FooterMini';
 
@@ -87,6 +88,11 @@ export {
 	VideoBlock,
 	WorkItem,
 	Control,
+<<<<<<< HEAD
 	SocialNetworks,
 	FooterMini
+=======
+	Block,
+	SocialNetworks
+>>>>>>> 72425f29b48c04b389ba6143eb7ed5966b76bd93
 };

@@ -1,0 +1,52 @@
+.Block {
+	position relative
+	display block
+
+	&:first-child {
+		padding-top 200px
+		@media $notebook {
+			padding-top 180px
+		}
+		@media $phone {
+			padding-top 100px
+		}
+	}
+
+	&_gray {
+		background $lightColor
+	}
+
+	&_dark {
+		background $darkColor
+		color #ffffff
+		& .Heading {
+			color #ffffff
+		}
+		.Page__title {
+			color #ffffff
+		}
+		*::selection {
+			background-color rgba(255, 255, 255, .99)
+			color #151515
+		}
+	}
+	&__inner {
+		position relative
+		grid-width()
+		grid-width(1, padding-left)
+		display block
+		box-sizing border-box
+		margin 0 auto
+		box-sizing border-box
+		@media $tablet {
+			padding-left 0
+		}
+		@media $verticalTablet {
+			padding 0 64px
+			width auto
+		}
+		@media $phone {
+			padding 0
+		}
+	}
+}
