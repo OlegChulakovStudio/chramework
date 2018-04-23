@@ -40,6 +40,7 @@ import Reviews from './components/Reviews/Reviews.js';
 import TextGroup from './components/TextGroup/TextGroup.js';
 import VideoBlock from './components/VideoBlock/VideoBlock';
 import WorkItem from './components/WorkItem/WorkItem';
+import Block from './components/Block/Block';
 import SocialNetworks from './components/SocialNetworks/SocialNetworks';
 
 import AchievementsData from './components/AchievementsList/data.json';
@@ -86,5 +87,6 @@ export {
 	VideoBlock,
 	WorkItem,
 	Control,
+	Block,
 	SocialNetworks
 };
