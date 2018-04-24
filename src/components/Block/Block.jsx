@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import reactHtmlParser from 'react-html-parser';
+import ScrollAnim from 'rc-scroll-anim';
 
 import Heading from '../Heading/Heading';
 import Paragraph from '../Paragraph/Paragraph';
@@ -18,6 +19,7 @@ const Block = ({
 	noMargin,
 	className,
 	background,
+	scrollId,
 	outside,
 }) => {
 	const pageStyle = classNames({
@@ -37,8 +39,10 @@ const Block = ({
 	const headerStyle = classNames({
 		[`block${level}__header`]: level,
 	});
+	const RenderElement = scrollId ? ScrollAnim.Element : 'div';
+
 	return outside ? (
-		<div className={pageStyle}>
+		<RenderElement id={scrollId || ''} className={pageStyle}>
 			<div className={pageInnerStyle}>
 				{(title || subtitle) && (
 					<div className={headerStyle}>
@@ -60,9 +64,9 @@ const Block = ({
 				)}
 				{children}
 			</div>
-		</div>
+		</RenderElement>
 	) : (
-		<div className={pageStyle}>
+		<RenderElement id={scrollId || ''} className={pageStyle}>
 			{(title || subtitle) && (
 				<div className={headerStyle}>
 					{title && <Heading level={level || 2}>{reactHtmlParser(title)}</Heading>}
@@ -82,7 +86,7 @@ const Block = ({
 				</div>
 			)}
 			{children}
-		</div>
+		</RenderElement>
 	);
 };
 
@@ -92,6 +96,7 @@ Block.defaultProps = {
 	subtitle: undefined,
 	headerLevel: undefined,
 	className: undefined,
+	scrollId: undefined,
 	level: 2,
 	background: false,
 	noMargin: false,
@@ -109,6 +114,7 @@ Block.propTypes = {
 	subtitle: PropTypes.any,
 	headerLevel: PropTypes.number,
 	outside: PropTypes.bool,
+	scrollId: PropTypes.string,
 };
 
 export default Block;
