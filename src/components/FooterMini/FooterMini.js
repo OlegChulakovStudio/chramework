@@ -7,9 +7,10 @@ import Link from '../Link/Link';
 
 import './FooterMini.styl';
 
-const FooterMini = ({ data, offset }) => {
+const FooterMini = ({ data, offset, mod }) => {
 	const blockStyle = classNames("FooterMini", {
-		"FooterMini_offset": offset
+		"FooterMini_offset": offset,
+		[`FooterMini_${mod}`]: mod,
 	});
 	return (
 		<div className={blockStyle}>
@@ -35,6 +36,7 @@ const FooterMini = ({ data, offset }) => {
 FooterMini.propTypes = {
 	data: PropTypes.object,
 	offset: PropTypes.bool,
+	mod: PropTypes.string,
 };
 
 export default FooterMini;
