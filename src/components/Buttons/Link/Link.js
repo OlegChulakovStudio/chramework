@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { NavLink } from 'react-router-dom';
-import TargetBlank from '../../assets/target-blank.svg';
+import TargetBlank from '../../../assets/target-blank.svg';
 import './Link.styl';
 
 const Link = ({

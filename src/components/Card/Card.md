@@ -1,4 +1,4 @@
     <Card gray link={{href: "https://chulakov.ru"}}>
-    <Heading level={3}>Студия</Heading>
-    <Paragraph mod="bodyMediun">Digital-сервисы для крупного бизнеса</Paragraph>
+        <Heading level={3}>Студия</Heading>
+        <Paragraph mod="bodyMediun">Digital-сервисы для крупного бизнеса</Paragraph>
     </Card>

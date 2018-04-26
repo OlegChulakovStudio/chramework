@@ -17,6 +17,14 @@ export function SectionHeadingRenderer({
     [classes.isPrimary]: primary,
     [classes.isDeprecated]: deprecated,
   });
+  console.log(classes,
+    children,
+    toolbar,
+    id,
+    href,
+    primary,
+    deprecated,);
+
   return (
     <Tag id={id} className={classes.root}>
       <a href={href} className={headingClasses}>
@@ -39,7 +47,7 @@ export const styles = ({ color, space, fontSize, fontFamily }) => ({
     color: color.link,
     fontSize: fontSize.h2,
     fontFamily: fontFamily.base,
-    fontWeight: 'normal',
+    fontWeight: 'bold',
     '&:hover, &:active': {
       isolate: false,
       color: color.linkHover
