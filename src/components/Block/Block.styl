@@ -56,9 +56,14 @@
 		margin-bottom 40px
 		.Paragraph, .Heading {
 			max-width 720px
-
 		}
-
+		.Paragraph {
+			margin-bottom 0.6em
+			&:last-child {
+				margin-bottom 0	
+			}	
+		}
+		
 		@media $phone {
 			margin-bottom 32px
 		}
@@ -96,6 +101,12 @@
 		margin-bottom 32px
 		.Paragraph, .Heading {
 			max-width 720px
+		}
+		.Paragraph {
+			margin-bottom 0.6em
+			&:last-child {
+				margin-bottom 0	
+			}	
 		}
 
 		@media $phone {
@@ -139,6 +150,12 @@
 		margin-bottom 24px
 		.Paragraph, .Heading {
 			max-width 720px
+		}
+		.Paragraph {
+			margin-bottom 0.6em
+			&:last-child {
+				margin-bottom 0	
+			}	
 		}
 
 		&:last-child {
