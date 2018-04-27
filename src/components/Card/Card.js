@@ -9,7 +9,7 @@ import './Card.styl';
 import TargetBlankHover from '../../assets/newTargetBlankHover.svg';
 import TargetBlank from '../../assets/newTargetBlank.svg';
 
-const Card = ({ children, className, disabled, gray, gap, quarter, half, link }) => {
+const Card = ({ children, className, disabled, gray, gap, quarter, half, link, border }) => {
   const cardStyle = classNames('Card', {
     'Card_disabled': disabled,
     'Card_gray': gray,
@@ -17,6 +17,7 @@ const Card = ({ children, className, disabled, gray, gap, quarter, half, link })
     'Card_quarter': quarter,
     'Card_half': half,
     'Card_isLink': link,
+    'Card_border': border,
   },
     className
   );
@@ -44,6 +45,7 @@ Card.propTypes = {
   gap: PropTypes.bool,
   quarter: PropTypes.bool,
   half: PropTypes.bool,
+  border: PropTypes.bool,
   link: PropTypes.object,
 };
 
