@@ -1,11 +1,11 @@
-Simple button with `onClick` handler:
+Simple link:
 
-    <Link>Ссылка</Link>
+    <Link >Ссылка</Link>
 
-Bordered button with arrow
+Bold link:
 
-    <Link>Ссылка</Link>
+    <Link bold>Ссылка</Link>
 
-Small button
+External link:
 
-    <Link>Ссылка</Link>
+    <Link href="/">Ссылка</Link>
