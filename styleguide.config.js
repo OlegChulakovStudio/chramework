@@ -35,7 +35,7 @@ module.exports = {
     //   ]
     // },
     {
-      name: 'Заголовки',
+      name: 'Текст',
       components: 'src/components/typography/*/*.js'
     },
     {
@@ -48,7 +48,7 @@ module.exports = {
     },
     {
       name: 'Контролы',
-      components: 'src/components/CheckboxGroup/*.js'
+      components: 'src/components/controls/*/*.js'
     },
     {
       name: 'Таблицы',
