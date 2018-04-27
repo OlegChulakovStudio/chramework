@@ -26,6 +26,7 @@ export default class Logo extends Component {
 			PropTypes.object,
 			PropTypes.bool
 		]),
+		madeinlab: PropTypes.bool,
 	};
 
 	static defaultProps = {
@@ -35,10 +36,11 @@ export default class Logo extends Component {
 		text: undefined,
 		ingroup: undefined,
 		linkProps: undefined,
+		madeinlab: undefined,
 	};
 
 	render() {
-		const { linkProps, mod, size, type, className, text, ingroup, ...rest } = this.props;
+		const { linkProps, mod, size, type, className, text, madeinlab, ingroup, ...rest } = this.props;
 		const currentGroupText = typeof ingroup === 'object' ? ingroup.text : 'Chulakov Group';
 		const currentGroupLink = typeof ingroup === 'object' ? ingroup.url : 'https://group.chulakov.ru/';
 		return (
@@ -49,14 +51,15 @@ export default class Logo extends Component {
 					[`Logo--${size}`]: size,
 					[`Logo--${type}`]: type,
 					[`Logo--${mod}`]: mod,
-					[`Logo--ingroup`]: ingroup,
+					[`Logo--ingroup`]: ingroup || madeinlab,
 				}
 			])}>
 				<LogoIcon className="Logo__icon" width={120} height={28} />
 				{text && <span className="Logo__sufix">{text}</span>}
 				{linkProps && <Link {...linkProps} disableBlank className="Logo__link" />}
-				{ingroup && <span className="Logo__ingroup">
-					{reactHtmlParser(`в составе <a href="${currentGroupLink}" target="_blank">${currentGroupText}</a>`)}
+				{(ingroup || madeinlab) && <span className="Logo__ingroup">
+					{ingroup && reactHtmlParser(`в составе <a href="${currentGroupLink}" target="_blank">${currentGroupText}</a>`)}
+					{madeinlab && reactHtmlParser("сделано в <a href=\"https://chulakov.ru/lab\" target=\"_blank\">Chulakov Lab</a>")}
 				</span>}
 			</div>
 		);
