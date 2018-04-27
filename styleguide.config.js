@@ -58,6 +58,10 @@ module.exports = {
       name: 'Карточки',
       components: 'src/components/Card/*.js'
     },
+    {
+      name: 'Блоки',
+      components: 'src/components/Blocks/*/*.js'
+    },
   ],
   styleguideComponents: {
     SectionHeadingRenderer: path.join(__dirname, 'styleguide/components/SectionHeadingRenderer/SectionHeadingRenderer.js'),

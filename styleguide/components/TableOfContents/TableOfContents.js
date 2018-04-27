@@ -36,18 +36,10 @@ const styles = ({ space, color, fontFamily, fontSize, borderRadius }) => ({
 });
 
 export function TableOfContentsRenderer({ classes, children, searchTerm, onSearchTermChange }) {
-  console.log({ classes, children, searchTerm, onSearchTermChange });
 
   return (
     <div>
       <div className={classes.root}>
-        <div className={classes.search}>
-          <Input
-            value={searchTerm}
-            label="Filter by name"
-            onChange={event => onSearchTermChange(event.target.value)}
-          />
-        </div>
         {children}
       </div>
     </div>

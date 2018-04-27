@@ -40,6 +40,28 @@ const styles = ({ color, fontFamily, fontSize, sidebarWidth, mq, space, maxWidth
       borderWidth: [[1, 0, 0, 0]],
       paddingBottom: space[0],
     },
+    '& ul ul' :{
+      padding: 0
+    },
+    '& a::hover': {
+      color: color.linkColor
+    },
+    '& .link-0-66.heading-0-65' :{
+      fontWeight: '700',
+      margin: "10px 0 0 0",
+      padding: '3px 0',
+      fontSize: '16px ',
+      cursor: 'pointer',
+    },
+    '& .isChild-0-64' :{
+      margin: 0,
+      '& a': {
+        padding: '3px 0',
+        cursor: 'pointer',
+        display: "block",
+        fontSize: "14px",
+      }
+    }
   },
   logo: {
     padding: space[2],

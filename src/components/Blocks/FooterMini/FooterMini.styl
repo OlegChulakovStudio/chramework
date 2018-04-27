@@ -1,0 +1,58 @@
+.FooterMini {
+	padding-top 80px
+	padding-bottom 40px
+	background-color #ffffff
+	&__inner {
+		display flex
+		align-items flex-end
+		grid-width()
+		margin 0 auto
+		box-sizing border-box
+		@media $phone {
+			flex-direction column
+			align-items flex-start
+			padding 0 16px	
+		}
+	}
+	&__item {
+		margin-right 64px
+		@media $phone {
+			margin-right 0	
+		}
+		&:last-child {
+			margin-right 0	
+		}
+		&_note {
+			font-weight $bold
+			@media $phone {
+				width 100%
+				margin-bottom 16px
+			}
+			&.Note {
+				line-height inherit	
+			}	
+		}
+		&_phone {
+			@media $phone {
+				margin-bottom 16px
+			}
+			&.Link {
+				color $textColor	
+				&:hover {
+					color $linkColor	
+				}
+			}
+		}
+	}
+	&_offset {
+		.FooterMini__inner {
+			grid-width(1, padding-left)
+			@media $verticalTablet {
+				padding-left 16px
+			}
+		}
+	}
+	&_lightGray {
+		background-color $lightColor	
+	}
+}

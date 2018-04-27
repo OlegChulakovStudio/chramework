@@ -1,0 +1,180 @@
+.Share {
+	position absolute
+	top 0
+	right 0
+	z-index 10
+	padding 8px
+	transition transform $duration * 1000, opacity $duration // fix для переключения качества видео
+
+	@media $phone {
+		padding 8px
+	}
+	&__inner {
+		position relative
+		display flex
+
+		&_hidden {
+			& > .Share__button, & > .Share__container {
+				opacity 0
+				transition opacity $duration
+			}
+		}
+	}
+	&__clipboard {
+		position absolute
+		top 0
+		left 0
+		width 100%
+		height 100%
+		background-color rgba(23,35,34,0.75)
+		font-size 14px
+		color $textColor
+		border-radius 3px
+		display flex
+		align-items center
+		justify-content center
+		opacity 0
+		pointer-events none
+		color #fff
+		transition opacity $duration $duration/2, background-color $duration
+		cursor default
+		line-height 32px
+
+		&::selection {
+			background none
+		}
+		&_active {
+			opacity 1
+			pointer-events initial
+			faster()
+		}
+	}
+	&__container {
+		position relative
+		border-radius 3px
+		background-color rgba(23,35,34,0.75)
+		display flex
+		transition background-color $duration
+		width 32px
+		box-sizing border-box
+		margin-right -32px
+		padding-right 32px
+		transition width 0.1s $easeInOutQuad
+
+		&:after {
+			border-radius 3px
+			content ''
+			position absolute
+			top 0
+			left 0
+			width 100%
+			height 100%
+			box-shadow 0 1px 3px 0 rgba(0,0,0,0.14)
+			z-index -1
+		}
+		&_visible {
+			opacity 1
+			width 160px
+			transition-delay 0s
+			transition-duration 0.1s
+		}
+		&_hidden {
+			opacity 0
+		}
+	}
+	&__containerInner {
+		position absolute
+		top 0
+		right 32px
+		width 128px
+		height 100%
+		visibility hidden
+		display flex
+		opacity 0
+		transform translateX(5px)
+		transition transform 0.1s $easeInQuad, opacity 0.1s, visibility 0s 0.1s
+
+		.Share__container_visible & {
+			visibility visible
+			opacity 1
+			transform translateX(0)
+			transition transform 0.1s $easeOutQuad 0.1s, opacity 0.1s 0.1s, visibility 0s
+		}
+	}
+	&__button {
+		position relative
+		border none
+		display inline-block
+		vertical-align middle
+		cursor pointer
+		padding 4px
+		background-color transparent
+		margin 0
+		max-width 32px
+
+		svg {
+			display block
+			fill #C1C1C1
+			transition fill $duration
+		}
+		&:hover {
+			svg {
+				fill #fff
+				faster()
+			}
+		}
+		&_hidden, a {
+			opacity 0
+			position absolute
+			top 0
+			left 0
+			width 100%
+			height 100%
+		}
+	}
+
+	&_ios {
+		padding 5px 6px 4px 8px
+
+		.Share {
+			&__clipboard {
+				background-color rgba(0, 0, 0, 0.55)
+				-webkit-backdrop-filter saturate(180%) blur(17.5px)
+				border-radius 8px
+				transform translateZ(0)
+				color rgb(201,200,201)
+
+				&:after {
+					border-radius 8px
+					background-color rgba(255, 255, 255, 0.14)
+					mix-blend-mode lighten
+					box-shadow unset
+				}
+			}
+			&__container {
+				background-color rgba(0, 0, 0, 0.55)
+				-webkit-backdrop-filter saturate(180%) blur(17.5px)
+				border-radius 8px
+				transform translateZ(0)
+
+				&:after {
+					border-radius 8px
+					background-color rgba(255, 255, 255, 0.14)
+					mix-blend-mode lighten
+					box-shadow unset
+				}
+			}
+			&__button {
+				& > svg, &:hover > svg {
+					fill rgb(195,192,190)
+					transition transform 150ms
+					will-change transform
+				}
+				&:active > svg {
+					fill rgb(195,192,190)
+					transform scale(0.89)
+				}
+			}
+		}
+	}
+}
