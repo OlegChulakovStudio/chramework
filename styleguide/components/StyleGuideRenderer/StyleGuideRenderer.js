@@ -78,7 +78,7 @@ export function StyleGuideRenderer({ classes, title, homepageUrl, children, toc,
   return (
     <div className={cx(classes.root, hasSidebar && classes.hasSidebar)}>
       <main className={classes.content}>
-        <Heading level={2}>CHRAMEWORK</Heading>
+        <Heading level={2}>UI Kit Студии Олега Чулакова</Heading>
         {children}
         <footer className={classes.footer}>
           <Markdown text={`Generated with [React Styleguidist](${homepageUrl})`} />

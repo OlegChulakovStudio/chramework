@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   webpackConfig: require('./config/webpack.config.dev.js'),
-  title: "Chramework",
+  title: "UI Kit Студии Олега Чулакова",
   showCode: true,
   styleguideDir: "styleguide/build",
   ignore: ['**/Control.js'],
