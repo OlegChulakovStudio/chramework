@@ -51,10 +51,6 @@ module.exports = {
       components: 'src/components/controls/*/*.js'
     },
     {
-      name: 'Таблицы',
-      components: 'src/components/Input/*.js'
-    },
-    {
       name: 'Карточки',
       components: 'src/components/Card/*.js'
     },
