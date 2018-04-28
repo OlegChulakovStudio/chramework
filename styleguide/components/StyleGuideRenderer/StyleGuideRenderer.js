@@ -24,10 +24,19 @@ const styles = ({ color, fontFamily, fontSize, sidebarWidth, mq, space, maxWidth
     [mq.small]: {
       padding: space[2],
     },
+    '&> .Heading': {
+      marginBottom: '60px'
+    },
+    '& .isPrimary-0-12': {
+      fontSize: '64px'
+    },
+    '& .CodeMirror': {
+      backgroundColor: "#f9f9f9 !important"
+    },
     display: 'block',
   },
   sidebar: {
-    backgroundColor: color.sidebarBackground,
+    backgroundColor: "#f9f9f9",
     position: 'fixed',
     top: 0,
     left: 0,
@@ -39,6 +48,9 @@ const styles = ({ color, fontFamily, fontSize, sidebarWidth, mq, space, maxWidth
       width: 'auto',
       borderWidth: [[1, 0, 0, 0]],
       paddingBottom: space[0],
+    },
+    '& ul' :{
+      padding: '24px'
     },
     '& ul ul' :{
       padding: 0
@@ -65,6 +77,7 @@ const styles = ({ color, fontFamily, fontSize, sidebarWidth, mq, space, maxWidth
   },
   logo: {
     padding: space[2],
+    paddingLeft: '24px',
   },
   footer: {
     display: 'block',
@@ -78,7 +91,7 @@ export function StyleGuideRenderer({ classes, title, homepageUrl, children, toc,
   return (
     <div className={cx(classes.root, hasSidebar && classes.hasSidebar)}>
       <main className={classes.content}>
-        <Heading level={2}>UI Kit Студии Олега Чулакова</Heading>
+        <Heading level={1}>UI Kit Студии Олега<br/>Чулакова</Heading>
         {children}
         <footer className={classes.footer}>
           <Markdown text={`Generated with [React Styleguidist](${homepageUrl})`} />

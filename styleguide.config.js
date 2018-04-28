@@ -43,11 +43,7 @@ module.exports = {
       components: 'src/components/Buttons/*/*.js'
     },
     {
-      name: 'Поля ввода',
-      components: 'src/components/Input/*.js'
-    },
-    {
-      name: 'Контролы',
+      name: 'Формы',
       components: 'src/components/controls/*/*.js'
     },
     {
