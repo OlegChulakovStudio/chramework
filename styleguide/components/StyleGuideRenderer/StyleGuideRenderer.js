@@ -25,7 +25,8 @@ const styles = ({ color, fontFamily, fontSize, sidebarWidth, mq, space, maxWidth
       padding: space[2],
     },
     '&> .Heading': {
-      marginBottom: '60px'
+      marginBottom: '60px',
+      paddingTop: '68px',
     },
     '& .isPrimary-0-12': {
       fontSize: '64px'
