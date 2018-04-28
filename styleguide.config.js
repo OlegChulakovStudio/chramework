@@ -35,7 +35,7 @@ module.exports = {
     //   ]
     // },
     {
-      name: 'Текст',
+      name: 'Типогафика',
       components: 'src/components/typography/*/*.js'
     },
     {

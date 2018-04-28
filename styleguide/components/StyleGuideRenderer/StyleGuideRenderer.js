@@ -27,9 +27,11 @@ const styles = ({ color, fontFamily, fontSize, sidebarWidth, mq, space, maxWidth
     '&> .Heading': {
       marginBottom: '60px',
       paddingTop: '68px',
+      color: "#151515"
     },
     '& .isPrimary-0-12': {
-      fontSize: '64px'
+      fontSize: '64px',
+      color: "#151515"
     },
     '& .CodeMirror': {
       backgroundColor: "#f9f9f9 !important"
