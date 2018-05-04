@@ -33,23 +33,44 @@ const Summary = ({ awards, className, external, ...rest }) => {
 	const designLink = external ? design.external : design.internal;
 	const usabilityLink = external ? usability.external : usability.internal;
 	const keypersonLink = external ? keyperson.external : keyperson.internal;
-
 	return (
 		<div {...rest} className={blockStyle}>
 			<div className="Summary__item Summary__item_medal Summary__item_medal1">
 				<div className="Summary__content">
-					<Paragraph mod="boldMedium" className="Summary__title">Лучший <nobr>usability&nbsp;/ UX</nobr><br />и&nbsp;топ-2 дизайн-студий</Paragraph>
+					<Paragraph mod="boldMedium" className="Summary__title">Лучший <nobr>usability / UX</nobr></Paragraph>
 					<Paragraph mod="bodySmall" className="Summary__text">
-						по&nbsp;версии <nobr>«<Link {...usabilityLink} className="Summary__text-link">Золотого сайта</Link>»</nobr> <nobr>и&nbsp;<Link {...designLink} className="Summary__text-link">Tagline</Link></nobr>
+						по версии <nobr>«<Link {...usabilityLink} className="Summary__text-link">Золотого сайта</Link>»</nobr>
 					</Paragraph>
 				</div>
 			</div>
-			<div className="Summary__item Summary__item_medal Summary__item_medal8">
+			<div className="Summary__item Summary__item_medal Summary__item_mob Summary__item_medal2">
 				<div className="Summary__content">
-					<Paragraph mod="boldMedium" className="Summary__title">Топ-8<br /><nobr>digital production</nobr></Paragraph>
+					<Paragraph mod="boldMedium" className="Summary__title">Топ-2 <nobr>дизайн-студий</nobr></Paragraph>
+					<Paragraph mod="bodySmall" className="Summary__text">
+						в&nbsp;digital по&nbsp;версии{' '}
+						<nobr><Link {...designLink} className="Summary__text-link">
+							Tagline
+						</Link></nobr>
+					</Paragraph>
+				</div>
+			</div>
+			<div className="Summary__item Summary__item_medal Summary__item_mob Summary__item_medal8">
+				<div className="Summary__content">
+					<Paragraph mod="boldMedium" className="Summary__title">Топ-8 <nobr>digital production</nobr></Paragraph>
+					<Paragraph mod="bodySmall" className="Summary__text">
+						по версии{' '}
+						<nobr><Link {...productionLink} className="Summary__text-link">
+							Tagline
+						</Link></nobr>
+					</Paragraph>
+				</div>
+			</div>
+			<div className="Summary__item Summary__item_medal Summary__item_medal28">
+				<div className="Summary__content">
+					<Paragraph mod="boldMedium" className="Summary__title">Топ-2 дизайн-студий<br />и&nbsp;топ-8 digital production</Paragraph>
 					<Paragraph mod="bodySmall" className="Summary__text">
 						по&nbsp;версии{' '}
-						<nobr><Link {...productionLink} className="Summary__text-link">
+						<nobr><Link {...designLink} className="Summary__text-link">
 							Tagline
 						</Link></nobr>
 					</Paragraph>
@@ -57,9 +78,9 @@ const Summary = ({ awards, className, external, ...rest }) => {
 			</div>
 			<div className="Summary__item Summary__item_medal Summary__item_medal9">
 				<div className="Summary__content">
-					<Paragraph mod="boldMedium" className="Summary__title">Топ-10<br />ключевых фигур</Paragraph>
+					<Paragraph mod="boldMedium" className="Summary__title">Арт-директор в&nbsp;топ-10<br />ключевых персон Рунета</Paragraph>
 					<Paragraph mod="bodySmall" className="Summary__text">
-						интернет-рынка России по&nbsp;версии{' '}
+						 по&nbsp;версии{' '}
 						<nobr><Link {...keypersonLink} className="Summary__text-link">
 							Tagline
 						</Link></nobr>
