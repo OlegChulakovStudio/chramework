@@ -59,7 +59,7 @@ export default class Logo extends Component {
 				{linkProps && <Link {...linkProps} disableBlank className="Logo__link" />}
 				{(ingroup || madeinlab) && <span className="Logo__ingroup">
 					{ingroup && reactHtmlParser(`в составе <a href="${currentGroupLink}" target="_blank">${currentGroupText}</a>`)}
-					{madeinlab && reactHtmlParser("сделано в <a href=\"https://chulakov.ru/lab\" target=\"_blank\">Chulakov Lab</a>")}
+					{madeinlab && reactHtmlParser("сделано в <a href=\"https://lab.chulakov.ru\" target=\"_blank\">Chulakov Lab</a>")}
 				</span>}
 			</div>
 		);
