@@ -56,7 +56,7 @@
 				background-position center
 				display block
 				margin-right 8px
-				width 60px
+				// width 60px
 				height 71.31px
 				margin 0 auto
 				vertical-align top
@@ -72,28 +72,36 @@
 				}
 			}
 			&1 {
-				@media $verticalTablet {
-					order 3
-				}
+				// @media $verticalTablet {
+				// 	order 3
+				// }
 				&:before {
-					background-image url('medal_1.png')
+					background-image url('medal_1-2.png')
 				}
 			}
 			&2 {
-				@media $verticalTablet {
-					order 4
-				}
+				// @media $verticalTablet {
+				// 	order 4
+				// }
 				&:before {
 					background-image url('medal_2.png')
 				}
 			}
 			&8 {
-				@media $verticalTablet {
-					order 5
-					margin-bottom 0
-				}
+				// @media $verticalTablet {
+				// 	order 5
+				// }
 				&:before {
 					background-image url('medal_8.png')
+				}
+			}
+			&9 {
+				@media $verticalTablet {
+					// order 6
+					// margin-bottom 0
+				}
+				&:before {
+					background-image url('medal_9.png')
 				}
 			}
 		}
@@ -116,16 +124,16 @@
 				width 50%
 			}
 		}
-		&_experience {
-			@media $verticalTablet {
-				order 2
-			}
-		}
-		&_specialists {
-			@media $verticalTablet {
-				order 1
-			}
-		}
+		// &_experience {
+		// 	@media $verticalTablet {
+		// 		order 2
+		// 	}
+		// }
+		// &_specialists {
+		// 	@media $verticalTablet {
+		// 		order 1
+		// 	}
+		// }
 	}
 	&__number {
 		font-size 60px
@@ -142,6 +150,8 @@
 	}
 	&__text {
 		text-align center
+		width 85%
+		margin 0 auto
 
 		@media $phone {
 			display flex
