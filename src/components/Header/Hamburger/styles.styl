@@ -1,0 +1,68 @@
+.Hamburger {
+	position relative
+	display inline-block
+	cursor pointer
+	width 24px
+	height 16px
+
+	&:before {
+		$space = 20px
+		content ''
+		position absolute
+		top (- $space)
+		left (- $space)
+		bottom (- $space)
+		right (- $space)
+	}
+	&__line {
+		position absolute
+		display block
+		width 100%
+		height 2px
+		background $textColor
+		left 50%
+		margin-left -12px
+		transition transform .3s, background-color 0.3s, opacity 0.3s
+
+		.Hamburger_dark & {
+			background #fff
+		}
+		.Hamburger_work & {
+			background #fff
+		}
+		.Header_light & {
+			background $textColor
+		}
+		&:first-child {
+			top 0
+		}
+		&:nth-child(2) {
+			top 50%
+			margin-top -1px
+		}
+		&:last-child {
+			bottom 0
+		}
+	}
+	&:hover &__line {
+		background $linkColor
+
+		// .Hamburger_dark& {
+		// 	background: $logoMainColor
+		// }
+		// .Hamburger_work& {
+		// 	background: $logoMainColor
+		// }
+	}
+	&_open &__line {
+		&:first-child {
+			transform translateY(7px) rotate(45deg) translateZ(0)
+		}
+		&:nth-child(2) {
+			opacity 0
+		}
+		&:last-child {
+			transform translateY(-7px) rotate(-45deg) translateZ(0)
+		}
+	}
+}

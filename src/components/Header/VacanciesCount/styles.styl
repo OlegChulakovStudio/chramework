@@ -1,0 +1,39 @@
+.VacanciesCount {
+	display inline-block
+	position relative
+	user-select none
+	&__inner {
+		display inline-block
+		font-size 10px
+		line-height 20px
+		font-weight $bold
+		color $textColor
+		width 20px
+		height 20px
+		background-color #F2F2F2
+		border-radius 50%
+		text-align center
+		vertical-align middle
+		margin -3px 0
+		margin-left 4px
+		user-select none
+
+		&:hover .VacanciesCount__tooltip{
+			opacity 1
+			visibility visible
+			faster()
+		}
+		&_isMobile {
+			width 32px
+			height 32px
+			font-size 18px
+			line-height 32px
+			margin-left 8px
+			display none
+			@media $phone {
+				display inline-block
+			}
+		}
+	}
+	
+}
