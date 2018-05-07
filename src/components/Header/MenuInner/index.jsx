@@ -34,75 +34,79 @@ class MenuInner extends Component {
 			"MenuInner_notFound": notFound,
 		});
 		return (
-			<div className={blockStyle}>
-				<div className="MenuInner__container">
-					{this.props.menu && this.props.menu.map((item, i) => {
-						const subListStyle = classNames({
-							"MenuInner__sublist": true,
-							"MenuInner__sublist_main": item.main,
-						});
-						const key = `menuItem-${i}`;
-						return (
-							<div key={key} className="MenuInner__item">
-								<NavLink
-									className="MenuInner__link"
-									to={item.url}
-									onClick={this.linkClick}>
-									{reactHtmlParser(item.name)}
-									{item.vacancies && (
-										<VacanciesCount
-											isMobile
-											count={this.props.vacanciesCount}
-										/>
-									)}
-								</NavLink>
-								{item.sublist && (
-									<ul className={subListStyle}>
-										{item.sublist.map((link, i) => {
-											const itemStyle = classNames({
-												MenuInner__sublink: true,
-												MenuInner__sublink_inmobile: link.inMobile,
-												MenuInner__sublink_hidden: link.isHidden,
-												MenuInner__sublink_phone: link.icon,
-												MenuInner__sublink_rostov:
-													link.icon === 'rostov',
-												MenuInner__sublink_moskow:
-													link.icon && link.icon !== 'rostov',
-											});
-											const key = `menuLink-${i}`;
-											const Icon = icons[link.icon];
-											const element =
-												link.tel || link.mailto ? (
-													<a
-														key={key}
-														className={itemStyle}
-														href={`${link.tel
-															? 'tel:'
-															: 'mailto:'}${link.tel ||
-															link.mailto}`}>
-														{reactHtmlParser(link.name)}
-														<div
-															className="MenuInner__sublink-icon">
-															{link.icon && <Icon />}
-														</div>
-													</a>
-												) : (
-													<NavLink
-														key={key}
-														className={itemStyle}
-														onClick={this.linkClick}
-														to={link.url}>
-														{reactHtmlParser(link.name)}
-														{link.vacancies && <VacanciesCount />}
-													</NavLink>
-												);
-											return element;
-										})}
-									</ul>
-								)}
-							</div>
-						);
-					})}
+			<div className="Menu">
+				<div className="Menu__inner">
+					<div className={blockStyle}>
+						<div className="MenuInner__container">
+							{this.props.menu && this.props.menu.map((item, i) => {
+								const subListStyle = classNames({
+									"MenuInner__sublist": true,
+									"MenuInner__sublist_main": item.main,
+								});
+								const key = `menuItem-${i}`;
+								return (
+									<div key={key} className="MenuInner__item">
+										<NavLink
+											className="MenuInner__link"
+											to={item.url}
+											onClick={this.linkClick}>
+											{reactHtmlParser(item.name)}
+											{item.vacancies && (
+												<VacanciesCount
+													isMobile
+													count={this.props.vacanciesCount}
+												/>
+											)}
+										</NavLink>
+										{item.sublist && (
+											<ul className={subListStyle}>
+												{item.sublist.map((link, i) => {
+													const itemStyle = classNames({
+														MenuInner__sublink: true,
+														MenuInner__sublink_inmobile: link.inMobile,
+														MenuInner__sublink_hidden: link.isHidden,
+														MenuInner__sublink_phone: link.icon,
+														MenuInner__sublink_rostov:
+															link.icon === 'rostov',
+														MenuInner__sublink_moskow:
+															link.icon && link.icon !== 'rostov',
+													});
+													const key = `menuLink-${i}`;
+													const Icon = icons[link.icon];
+													const element =
+														link.tel || link.mailto ? (
+															<a
+																key={key}
+																className={itemStyle}
+																href={`${link.tel
+																	? 'tel:'
+																	: 'mailto:'}${link.tel ||
+																	link.mailto}`}>
+																{reactHtmlParser(link.name)}
+																<div
+																	className="MenuInner__sublink-icon">
+																	{link.icon && <Icon />}
+																</div>
+															</a>
+														) : (
+															<NavLink
+																key={key}
+																className={itemStyle}
+																onClick={this.linkClick}
+																to={link.url}>
+																{reactHtmlParser(link.name)}
+																{link.vacancies && <VacanciesCount />}
+															</NavLink>
+														);
+													return element;
+												})}
+											</ul>
+										)}
+									</div>
+								);
+							})}
+						</div>
+					</div>
 				</div>
 			</div>
 		);

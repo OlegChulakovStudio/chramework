@@ -4,7 +4,7 @@ import get from 'lodash/get';
 import classNames from 'classnames';
 import { connect } from 'react-redux';
 
-import Menu from '../Menu';
+import Menu from '../MenuInner';
 import { Transition } from 'react-transition-group';
 
 import { actions } from '../../modules/modal.js';
