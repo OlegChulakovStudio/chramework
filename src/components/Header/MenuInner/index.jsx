@@ -6,11 +6,10 @@ import classNames from 'classnames';
 
 import { NavLink } from 'react-router-dom';
 import VacanciesCount from '../VacanciesCount';
-import Moscow from 'svg/contacts/moscow.svg';
-import Rostov from 'svg/contacts/rostov.svg';
+import Moscow from '../../../assets/contacts/moscow.svg';
+import Rostov from '../../../assets/contacts/rostov.svg';
 
-import data from 'components/menu.json';
-import { actions } from 'state/ui.js';
+import { actions } from '../../modules/ui.js';
 
 import './styles.styl';
 
@@ -37,7 +36,7 @@ class MenuInner extends Component {
 		return (
 			<div className={blockStyle}>
 				<div className="MenuInner__container">
-					{data.map((item, i) => {
+					{this.props.menu && this.props.menu.map((item, i) => {
 						const subListStyle = classNames({
 							"MenuInner__sublist": true,
 							"MenuInner__sublist_main": item.main,
@@ -83,9 +82,7 @@ class MenuInner extends Component {
 															link.mailto}`}>
 														{reactHtmlParser(link.name)}
 														<div
-															className={
-																style['MenuInner__sublink-icon']
-															}>
+															className="MenuInner__sublink-icon">
 															{link.icon && <Icon />}
 														</div>
 													</a>

@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import style from './styles.styl';
+import './styles.styl';
 
 const Hamburger = ({ menuIsOpened, onClick, mod }) => {
 	const blockClass = classNames({

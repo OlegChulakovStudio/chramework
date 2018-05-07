@@ -7,11 +7,9 @@ import { connect } from 'react-redux';
 import Menu from '../Menu';
 import { Transition } from 'react-transition-group';
 
-import { actions } from 'state/modal.js';
+import { actions } from '../../modules/modal.js';
 
 import './styles.styl';
-
-const MODAL_COMPONENTS = { Menu };
 
 const FadeClasses = {
 	entering: 'FadeMenu FadeMenu-entering',
@@ -39,7 +37,6 @@ class ModalMenuContainer extends Component {
 	static propTypes = {
 		closeModal: PropTypes.func,
 		onClose: PropTypes.func,
-		modalMenuType: PropTypes.any,
 		modalMenuProps: PropTypes.any,
 		mod: PropTypes.string,
 		finalCloseModal: PropTypes.func,
@@ -70,12 +67,10 @@ class ModalMenuContainer extends Component {
 	render() {
 		const {
 			modalMenuIsHiding,
-			modalMenuType,
 			modalMenuProps = {},
 			mod,
 			finalCloseModal,
 		} = this.props;
-		const closeButton = get(modalMenuProps, 'closeButton', true);
 		const type = get(modalMenuProps, 'type', '');
 		const animLayout = get(modalMenuProps, 'animLayout', false);
 
@@ -89,7 +84,7 @@ class ModalMenuContainer extends Component {
 			<Fade in={!modalMenuIsHiding} onExited={finalCloseModal} animLayout={animLayout}>
 				<div className={modalStyle} style={{ height: this.state.height }}>
 					<div className="ModalMenuContainer__content">
-						<Menu vacanciesCount={this.props.vacanciesCount} />
+						<Menu vacanciesCount={this.props.vacanciesCount} menu={this.props.menu}/>
 					</div>
 				</div>
 			</Fade>

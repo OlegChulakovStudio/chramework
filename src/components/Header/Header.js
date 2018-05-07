@@ -1,29 +1,14 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import get from 'lodash/get';
-import { getBodyScrollTop } from '../../libs/scrollLock';
-import { Logo } from 'chramework';
+import { getBodyScrollTop } from '../../utils/scrollLock';
+import LinkScroll from '../LinkScroll';
+import Logo from '../Logo/Logo';
+import Link from '../Link/Link';
 import Navigation from './Navigation';
 import Hamburger from './Hamburger';
 import ModalMenuContainer from './ModalMenuContainer';
-import Icon from 'components/Icon';
-import { actions as uiActions } from 'state/ui.js';
 import './styles.styl';
-
-const mapStateToProps = state => {
-	return {
-		...state.ui,
-		modalIsOpened: state.modal.modalIsOpened,
-		// Для перерендера Navigation
-		pathname: get(state.router, 'location.pathname', ''),
-	};
-};
-const mapDispatchToProps = dispatch => ({
-	menuOpen: () => dispatch(uiActions.menuOpen()),
-	menuClose: () => dispatch(uiActions.menuClose()),
-});
 
 class Header extends Component {
 	static direction = 'FORWARD';
@@ -35,13 +20,15 @@ class Header extends Component {
 		};
 	}
 	componentDidMount() {
-		this.scroll = 0;
-		this.top = 0;
-		this.scrollTop = getBodyScrollTop();
-		document.addEventListener('scroll', this.toggleHeader, false);
-		document.addEventListener('touchmove', this.toggleHeader, false);
-		this.headerHeight = this.block.getBoundingClientRect().height;
-		this.checkLocalMod(this.scrollTop);
+		if (this.props.menu) {
+			this.scroll = 0;
+			this.top = 0;
+			this.scrollTop = getBodyScrollTop();
+			document.addEventListener('scroll', this.toggleHeader, false);
+			document.addEventListener('touchmove', this.toggleHeader, false);
+			this.headerHeight = this.block.getBoundingClientRect().height;
+			this.checkLocalMod(this.scrollTop);
+		}
 	}
 
 	componentDidUpdate = prevProps => {
@@ -160,6 +147,21 @@ class Header extends Component {
 	getHeaderNode = el => {
 		this.block = el;
 	};
+	renderLink = () => {
+		const { linkProps } = this.props;
+		const El = linkProps.scroll ? LinkScroll : Link;
+		const props = linkProps.scroll
+			? {
+					className: 'Link Link_bold',
+					to: linkProps.to,
+				}
+			: {
+					bold: true,
+					disableBlank: true,
+					[linkProps.to ? 'to' : 'href']: linkProps.to || linkProps.href,
+				};
+		return <El {...props}>{linkProps.text}</El>;
+	};
 
 	render() {
 		const {
@@ -171,21 +173,26 @@ class Header extends Component {
 			redirectUrl,
 			ingroup,
 			text,
+			withoutMenu,
+			linkProps,
 			scrollPanelOnPage,
+			madeinlab,
 		} = this.props;
 		const { localMod, scrollMod } = this.state;
 
 		const styles = classNames({
 			Header: true,
 			[`Header_${mod}`]: mod,
+			Header_pinned: this.props.menu,
 			[`Header_${page}`]: page,
 			[`Header_${localMod}`]: localMod,
 			[`Header_${scrollMod}`]: scrollMod,
 			Header_topWork: page === 'workItem' && localMod !== 'light',
 			Header_lab: page === 'lab',
 			Header_fix: menuIsOpened,
-			Header_ingroup: ingroup,
+			Header_ingroup: ingroup || madeinlab,
 		});
+		const logoMod = mod === 'dark' || mod === 'work' ? 'light' : '';
 
 		return (
 			<header
@@ -196,25 +203,33 @@ class Header extends Component {
 					<div className="Header__logo">
 						<Logo
 							linkProps={page ? { to: '/' } : undefined}
-							type={mod === 'dark' || mod === 'work' ? 'light' : ''}
+							mod={logoMod}
 							onClick={this.menuClose}
 							ingroup={ingroup}
-						/>
-						<Icon glyph={partners} />
-					</div>
-					<div className="Header__content">
-						<Navigation
-							filterList={this.props.filterList}
-							vacanciesCount={this.props.vacanciesCount}
+							madeinlab={madeinlab}
+							text={text}
 						/>
 					</div>
-					<Hamburger
-						mod={mod}
-						menuIsOpened={menuIsOpened || redirectUrl.length > 0}
-						onClick={this.onClick}
-					/>
+					{this.props.menu &&
+						!withoutMenu && (
+							<div className="Header__content">
+								<Navigation
+									filterList={this.props.filterList}
+									vacanciesCount={this.props.vacanciesCount}
+									menu={this.props.menu}
+								/>
+							</div>
+						)}
+					{this.props.menu && (
+						<Hamburger
+							mod={mod}
+							menuIsOpened={menuIsOpened || redirectUrl.length > 0}
+							onClick={this.onClick}
+						/>
+					)}
+					{linkProps && !this.props.menu && this.renderLink()}
 				</div>
-				<ModalMenuContainer vacanciesCount={this.props.vacanciesCount} />
+				{this.props.menu && <ModalMenuContainer vacanciesCount={this.props.vacanciesCount} menu={this.props.menu}/>}
 			</header>
 		);
 	}
@@ -229,6 +244,9 @@ Header.propTypes = {
 	menuOpen: PropTypes.func,
 	modalIsOpened: PropTypes.bool,
 	scrollSize: PropTypes.number,
+	vacanciesCount: PropTypes.number,
+	filterList: PropTypes.array,
+	menu: PropTypes.array,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default Header;

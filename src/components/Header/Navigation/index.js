@@ -4,27 +4,9 @@ import reactHtmlParser from 'react-html-parser';
 import NavLink from 'react-router-dom/NavLink';
 import VacanciesCount from '../VacanciesCount';
 
-import menu from 'components/menu.json';
 
 import './styles.styl';
 
-// const isActiveWorks = (match, location, worksFilterList) => {
-// 	if (match) {
-// 		const innerPage = location.pathname.split('/')[2];
-// 		if (innerPage) {
-// 			let findRusult = false;
-// 			worksFilterList.some(item => {
-// 				if (item === innerPage) {
-// 					findRusult = true;
-// 					return true;
-// 				}
-// 			});
-// 			return findRusult;
-// 		}
-// 		return true;
-// 	}
-// 	return false;
-// };
 
 class Navigation extends Component {
 	isActiveWorks = (match, location) => {
@@ -37,6 +19,7 @@ class Navigation extends Component {
 						findRusult = true;
 						return true;
 					}
+					return false;
 				});
 				return findRusult;
 			}
@@ -47,7 +30,7 @@ class Navigation extends Component {
 	render() {
 		return (
 			<div className="Navigation">
-				{menu.map(item => {
+				{this.props.menu.map(item => {
 					return (
 						<NavLink
 							exact={item.exact}
