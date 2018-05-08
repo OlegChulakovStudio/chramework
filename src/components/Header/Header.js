@@ -250,6 +250,20 @@ class Header extends Component {
 	}
 }
 
+Header.defaultProps = {
+	mod: '',
+	menuIsOpened: false,
+	menuClose: () => {},
+	onHamburgerClick: () => {},
+	redirectUrl: '',
+	menuOpen: () => {},
+	modalIsOpened: false,
+	scrollSize: undefined,
+	vacanciesCount: undefined,
+	filterList: undefined,
+	menu: undefined,
+};
+
 Header.propTypes = {
 	mod: PropTypes.string,
 	menuIsOpened: PropTypes.bool,
