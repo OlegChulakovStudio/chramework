@@ -89,7 +89,6 @@ export const actions = {
 		};
 	},
 	closeModalMenu: () => {
-		unlockScroll();
 		return {
 			type: types.HIDE_MODAL_MENU,
 		};
