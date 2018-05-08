@@ -89,10 +89,14 @@ class MenuInner extends Component {
 															<a
 																key={key}
 																className={itemStyle}
-																href={`${link.tel
-																	? 'tel:'
-																	: 'mailto:'}${link.tel ||
-																	link.mailto}`}>
+																href={
+																	link.href
+																		? link.href
+																		: `${link.tel
+																				? 'tel:'
+																				: 'mailto:'}${link.tel ||
+																				link.mailto}`
+																}>
 																{reactHtmlParser(link.name)}
 																<div
 																	className="MenuInner__sublink-icon">
