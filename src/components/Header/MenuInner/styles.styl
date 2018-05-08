@@ -1,3 +1,40 @@
+.Menu {
+	padding 200px 0
+	box-sizing border-box
+
+	@media $notebook {
+		padding 120px 0
+	}
+	@media $laptopHeight {
+		padding: 60px 0
+	}
+	@media $phone {
+		height auto
+		padding-top 24px
+	}
+	&__inner {
+		display flex
+		align-items center
+		opacity 0
+		transform translateY(-5px)
+
+		.FadeMenu-entered & {
+			opacity 1
+			transform translateY(0px)
+			transition transform 0.15s ease-out 0.1s, opacity 0.15s ease-out 0.1s
+		}
+		.FadeMenu-exiting & {
+			opacity 0
+			transform translateY(-5px)
+			transition transform 0.1s ease-in, opacity 0.1s ease-in
+		}
+		@media $phone {
+			height auto
+			margin-top 0
+			padding 0 16px
+		}
+	}
+}
 .MenuInner {
 	// overflow hidden
 	width 100%
