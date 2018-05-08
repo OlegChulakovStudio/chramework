@@ -89,6 +89,7 @@ class MenuInner extends Component {
 															<a
 																key={key}
 																className={itemStyle}
+																target={link.href ? '_blank' : ''}
 																href={
 																	link.href
 																		? link.href
