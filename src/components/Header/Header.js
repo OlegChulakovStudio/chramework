@@ -169,6 +169,7 @@ class Header extends Component {
 			? {
 					className: 'Link Link_bold',
 					to: linkProps.to,
+					offsetTop: 80
 				}
 			: {
 					bold: true,
