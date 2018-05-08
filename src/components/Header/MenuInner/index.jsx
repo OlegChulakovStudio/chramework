@@ -46,18 +46,29 @@ class MenuInner extends Component {
 								const key = `menuItem-${i}`;
 								return (
 									<div key={key} className="MenuInner__item">
-										<NavLink
-											className="MenuInner__link"
-											to={item.url}
-											onClick={this.linkClick}>
-											{reactHtmlParser(item.name)}
-											{item.vacancies && (
-												<VacanciesCount
-													isMobile
-													count={this.props.vacanciesCount}
-												/>
-											)}
-										</NavLink>
+										{item.url && (
+											<NavLink
+												className="MenuInner__link"
+												to={item.url}
+												onClick={this.linkClick}>
+												{reactHtmlParser(item.name)}
+												{item.vacancies && (
+													<VacanciesCount
+														isMobile
+														count={this.props.vacanciesCount}
+													/>
+												)}
+											</NavLink>
+										)}
+										{item.href && (
+											<a
+												className="MenuInner__link"
+												href={item.href}
+												target="_blank"
+												onClick={this.linkClick}>
+												{reactHtmlParser(item.name)}
+											</a>
+										)}
 										{item.sublist && (
 											<ul className={subListStyle}>
 												{item.sublist.map((link, i) => {
@@ -74,7 +85,7 @@ class MenuInner extends Component {
 													const key = `menuLink-${i}`;
 													const Icon = icons[link.icon];
 													const element =
-														link.tel || link.mailto ? (
+														link.tel || link.mailto || link.href ? (
 															<a
 																key={key}
 																className={itemStyle}
