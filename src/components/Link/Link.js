@@ -14,6 +14,7 @@ const LinkElement = ({
 	href,
 	disableBlank,
 	noLink,
+	noBlank,
 	...rest
 }) => {
 	const linkStyle = classNames(['Link', className, {
@@ -26,9 +27,9 @@ const LinkElement = ({
 	if (to) {
 		linkProps = { to };
 	} else if (href) {
-		linkProps = { href, target: '_blank' };
+		linkProps = { href, target: noBlank ? '' : '_blank' };
 	}
-	if(noLink) {
+	if (noLink) {
 		RenderedComponent = 'span';
 	}
 	return (
@@ -46,6 +47,7 @@ LinkElement.defaultProps = {
 	bold: undefined,
 	light: undefined,
 	noLink: false,
+	noBlank: false,
 	disableBlank: false
 };
 
@@ -57,6 +59,7 @@ LinkElement.propTypes = {
 	bold: PropTypes.any,
 	light: PropTypes.bool,
 	noLink: PropTypes.bool,
+	noBlank: PropTypes.bool,
 	disableBlank: PropTypes.bool
 };
 
