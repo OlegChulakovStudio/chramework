@@ -73,7 +73,7 @@ export default class Logo extends Component {
 			])}>
 				<LogoIcon className="Logo__icon" width={120} height={28} />
 				{text && (
-					TextIcon ? <TextIcon height={28} /> : <span className="Logo__sufix">{text}</span>
+					TextIcon ? <TextIcon height={28} className="Logo__iconSuffix" /> : <span className="Logo__sufix">{text}</span>
 				)}
 				{linkProps && <Link {...linkProps} disableBlank className="Logo__link" />}
 				{(ingroup || madeinlab) && <span className="Logo__ingroup">
