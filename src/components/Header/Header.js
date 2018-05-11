@@ -208,7 +208,7 @@ class Header extends Component {
 			Header_fix: menuIsOpened,
 			Header_ingroup: ingroup || madeinlab,
 		});
-		const logoMod = mod === 'dark' || mod === 'topWork' ? 'light' : '';
+		const logoMod = mod === 'dark' || mod === 'work' ? 'light' : '';
 
 		return (
 			<header
