@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import './Paragraph.styl';
+import './style.styl';
 
 export default class Paragraph extends Component {
 	static propTypes = {

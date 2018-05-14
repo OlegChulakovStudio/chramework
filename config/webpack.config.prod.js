@@ -23,7 +23,7 @@ const publicPath = '';
 const shouldUseRelativeAssetPaths = publicPath === './';
 // `publicUrl` is just like `publicPath`, but we will provide it to our app
 // as %PUBLIC_URL% in `index.html` and `process.env.PUBLIC_URL` in JavaScript.
-// Omit trailing slash as %PUBLIC_URL%/xyz looks better than %PUBLIC_URL%xyz.
+// Omit trailing slash as %PUBLIC_URL%/xyz looks better dfgndsfbfthan %PUBLIC_URL%xyz.
 const publicUrl = publicPath.slice(0, -1);
 // Get environment variables to inject into our app.
 const env = getClientEnvironment(publicUrl);
@@ -53,7 +53,10 @@ module.exports = {
 	// You can exclude the *.map files from the build during deployment.
 	devtool: 'source-map',
 	// In production, we only want to load the polyfills and the app code.
-	entry: [require.resolve('./polyfills'), paths.appIndexJs],
+	entry: {
+		main: [require.resolve('./polyfills'), paths.appIndexJs],
+		Paragraph: require.resolve(`../src/components/Paragraph/Paragraph.js`)
+	},
 	output: {
 		// The build folder.
 		path: paths.appBuild,
@@ -61,7 +64,7 @@ module.exports = {
 		// Generated JS file names (with nested folders).
 		// There will be one main bundle, and one file per asynchronous chunk.
 		// We don't currently advertise code splitting but Webpack supports it.
-		filename: '[name].js',
+		filename: '[name]/[name].js',
 		chunkFilename: '[name].chunk.js',
 		// We inferred the "public path" (such as / or /my-project) from homepage.
 		publicPath: publicPath
@@ -206,7 +209,7 @@ module.exports = {
 									options: {
 										importLoaders: 1,
 										minimize: true,
-										sourceMap: true
+										sourceMap: false
 									}
 								},
 								{
@@ -249,7 +252,7 @@ module.exports = {
 									options: {
 										importLoaders: 2,
 										minimize: true,
-										sourceMap: true
+										sourceMap: false
 									}
 								},
 								{
@@ -258,7 +261,7 @@ module.exports = {
 										// Necessary for external CSS imports to work
 										// https://github.com/facebookincubator/create-react-app/issues/2677
 										ident: 'postcss',
-										sourceMap: true,
+										sourceMap: false,
 										plugins: () => [
 											require('postcss-flexbugs-fixes'),
 											autoprefixer({
@@ -278,7 +281,7 @@ module.exports = {
 									options: {
 										import: require.resolve('../src/styles/common.styl'),
 										resolveUrl: true,
-										sourceMap: true
+										sourceMap: false
 									}
 								}
 							]
@@ -319,7 +322,7 @@ module.exports = {
 				// https://github.com/facebookincubator/create-react-app/issues/2488
 				ascii_only: true
 			},
-			sourceMap: true
+			sourceMap: false
 		}),
 		// Note: this won't work without ExtractTextPlugin.extract(..) in `loaders`.
 		new ExtractTextPlugin({
