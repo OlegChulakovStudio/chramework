@@ -24,7 +24,7 @@ class ShareBlock extends Component {
 
 	componentDidMount() {
 		const initVkButton = require('../../../utils/helpers').initVkButton;
-		initVkButton(this.vkButton, this.props.url);
+		initVkButton(this.vkButton, this.props.url, false, false, false, true);
 	};
 
 	onClipboard = () => {

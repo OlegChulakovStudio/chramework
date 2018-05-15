@@ -11,8 +11,9 @@ export const pluralize = (n, forms) => {
 
 const buttons = [];
 const initLike = (vkButtonId, url, title, image, pageId) => {
-	const buttonElement = document.getElementById(vkButtonId);
-	if (buttonElement) {
+	// const buttonElement = document.getElementById(vkButtonId) || vkButtonId;
+
+	// if (buttonElement) {
 		VK.Widgets.Like(vkButtonId, {
 			type: 'button',
 			height: 20,
@@ -20,19 +21,22 @@ const initLike = (vkButtonId, url, title, image, pageId) => {
 			pageTitle: title,
 			pageImage: image,
 		});
-	}
+	// }
 };
 const initShare = (vkButton, url, title, image, pageId) => {
+
 	const buttonElement = vkButton;
 	if (buttonElement) {
 		buttonElement.innerHTML = VK.Share.button(url, { type: 'link' });
 	}
 };
 export const initVkButton = (vkButton, url, title, image, pageId, share = false) => {
+
 	if (typeof VK === 'undefined' && !window.isVkFetching) {
 		window.isVkFetching = true;
 		buttons.push({ vkButton, url, title, image, pageId });
 		window.vkAsyncInit = () => {
+
 			window.isVkFetching = false;
 			VK.init({ apiId: 6370931, onlyWidgets: true });
 			buttons.forEach(({ vkButton, url, title, image, pageId }) => {
@@ -96,7 +100,6 @@ export const checkSpeed = (callback) => {
 		const timeEnd = Date.now();
 		const timeLoad = timeEnd - timeStart;
 		const speed = imageSize / (timeLoad / 1000);
-
 		callback(speed);
 	};
 	image.src = imageFile;
