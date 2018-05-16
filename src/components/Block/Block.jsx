@@ -21,6 +21,7 @@ const Block = ({
 	background,
 	scrollId,
 	outside,
+	style
 }) => {
 	const pageStyle = classNames({
 		Block: true,
@@ -42,7 +43,7 @@ const Block = ({
 	const RenderElement = scrollId ? ScrollAnim.Element : 'div';
 
 	return outside ? (
-		<RenderElement id={scrollId || ''} className={pageStyle}>
+		<RenderElement style={style} id={scrollId || ''} className={pageStyle}>
 			<div className={pageInnerStyle}>
 				{(title || subtitle) && (
 					<div className={headerStyle}>
@@ -58,36 +59,36 @@ const Block = ({
 									);
 								})
 							) : (
-								<Paragraph mod="body">{reactHtmlParser(subtitle)}</Paragraph>
-							))}
+									<Paragraph mod="body">{reactHtmlParser(subtitle)}</Paragraph>
+								))}
 					</div>
 				)}
 				{children}
 			</div>
 		</RenderElement>
 	) : (
-		<RenderElement id={scrollId || ''} className={pageStyle}>
-			{(title || subtitle) && (
-				<div className={headerStyle}>
-					{title && <Heading level={level || 2}>{reactHtmlParser(title)}</Heading>}
-					{subtitle &&
-						(typeof subtitle === 'object' ? (
-							subtitle.map((item, i) => {
-								const key = `subtitle-${i}`;
-								return (
-									<Paragraph key={key} mod="body">
-										{reactHtmlParser(item)}
-									</Paragraph>
-								);
-							})
-						) : (
-							<Paragraph mod="body">{reactHtmlParser(subtitle)}</Paragraph>
-						))}
-				</div>
-			)}
-			{children}
-		</RenderElement>
-	);
+			<RenderElement id={scrollId || ''} className={pageStyle}>
+				{(title || subtitle) && (
+					<div className={headerStyle}>
+						{title && <Heading level={level || 2}>{reactHtmlParser(title)}</Heading>}
+						{subtitle &&
+							(typeof subtitle === 'object' ? (
+								subtitle.map((item, i) => {
+									const key = `subtitle-${i}`;
+									return (
+										<Paragraph key={key} mod="body">
+											{reactHtmlParser(item)}
+										</Paragraph>
+									);
+								})
+							) : (
+									<Paragraph mod="body">{reactHtmlParser(subtitle)}</Paragraph>
+								))}
+					</div>
+				)}
+				{children}
+			</RenderElement>
+		);
 };
 
 Block.defaultProps = {
@@ -101,6 +102,7 @@ Block.defaultProps = {
 	background: false,
 	noMargin: false,
 	outside: false,
+	style: {},
 };
 
 Block.propTypes = {
@@ -115,6 +117,7 @@ Block.propTypes = {
 	headerLevel: PropTypes.number,
 	outside: PropTypes.bool,
 	scrollId: PropTypes.string,
+	style: PropTypes.object,
 };
 
 export default Block;

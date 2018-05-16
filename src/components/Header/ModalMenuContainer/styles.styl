@@ -1,0 +1,155 @@
+.ModalMenuContainer {
+	top 0
+	left 0
+	width 100%
+	height 100vh
+	position fixed
+	font-size 0
+	overflow auto
+	text-align center
+	-webkit-overflow-scrolling touch
+	white-space nowrap
+	z-index 400000
+	background-color #fff
+
+	@media $phone {
+		text-align left
+	}
+	// &:before {
+	// 	content ''
+	// 	display inline-block
+	// 	vertical-align middle
+	// 	height 100%
+	// 	width 0
+	// }
+	&__overlay {
+		position fixed
+		top 50%
+		left 50%
+		width 1000%
+		height 1000%
+		transform translateX(-50%) translateY(-50%)
+		background-color rgba(0, 0, 0, 0.6)
+	}
+	&__content {
+		position relative
+		display inline-block
+		box-sizing border-box
+		white-space normal
+		text-align left
+
+		.ModalContainer_simple & {
+			transform: translateY(8px)
+
+			.Fade-entered & {
+				transform: translateY(0px)
+				transition: transform 0.2s ease-out 0.05s
+			}
+
+			.Fade-exiting & {
+				transform: translateY(8px)
+				transition: transform 0.2s ease-in
+			}
+		}
+	}
+	&__close {
+		position absolute
+		top 20px
+		right 20px
+		cursor pointer
+		padding 0
+		border none
+		display inline-block
+		cursor pointer
+		width 24px
+		height 16px
+		background none
+
+		&:before {
+			$space = 20px
+			content ''
+			position absolute
+			top (- $space)
+			left (- $space)
+			bottom (- $space)
+			right (- $space)
+		}
+		&-line {
+			position absolute
+			display block
+			width 100%
+			height 2px
+			background $textColor
+			left 50%
+			margin-left -12px
+			transition transform $duration, background-color $duration, opacity $duration
+
+			&:first-child {
+				top 0
+				transform translateY(7px) rotate(45deg) translateZ(0)
+			}
+			&:nth-child(2) {
+				top 50%
+				opacity 0
+				margin-top -1px
+			}
+			&:last-child {
+				bottom 0
+				transform translateY(-7px) rotate(-45deg) translateZ(0)
+			}
+		}
+		&:hover &__line {
+			background $linkColor
+		}
+	}
+
+	&_menu {
+		top 0
+		-webkit-overflow-scrolling auto
+		z-index 10000
+		padding-top 76px
+
+		@media $phone {
+			top 0
+			padding-top 56px
+		}
+		.ModalContainer {
+			background #fff
+
+			&__overlay {
+				top 0
+				background #fff
+				left 0
+				width 100%
+				height 150%
+				transform none
+			}
+
+			&__content {
+				width 100%
+				height 100vh
+				margin 0
+				transform translateY(0) !important
+			}
+		}
+	}
+}
+.FadeMenu {
+	position relative
+	z-index 1
+
+	&-entering {
+		opacity 0
+	}
+	&-entered {
+		opacity 1
+		transition opacity 0.1s 0.1s
+	}
+	&-exiting {
+		opacity 0
+		transition opacity 0.1s 0.1s
+	}
+	&-exited {
+		opacity 0
+	}
+}

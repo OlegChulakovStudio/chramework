@@ -24,6 +24,9 @@
 			transform translateY(2%) translateZ(0)
 		}
 	}
+	&__iconSuffix {
+		fill $textColor
+	}
 	&__link {
 		fullsize()
 	}
@@ -80,10 +83,13 @@
 			a {
 				color #ffffff
 				&:hover {
-					color $linkColor	
+					color $linkColor
 				}
 			}
-		}	
+		}
+		.Logo__iconSuffix {
+			fill #ffffff
+		}
 	}
 	&--ingroup {
 		height auto
@@ -98,9 +104,10 @@
 		text-transform uppercase
 		letter-spacing: 1.55px
 		padding-top 8px
+		transition opacity $duration
 		@media $phone {
-			font-size 7px
-			padding-top 5px	
+			font-size 8.3px
+			padding-top 7px
 		}
 
 		a {
@@ -111,7 +118,7 @@
 			&:hover {
 				color $linkHoverColor
 				@media $phone {
-					color $linkColor	
+					color $linkColor
 				}
 			}
 		}

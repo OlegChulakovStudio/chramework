@@ -9,7 +9,7 @@ import './Card.styl';
 import TargetBlankHover from '../../assets/newTargetBlankHover.svg';
 import TargetBlank from '../../assets/newTargetBlank.svg';
 
-const Card = ({ children, className, disabled, gray, gap, quarter, half, link, border }) => {
+const Card = ({ children, className, disabled, gray, gap, quarter, half, link, border, noneBlank }) => {
   const cardStyle = classNames('Card', {
     'Card_disabled': disabled,
     'Card_gray': gray,
@@ -24,18 +24,21 @@ const Card = ({ children, className, disabled, gray, gap, quarter, half, link, b
   const RenderComponent = link ? Link : 'div';
   const linkProps = link ? {
     ...link,
-    disableBlank: true
+    disableBlank: true,
+    noBlank: noneBlank
   } : {};
+  const targetBlank = link.href && !noneBlank
   return (
     <RenderComponent {...linkProps} className={cardStyle}>
       <div className={'Card__inner'}>
         {children}
-        {link && link.href && <TargetBlankHover className={classNames('Card__targetBlank', 'Card__targetBlank_hover')} />}
-        {link && link.href && <TargetBlank className={classNames('Card__targetBlank', 'Card__targetBlank_normal')} />}
+        {link && targetBlank && <TargetBlankHover className={classNames('Card__targetBlank', 'Card__targetBlank_hover')} />}
+        {link && targetBlank && <TargetBlank className={classNames('Card__targetBlank', 'Card__targetBlank_normal')} />}
       </div>
     </RenderComponent>
   );
 };
+
 
 Card.propTypes = {
   children: PropTypes.any,
@@ -46,6 +49,7 @@ Card.propTypes = {
   quarter: PropTypes.bool,
   half: PropTypes.bool,
   border: PropTypes.bool,
+  noneBlank: PropTypes.bool,
   link: PropTypes.object,
 };
 

@@ -1,0 +1,36 @@
+.Navigation {
+	& {
+		vertical-align middle
+		text-align right
+	}
+	&__item {
+		display inline-block
+		vertical-align middle
+		color $linkColor
+		font-weight $bold
+		line-height 28px
+		font-size 14px
+		transition color $duration
+		position relative
+		// overflow hidden
+		padding 0 20px
+		font-size 14px
+		position relative
+		// overflow hidden
+
+		& .VacanciesCount__tooltip{
+			display inline
+		}
+		&:hover {
+			color $linkHoverColor
+			faster()
+		}
+		&_active {
+			color $textColor
+			faster()
+			&:hover {
+				color $textColor
+			}
+		}
+	}
+}

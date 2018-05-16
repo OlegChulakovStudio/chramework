@@ -5,9 +5,25 @@ import reactHtmlParser from "react-html-parser";
 
 import Link from '../Link/Link';
 import LogoIcon from './assets/logo.svg';
+import consulting from './assets/consulting.svg';
+import group from './assets/group.svg';
+import handbook from './assets/handbook.svg';
+import lab from './assets/lab.svg';
+import media from './assets/media.svg';
+import partners from './assets/partners.svg';
+import mobile from './assets/mobile.svg';
 
 import './Logo.styl';
 
+const icons ={
+	consulting,
+	group,
+	handbook,
+	lab,
+	media,
+	partners,
+	mobile,
+}
 export default class Logo extends Component {
 
 	static propTypes = {
@@ -26,6 +42,7 @@ export default class Logo extends Component {
 			PropTypes.object,
 			PropTypes.bool
 		]),
+		madeinlab: PropTypes.bool,
 	};
 
 	static defaultProps = {
@@ -35,12 +52,14 @@ export default class Logo extends Component {
 		text: undefined,
 		ingroup: undefined,
 		linkProps: undefined,
+		madeinlab: undefined,
 	};
 
 	render() {
-		const { linkProps, mod, size, type, className, text, ingroup, ...rest } = this.props;
+		const { linkProps, mod, size, type, className, text, madeinlab, ingroup, ...rest } = this.props;
 		const currentGroupText = typeof ingroup === 'object' ? ingroup.text : 'Chulakov Group';
 		const currentGroupLink = typeof ingroup === 'object' ? ingroup.url : 'https://group.chulakov.ru/';
+		const TextIcon = icons[text];
 		return (
 			<div {...rest} className={classNames([
 				'Logo',
@@ -49,14 +68,17 @@ export default class Logo extends Component {
 					[`Logo--${size}`]: size,
 					[`Logo--${type}`]: type,
 					[`Logo--${mod}`]: mod,
-					[`Logo--ingroup`]: ingroup,
+					[`Logo--ingroup`]: ingroup || madeinlab,
 				}
 			])}>
 				<LogoIcon className="Logo__icon" width={120} height={28} />
-				{text && <span className="Logo__sufix">{text}</span>}
+				{text && (
+					TextIcon ? <TextIcon height={28} className="Logo__iconSuffix" /> : <span className="Logo__sufix">{text}</span>
+				)}
 				{linkProps && <Link {...linkProps} disableBlank className="Logo__link" />}
-				{ingroup && <span className="Logo__ingroup">
-					{reactHtmlParser(`в составе <a href="${currentGroupLink}" target="_blank">${currentGroupText}</a>`)}
+				{(ingroup || madeinlab) && <span className="Logo__ingroup">
+					{ingroup && reactHtmlParser(`в составе <a href="${currentGroupLink}" target="_blank">${currentGroupText}</a>`)}
+					{madeinlab && reactHtmlParser("сделано в <a href=\"https://lab.chulakov.ru\" target=\"_blank\">Chulakov Lab</a>")}
 				</span>}
 			</div>
 		);

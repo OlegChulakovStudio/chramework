@@ -43,6 +43,7 @@ import WorkItem from './components/WorkItem/WorkItem';
 import Block from './components/Block/Block';
 import SocialNetworks from './components/SocialNetworks/SocialNetworks';
 import FooterMini from './components/FooterMini/FooterMini';
+import Header from './components/Header/Header';
 
 import AchievementsData from './components/AchievementsList/data.json';
 
@@ -91,4 +92,5 @@ export {
 	SocialNetworks,
 	FooterMini,
 	Block,
+	Header,
 };

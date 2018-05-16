@@ -14,7 +14,7 @@ Small:
 
 With text:
 
-    <Logo linkProps={{href: "http://chulakov.ru"}} text="media" />
+    <Logo linkProps={{href: "http://chulakov.ru"}} text="mediablock" />
 
 With subline:
 
