@@ -9,6 +9,7 @@ import WorkTags from '../WorkTags/WorkTags';
 import Link from '../Link/Link';
 
 import './WorkItem.styl';
+import Medal from './medal.svg';
 
 class WorkItem extends Component {
 	static propTypes = {
@@ -19,6 +20,7 @@ class WorkItem extends Component {
 		description: PropTypes.string,
 		onDark: PropTypes.bool,
 		tags: PropTypes.array.isRequired,
+		awards: PropTypes.array,
 	};
 	static defaultProps = {
 		video: undefined,
@@ -28,6 +30,7 @@ class WorkItem extends Component {
 		title: undefined,
 		description: undefined,
 		tags: undefined,
+		awards: undefined,
 	}
 
 	renderVisual = () => {
@@ -43,7 +46,7 @@ class WorkItem extends Component {
 			);
 	};
 	render() {
-		const { title, description, onDark, tags, url, video, posters, className, ...rest } = this.props;
+		const { title, description, onDark, tags, url, video, posters, className, awards, ...rest } = this.props;
 		const workItemClasses = classNames(['WorkItem', className, {
 			WorkItem_video: video,
 			WorkItem_link: !video,
@@ -66,6 +69,9 @@ class WorkItem extends Component {
 								{reactHtmlParser(description)}
 							</Paragraph>
 						)}
+						{awards && awards.length > 0 && <Paragraph TagName="div" mod="bodySmall" className="WorkItem__awardsCount">
+							<Medal />{`× ${awards.length}`}
+						</Paragraph>}
 						{url && <Paragraph TagName="div" mod="boldSmall" className="WorkItem__more">Узнать подробности</Paragraph>}
 					</RenderComponent>
 				</div>
