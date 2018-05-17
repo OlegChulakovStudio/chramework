@@ -163,8 +163,23 @@
 		}
 	}
 	&__info {
-		margin-bottom 8px
+		margin-bottom 16px
 		color $textColor
+		&-text {
+			margin-bottom 8px	
+		}
+		&-awardsCount {
+			position relative
+			padding-left 20px
+			color $textColor
+			margin-bottom 16px	
+			svg {
+				fill #000
+				position absolute
+				top -3px
+				left -4px
+			}	
+		}
 		&:last-child {
 			margin-bottom 0
 		}
@@ -174,18 +189,6 @@
 		@media $phone {
 			body()
 		}
-	}
-	&__awardsCount {
-		position relative
-		padding-left 20px
-		color $textColor
-		margin-bottom 16px	
-		svg {
-			fill #000
-			position absolute
-			top -3px
-			left -4px
-		}	
 	}
 	&__client {
 		&__name {

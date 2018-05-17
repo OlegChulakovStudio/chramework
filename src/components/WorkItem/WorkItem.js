@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import reactHtmlParser from 'react-html-parser';
-import { pluralize } from '../../utils/helpers'
+import { pluralize } from '../../utils/helpers';
 
 import Player from '../Player/Player';
 import Paragraph from '../Paragraph/Paragraph';
@@ -54,6 +54,9 @@ class WorkItem extends Component {
 			WorkItem_onDark: onDark,
 		}]);
 		const RenderComponent = url ? Link : "div";
+		const dataAwards = awards || [1, 2, 3];
+		const currentCountAwards = dataAwards.length === 1 ? dataAwards[0].name : `× ${dataAwards.length} ${pluralize(dataAwards.length, ['награда', 'награды', 'наград'])}`;
+
 		return (
 			<div {...rest} className={workItemClasses}>
 				<div className="WorkItem__inner">
@@ -65,14 +68,16 @@ class WorkItem extends Component {
 							</Paragraph>
 							{tags && <WorkTags list={tags} />}
 						</div>
-						{description && (
-							<Paragraph TagName="div" mod="bodySmall" className="WorkItem__info">
-								{reactHtmlParser(description)}
-							</Paragraph>
+						{(description || dataAwards) && (
+							<div className="WorkItem__info">
+								{description && <Paragraph TagName="div" mod="bodySmall" className="WorkItem__info-text">
+									{reactHtmlParser(description)}
+								</Paragraph>}
+								{dataAwards.length > 0 && <Paragraph TagName="div" mod="bodySmall" className="WorkItem__info-awardsCount">
+									<Medal />{currentCountAwards}
+								</Paragraph>}
+							</div>
 						)}
-						{(awards && awards.length > 0) && <Paragraph TagName="div" mod="bodySmall" className="WorkItem__awardsCount">
-							<Medal />{`× ${awards.length} ${pluralize(awards.length, ['награда', 'награды', 'наград'])}`}
-						</Paragraph>}
 						{url && <Paragraph TagName="div" mod="boldSmall" className="WorkItem__more">Узнать подробности</Paragraph>}
 					</RenderComponent>
 				</div>
