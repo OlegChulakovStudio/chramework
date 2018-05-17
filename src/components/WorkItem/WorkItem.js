@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import reactHtmlParser from 'react-html-parser';
+import { pluralize } from '../../utils/helpers'
 
 import Player from '../Player/Player';
 import Paragraph from '../Paragraph/Paragraph';
@@ -69,8 +70,8 @@ class WorkItem extends Component {
 								{reactHtmlParser(description)}
 							</Paragraph>
 						)}
-						{awards && awards.length > 0 && <Paragraph TagName="div" mod="bodySmall" className="WorkItem__awardsCount">
-							<Medal />{`× ${awards.length}`}
+						{awards && awards.length && <Paragraph TagName="div" mod="bodySmall" className="WorkItem__awardsCount">
+							<Medal />{`× ${awards.length} ${pluralize(awards.length, ['награда', 'награды', 'наград'])}`}
 						</Paragraph>}
 						{url && <Paragraph TagName="div" mod="boldSmall" className="WorkItem__more">Узнать подробности</Paragraph>}
 					</RenderComponent>
