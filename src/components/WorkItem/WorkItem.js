@@ -70,7 +70,7 @@ class WorkItem extends Component {
 								{reactHtmlParser(description)}
 							</Paragraph>
 						)}
-						{awards && awards.length && <Paragraph TagName="div" mod="bodySmall" className="WorkItem__awardsCount">
+						{awards && awards.length > 0 && <Paragraph TagName="div" mod="bodySmall" className="WorkItem__awardsCount">
 							<Medal />{`× ${awards.length} ${pluralize(awards.length, ['награда', 'награды', 'наград'])}`}
 						</Paragraph>}
 						{url && <Paragraph TagName="div" mod="boldSmall" className="WorkItem__more">Узнать подробности</Paragraph>}
