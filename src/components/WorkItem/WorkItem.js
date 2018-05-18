@@ -54,8 +54,21 @@ class WorkItem extends Component {
 			WorkItem_onDark: onDark,
 		}]);
 		const RenderComponent = url ? Link : "div";
-		const dataAwards = awards || [1, 2, 3];
-		const currentCountAwards = dataAwards.length === 1 ? dataAwards[0].name : `× ${dataAwards.length} ${pluralize(dataAwards.length, ['награда', 'награды', 'наград'])}`;
+		const dataAwards = awards || [
+			{
+				name: "Золотой сайт",
+				link: "Золото"
+			},
+			{
+				name: "Золотой сайт",
+				link: "Золото"
+			},
+			{
+				name: "Золотой сайт",
+				link: "Золото"
+			}
+		];
+		const currentCountAwards = dataAwards.length === 1 ? dataAwards[0].link : `× ${dataAwards.length} ${pluralize(dataAwards.length, ['награда', 'награды', 'наград'])}`;
 
 		return (
 			<div {...rest} className={workItemClasses}>
@@ -73,9 +86,12 @@ class WorkItem extends Component {
 								{description && <Paragraph TagName="div" mod="bodySmall" className="WorkItem__info-text">
 									{reactHtmlParser(description)}
 								</Paragraph>}
-								{dataAwards.length > 0 && <Paragraph TagName="div" mod="bodySmall" className="WorkItem__info-awardsCount">
-									<Medal />{currentCountAwards}
-								</Paragraph>}
+								{dataAwards.length > 0 && <div className="WorkItem__awards">
+									<Medal />
+									<Paragraph TagName="div" mod="bodySmall" className="WorkItem__awards-count">
+										{currentCountAwards}
+									</Paragraph>
+								</div>}
 							</div>
 						)}
 						{url && <Paragraph TagName="div" mod="boldSmall" className="WorkItem__more">Узнать подробности</Paragraph>}
