@@ -27,7 +27,7 @@ const Card = ({ children, className, disabled, gray, gap, quarter, half, link, b
     disableBlank: true,
     noBlank: noneBlank
   } : {};
-  const targetBlank = link.href && !noneBlank
+  const targetBlank = link && link.href && !noneBlank
   return (
     <RenderComponent {...linkProps} className={cardStyle}>
       <div className={'Card__inner'}>
