@@ -1,8 +1,10 @@
 const autoprefixer = require('autoprefixer');
 const path = require('path');
 const webpack = require('webpack');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
@@ -55,7 +57,8 @@ module.exports = {
 	// In production, we only want to load the polyfills and the app code.
 	entry: {
 		main: [require.resolve('./polyfills'), paths.appIndexJs],
-		Paragraph: require.resolve(`../src/components/Paragraph/Paragraph.js`)
+		Heading: require.resolve(`../src/components/Heading/Heading.js`),
+		Paragraph: require.resolve(`../src/components/Paragraph/Paragraph.js`),
 	},
 	output: {
 		// The build folder.
@@ -91,6 +94,18 @@ module.exports = {
 		// for React Native Web.
 		extensions: ['.web.js', '.js', '.json', '.web.jsx', '.jsx']
 	},
+	optimization: {
+		splitChunks: {
+		  cacheGroups: {
+			styles: {
+			  name: 'styles',
+			  test: /\.css$/,
+			  chunks: 'all',
+			  enforce: true
+			}
+		  }
+		}
+	  },
 	module: {
 		rules: [
 			// TODO: Disable require.ensure as it's not a standard language feature.
@@ -199,96 +214,81 @@ module.exports = {
 			// in the main CSS file.
 			{
 				test: /\.css$/,
-				loader: ExtractTextPlugin.extract(
-					Object.assign(
-						{
-							fallback: require.resolve('style-loader'),
-							use: [
-								{
-									loader: require.resolve('css-loader'),
-									options: {
-										importLoaders: 1,
-										minimize: true,
-										sourceMap: false
-									}
-								},
-								{
-									loader: require.resolve('postcss-loader'),
-									options: {
-										// Necessary for external CSS imports to work
-										// https://github.com/facebookincubator/create-react-app/issues/2677
-										ident: 'postcss',
-										plugins: () => [
-											require('postcss-flexbugs-fixes'),
-											autoprefixer({
-												browsers: [
-													'>1%',
-													'last 4 versions',
-													'Firefox ESR',
-													'not ie < 9' // React doesn't support IE8 anyway
-												],
-												flexbox: 'no-2009'
-											})
-										]
-									}
-								}
+				use: [
+					MiniCssExtractPlugin.loader,
+					{
+						loader: require.resolve('css-loader'),
+						options: {
+							importLoaders: 1,
+							minimize: true,
+							sourceMap: false
+						}
+					},
+					{
+						loader: require.resolve('postcss-loader'),
+						options: {
+							// Necessary for external CSS imports to work
+							// https://github.com/facebookincubator/create-react-app/issues/2677
+							ident: 'postcss',
+							plugins: () => [
+								require('postcss-flexbugs-fixes'),
+								autoprefixer({
+									browsers: [
+										'>1%',
+										'last 4 versions',
+										'Firefox ESR',
+										'not ie < 9' // React doesn't support IE8 anyway
+									],
+									flexbox: 'no-2009'
+								})
 							]
-						},
-						extractTextPluginOptions
-					)
-				)
+						}
+					},
+				]
 				// Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
 			},
-
 			{
 				test: /\.styl$/,
-				loader: ExtractTextPlugin.extract(
-					Object.assign(
-						{
-							fallback: require.resolve('style-loader'),
-							use: [
-								{
-									loader: require.resolve('css-loader'),
-									options: {
-										importLoaders: 2,
-										minimize: true,
-										sourceMap: false
-									}
-								},
-								{
-									loader: require.resolve('postcss-loader'),
-									options: {
-										// Necessary for external CSS imports to work
-										// https://github.com/facebookincubator/create-react-app/issues/2677
-										ident: 'postcss',
-										sourceMap: false,
-										plugins: () => [
-											require('postcss-flexbugs-fixes'),
-											autoprefixer({
-												browsers: [
-													'>1%',
-													'last 4 versions',
-													'Firefox ESR',
-													'not ie < 9' // React doesn't support IE8 anyway
-												],
-												flexbox: 'no-2009'
-											})
-										]
-									}
-								},
-								{
-									loader: require.resolve('stylus-loader'),
-									options: {
-										import: require.resolve('../src/styles/common.styl'),
-										resolveUrl: true,
-										sourceMap: false
-									}
-								}
+				use: [
+					MiniCssExtractPlugin.loader,
+					{
+						loader: require.resolve('css-loader'),
+						options: {
+							importLoaders: 2,
+							minimize: true,
+							sourceMap: false
+						}
+					},
+					{
+						loader: require.resolve('postcss-loader'),
+						options: {
+							// Necessary for external CSS imports to work
+							// https://github.com/facebookincubator/create-react-app/issues/2677
+							ident: 'postcss',
+							sourceMap: false,
+							plugins: () => [
+								require('postcss-flexbugs-fixes'),
+								autoprefixer({
+									browsers: [
+										'>1%',
+										'last 4 versions',
+										'Firefox ESR',
+										'not ie < 9' // React doesn't support IE8 anyway
+									],
+									flexbox: 'no-2009'
+								})
 							]
-						},
-						extractTextPluginOptions
-					)
-				)
+						}
+					},
+					{
+						loader: require.resolve('stylus-loader'),
+						options: {
+							import: require.resolve('../src/styles/common.styl'),
+							resolveUrl: true,
+							sourceMap: false
+						}
+					},
+				]
 				// Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
 			},
 			// ** STOP ** Are you adding a new loader?
@@ -307,26 +307,11 @@ module.exports = {
 		// Otherwise React will be compiled in the very slow development mode.
 		new webpack.DefinePlugin(env.stringified),
 		// Minify the code.
-		new webpack.optimize.UglifyJsPlugin({
-			compress: {
-				warnings: false,
-				// Disabled because of an issue with Uglify breaking seemingly valid code:
-				// https://github.com/facebookincubator/create-react-app/issues/2376
-				// Pending further investigation:
-				// https://github.com/mishoo/UglifyJS2/issues/2011
-				comparisons: false
-			},
-			output: {
-				comments: false,
-				// Turned on because emoji and regex is not minified properly using default
-				// https://github.com/facebookincubator/create-react-app/issues/2488
-				ascii_only: true
-			},
-			sourceMap: false
-		}),
+		new UglifyJsPlugin(),
 		// Note: this won't work without ExtractTextPlugin.extract(..) in `loaders`.
-		new ExtractTextPlugin({
-			filename: cssFilename
+		new MiniCssExtractPlugin({
+			filename: "[name].css",
+			chunkFilename: "[id].css"
 		}),
 		new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
 	],
