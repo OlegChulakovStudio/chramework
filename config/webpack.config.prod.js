@@ -58,8 +58,6 @@ module.exports = {
 	// In production, we only want to load the polyfills and the app code.
 	entry: {
 		main: [require.resolve('./polyfills'), paths.appIndexJs],
-		Heading: require.resolve(`../src/components/Heading/Heading.js`),
-		Paragraph: require.resolve(`../src/components/Paragraph/Paragraph.js`),
 	},
 	output: {
 		// The build folder.
@@ -300,7 +298,7 @@ module.exports = {
 		new UglifyJsPlugin(),
 		// Note: this won't work without ExtractTextPlugin.extract(..) in `loaders`.
 		new MiniCssExtractPlugin({
-			filename: "[name]/[name].css"
+			filename: "[name].css"
 		}),
 		new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
 	],

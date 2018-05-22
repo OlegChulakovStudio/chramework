@@ -2,67 +2,26 @@ const path = require('path');
 
 module.exports = {
   webpackConfig: require('./config/webpack.config.dev.js'),
-	// pagePerSection: true,
-  title: "UI Kit Студии Олега Чулакова",
+  title: "Chramework",
   showCode: true,
   styleguideDir: "styleguide/build",
   ignore: ['**/Control.js'],
   theme: {
     color: {
-      link: '#151515',
+      link: '#0066FF',
       linkHover: '#0047B3',
     },
     fontFamily: {
       base: '"Graphik"'
     }
   },
-  sections: [
-    // {
-    //   name: 'Introduction',
-    //   content: 'docs/introduction.md'
-    // },
-    // {
-    //   name: 'Documentation',
-    //   sections: [
-    //     {
-    //       name: 'Installation',
-    //       content: 'docs/installation.md',
-    //       description: 'The description for the installation section'
-    //     },
-    //     {
-    //       name: 'Configuration',
-    //       content: 'docs/configuration.md'
-    //     }
-    //   ]
-    // },
-    {
-      name: 'Типографика',
-      components: 'src/components/typography/*/*.js'
-    },
-    {
-      name: 'Кнопки и ссылки',
-      components: 'src/components/Buttons/*/*.js'
-    },
-    {
-      name: 'Формы',
-      components: 'src/components/controls/*/*.js'
-    },
-    {
-      name: 'Карточки',
-      components: 'src/components/Card/*.js'
-    },
-    {
-      name: 'Блоки',
-      components: 'src/components/Blocks/*/*.js'
-    },
-  ],
   styleguideComponents: {
     SectionHeadingRenderer: path.join(__dirname, 'styleguide/components/SectionHeadingRenderer/SectionHeadingRenderer.js'),
+    ComponentsList: path.join(__dirname, 'styleguide/components/ComponentsListRenderer/ComponentsListRenderer.js'),
     TableOfContentsRenderer: path.join(__dirname, 'styleguide/components/TableOfContents/TableOfContents.js'),
     PlaygroundRenderer: path.join(__dirname, 'styleguide/components/PlaygroundRenderer/PlaygroundRenderer.js'),
     StyleGuideRenderer: path.join(__dirname, 'styleguide/components/StyleGuideRenderer/StyleGuideRenderer.js'),
-    Logo: path.join(__dirname, 'styleguide/components/Logo/Logo.js'),
-		// SectionsRenderer: path.join(__dirname, 'styleguide/components/Sections/Sections.js'),
+    Logo: path.join(__dirname, 'styleguide/components/Logo/Logo.js')
   },
-  // skipComponentsWithoutExample: true
+  skipComponentsWithoutExample: true
 };
