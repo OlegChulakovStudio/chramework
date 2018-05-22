@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import Styled from 'react-styleguidist/lib/rsg-components/Styled';
+import styled from 'react-styleguidist/lib/rsg-components/Styled';
 
 export function SectionHeadingRenderer({
   classes,
@@ -17,6 +17,7 @@ export function SectionHeadingRenderer({
     [classes.isPrimary]: primary,
     [classes.isDeprecated]: deprecated,
   });
+
   return (
     <Tag id={id} className={classes.root}>
       <a href={href} className={headingClasses}>
@@ -39,7 +40,7 @@ export const styles = ({ color, space, fontSize, fontFamily }) => ({
     color: color.link,
     fontSize: fontSize.h2,
     fontFamily: fontFamily.base,
-    fontWeight: 'normal',
+    fontWeight: 'bold',
     '&:hover, &:active': {
       isolate: false,
       color: color.linkHover
@@ -67,4 +68,4 @@ SectionHeadingRenderer.propTypes = {
   deprecated: PropTypes.bool,
 };
 
-export default Styled(styles)(SectionHeadingRenderer);
+export default styled(styles)(SectionHeadingRenderer);

@@ -1,0 +1,107 @@
+$top = 20px
+.Input {
+
+  & {
+    width 100%
+    display block
+    position relative
+    box-sizing border-box
+    font-family $fontFamily
+    font-size $fontSize
+    padding-top $top
+    border none
+    border-bottom 1px solid $borderColor
+    transition opacity $duration
+  }
+  &:last-child {
+    margin-bottom 0
+  }
+  &:after {
+    content ''
+    position absolute
+    top 100%
+    left 0
+    width 100%
+    height 2px
+    background $linkColor
+    transform scaleX(0)
+    transform-origin 0 0
+    transition transform $duration*0.5 $easeOutCubic
+  }
+
+  &__field {
+    font-size $fontSize
+    line-height 1.5
+    box-sizing border-box
+    display block
+    width 100%
+    outline none
+    padding 0 0 3px
+    background transparent
+    border none
+    color $textColor
+    &::-ms-clear {
+      display none
+    }
+  }
+
+  & textarea {
+    resize none
+    min-height 27px
+    overflow hidden
+    word-wrap break-word
+  }
+
+  &__label {
+    position absolute
+    left 0
+    top $top
+    line-height 1.5
+    padding 0
+    max-width 100%
+    white-space nowrap
+    overflow hidden
+    text-overflow ellipsis
+    color alpha($textColor, 60%)
+    font-weight 300
+    pointer-events none
+    transform translateZ(0)
+    transform-origin 0 0
+    user-select none
+    cursor text
+    transition transform $duration*0.5 $easeOutCubic, color $duration*0.5 $easeOutCubic, font-size $duration*0.5 $easeOutCubic
+  }
+
+  &--disabled {
+    cursor not-allowed
+    opacity 0.2
+    faster()
+  }
+
+  &--value:after {
+    transform scaleX(1)
+    background-color $textColor
+  }
+  &--focus:after {
+    transform scaleX(1)
+    background-color $linkColor
+  }
+
+  &--value &__label,
+  &--focus &__label {
+    transform translateY( (- $top) ) scale(0.75) translateZ(0)
+  }
+
+  &--disabled &__field {
+    cursor not-allowed
+  }
+
+  &--error:after {
+    transform scaleX(1)
+    background-color #f26b6c
+  }
+
+  &--valid {
+    border-color #36C532
+  }
+}

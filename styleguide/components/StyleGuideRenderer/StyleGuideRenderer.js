@@ -27,7 +27,7 @@ const styles = ({ color, fontFamily, fontSize, sidebarWidth, mq, space, maxWidth
     display: 'block',
   },
   sidebar: {
-    backgroundColor: color.sidebarBackground,
+    backgroundColor: "#f9f9f9",
     position: 'fixed',
     top: 0,
     left: 0,
@@ -40,9 +40,35 @@ const styles = ({ color, fontFamily, fontSize, sidebarWidth, mq, space, maxWidth
       borderWidth: [[1, 0, 0, 0]],
       paddingBottom: space[0],
     },
+    '& ul' :{
+      padding: '24px'
+    },
+    '& ul ul' :{
+      padding: 0
+    },
+    // '& a::hover': {
+    //   color: color.linkColor
+    // },
+    '& .rsg--link-34.rsg--heading-42' :{
+      fontWeight: '700',
+      margin: "10px 0 0 0",
+      padding: '3px 0',
+      fontSize: '16px ',
+      cursor: 'pointer',
+    },
+    '& .rrsg--isChild-41' :{
+      margin: 0,
+      '& a': {
+        padding: '3px 0',
+        cursor: 'pointer',
+        display: "block",
+        fontSize: "14px",
+      }
+    }
   },
   logo: {
     padding: space[2],
+    paddingLeft: '24px',
   },
   footer: {
     display: 'block',
@@ -56,7 +82,7 @@ export function StyleGuideRenderer({ classes, title, homepageUrl, children, toc,
   return (
     <div className={cx(classes.root, hasSidebar && classes.hasSidebar)}>
       <main className={classes.content}>
-        <Heading level={2}>CHRAMEWORK</Heading>
+        <Heading level={1}>UI Kit Студии Олега<br/>Чулакова</Heading>
         {children}
         <footer className={classes.footer}>
           <Markdown text={`Generated with [React Styleguidist](${homepageUrl})`} />

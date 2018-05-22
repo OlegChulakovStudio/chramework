@@ -1,0 +1,192 @@
+.ChangeQuality {
+	position absolute
+	bottom 0
+	right 51px
+	z-index 10
+	padding 2px
+	overflow hidden
+	transition opacity $duration
+
+	&__inner {
+		position relative
+		display flex
+
+		&_hidden {
+			& > .ChangeQuality__button, & > .ChangeQuality__container {
+				opacity 0
+				transition opacity $duration
+			}
+		}
+	}
+	&__container {
+		position relative
+		border-radius 3px
+		display flex
+		box-sizing border-box
+		width 200px
+		margin-right -32px
+		padding-right 32px
+		transform translateZ(0)
+		transition width 0.1s $easeInOutQuad
+
+		&:after {
+			border-radius 3px
+			content ''
+			position absolute
+			top 0
+			left 0
+			width 100%
+			height 100%
+			z-index -1
+		}
+		.ChangeQuality_visible & {
+			opacity 1
+			transition-delay 0
+			transition-duration 0.1s
+		}
+		&_hidden {
+			opacity 0
+		}
+	}
+	&__containerInner {
+		position absolute
+		top 0
+		right 36px
+		width 140px
+		height 100%
+		opacity 0
+		white-space nowrap
+		transform translateX(5px)
+		transition transform 0.1s $easeInQuad, opacity 0.1s, visibility 0s 0.1s
+
+		.ChangeQuality_visible & {
+			opacity 1
+			transform translateX(0)
+			transition transform 0.1s $easeOutQuad 0.1s, opacity 0.1s 0.1s, visibility 0s
+		}
+	}
+	&__buttonName {
+		display inline-block
+		background none
+		border 0
+		padding 0
+		margin 0 0 0 12px
+		font-size 12px
+		font-weight bold
+		line-height 32px
+		cursor pointer
+		color #000
+		opacity 0.3
+		transition opacity $duration
+
+		&&:hover, &&:active, &&_active {
+			opacity 1
+			faster()
+		}
+		.Player_theme_light & {
+			color #fff
+		}
+	}
+	&__button {
+		position relative
+		border none
+		display inline-block
+		vertical-align middle
+		cursor pointer
+		padding 0
+		background-color transparent
+		margin 0
+		transform rotate(0deg) translateZ(0)
+		transition transform 0.2s cubic-bezier(0.45, 0.05, 0.55, 0.95)
+
+		.ChangeQuality_visible & {
+			transform rotate(90deg) translateZ(0)
+			transition transform 0.2s cubic-bezier(0.45, 0.05, 0.55, 0.95)
+		}
+		svg {
+			display block
+			fill #C1C1C1
+			transition fill $duration
+
+			.Player_theme_dark & {
+				fill #000
+			}
+			.Player_theme_light & {
+				fill #fff
+			}
+		}
+		&_hidden, a {
+			opacity 0
+			position absolute
+			top 0
+			left 0
+			width 100%
+			height 100%
+		}
+	}
+
+	&_ios {
+		padding 5px 8px 4px 8px
+		top 0
+		left 49px
+		right auto
+		bottom auto
+		opacity 0
+
+		.Player_hideVideo & {
+			opacity 1
+		}
+		.ChangeQuality {
+			&__container {
+				background-color rgba(0, 0, 0, 0.55)
+				-webkit-backdrop-filter saturate(180%) blur(17.5px)
+				border-radius 8px
+				transform translateZ(0)
+				width 32px
+				order 1
+				margin-right 0
+				padding-right 0
+				margin-left -32px
+				padding-left 32px
+
+				&:after {
+					border-radius 8px
+					background-color rgba(255, 255, 255, 0.14)
+					mix-blend-mode lighten
+					box-shadow unset
+				}
+			}
+			&__containerInner {
+				transform translateX(-5px)
+				width 149px
+				left 26px
+			}
+			&__buttonName {
+				line-height 33px
+				margin 0 0 0 11px
+				color #fff
+				opacity 0.4
+			}
+			&__button {
+				^[0]& > svg, ^[0]&:hover > svg {
+					fill rgb(195,192,190)
+					transition transform 150ms
+					will-change transform
+				}
+				^[0]&:active > svg {
+					fill rgb(195,192,190)
+					transform scale(0.89)
+				}
+			}
+		}
+	}
+	&_ios&_visible {
+		.ChangeQuality {
+			&__container {
+				width 178px
+				transition-delay 0
+				transition-duration 0.1s
+			}
+		}
+	}
+}
