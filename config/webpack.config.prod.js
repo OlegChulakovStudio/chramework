@@ -302,25 +302,6 @@ module.exports = {
 		}),
 		new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
 	],
-	optimization: {
-		minimizer: [
-			new UglifyJsPlugin({
-				cache: true,
-				parallel: true,
-				sourceMap: false // set to true if you want JS source maps
-			}),
-			new OptimizeCSSAssetsPlugin({})
-		],
-		splitChunks: {
-			cacheGroups: {
-				styles: {
-					name: 'styles',
-					test: /\.css$/,
-					enforce: true
-				}
-			}
-		}
-	},
 	externals: {
 		react: 'commonjs react' // this line is just to use the React dependency of our parent-testing-project instead of using our own React.
 	},
