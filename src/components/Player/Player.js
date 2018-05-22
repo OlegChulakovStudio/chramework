@@ -34,7 +34,7 @@ const calculateQuality = new Promise((resolve, reject) => {
 						calculatedQuality = 'low';
 						break;
 					case speed > 1000:
-						calculatedQuality = 'hight';
+						calculatedQuality = 'high';
 						break;
 					default:
 						calculatedQuality = 'mob';
@@ -58,7 +58,7 @@ const calculateQuality = new Promise((resolve, reject) => {
 			}
 		});
 	} else {
-		resolve(isIos() ? 'mob' : 'hight');
+		resolve(isIos() ? 'mob' : 'high');
 	}
 });
 
@@ -99,7 +99,7 @@ class Player extends Component {
 		hideVideo: false,
 
 		qualityList: {},
-		currentQuality: calculatedQuality || (isIos() ? 'mob' : 'hight'),
+		currentQuality: calculatedQuality || (isIos() ? 'mob' : 'high'),
 
 		playerInited: false,
 		renderedVideoNode: false,
@@ -150,7 +150,7 @@ class Player extends Component {
 
 	getQualityLabel = key => {
 		const names = {
-			hight: '1080p',
+			high: '1080p',
 			low: '720p',
 			mob: '360p'
 		};
@@ -158,7 +158,7 @@ class Player extends Component {
 	};
 	getQualityIndex = key => {
 		const index = {
-			hight: '3',
+			high: '3',
 			low: '2',
 			mob: '1'
 		};
@@ -191,7 +191,7 @@ class Player extends Component {
 					{
 						src:
 							typeof src === 'object'
-								? src[this.state.currentQuality || (isIos() ? 'mob' : 'hight')]
+								? src[this.state.currentQuality || (isIos() ? 'mob' : 'high')]
 								: src,
 						type: 'video/mp4'
 					}

@@ -1,0 +1,61 @@
+.Control {
+	position relative
+	display inline-block
+	cursor pointer
+	user-select none
+	margin-right 14px
+	font-size 14px
+
+	@media $phone {
+		font-size 16px
+		margin-bottom 8px
+		margin-right 8px
+	}
+	&:last-child {
+		margin-right 0
+	}
+	&__field {
+		display none
+	}
+	&__caption {
+		display block
+		line-height 1
+		padding 8px 16px
+		border-radius 3px
+		background $checkboxColor
+		user-select none
+		transition background $duration, transform $duration
+
+		&:hover {
+			background lighten($checkboxColor, 25%)
+			faster()
+		}
+		&:active {
+			transform translateY(1px)
+			faster()
+		}
+		&--active, input:checked + & {
+			background $brandColor
+
+			&:hover {
+				background $brandColor
+			}
+		}
+	}
+	&_radio {
+		.Control {
+			&__caption {
+				background darken($radioColor, 1%)
+
+				&:hover {
+					background $radioColor
+					faster()
+				}
+				&:active {
+					transform translateY(1px)
+					faster()
+				}
+			}
+		}
+	}
+}

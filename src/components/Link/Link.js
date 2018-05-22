@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import TargetBlank from '../../assets/target-blank.svg';
 import './Link.styl';
 
-const LinkElement = ({
+const Link = ({
 	to,
 	children,
 	bold,
@@ -39,7 +39,7 @@ const LinkElement = ({
 		</RenderedComponent>
 	);
 };
-LinkElement.defaultProps = {
+Link.defaultProps = {
 	to: undefined,
 	href: undefined,
 	className: undefined,
@@ -51,7 +51,7 @@ LinkElement.defaultProps = {
 	disableBlank: false
 };
 
-LinkElement.propTypes = {
+Link.propTypes = {
 	to: PropTypes.any,
 	href: PropTypes.string,
 	className: PropTypes.string,
@@ -63,4 +63,4 @@ LinkElement.propTypes = {
 	disableBlank: PropTypes.bool
 };
 
-export default LinkElement;
+export default Link;

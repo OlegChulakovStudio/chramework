@@ -1,5 +1,11 @@
 .Card {
 	display block
+	.Heading {
+		color $textColor
+	}
+	.Paragraph {
+		color $textColor
+	}
 	&__inner {
 		position relative
 		padding 32px 24px 24px 32px
@@ -35,17 +41,17 @@
 	&_half {
 		width 50%
 		@media $tablet {
-			width 100%  
-		}  
+			width 100%
+		}
 	}
 	&_quarter {
 		width 25%
 		@media $tablet {
-			width 50%  
-		} 
+			width 50%
+		}
 		@media $phone {
-			width 100%  
-		} 
+			width 100%
+		}
 	}
 	&_isLink {
 		color initial
@@ -58,7 +64,7 @@
 				&_normal {
 				fill $linkColor
 				}
-			} 
+			}
 		}
 		.Card__targetBlank {
 			position absolute
@@ -68,17 +74,17 @@
 			right 8px
 			&_hover {
 				opacity 0
-				fill $linkColor 
+				fill $linkColor
 				transition $duration
 				@media $phone {
-					opacity 1  
+					opacity 1
 				}
 			}
 			&_normal {
 				@media $phone {
-					fill $linkColor  
-				} 
-			} 
+					fill $linkColor
+				}
+			}
 		}
 		.Heading {
 			transition color $duration
@@ -87,13 +93,13 @@
 			color initial
 			.Heading {
 				color $linkColor
-				faster()  
+				faster()
 			}
-		}  
+		}
 	}
 	&_border {
 		.Card__inner {
-			border 1px solid $grayLightColor
-		}	
+			border 2px solid $grayLightColor
+		}
 	}
 }

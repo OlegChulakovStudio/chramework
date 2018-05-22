@@ -1,0 +1,217 @@
+.WorkItem {
+	width 100%
+	vertical-align top
+	layout2()
+	color $textColor
+	@media $phone {
+		width auto
+	}
+	&__inner {
+		display flex
+
+		@media $phone {
+			display block
+		}
+	}
+	&__visual {
+		display block
+		position relative
+		cursor pointer
+		padding-right 0
+		grid-width(6)
+		.vjs-has-started {
+			background alpha(#FFFFFF, 75%)
+		}
+
+		@media $phone {
+			width auto
+			float none
+			height auto
+			margin 0 8px 16px !important
+
+			&.Link {
+				margin-bottom 16px
+			}
+		}
+		.WorkItem__poster {
+			display block
+			width 100%
+
+			@media $verticalTablet {
+				display none
+			}
+			&_mini {
+				display none
+
+				@media $verticalTablet {
+					display block
+				}
+			}
+		}
+		.WorkItem_link & {
+			.Link {
+				display block
+			}
+		}
+		.Link__target-blank {
+			display none
+		}
+	}
+	&__content {
+		display block
+		position relative
+		grid-width(3)
+		box-sizing border-box
+		padding-left 64px
+		padding-top 24px
+		font-size 14px
+		&.Link {
+			color $textColor
+			&:hover {
+				color $linkColor
+			}
+		}
+		.WorkItem_link .WorkItem__visual:hover + & {
+			color $linkColor
+		}
+		@media $notebook {
+			padding-top 16px
+			padding-left 32px
+		}
+		@media $verticalTablet {
+			width 253px
+		}
+		@media $phone {
+			float none
+			width auto
+			padding-top 0
+			padding-left 16px
+			padding-right 16px
+
+			&:before {
+				display none
+			}
+		}
+		&:before {
+			content ''
+			left auto
+			position absolute
+			top 0
+			width 32px
+			height 4px
+			background-color $textColor
+		}
+		.Link__target-blank {
+			display none
+		}
+	}
+	&__box:before {
+		content ''
+		display block
+		padding-bottom 28.571429%
+
+		@media $notebook {
+			padding-bottom 35.4%
+		}
+	}
+	&__media {
+		height 100%
+		position absolute
+		width 100%
+		top 0
+		z-index 2
+
+		$width = 30px
+		&__action {
+			position absolute
+			top 50%
+			left 50%
+			margin -($width) 0 0 -($width)
+			width 0
+			height 0
+			border-style solid
+			border-width $width 0 $width $width*2
+			border-color transparent transparent transparent #fff
+		}
+	}
+
+	&__title {
+		display block
+		margin-bottom 8px
+		font-weight $bold
+		font-size 20px
+		line-height 1.1
+		// color currentColor
+		@media $phone {
+			font-size 20px
+			margin-bottom 4px
+			line-height (24/20)
+		}
+		// .WorkItem_link:hover &,
+		// .WorkItem__content:hover & {
+		// 	color currentColor
+		// }
+	}
+	&__tags {
+		opacity 0.3
+	}
+	&__header {
+		margin-bottom 16px
+
+		@media $notebook {
+			margin-bottom 8px
+		}
+	}
+	&__info {
+		margin-bottom 16px
+		color $textColor
+		&:last-child {
+			margin-bottom 0
+		}
+		@media $tablet {
+			max-width 350px
+		}
+		@media $phone {
+			body()
+		}
+	}
+	&__client {
+		&__name {
+			font-weight $bold
+		}
+		@media $phone {
+			display none
+		}
+	}
+	&__more {
+		link()
+
+		@media $phone {
+			bold()
+		}
+	}
+
+	&_onDark {
+		color #ffffff
+		.WorkItem__info {
+			color #ffffff
+		}
+		.WorkItem__content {
+			&:before {
+				background-color #ffffff
+			}
+			&.Link {
+				color #ffffff
+				&:hover {
+					color $linkColor
+				}
+			}
+		}
+		.WorkItem__more {
+			color #ffffff
+			&:hover {
+				color $linkColor
+			}
+		}
+	}
+}
