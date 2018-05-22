@@ -5,7 +5,7 @@ module.exports = {
   title: "Chramework",
   showCode: true,
   styleguideDir: "styleguide/build",
-  ignore: ['**/Control.js'], 
+  ignore: ['**/Control.js'],
   theme: {
     color: {
       link: '#0066FF',
@@ -24,4 +24,4 @@ module.exports = {
     Logo: path.join(__dirname, 'styleguide/components/Logo/Logo.js')
   },
   skipComponentsWithoutExample: true
-}; 
+};

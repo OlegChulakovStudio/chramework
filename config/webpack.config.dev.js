@@ -6,9 +6,9 @@ const webpack = require('webpack');
 // const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 // const InterpolateHtmlPlugin = require('interpolate-html-plugin');
-const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
+// const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
-const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
+// const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
 const svgoConfig = require('./svgoConfig');
@@ -100,7 +100,7 @@ module.exports = {
 			// To fix this, we prevent you from importing files out of src/ -- if you'd like to,
 			// please link the files into your node_modules/ and let module-resolution kick in.
 			// Make sure your source files are compiled, as they will not be processed in any way.
-			new ModuleScopePlugin(paths.appSrc)
+			// new ModuleScopePlugin(paths.appSrc)
 		]
 	},
 	module: {
@@ -145,7 +145,7 @@ module.exports = {
 					/\.gif$/,
 					/\.svg$/,
 					/\.jpe?g$/,
-					/\.png$/
+					/\.png$/,
 				],
 				loader: require.resolve('file-loader'),
 				options: {
@@ -313,7 +313,7 @@ module.exports = {
 		// to restart the development server for Webpack to discover it. This plugin
 		// makes the discovery automatic so you don't have to restart.
 		// See https://github.com/facebookincubator/create-react-app/issues/186
-		new WatchMissingNodeModulesPlugin(paths.appNodeModules),
+		// new WatchMissingNodeModulesPlugin(paths.appNodeModules),
 		// Moment.js is an extremely popular library that bundles large locale files
 		// by default due to how Webpack interprets its code. This is a practical
 		// solution that requires the user to opt into importing specific locales.
