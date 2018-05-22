@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import Styled from 'react-styleguidist/lib/rsg-components/Styled';
+import styled from 'react-styleguidist/lib/rsg-components/Styled';
 
 export function SectionHeadingRenderer({
   classes,
@@ -17,13 +17,6 @@ export function SectionHeadingRenderer({
     [classes.isPrimary]: primary,
     [classes.isDeprecated]: deprecated,
   });
-  console.log(classes,
-    children,
-    toolbar,
-    id,
-    href,
-    primary,
-    deprecated,);
 
   return (
     <Tag id={id} className={classes.root}>
@@ -75,4 +68,4 @@ SectionHeadingRenderer.propTypes = {
   deprecated: PropTypes.bool,
 };
 
-export default Styled(styles)(SectionHeadingRenderer);
+export default styled(styles)(SectionHeadingRenderer);

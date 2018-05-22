@@ -27,6 +27,7 @@
     "interpolate-html-plugin": "^3.0.0",
     "lodash.merge": "^4.6.1",
     "lottie-web": "^5.1.7",
+    "optimize-css-assets-webpack-plugin": "^4.0.1",
     "prop-types": "^15.5.10",
     "rc-scroll-anim": "^2.4.1",
     "react": "^16.0.0",

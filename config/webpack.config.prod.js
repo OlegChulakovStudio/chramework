@@ -8,6 +8,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const paths = require('./paths');
 const getClientEnvironment = require('./env');
 const svgoConfig = require('./svgoConfig');
@@ -94,18 +95,6 @@ module.exports = {
 		// for React Native Web.
 		extensions: ['.web.js', '.js', '.json', '.web.jsx', '.jsx']
 	},
-	optimization: {
-		splitChunks: {
-		  cacheGroups: {
-			styles: {
-			  name: 'styles',
-			  test: /\.css$/,
-			  chunks: 'all',
-			  enforce: true
-			}
-		  }
-		}
-	  },
 	module: {
 		rules: [
 			// TODO: Disable require.ensure as it's not a standard language feature.
@@ -249,6 +238,7 @@ module.exports = {
 			},
 			{
 				test: /\.styl$/,
+				include: paths.appSrc,
 				use: [
 					MiniCssExtractPlugin.loader,
 					{
@@ -310,11 +300,29 @@ module.exports = {
 		new UglifyJsPlugin(),
 		// Note: this won't work without ExtractTextPlugin.extract(..) in `loaders`.
 		new MiniCssExtractPlugin({
-			filename: "[name].css",
-			chunkFilename: "[id].css"
+			filename: "[name]/[name].css"
 		}),
 		new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
 	],
+	optimization: {
+		minimizer: [
+			new UglifyJsPlugin({
+				cache: true,
+				parallel: true,
+				sourceMap: false // set to true if you want JS source maps
+			}),
+			new OptimizeCSSAssetsPlugin({})
+		],
+		splitChunks: {
+			cacheGroups: {
+				styles: {
+					name: 'styles',
+					test: /\.css$/,
+					enforce: true
+				}
+			}
+		}
+	},
 	externals: {
 		react: 'commonjs react' // this line is just to use the React dependency of our parent-testing-project instead of using our own React.
 	},

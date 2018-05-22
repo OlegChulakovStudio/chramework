@@ -2,6 +2,7 @@ const path = require('path');
 
 module.exports = {
   webpackConfig: require('./config/webpack.config.dev.js'),
+	// pagePerSection: true,
   title: "UI Kit Студии Олега Чулакова",
   showCode: true,
   styleguideDir: "styleguide/build",
@@ -60,7 +61,8 @@ module.exports = {
     TableOfContentsRenderer: path.join(__dirname, 'styleguide/components/TableOfContents/TableOfContents.js'),
     PlaygroundRenderer: path.join(__dirname, 'styleguide/components/PlaygroundRenderer/PlaygroundRenderer.js'),
     StyleGuideRenderer: path.join(__dirname, 'styleguide/components/StyleGuideRenderer/StyleGuideRenderer.js'),
-    Logo: path.join(__dirname, 'styleguide/components/Logo/Logo.js')
+    Logo: path.join(__dirname, 'styleguide/components/Logo/Logo.js'),
+		// SectionsRenderer: path.join(__dirname, 'styleguide/components/Sections/Sections.js'),
   },
-  skipComponentsWithoutExample: true
+  // skipComponentsWithoutExample: true
 };

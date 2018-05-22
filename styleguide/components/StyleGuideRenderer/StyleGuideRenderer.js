@@ -24,18 +24,6 @@ const styles = ({ color, fontFamily, fontSize, sidebarWidth, mq, space, maxWidth
     [mq.small]: {
       padding: space[2],
     },
-    '&> .Heading': {
-      marginBottom: '60px',
-      paddingTop: '68px',
-      color: "#151515"
-    },
-    '& .isPrimary-0-12': {
-      fontSize: '64px',
-      color: "#151515"
-    },
-    '& .CodeMirror': {
-      backgroundColor: "#f9f9f9 !important"
-    },
     display: 'block',
   },
   sidebar: {
@@ -58,17 +46,17 @@ const styles = ({ color, fontFamily, fontSize, sidebarWidth, mq, space, maxWidth
     '& ul ul' :{
       padding: 0
     },
-    '& a::hover': {
-      color: color.linkColor
-    },
-    '& .link-0-66.heading-0-65' :{
+    // '& a::hover': {
+    //   color: color.linkColor
+    // },
+    '& .rsg--link-34.rsg--heading-42' :{
       fontWeight: '700',
       margin: "10px 0 0 0",
       padding: '3px 0',
       fontSize: '16px ',
       cursor: 'pointer',
     },
-    '& .isChild-0-64' :{
+    '& .rrsg--isChild-41' :{
       margin: 0,
       '& a': {
         padding: '3px 0',

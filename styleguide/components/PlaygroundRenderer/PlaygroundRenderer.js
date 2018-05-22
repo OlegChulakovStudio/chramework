@@ -58,7 +58,9 @@ export function PlaygroundRenderer({
 	return (
 		<div className={classes.root}>
 			<div className={`${classes.preview} preview`} data-preview={name}>
-				{preview}
+				<div>
+					{preview}
+				</div>
 			</div>
 			<div className={classes.controls}>
 				<div className={classes.tabs}>{tabButtons}</div>
