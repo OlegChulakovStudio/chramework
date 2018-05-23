@@ -24,7 +24,6 @@ const initLike = (vkButtonId, url, title, image, pageId) => {
 	}
 };
 const initShare = (vkButton, url, title, image, pageId) => {
-	console.log({vkButton, url});
 
 	const buttonElement = vkButton;
 	if (buttonElement) {
@@ -32,7 +31,6 @@ const initShare = (vkButton, url, title, image, pageId) => {
 	}
 };
 export const initVkButton = (vkButton, url, title, image, pageId, share = false) => {
-	console.log({vkButton});
 
 	if (typeof VK === 'undefined' && !window.isVkFetching) {
 		window.isVkFetching = true;

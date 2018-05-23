@@ -43,7 +43,6 @@ export default class FileInput extends PureComponent {
 
   handleDropFile = (files) => {
     const { multiple, onChange } = this.props;
-    console.log(files,typeof files);
     const uploadedContent = multiple ? files : [files[0]];
     if (onChange && typeof onChange === 'function') {
       onChange(uploadedContent);
