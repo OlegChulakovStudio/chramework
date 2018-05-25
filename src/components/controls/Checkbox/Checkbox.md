@@ -1,1 +1,0 @@
-    <Checkbox label="Click me" defaultChecked name="test" />
