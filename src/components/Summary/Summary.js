@@ -54,9 +54,9 @@ const Summary = ({ awards, className, external, ...rest }) => {
 					</Paragraph>
 				</div>
 			</div>
-			<div className="Summary__item Summary__item_medal Summary__item_mob Summary__item_medal8">
+			<div className="Summary__item Summary__item_medal Summary__item_mob Summary__item_medal5">
 				<div className="Summary__content">
-					<Paragraph mod="boldMedium" className="Summary__title">Топ-8 <nobr>digital production</nobr></Paragraph>
+					<Paragraph mod="boldMedium" className="Summary__title">Топ-5 <nobr>digital production</nobr></Paragraph>
 					<Paragraph mod="bodySmall" className="Summary__text">
 						по версии{' '}
 						<nobr><Link {...productionLink} className="Summary__text-link">
@@ -65,9 +65,9 @@ const Summary = ({ awards, className, external, ...rest }) => {
 					</Paragraph>
 				</div>
 			</div>
-			<div className="Summary__item Summary__item_medal Summary__item_medal28">
+			<div className="Summary__item Summary__item_medal Summary__item_medal25">
 				<div className="Summary__content">
-					<Paragraph mod="boldMedium" className="Summary__title">Топ-2 дизайн-студий<br />и&nbsp;топ-8 digital production</Paragraph>
+					<Paragraph mod="boldMedium" className="Summary__title">Топ-2 дизайн-студий<br />и&nbsp;топ-5 digital production</Paragraph>
 					<Paragraph mod="bodySmall" className="Summary__text">
 						по&nbsp;версии{' '}
 						<nobr><Link {...designLink} className="Summary__text-link">
