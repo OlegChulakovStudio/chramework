@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-// import { connect } from 'react-redux';
-// import get from 'lodash/get';
+import { connect } from 'react-redux';
+import get from 'lodash/get';
 import { getBodyScrollTop } from '../../utils/scrollLock';
 import LinkScroll from '../LinkScroll';
 import Logo from '../Logo/Logo';
@@ -10,19 +10,19 @@ import Link from '../Link/Link';
 import Navigation from './Navigation';
 import Hamburger from './Hamburger';
 import ModalMenuContainer from './ModalMenuContainer';
-// import { actions as uiActions } from '../modules/ui.js';
+import { actions as uiActions } from '../modules/ui.js';
 import './styles.styl';
 
-// const mapStateToProps = state => ({
-// 	...state.ui,
-// 	modalIsOpened: state.modal.modalIsOpened,
-// 	pathname: get(state.router, 'location.pathname', ''),
-// 	menuIsOpened: state.ui.menuIsOpened,
-// });
-// const mapDispatchToProps = dispatch => ({
-// 	menuOpen: () => dispatch(uiActions.menuOpen()),
-// 	menuClose: () => dispatch(uiActions.menuClose()),
-// });
+const mapStateToProps = state => ({
+	...state.ui,
+	modalIsOpened: state.modal.modalIsOpened,
+	pathname: get(state.router, 'location.pathname', ''),
+	menuIsOpened: state.ui.menuIsOpened,
+});
+const mapDispatchToProps = dispatch => ({
+	menuOpen: () => dispatch(uiActions.menuOpen()),
+	menuClose: () => dispatch(uiActions.menuClose()),
+});
 
 
 class Header extends Component {
@@ -35,7 +35,7 @@ class Header extends Component {
 		};
 	}
 	componentDidMount() {
-		if (this.props.menu || this.props.linkProps) {
+		if (this.props.menu) {
 			this.scroll = 0;
 			this.top = 0;
 			this.scrollTop = getBodyScrollTop();
@@ -279,5 +279,4 @@ Header.propTypes = {
 	filterList: PropTypes.array,
 	menu: PropTypes.array,
 };
-// export default connect(mapStateToProps, mapDispatchToProps)(Header);
-export default Header;
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
