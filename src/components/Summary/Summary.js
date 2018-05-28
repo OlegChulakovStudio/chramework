@@ -8,8 +8,8 @@ import Link from '../Link/Link';
 import './Summary.styl';
 
 const production = {
-	external: { href: 'https://chulakov.ru/life/top8' },
-	internal: { to: { pathname: '/life/top8', state: { fromHome: true } } }
+	external: { href: 'https://chulakov.ru/life/top5' },
+	internal: { to: { pathname: '/life/top5', state: { fromHome: true } } }
 }
 const design = {
 	external: { href: 'https://chulakov.ru/life/top2' },
