@@ -200,7 +200,7 @@ class Header extends Component {
 			Header: true,
 			[`Header_${mod}`]: mod,
 			Header_pinned: this.props.menu,
-			Header_isLink: linkProps,
+			// Header_isLink: linkProps,
 			[`Header_${page}`]: page,
 			[`Header_${localMod}`]: localMod,
 			[`Header_${scrollMod}`]: scrollMod,
