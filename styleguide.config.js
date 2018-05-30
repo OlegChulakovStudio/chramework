@@ -16,6 +16,7 @@ module.exports = {
     }
   },
   styleguideComponents: {
+    Wrapper: path.join(__dirname, 'styleguide/components/Wrapper/Wrapper.js'),
     SectionHeadingRenderer: path.join(__dirname, 'styleguide/components/SectionHeadingRenderer/SectionHeadingRenderer.js'),
     ComponentsList: path.join(__dirname, 'styleguide/components/ComponentsListRenderer/ComponentsListRenderer.js'),
     TableOfContentsRenderer: path.join(__dirname, 'styleguide/components/TableOfContents/TableOfContents.js'),

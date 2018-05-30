@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import get from 'lodash/get';
 import { getBodyScrollTop } from '../../utils/scrollLock';
+import { isPhone } from '../../utils/devices';
 import LinkScroll from '../LinkScroll';
 import Logo from '../Logo/Logo';
 import Link from '../Link/Link';
@@ -35,7 +36,7 @@ class Header extends Component {
 		};
 	}
 	componentDidMount() {
-		if (this.props.menu) {
+		if (this.props.menu || (this.props.pinned === 'desctop' && isPhone())) {
 			this.scroll = 0;
 			this.top = 0;
 			this.scrollTop = getBodyScrollTop();
@@ -200,7 +201,7 @@ class Header extends Component {
 			Header: true,
 			[`Header_${mod}`]: mod,
 			Header_pinned: this.props.menu,
-			// Header_isLink: linkProps,
+			Header_isLink: this.props.pinned === 'desctop',
 			[`Header_${page}`]: page,
 			[`Header_${localMod}`]: localMod,
 			[`Header_${scrollMod}`]: scrollMod,
