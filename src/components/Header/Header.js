@@ -36,7 +36,9 @@ class Header extends Component {
 		};
 	}
 	componentDidMount() {
-		if (this.props.menu || (this.props.pinned === 'desctop' && isPhone())) {
+		console.log(this.props.pinned);
+
+		if (this.props.menu || (this.props.pinned === 'desktop' && isPhone())) {
 			this.scroll = 0;
 			this.top = 0;
 			this.scrollTop = getBodyScrollTop();
@@ -201,7 +203,7 @@ class Header extends Component {
 			Header: true,
 			[`Header_${mod}`]: mod,
 			Header_pinned: this.props.menu,
-			Header_isLink: this.props.pinned === 'desctop',
+			Header_isLink: this.props.pinned === 'desktop',
 			[`Header_${page}`]: page,
 			[`Header_${localMod}`]: localMod,
 			[`Header_${scrollMod}`]: scrollMod,

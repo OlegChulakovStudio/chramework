@@ -13,7 +13,6 @@ import './Reviews.styl';
 
 const exampleReviews = [
 	{
-		icon: DemoIcon,
 		avatar: 'https://chulakov.ru/work/megalabs/images/avatar.jpg',
 		name: 'Ян Кухальский',
 		position: 'Генеральный Директор MegaLabs',
@@ -80,7 +79,7 @@ class Reviews extends Component {
 			<div {...rest} className={classes}>
 				<Swiper {...props} ref={this.getSwiperNode}>
 					{currentReviews.map(client => {
-						const Icon = client.icon;
+						const Icon = client.icon ? client.icon : null;
 						return (
 							<div key={client.name} className="Reviews__item">
 								<div className="Reviews__inner">
@@ -102,9 +101,11 @@ class Reviews extends Component {
 													{reactHtmlParser(client.position)}
 												</Paragraph>
 											</div>
-											<div className="Reviews__logo">
-												<Icon />
-											</div>
+											{Icon &&
+												<div className="Reviews__logo">
+													<Icon />
+												</div>
+											}
 										</div>
 									</div>
 								</div>
