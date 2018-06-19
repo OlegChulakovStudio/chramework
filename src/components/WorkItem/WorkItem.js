@@ -54,20 +54,7 @@ class WorkItem extends Component {
 			WorkItem_onDark: onDark,
 		}]);
 		const RenderComponent = url ? Link : "div";
-		const dataAwards = awards || [
-			{
-				name: "Золотой сайт",
-				link: "Золото"
-			},
-			{
-				name: "Золотой сайт",
-				link: "Золото"
-			},
-			{
-				name: "Золотой сайт",
-				link: "Золото"
-			}
-		];
+		const dataAwards = awards || [];
 		const currentCountAwards = dataAwards.length === 1 ? dataAwards[0].link : `× ${dataAwards.length} ${pluralize(dataAwards.length, ['награда', 'награды', 'наград'])}`;
 
 		return (
