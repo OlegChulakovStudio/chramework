@@ -297,7 +297,7 @@ module.exports = {
 		new UglifyJsPlugin(),
 		// Note: this won't work without ExtractTextPlugin.extract(..) in `loaders`.
 		new MiniCssExtractPlugin({
-			filename: "[name]/style.css"
+			filename: "[name].css"
 		}),
 		new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
 	],
