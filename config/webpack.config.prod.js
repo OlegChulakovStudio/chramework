@@ -57,8 +57,7 @@ module.exports = {
 	devtool: 'source-map',
 	// In production, we only want to load the polyfills and the app code.
 	entry: {
-		main: [require.resolve('./polyfills'), paths.appIndexJs],
-		Button: path.resolve(paths.appSrc, 'components/Button/Button.js')
+		main: [require.resolve('./polyfills'), paths.appIndexJs]
 	},
 	output: {
 		// The build folder.
@@ -67,7 +66,7 @@ module.exports = {
 		// Generated JS file names (with nested folders).
 		// There will be one main bundle, and one file per asynchronous chunk.
 		// We don't currently advertise code splitting but Webpack supports it.
-		filename: '[name]/index.js',
+		filename: '[name].js',
 		chunkFilename: '[name].chunk.js',
 		// We inferred the "public path" (such as / or /my-project) from homepage.
 		publicPath: publicPath
