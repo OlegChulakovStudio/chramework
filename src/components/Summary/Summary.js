@@ -36,33 +36,33 @@ const Summary = ({ awards, className, external, ...rest }) => {
 	return (
 		<div {...rest} className={blockStyle}>
 			<div className="Summary__inner">
-			<Link linkProps={{...productionLink}} className="Summary__item Summary__item_medal Summary__item_medal1">
+			<Link {...usabilityLink} disableBlank className="Summary__item Summary__item_medal Summary__item_medal1">
 				<div className="Summary__content">
 					<Paragraph mod="boldMedium" className="Summary__title">Лучший <nobr>usability / UX</nobr></Paragraph>
 				</div>
 			</Link>
-			<Link linkProps={{...designLink}} className="Summary__item Summary__item_medal Summary__item_medal2">
+			<Link {...designLink} disableBlank className="Summary__item Summary__item_medal Summary__item_medal2">
 				<div className="Summary__content">
 					<Paragraph mod="boldMedium" className="Summary__title">Топ-2 <nobr>дизайн-студий</nobr></Paragraph>
 				</div>
 			</Link>
-			<Link linkProps={{...usabilityLink}} className="Summary__item Summary__item_medal Summary__item_medal5">
+			<Link {...productionLink} disableBlank className="Summary__item Summary__item_medal Summary__item_medal5">
 				<div className="Summary__content">
 					<Paragraph mod="boldMedium" className="Summary__title">Топ-5 <nobr>digital production</nobr></Paragraph>
 				</div>
 			</Link>
-			<Link linkProps={{...keypersonLink}} className="Summary__item Summary__item_medal Summary__item_medal9">
+			<Link {...keypersonLink} disableBlank className="Summary__item Summary__item_medal Summary__item_medal9">
 				<div className="Summary__content">
 					<Paragraph mod="boldMedium" className="Summary__title">Арт-директор в&nbsp;топ-10 ключевых персон Рунета</Paragraph>
 				</div>
 			</Link>
 			{!awards && <div className="Summary__item Summary__item_counter Summary__item_experience" key="counter2">
 				<div className="Summary__number">9</div>
-				<Paragraph className="Summary__title" mod="boldMedium">лет опыта</Paragraph>
+				<Paragraph className="Summary__title" mod="boldMedium">Лет опыта</Paragraph>
 			</div>}
 			{!awards && <div className="Summary__item Summary__item_counter Summary__item_specialists" key="counter1">
 				<div className="Summary__number">70</div>
-				<Paragraph mod="boldMedium" className="Summary__title">специалистов</Paragraph>
+				<Paragraph mod="boldMedium" className="Summary__title">Специалистов</Paragraph>
 			</div>}
 			</div>
 			<div className="Summary__notes">
