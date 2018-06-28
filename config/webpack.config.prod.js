@@ -58,6 +58,7 @@ module.exports = {
 	// In production, we only want to load the polyfills and the app code.
 	entry: {
 		main: [require.resolve('./polyfills'), paths.appIndexJs],
+		Button: path.resolve(paths.appSrc, 'components/Button/Button.js')
 	},
 	output: {
 		// The build folder.
@@ -66,7 +67,7 @@ module.exports = {
 		// Generated JS file names (with nested folders).
 		// There will be one main bundle, and one file per asynchronous chunk.
 		// We don't currently advertise code splitting but Webpack supports it.
-		filename: 'main.js',
+		filename: '[name]/index.js',
 		chunkFilename: '[name].chunk.js',
 		// We inferred the "public path" (such as / or /my-project) from homepage.
 		publicPath: publicPath
@@ -148,7 +149,6 @@ module.exports = {
 				test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/, /\.bg\.svg$/],
 				loader: require.resolve('url-loader'),
 				options: {
-					limit: 50000,
 					name: 'assets/[name].[ext]'
 				}
 			},
@@ -298,7 +298,7 @@ module.exports = {
 		new UglifyJsPlugin(),
 		// Note: this won't work without ExtractTextPlugin.extract(..) in `loaders`.
 		new MiniCssExtractPlugin({
-			filename: "[name].css"
+			filename: "[name]/style.css"
 		}),
 		new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
 	],
