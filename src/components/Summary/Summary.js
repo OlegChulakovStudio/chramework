@@ -58,11 +58,11 @@ const Summary = ({ awards, className, external, ...rest }) => {
 			</Link>
 			{!awards && <div className="Summary__item Summary__item_counter Summary__item_experience" key="counter2">
 				<div className="Summary__number">9</div>
-				<Paragraph className="Summary__title" mod="boldMedium">Лет опыта</Paragraph>
+				<Paragraph className="Summary__title" mod="boldMedium">лет опыта</Paragraph>
 			</div>}
 			{!awards && <div className="Summary__item Summary__item_counter Summary__item_specialists" key="counter1">
 				<div className="Summary__number">70</div>
-				<Paragraph mod="boldMedium" className="Summary__title">Специалистов</Paragraph>
+				<Paragraph mod="boldMedium" className="Summary__title">специалистов</Paragraph>
 			</div>}
 			</div>
 			<div className="Summary__notes">
