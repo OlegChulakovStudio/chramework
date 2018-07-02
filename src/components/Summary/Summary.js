@@ -67,7 +67,7 @@ const Summary = ({ awards, className, external, ...rest }) => {
 			</div>
 			<div className="Summary__notes">
 				<Paragraph><span>*</span> по&nbsp;версии &laquo;Золотого сайта&raquo;</Paragraph>
-				<Paragraph><span style={{marginLeft: '-5px'}}>**</span> по&nbsp;версии &laquo;Tagline&raquo;</Paragraph>
+				<Paragraph><span style={{marginLeft: '-5px'}}>**</span> по&nbsp;версии Tagline</Paragraph>
 			</div>
 		</div>
 	);
