@@ -62,8 +62,13 @@
 				faster()
 				}
 				&_normal {
-				fill $linkColor
+					fill $linkColor
 				}
+			}
+			.Card__targetBlank_inter {
+				transform translateX(6px)
+				fill $linkColor
+				faster()
 			}
 		}
 		.Card__targetBlank {
@@ -72,6 +77,7 @@
 			height 24px
 			top 8px
 			right 8px
+			transition $duration
 			&_hover {
 				opacity 0
 				fill $linkColor

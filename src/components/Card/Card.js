@@ -8,6 +8,7 @@ import './Card.styl';
 
 import TargetBlankHover from '../../assets/newTargetBlankHover.svg';
 import TargetBlank from '../../assets/newTargetBlank.svg';
+import Target from '../../assets/newTarget.svg';
 
 const Card = ({ children, className, disabled, gray, gap, quarter, half, link, border, noneBlank }) => {
   const cardStyle = classNames('Card', {
@@ -32,6 +33,7 @@ const Card = ({ children, className, disabled, gray, gap, quarter, half, link, b
     <RenderComponent {...linkProps} className={cardStyle}>
       <div className={'Card__inner'}>
         {children}
+        {link && !targetBlank && <Target className={classNames('Card__targetBlank', 'Card__targetBlank_inter')} />}
         {link && targetBlank && <TargetBlankHover className={classNames('Card__targetBlank', 'Card__targetBlank_hover')} />}
         {link && targetBlank && <TargetBlank className={classNames('Card__targetBlank', 'Card__targetBlank_normal')} />}
       </div>
