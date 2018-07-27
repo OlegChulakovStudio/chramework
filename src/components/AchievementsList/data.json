@@ -32,6 +32,26 @@
 			"name": "Рейтинг Рунета",
 			"link": "Золото",
 			"icon": "ratingruneta",
+			"note": "Информационные технологии",
+			"project": "Роутер Yota",
+			"international": false,
+			"russian": true,
+			"festival": false
+		},
+		{
+			"name": "Рейтинг Рунета",
+			"link": "Золото",
+			"icon": "ratingruneta",
+			"note": "Сообщества и коммуникации",
+			"project": "МегаФон eMotion",
+			"international": false,
+			"russian": true,
+			"festival": false
+		},
+		{
+			"name": "Рейтинг Рунета",
+			"link": "Золото",
+			"icon": "ratingruneta",
 			"note": "Развлечение и&nbsp;спорт",
 			"project": "Baku City Circuit",
 			"international": false,
