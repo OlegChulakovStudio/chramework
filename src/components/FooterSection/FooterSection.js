@@ -30,7 +30,7 @@ const data = [{
 const socials = {
 	facebook: 'https://www.facebook.com/OlegChulakovStudio/',
 	vkontakte: 'https://vk.com/olegchulakovstudio',
-	instagram: 'https://www.instagram.com/chulakov_ru/'
+	instagram: 'https://www.instagram.com/chulakov.ru/'
 }
 const FooterSection = ({ text, light, offsetLeft, offsetRight, email, className, showButton, ...rest }) => {
 	const blockStyle = classNames('FooterSection', className, {
