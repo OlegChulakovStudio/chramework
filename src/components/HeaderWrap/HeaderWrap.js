@@ -14,6 +14,10 @@ import ModalMenuContainer from '../Header/ModalMenuContainer';
 import VideoPlay from '../Header/VideoPlay';
 import { actions as uiActions } from '../modules/ui.js';
 import showreel from './showreel.gif';
+import pic1 from './showreel_1.png';
+import pic2 from './showreel_2.png';
+import pic3 from './showreel_3.png';
+import pic4 from './showreel_4.png';
 import '../Header/styles.styl';
 
 const mapStateToProps = state => ({
@@ -129,7 +133,13 @@ const videoPlay = {
 	link: {
 		href: 'https://chulakov.ru/video/showreel-2017'
 	},
-	image: showreel
+	randomBg: [
+		pic1,
+		pic2,
+		pic3,
+		pic4,
+	],
+	gif: showreel,
 }
 
 
@@ -144,7 +154,6 @@ class HeaderWrap extends Component {
 		};
 	}
 	componentDidMount() {
-		console.log(this.props.pinned);
 
 		if (this.props.menu || (this.props.pinned === 'desktop' && isPhone())) {
 			this.scroll = 0;
