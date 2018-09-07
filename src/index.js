@@ -44,6 +44,7 @@ import Block from './components/Block/Block';
 import SocialNetworks from './components/SocialNetworks/SocialNetworks';
 import FooterMini from './components/FooterMini/FooterMini';
 import Header from './components/Header/Header';
+import HeaderWrap from './components/HeaderWrap/HeaderWrap';
 
 import AchievementsData from './components/AchievementsList/data.json';
 
@@ -93,4 +94,5 @@ export {
 	FooterMini,
 	Block,
 	Header,
+	HeaderWrap,
 };

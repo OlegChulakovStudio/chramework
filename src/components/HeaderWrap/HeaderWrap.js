@@ -8,12 +8,13 @@ import { isPhone } from '../../utils/devices';
 import LinkScroll from '../LinkScroll';
 import Logo from '../Logo/Logo';
 import Link from '../Link/Link';
-import Navigation from './Navigation';
-import VideoPlay from './VideoPlay';
-import Hamburger from './Hamburger';
-import ModalMenuContainer from './ModalMenuContainer';
+import Navigation from '../Header/Navigation';
+import Hamburger from '../Header/Hamburger';
+import ModalMenuContainer from '../Header/ModalMenuContainer';
+import VideoPlay from '../Header/VideoPlay';
 import { actions as uiActions } from '../modules/ui.js';
-import './styles.styl';
+import showreel from './showreel.gif';
+import '../Header/styles.styl';
 
 const mapStateToProps = state => ({
 	...state.ui,
@@ -26,8 +27,114 @@ const mapDispatchToProps = dispatch => ({
 	menuClose: () => dispatch(uiActions.menuClose()),
 });
 
+const menu = [{
+	"name": "Компания",
+	"url": "/",
+	"exact": true,
+	"main": true,
+	"sublist": [{
+		"name": "Услуги",
+		"url": "/services",
+		"inMobile": true
+	},
+	{
+		"name": "Клиенты",
+		"url": "/clients",
+		"inMobile": true
+	},
+	{
+		"name": "Награды",
+		"url": "/awards",
+		"inMobile": true
+	},
+	{
+		"name": "События",
+		"url": "/life",
+		"inMobile": true
+	},
+	{
+		"name": "Студия в СМИ",
+		"url": "/press",
+		"inMobile": true
+	}
+	]
+},
+{
+	"name": "Проекты",
+	"url": "/work",
+	"activeFunc": true,
+	"sublist": [{
+		"name": "Системы и&nbsp;сервисы",
+		"url": "/work/service"
+	},
+	{
+		"name": "Mobile",
+		"url": "/work/app"
+	},
+	{
+		"name": "Посмотреть все",
+		"url": "/work"
+	}
+	]
+},
+{
+	"name": "Работа у&nbsp;нас",
+	"url": "/career",
+	"exact": true,
+	"vacancies": true,
+	"sublist": [{
+		"name": "О&nbsp;работе в&nbsp;Студии",
+		"url": "/career"
+	},
+	{
+		"name": "Вакансии",
+		"url": "/career/#vacancies",
+		"vacancies": true
 
-class Header extends Component {
+	},
+	{
+		"name": "Корпоративная культура",
+		"url": "/corporate-culture"
+	}
+	]
+},
+{
+	"name": "Контакты",
+	"url": "/contact",
+	"exact": true,
+	"main": true,
+	"sublist": [{
+		"name": "+7 495 268-06-61",
+		"tel": "+74952680661",
+		"inMobile": true,
+		"icon": "moscow"
+	},
+	{
+		"name": "+7 863 303-61-91",
+		"tel": "+78633036191",
+		"inMobile": true,
+		"icon": "rostov"
+	},
+	{
+		"name": "hello@chulakov.ru",
+		"mailto": "hello@chulakov.ru",
+		"inMobile": true
+	}
+	]
+}
+];
+
+const videoPlay = {
+	text: 'Showreel 2017',
+	link: {
+		href: 'https://chulakov.ru/video/showreel-2017'
+	},
+	image: showreel
+}
+
+
+
+class HeaderWrap extends Component {
 	static direction = 'FORWARD';
 
 	constructor(props) {
@@ -203,7 +310,7 @@ class Header extends Component {
 		const styles = classNames({
 			Header: true,
 			[`Header_${mod}`]: mod,
-			Header_pinned: this.props.menu,
+			Header_pinned: menu,
 			Header_isLink: this.props.pinned === 'desktop',
 			[`Header_${page}`]: page,
 			[`Header_${localMod}`]: localMod,
@@ -213,7 +320,6 @@ class Header extends Component {
 			Header_fix: menuIsOpened,
 			Header_ingroup: ingroup || madeinlab,
 		});
-		const logoMod = mod === 'dark' || mod === 'work' ? 'light' : '';
 
 		return (
 			<header
@@ -224,42 +330,42 @@ class Header extends Component {
 					<div className="Header__logo">
 						<Logo
 							linkProps={page ? { to: '/' } : undefined}
-							mod={logoMod}
+							mod='dark'
 							onClick={this.menuClose}
 							ingroup={ingroup}
 							madeinlab={madeinlab}
 							text={text}
 						/>
 					</div>
-					{this.props.menu &&
+					{menu &&
 						!withoutMenu && (
 							<div className="Header__content">
 								<div className="Header__content-inner">
 									<Navigation
 										filterList={this.props.filterList}
 										vacanciesCount={this.props.vacanciesCount}
-										menu={this.props.menu}
+										listMenu={menu}
 									/>
-									{this.props.videoPlay && <VideoPlay data={this.props.videoPlay} />}
+									{videoPlay && <VideoPlay data={videoPlay} />}
 								</div>
 							</div>
 						)}
-					{this.props.menu && (
+					{menu && (
 						<Hamburger
 							mod={mod}
 							menuIsOpened={menuIsOpened || redirectUrl.length > 0}
 							onClick={this.onClick}
 						/>
 					)}
-					{linkProps && !this.props.menu && this.renderLink()}
+					{linkProps && !menu && this.renderLink()}
 				</div>
-				{this.props.menu && <ModalMenuContainer vacanciesCount={this.props.vacanciesCount} menu={this.props.menu} />}
+				{menu && <ModalMenuContainer vacanciesCount={this.props.vacanciesCount} menu={menu} />}
 			</header>
 		);
 	}
 }
 
-Header.defaultProps = {
+HeaderWrap.defaultProps = {
 	mod: '',
 	menuIsOpened: false,
 	menuClose: () => { },
@@ -271,10 +377,9 @@ Header.defaultProps = {
 	vacanciesCount: undefined,
 	filterList: undefined,
 	menu: undefined,
-	videoPlay: undefined,
 };
 
-Header.propTypes = {
+HeaderWrap.propTypes = {
 	mod: PropTypes.string,
 	menuIsOpened: PropTypes.bool,
 	menuClose: PropTypes.func,
@@ -286,6 +391,5 @@ Header.propTypes = {
 	vacanciesCount: PropTypes.number,
 	filterList: PropTypes.array,
 	menu: PropTypes.array,
-	videoPlay: PropTypes.object,
 };
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(HeaderWrap);
