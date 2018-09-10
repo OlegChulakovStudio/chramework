@@ -91,7 +91,6 @@ class WorkItem extends Component {
 								</div>}
 							</div>
 						)}
-						{url && <Paragraph TagName="div" mod="boldSmall" className="WorkItem__more">Узнать подробности</Paragraph>}
 					</RenderComponent>
 				</div>
 			</div>
