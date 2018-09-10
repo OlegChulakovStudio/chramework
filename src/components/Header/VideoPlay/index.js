@@ -39,7 +39,7 @@ class VideoPlay extends Component {
 		const { data } = this.props;
 		const { currentBg } = this.state;
 		return (
-			<Link {...data.link} disableBlank bold className="VideoPlay" onMouseLeave={this.onMouseLeave} onMouseEnter={this.onMouseEnter}>
+			<Link {...data.link} disableBlank noBlank bold className="VideoPlay" onMouseLeave={this.onMouseLeave} onMouseEnter={this.onMouseEnter}>
 				<div className="VideoPlay__text">{data.text}</div>
 				<div className="VideoPlay__image">
 					<img src={currentBg} alt="" />
