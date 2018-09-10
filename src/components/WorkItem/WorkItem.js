@@ -56,7 +56,7 @@ class WorkItem extends Component {
 		}]);
 		const RenderComponent = url ? Link : "div";
 		const dataAwards = awards || [];
-		const currentCountAwards = dataAwards.length === 1 ? dataAwards[0].link : `× ${dataAwards.length} ${pluralize(dataAwards.length, ['награда', 'награды', 'наград'])}`;
+		const currentCountAwards = dataAwards.length === 1 ? dataAwards[0].link : `× ${dataAwards.length} <span class="WorkItem__awards-count__inner">${pluralize(dataAwards.length, ['награда', 'награды', 'наград'])}</span>`;
 		const Icon = icon;
 		const groupClasses = classNames(['WorkItem__group', {
 			WorkItem__group_singleLogo: dataAwards.length === 0,
@@ -84,7 +84,7 @@ class WorkItem extends Component {
 									{dataAwards.length > 0 && <div className="WorkItem__awards">
 										<Cup />
 										<Paragraph TagName="div" mod="boldSmall" className="WorkItem__awards-count">
-											{currentCountAwards}
+											{reactHtmlParser(currentCountAwards)}
 										</Paragraph>
 									</div>}
 									{Icon && <Icon className="Icon WorkItem__logo" />}

@@ -157,12 +157,6 @@
 		display flex
 		justify-content space-between
 		align-items center
-		// padding 14px 21px 14px 0
-
-		@media $verticalTablet {
-			flex-direction column
-			align-items flex-start
-		}
 
 		&_singleLogo {
 			.WorkItem__logo {
@@ -180,13 +174,18 @@
 	}
 	&__awards {
 		position relative
-		padding-left 30px
+		padding-left 26px
 		color $textColor
-		padding-top 1px
 
-		@media $verticalTablet {
-			margin-bottom 16px
+		&-count__inner {
+			@media $verticalTablet {
+				display none
+			}
+			@media $phone {
+				display inline-block
+			}
 		}
+
 		svg {
 			fill #000
 			position absolute
@@ -198,7 +197,7 @@
 		margin-bottom 16px
 		color $textColor
 		&-text {
-			margin-bottom 16px
+			margin-bottom 8px
 
 			&:last-child {
 				margin-bottom 0
