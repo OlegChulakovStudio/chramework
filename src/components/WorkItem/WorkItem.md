@@ -13,9 +13,6 @@
 	      'poster-mini': 'https://chulakov.ru/work/raiffeisen/images/poster-mini.jpg',
 	      thumb: 'https://chulakov.ru/work/raiffeisen/images/thumb.jpg'
 	    },
-	    url: {
-	      href: 'https://chulakov.ru/work/raiffeisen'
-	    },
 	    title: 'Райффайзенбанк',
 	    description: 'Концепция сайта банка, который знает, что нужно его клиентам, и всегда готов прийти на помощь.',
 	    tags: ['дизайн', 'разработка', 'сайт'],
