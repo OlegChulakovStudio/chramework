@@ -59,8 +59,10 @@ class WorkItem extends Component {
 		const currentCountAwards = dataAwards.length === 1 ? dataAwards[0].link : `× ${dataAwards.length} ${pluralize(dataAwards.length, ['награда', 'награды', 'наград'])}`;
 		const Icon = icon;
 		const groupClasses = classNames(['WorkItem__group', {
-			WorkItem__group_single: dataAwards.length === 0
+			WorkItem__group_singleLogo: dataAwards.length === 0,
+			WorkItem__group_singleAwards: !Icon,
 		}]);
+		const groupBlock = dataAwards.length === 0 && !Icon
 
 		return (
 			<div {...rest} className={workItemClasses}>
@@ -78,7 +80,7 @@ class WorkItem extends Component {
 								{description && <Paragraph TagName="div" mod="bodySmall" className="WorkItem__info-text">
 									{reactHtmlParser(description)}
 								</Paragraph>}
-								<div className={groupClasses}>
+								{!groupBlock && <div className={groupClasses}>
 									{dataAwards.length > 0 && <div className="WorkItem__awards">
 										<Cup />
 										<Paragraph TagName="div" mod="boldSmall" className="WorkItem__awards-count">
@@ -86,7 +88,7 @@ class WorkItem extends Component {
 										</Paragraph>
 									</div>}
 									{Icon && <Icon className="Icon WorkItem__logo" />}
-								</div>
+								</div>}
 							</div>
 						)}
 						{url && <Paragraph TagName="div" mod="boldSmall" className="WorkItem__more">Узнать подробности</Paragraph>}

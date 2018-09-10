@@ -164,10 +164,13 @@
 			align-items flex-start
 		}
 
-		&_single {
+		&_singleLogo {
 			.WorkItem__logo {
 				margin-left auto
 			}
+		}
+		&_singleAwards {
+			padding 16px 0
 		}
 	}
 	&__logo {
@@ -196,6 +199,10 @@
 		color $textColor
 		&-text {
 			margin-bottom 16px
+
+			&:last-child {
+				margin-bottom 0
+			}
 		}
 		&:last-child {
 			margin-bottom 0
