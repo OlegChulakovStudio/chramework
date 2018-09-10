@@ -10,7 +10,7 @@ import WorkTags from '../WorkTags/WorkTags';
 import Link from '../Link/Link';
 
 import './WorkItem.styl';
-import Medal from './medal.svg';
+import Cup from './cup.svg';
 
 class WorkItem extends Component {
 	static propTypes = {
@@ -32,6 +32,7 @@ class WorkItem extends Component {
 		description: undefined,
 		tags: undefined,
 		awards: undefined,
+		icon: undefined,
 	}
 
 	renderVisual = () => {
@@ -47,7 +48,7 @@ class WorkItem extends Component {
 			);
 	};
 	render() {
-		const { title, description, onDark, tags, url, video, posters, className, awards, ...rest } = this.props;
+		const { title, description, onDark, tags, url, video, posters, className, awards, icon, ...rest } = this.props;
 		const workItemClasses = classNames(['WorkItem', className, {
 			WorkItem_video: video,
 			WorkItem_link: !video,
@@ -56,6 +57,7 @@ class WorkItem extends Component {
 		const RenderComponent = url ? Link : "div";
 		const dataAwards = awards || [];
 		const currentCountAwards = dataAwards.length === 1 ? dataAwards[0].link : `× ${dataAwards.length} ${pluralize(dataAwards.length, ['награда', 'награды', 'наград'])}`;
+		const Icon = icon;
 
 		return (
 			<div {...rest} className={workItemClasses}>
@@ -73,12 +75,15 @@ class WorkItem extends Component {
 								{description && <Paragraph TagName="div" mod="bodySmall" className="WorkItem__info-text">
 									{reactHtmlParser(description)}
 								</Paragraph>}
-								{dataAwards.length > 0 && <div className="WorkItem__awards">
-									<Medal />
-									<Paragraph TagName="div" mod="bodySmall" className="WorkItem__awards-count">
-										{currentCountAwards}
-									</Paragraph>
-								</div>}
+								<div className="WorkItem__group">
+									{dataAwards.length > 0 && <div className="WorkItem__awards">
+										<Cup />
+										<Paragraph TagName="div" mod="boldSmall" className="WorkItem__awards-count">
+											{currentCountAwards}
+										</Paragraph>
+									</div>}
+									{Icon && <Icon className="Icon WorkItem__logo" />}
+								</div>
 							</div>
 						)}
 						{url && <Paragraph TagName="div" mod="boldSmall" className="WorkItem__more">Узнать подробности</Paragraph>}

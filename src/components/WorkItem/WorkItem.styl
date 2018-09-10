@@ -62,8 +62,8 @@
 		position relative
 		grid-width(3)
 		box-sizing border-box
-		padding-left 64px
-		padding-top 24px
+		padding-left 42px
+		padding-top 8px
 		font-size 14px
 		&.Link {
 			color $textColor
@@ -91,15 +91,6 @@
 			&:before {
 				display none
 			}
-		}
-		&:before {
-			content ''
-			left auto
-			position absolute
-			top 0
-			width 32px
-			height 4px
-			background-color $textColor
 		}
 		.Link__target-blank {
 			display none
@@ -162,23 +153,42 @@
 			margin-bottom 8px
 		}
 	}
+	&__group {
+		display flex
+		justify-content space-between
+		align-items center
+		// padding 14px 21px 14px 0
+
+		@media $verticalTablet {
+			flex-direction column
+			align-items flex-start
+		}
+	}
+	&__logo {
+		width 120px
+		height 54px
+	}
 	&__awards {
 		position relative
-		padding-left 20px
+		padding-left 30px
 		color $textColor
-		margin-bottom 16px
+		padding-top 1px
+
+		@media $verticalTablet {
+			margin-bottom 16px
+		}
 		svg {
 			fill #000
 			position absolute
-			top -3px
-			left -4px
+			top 0
+			left 0
 		}
 	}
 	&__info {
 		margin-bottom 16px
 		color $textColor
 		&-text {
-			margin-bottom 8px
+			margin-bottom 16px
 		}
 		&:last-child {
 			margin-bottom 0
