@@ -2,7 +2,7 @@
   "name": "chramework",
   "main": "dist/main.js",
   "style": "dist/main.css",
-  "version": "1.0.909",
+  "version": "1.0.910",
   "author": "Oleg Chulakov Studio",
   "description": "A React-based UI toolkit",
   "license": "MIT",

@@ -37,13 +37,13 @@
 			display block
 			width 100%
 
-			@media $verticalTablet {
+			@media $tablet {
 				display none
 			}
 			&_mini {
 				display none
 
-				@media $verticalTablet {
+				@media $tablet {
 					display block
 				}
 			}
@@ -158,6 +158,15 @@
 		justify-content space-between
 		align-items center
 
+		@media $tablet {
+			flex-direction column
+			align-items flex-start
+		}
+		@media $phone {
+			flex-direction row
+			align-items center
+		}
+
 		&_singleLogo {
 			.WorkItem__logo {
 				// margin-left auto
@@ -170,6 +179,13 @@
 	&__logo {
 		width 120px
 		height 54px
+
+		@media $tablet {
+			margin-bottom 8px
+		}
+		@media $phone {
+			margin-bottom 0
+		}
 	}
 	&__awards {
 		position relative
@@ -178,6 +194,17 @@
 		padding-right 8px
 		text-align left
 		color $textColor
+
+		@media $tablet {
+			width auto
+			padding-left 0
+			padding-right 0
+		}
+		@media $phone {
+			width 143px
+			padding-left 8px
+			padding-right 8px
+		}
 
 		&-count__inner {
 			@media $verticalTablet {
