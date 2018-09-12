@@ -83,10 +83,12 @@ class WorkItem extends Component {
 								{!groupBlock && <div className={groupClasses}>
 									{Icon && <Icon className="Icon WorkItem__logo" />}
 									{dataAwards.length > 0 && <div className="WorkItem__awards">
-										<Cup />
-										<Paragraph TagName="div" mod="boldSmall" className="WorkItem__awards-count">
-											{reactHtmlParser(currentCountAwards)}
-										</Paragraph>
+										<div className="WorkItem__awards-wrapper">
+											<Cup />
+											<Paragraph TagName="div" mod="boldSmall" className="WorkItem__awards-count">
+												{reactHtmlParser(currentCountAwards)}
+											</Paragraph>
+										</div>
 									</div>}
 								</div>}
 							</div>
