@@ -101,6 +101,7 @@ $compact-player-ratio = (275/960*100%)
 		border 0
 		overflow hidden
 
+
 		&:before {
 			content ''
 			display block
@@ -232,6 +233,12 @@ $compact-player-ratio = (275/960*100%)
 			}
 		}
 	}
+	&_autoPlay {
+		video {
+			pointer-events none
+		}
+	}
+
 	&_middle {
 		position absolute
 		width 960px

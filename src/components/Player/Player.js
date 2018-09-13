@@ -110,15 +110,15 @@ class Player extends Component {
 		shareOpened: false,
 		changeQualityOpened: false,
 		muted: false,
+		pauseBlocked: this.props.autoPlay
 	};
 	player = null;
-
 	componentDidMount = () => {
 		this.videojs = require('video.js');
 		if (this.props.autoPlay) {
 			this.autoPlay();
 		}
-		this.setMuted();
+
 		if (!calculatedQuality) {
 			calculateQuality.then(typeQuality => {
 				if (this.player) {
@@ -154,27 +154,11 @@ class Player extends Component {
 			if (this.optimisationOff()) this.initPlayer();
 		});
 	};
-	setVolume = (e) => {
-		console.log(e);
 
-		if (this.player.cache_.volume === 0) {
-			this.player.volume(1);
-			if (this.player.paused()) {
-				this.player.play();
-			} else {
-				this.player.pause();
-			}
-		}
-	};
-	setMuted = () => {
-		if (this.props.muted || this.props.mutedStart) {
-			this.setState({
-				muted: true
-			});
-		} else {
-			this.setState({
-				muted: false
-			});
+	setVolume = () => {
+		if (this.state.pauseBlocked) {
+			// this.player.volume(1);
+			this.setState({ pauseBlocked: false });
 		}
 	};
 	autoPlay = () => {
@@ -183,7 +167,7 @@ class Player extends Component {
 		} else {
 			this.setState({ hideInitPoster: true });
 			this.player.play();
-			this.player.volume(0);
+			// this.player.volume(0);
 		}
 	};
 
@@ -215,7 +199,6 @@ class Player extends Component {
 	initPlayer = () => {
 		const { src, loop, banners, muted } = this.props;
 		if (typeof this.state.currentQuality === 'undefined') {
-			console.log(src, this.state.currentQuality);
 		}
 		this.player = this.videojs(
 			this.video,
@@ -223,9 +206,8 @@ class Player extends Component {
 				preload: 'none',
 				autoPlay: false,
 				controls: true,
-				loop: loop,
-				muted: this.state.muted,
-				volume: 0,
+				loop,
+				muted,
 				sources: [
 					{
 						src:
@@ -404,11 +386,16 @@ class Player extends Component {
 			if (!isIos() && !this.optimisationOff()) {
 				setTimeout(() => {
 					this.setState({ hideInitPoster: true });
+
 					this.player.play();
 					if (this.props.autoPlay) {
-						this.player.volume(0);
+						// this.player.volume(0);
 					}
 				}, 10);
+			} else {
+				if (this.props.autoPlay) {
+					this.player.play();
+				}
 			}
 		});
 	};
@@ -464,13 +451,16 @@ class Player extends Component {
 	getPosterNode = i => (this.poster = i);
 
 	renderVideoNode = () => {
+		const videoStyle = classNames({
+			Player__video: true,
+		});
 		if (!this.optimisationOff()) {
 			if (this.state.renderedVideoNode)
 				return (
 					<video
 						data-vjs-player
 						ref={this.getPlayerNode}
-						className="Player__video"
+						className={videoStyle}
 					/>
 				);
 			return null;
@@ -479,7 +469,7 @@ class Player extends Component {
 			<video
 				data-vjs-player
 				ref={this.getPlayerNode}
-				className="Player__video"
+				className={videoStyle}
 			/>
 		);
 	};
@@ -500,14 +490,15 @@ class Player extends Component {
 			Player_fullhd: fullhd,
 			Player_shrareOpened: this.state.shareOpened,
 			Player_changeQualityOpened: this.state.changeQualityOpened,
-			Player_hideVideo: this.state.hideVideo
+			Player_hideVideo: this.state.hideVideo,
+			Player_autoPlay: this.state.pauseBlocked,
 		});
 		const posterStyle = classNames({
 			Player__poster: true,
-			Player__poster_hide: !this.isPosterShow()
+			Player__poster_hide: !this.isPosterShow(),
 		});
 		const setPoster = () =>
-			this.state.poster
+			this.state.poster && !this.props.autoPlay
 				? { backgroundImage: `url(${this.state.poster})` }
 				: undefined;
 
@@ -519,9 +510,9 @@ class Player extends Component {
 						onClick={this.onClick}
 						className={posterStyle}
 						ref={this.getPosterNode}>
-						<button className="vjs-big-play-button" type="button">
+						{!this.props.autoPlay && <button className="vjs-big-play-button" type="button">
 							<PlayIcon />
-						</button>
+						</button>}
 					</div>
 				)}
 				{this.renderVideoNode()}
