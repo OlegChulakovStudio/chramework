@@ -11,7 +11,6 @@ import Link from '../Link/Link';
 
 import './WorkItem.styl';
 import Cup from './cup.svg';
-import test from '../../assets/clients/workItem/megafon.svg';
 
 class WorkItem extends Component {
 	static propTypes = {
@@ -58,7 +57,7 @@ class WorkItem extends Component {
 		const RenderComponent = url ? Link : "div";
 		const dataAwards = awards || [];
 		const currentCountAwards = dataAwards.length === 1 ? dataAwards[0].link : `× ${dataAwards.length} <span class="WorkItem__awards-count__inner">${pluralize(dataAwards.length, ['награда', 'награды', 'наград'])}</span>`;
-		const Icon = icon || test;
+		const Icon = icon;
 		const groupClasses = classNames(['WorkItem__group', {
 			WorkItem__group_singleLogo: dataAwards.length === 0,
 			WorkItem__group_singleAwards: !Icon,
