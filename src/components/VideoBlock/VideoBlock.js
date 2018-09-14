@@ -7,8 +7,11 @@ import TextGroup from '../TextGroup/TextGroup';
 
 import './VideoBlock.styl';
 
-const VideoBlock = ({ Icon, lg, video, title, subtitle, url, children, className, ...react }) => {
-	const playerStyle = classNames(['VideoBlock', { VideoBlock_lg: lg }, className]);
+const VideoBlock = ({ Icon, lg, video, title, subtitle, url, children, className, isVideoPage, ...react }) => {
+	const playerStyle = classNames(['VideoBlock', {
+		VideoBlock_lg: lg,
+		VideoBlock_videoPage: isVideoPage
+	}, className]);
 
 	return (
 		<div {...react} className={playerStyle}>
@@ -38,6 +41,7 @@ VideoBlock.defaultProps = {
 	subtitle: undefined,
 	className: undefined,
 	url: undefined,
+	isVideoPage: undefined,
 };
 
 VideoBlock.propTypes = {
@@ -48,6 +52,7 @@ VideoBlock.propTypes = {
 	subtitle: PropTypes.string,
 	className: PropTypes.string,
 	url: PropTypes.object,
+	isVideoPage: PropTypes.bool,
 };
 
 export default VideoBlock;

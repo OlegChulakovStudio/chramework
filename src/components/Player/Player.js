@@ -110,14 +110,16 @@ class Player extends Component {
 		shareOpened: false,
 		changeQualityOpened: false,
 		muted: false,
-		pauseBlocked: this.props.autoPlay
+		pauseBlocked: this.props.autoPlay,
+		isIosNotSupport: isIos() && iosVersion() <= 10,
 	};
 	player = null;
 	componentDidMount = () => {
 		this.videojs = require('video.js');
-		if (this.props.autoPlay) {
+		if (this.props.autoPlay && !this.state.isIosNotSupport) {
 			this.autoPlay();
 		}
+
 
 		if (!calculatedQuality) {
 			calculateQuality.then(typeQuality => {
@@ -167,7 +169,6 @@ class Player extends Component {
 		} else {
 			this.setState({ hideInitPoster: true });
 			this.player.play();
-			// this.player.volume(0);
 		}
 	};
 
@@ -227,6 +228,7 @@ class Player extends Component {
 				this._injectFullscreenIcon();
 			}
 		);
+		window.player = this.player;
 		if (this.optimisationOff()) {
 			this.player.poster(this.state.poster);
 			this.poster = this.playerBox.getElementsByClassName('vjs-poster')[0];
@@ -393,7 +395,7 @@ class Player extends Component {
 					}
 				}, 10);
 			} else {
-				if (this.props.autoPlay) {
+				if (this.props.autoPlay && !this.state.isIosNotSupport) {
 					this.player.play();
 				}
 			}
@@ -476,6 +478,7 @@ class Player extends Component {
 
 	renderPlayer = () => {
 		const { theme, fullhd, banners, shareURL, muted, origin, hideBar } = this.props;
+
 		const playerStyle = classNames({
 			Player: true,
 			player: true,
@@ -498,9 +501,10 @@ class Player extends Component {
 			Player__poster_hide: !this.isPosterShow(),
 		});
 		const setPoster = () =>
-			this.state.poster && !this.props.autoPlay
+			!this.props.autoPlay ? (this.state.poster
 				? { backgroundImage: `url(${this.state.poster})` }
-				: undefined;
+				: undefined) : this.state.isIosNotSupport ? { backgroundImage: `url(${this.state.poster})` }
+					: undefined;
 
 		const renderInner = () => (
 			<div className={playerStyle} onClick={this.setVolume} ref={this.getPlayerBox}>
@@ -510,7 +514,9 @@ class Player extends Component {
 						onClick={this.onClick}
 						className={posterStyle}
 						ref={this.getPosterNode}>
-						{!this.props.autoPlay && <button className="vjs-big-play-button" type="button">
+						{!this.props.autoPlay ? <button className="vjs-big-play-button" type="button">
+							<PlayIcon />
+						</button> : this.state.isIosNotSupport && <button className="vjs-big-play-button" type="button">
 							<PlayIcon />
 						</button>}
 					</div>
@@ -550,6 +556,9 @@ class Player extends Component {
 			);
 	};
 	render() {
+		console.log('poster', !this.props.autoPlay && !this.state.isIosNotSupport);
+		console.log('isIosNotSupport', this.state.isIosNotSupport);
+
 		return isIos() ? (
 			<Waypoint
 				onEnter={!this.state.renderedVideoNode ? this.onEnter : this.noop}
