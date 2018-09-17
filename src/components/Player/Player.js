@@ -119,8 +119,6 @@ class Player extends Component {
 		if (this.props.autoPlay && !this.state.isIosNotSupport) {
 			this.autoPlay();
 		}
-
-
 		if (!calculatedQuality) {
 			calculateQuality.then(typeQuality => {
 				if (this.player) {
@@ -157,12 +155,14 @@ class Player extends Component {
 		});
 	};
 
+
 	setVolume = () => {
 		if (this.state.pauseBlocked) {
 			// this.player.volume(1);
 			this.setState({ pauseBlocked: false });
 		}
 	};
+
 	autoPlay = () => {
 		if (!this.state.renderedVideoNode) {
 			this.initAndPlay();
@@ -388,11 +388,8 @@ class Player extends Component {
 			if (!isIos() && !this.optimisationOff()) {
 				setTimeout(() => {
 					this.setState({ hideInitPoster: true });
-
 					this.player.play();
-					if (this.props.autoPlay) {
-						// this.player.volume(0);
-					}
+
 				}, 10);
 			} else {
 				if (this.props.autoPlay && !this.state.isIosNotSupport) {
@@ -556,8 +553,6 @@ class Player extends Component {
 			);
 	};
 	render() {
-		console.log('poster', !this.props.autoPlay && !this.state.isIosNotSupport);
-		console.log('isIosNotSupport', this.state.isIosNotSupport);
 
 		return isIos() ? (
 			<Waypoint
