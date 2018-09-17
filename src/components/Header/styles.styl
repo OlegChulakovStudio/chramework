@@ -99,14 +99,14 @@
 		.VacanciesCount__inner {
 			background-color $lightTextColor
 			transition background-color $duration
-
-			&:hover {
-				background-color #fff
-				faster()
-			}
 		}
 		.Navigation__item:hover, .Navigation__item_active {
 			color #fff
+
+			.VacanciesCount__inner {
+				background-color #fff
+				faster()
+			}
 		}
 		.VideoPlay {
 			color $lightTextColor
