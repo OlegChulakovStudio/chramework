@@ -553,6 +553,7 @@ class Player extends Component {
 			);
 	};
 	render() {
+		console.log('isIosNotSupport', this.state.isIosNotSupport);
 
 		return isIos() ? (
 			<Waypoint
