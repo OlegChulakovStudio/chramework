@@ -25,10 +25,10 @@
 		transition transform .3s, background-color 0.3s, opacity 0.3s
 
 		.Hamburger_dark & {
-			background #fff
+			background $lightTextColor
 		}
 		.Hamburger_work & {
-			background #fff
+			background $lightTextColor
 		}
 		.Header_light & {
 			background $textColor
@@ -50,9 +50,12 @@
 		// .Hamburger_dark& {
 		// 	background: $logoMainColor
 		// }
-		// .Hamburger_work& {
-		// 	background: $logoMainColor
-		// }
+		.Hamburger_work& {
+			background #fff
+		}
+		.Hamburger_dark& {
+			background #fff
+		}
 	}
 	&_open &__line {
 		&:first-child {

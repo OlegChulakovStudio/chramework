@@ -27,7 +27,7 @@
 			width auto
 			float none
 			height auto
-			margin 0 8px 16px !important
+			margin 0 0 16px !important
 
 			&.Link {
 				margin-bottom 16px
@@ -37,13 +37,13 @@
 			display block
 			width 100%
 
-			@media $verticalTablet {
+			@media $tablet {
 				display none
 			}
 			&_mini {
 				display none
 
-				@media $verticalTablet {
+				@media $tablet {
 					display block
 				}
 			}
@@ -63,7 +63,6 @@
 		grid-width(3)
 		box-sizing border-box
 		padding-left 42px
-		padding-top 8px
 		font-size 14px
 		&.Link {
 			color $textColor
@@ -75,7 +74,6 @@
 			color $linkColor
 		}
 		@media $notebook {
-			padding-top 16px
 			padding-left 32px
 		}
 		@media $verticalTablet {
@@ -85,8 +83,8 @@
 			float none
 			width auto
 			padding-top 0
-			padding-left 16px
-			padding-right 16px
+			padding-left 0
+			padding-right 0
 
 			&:before {
 				display none
@@ -158,9 +156,18 @@
 		justify-content space-between
 		align-items center
 
+		@media $tablet {
+			flex-direction column
+			align-items flex-start
+		}
+		@media $phone {
+			flex-direction row
+			align-items center
+		}
+
 		&_singleLogo {
 			.WorkItem__logo {
-				margin-left auto
+				// margin-left auto
 			}
 		}
 		&_singleAwards {
@@ -170,12 +177,36 @@
 	&__logo {
 		width 120px
 		height 54px
-		opacity .2
+
+		@media $tablet {
+			margin-bottom 8px
+
+			&:last-child {
+				margin-bottom 0
+			}
+		}
+		@media $phone {
+			margin-bottom 0
+		}
 	}
 	&__awards {
 		position relative
-		padding-left 26px
+		width 122px
+		padding-left 8px
+		padding-right 8px
+		text-align left
 		color $textColor
+
+		@media $tablet {
+			width auto
+			padding-left 0
+			padding-right 0
+		}
+		@media $phone {
+			width 122px
+			padding-left 8px
+			padding-right 8px
+		}
 
 		&-count__inner {
 			@media $verticalTablet {
@@ -184,6 +215,11 @@
 			@media $phone {
 				display inline-block
 			}
+		}
+
+		&-wrapper {
+			position relative
+			padding-left 26px
 		}
 
 		svg {

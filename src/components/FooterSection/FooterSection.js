@@ -80,6 +80,7 @@ const FooterSection = ({ text, light, offsetLeft, offsetRight, email, className,
 					</div>
 					{showButton && <div className="FooterSection__feedback">
 						<Button
+							uppercase
 							text="Заполнить бриф"
 							{...showButton}
 							className="FooterSection__feedback-button"
