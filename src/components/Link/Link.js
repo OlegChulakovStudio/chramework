@@ -15,8 +15,13 @@ const Link = ({
 	disableBlank,
 	noLink,
 	noBlank,
+	onClick,
 	...rest
 }) => {
+	const handleClick = (e) => {
+		onClick && onClick(e);
+		window.isLocationChagned = true;
+	}
 	const linkStyle = classNames(['Link', className, {
 		Link_bold: bold,
 		Link_light: light,
@@ -32,8 +37,9 @@ const Link = ({
 	if (noLink) {
 		RenderedComponent = 'span';
 	}
+
 	return (
-		<RenderedComponent {...rest} className={linkStyle} {...linkProps}>
+		<RenderedComponent {...rest} className={linkStyle} onClick={handleClick} {...linkProps}>
 			{children}
 			{((href && !disableBlank) || noLink) && <TargetBlank className="Link__target-blank" />}
 		</RenderedComponent>

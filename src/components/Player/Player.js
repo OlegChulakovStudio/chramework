@@ -110,8 +110,8 @@ class Player extends Component {
 		shareOpened: false,
 		changeQualityOpened: false,
 		muted: false,
-		pauseBlocked: this.props.autoPlay,
 		isIosNotSupport: isIos() && iosVersion() <= 10,
+		isLocationChagned: undefined,
 	};
 	player = null;
 	componentDidMount = () => {
@@ -119,6 +119,10 @@ class Player extends Component {
 		if (this.props.autoPlay && !this.state.isIosNotSupport) {
 			this.autoPlay();
 		}
+		this.setState({
+			isIosNotSupport: isIos() && iosVersion() <= 10,
+			isLocationChagned: window.isLocationChagned,
+		});
 		if (!calculatedQuality) {
 			calculateQuality.then(typeQuality => {
 				if (this.player) {
@@ -156,12 +160,6 @@ class Player extends Component {
 	};
 
 
-	setVolume = () => {
-		if (this.state.pauseBlocked) {
-			// this.player.volume(1);
-			this.setState({ pauseBlocked: false });
-		}
-	};
 
 	autoPlay = () => {
 		if (!this.state.renderedVideoNode) {
@@ -230,7 +228,7 @@ class Player extends Component {
 		);
 		window.player = this.player;
 		if (this.optimisationOff()) {
-			this.player.poster(this.state.poster);
+			!this.props.autoPlay && this.player.poster(this.state.poster);
 			this.poster = this.playerBox.getElementsByClassName('vjs-poster')[0];
 		}
 		this.player.on('play', this.onPlay);
@@ -475,7 +473,6 @@ class Player extends Component {
 
 	renderPlayer = () => {
 		const { theme, fullhd, banners, shareURL, muted, origin, hideBar } = this.props;
-
 		const playerStyle = classNames({
 			Player: true,
 			player: true,
@@ -491,61 +488,65 @@ class Player extends Component {
 			Player_shrareOpened: this.state.shareOpened,
 			Player_changeQualityOpened: this.state.changeQualityOpened,
 			Player_hideVideo: this.state.hideVideo,
-			Player_autoPlay: this.state.pauseBlocked,
 		});
 		const posterStyle = classNames({
 			Player__poster: true,
 			Player__poster_hide: !this.isPosterShow(),
 		});
-		const setPoster = () =>
-			!this.props.autoPlay ? (this.state.poster
-				? { backgroundImage: `url(${this.state.poster})` }
-				: undefined) : this.state.isIosNotSupport ? { backgroundImage: `url(${this.state.poster})` }
-					: undefined;
+		const setPoster = () => {
+			return (
+				(!this.props.autoPlay || !this.state.isLocationChagned) ? (this.state.poster
+					? { backgroundImage: `url(${this.state.poster})` }
+					: undefined) : this.state.isIosNotSupport ? { backgroundImage: `url(${this.state.poster})` }
+						: undefined
+			);
+		}
 
-		const renderInner = () => (
-			<div className={playerStyle} onClick={this.setVolume} ref={this.getPlayerBox}>
-				{!this.optimisationOff() && (
-					<div
-						style={setPoster()}
-						onClick={this.onClick}
-						className={posterStyle}
-						ref={this.getPosterNode}>
-						{!this.props.autoPlay ? <button className="vjs-big-play-button" type="button">
-							<PlayIcon />
-						</button> : this.state.isIosNotSupport && <button className="vjs-big-play-button" type="button">
-							<PlayIcon />
-						</button>}
-					</div>
-				)}
-				{this.renderVideoNode()}
+		const renderInner = () => {
+			return (
+				<div className={playerStyle} ref={this.getPlayerBox}>
+					{!this.optimisationOff() && (
+						<div
+							style={setPoster()}
+							onClick={this.onClick}
+							className={posterStyle}
+							ref={this.getPosterNode}>
+							{(!this.props.autoPlay || !this.state.isLocationChagned) ? <button className="vjs-big-play-button" type="button">
+								<PlayIcon />
+							</button> : this.state.isIosNotSupport && <button className="vjs-big-play-button" type="button">
+								<PlayIcon />
+							</button>}
+						</div>
+					)}
+					{this.renderVideoNode()}
 
-				{shareURL && (
-					<ShareBlock
-						url={shareURL}
-						onClick={isIos() ? this.toggleShare : undefined}
-						isOpened={this.state.shareOpened}
-					/>
-				)}
-
-				{this.state.playerInited &&
-					Boolean(Object.keys(this.state.qualityList).length) && (
-						<ChangeQuality
-							qualityList={this.state.qualityList}
-							renderNode={this.playerConrolNode}
-							currentQuality={this.state.currentQuality}
-							onChangeQuality={this.changeQuality}
-							onClick={isIos() ? this.toggleChangeQuality : undefined}
-							isOpened={this.state.changeQualityOpened}
+					{shareURL && (
+						<ShareBlock
+							url={shareURL}
+							onClick={isIos() ? this.toggleShare : undefined}
+							isOpened={this.state.shareOpened}
 						/>
 					)}
 
-				{this.state.playerInited &&
-					this.optimisationOff() && (
-						<PlayIconInject renderNode={this.playButtonNode} />
-					)}
-			</div>
-		);
+					{this.state.playerInited &&
+						Boolean(Object.keys(this.state.qualityList).length) && (
+							<ChangeQuality
+								qualityList={this.state.qualityList}
+								renderNode={this.playerConrolNode}
+								currentQuality={this.state.currentQuality}
+								onChangeQuality={this.changeQuality}
+								onClick={isIos() ? this.toggleChangeQuality : undefined}
+								isOpened={this.state.changeQualityOpened}
+							/>
+						)}
+
+					{this.state.playerInited &&
+						this.optimisationOff() && (
+							<PlayIconInject renderNode={this.playButtonNode} />
+						)}
+				</div>
+			)
+		};
 		return banners ? (
 			<div className="wrapper-player">{renderInner()}</div>
 		) : (
@@ -553,7 +554,6 @@ class Player extends Component {
 			);
 	};
 	render() {
-		console.log('isIosNotSupport', this.state.isIosNotSupport);
 
 		return isIos() ? (
 			<Waypoint
