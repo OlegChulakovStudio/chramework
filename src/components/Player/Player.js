@@ -228,7 +228,7 @@ class Player extends Component {
 		);
 		window.player = this.player;
 		if (this.optimisationOff()) {
-			!this.props.autoPlay && this.player.poster(this.state.poster);
+			(!this.props.autoPlay || !this.state.isLocationChagned) && this.player.poster(this.state.poster);
 			this.poster = this.playerBox.getElementsByClassName('vjs-poster')[0];
 		}
 		this.player.on('play', this.onPlay);
