@@ -1,50 +1,56 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { NavLink } from 'react-router-dom';
 import TargetBlank from '../../assets/target-blank.svg';
 import './Link.styl';
 
-const Link = ({
-	to,
-	children,
-	bold,
-	className,
-	light,
-	href,
-	disableBlank,
-	noLink,
-	noBlank,
-	onClick,
-	...rest
-}) => {
-	const handleClick = (e) => {
-		onClick && onClick(e);
-		window.isLocationChagned = true;
-	}
-	const linkStyle = classNames(['Link', className, {
-		Link_bold: bold,
-		Link_light: light,
-		Link_external: href && !disableBlank,
-	}]);
-	let RenderedComponent = to ? NavLink : href ? 'a' : 'span';
-	let linkProps = {};
-	if (to) {
-		linkProps = { to };
-	} else if (href) {
-		linkProps = { href, target: noBlank ? '' : '_blank' };
-	}
-	if (noLink) {
-		RenderedComponent = 'span';
+
+class Link extends Component {
+	handleClick = (e) => {
+		this.props.onClick && this.props.onClick(e);
+		if (typeof window !== 'undefined') {
+			window.isLocationChagned = true
+		}
 	}
 
-	return (
-		<RenderedComponent {...rest} className={linkStyle} onClick={handleClick} {...linkProps}>
-			{children}
-			{((href && !disableBlank) || noLink) && <TargetBlank className="Link__target-blank" />}
-		</RenderedComponent>
-	);
-};
+	render() {
+		const {
+			to,
+			children,
+			bold,
+			className,
+			light,
+			href,
+			disableBlank,
+			noLink,
+			noBlank,
+			...rest
+		} = this.props;
+		const linkStyle = classNames(['Link', className, {
+			Link_bold: bold,
+			Link_light: light,
+			Link_external: href && !disableBlank,
+		}]);
+		let RenderedComponent = to ? NavLink : href ? 'a' : 'span';
+		let linkProps = {};
+		if (to) {
+			linkProps = { to };
+		} else if (href) {
+			linkProps = { href, target: noBlank ? '' : '_blank' };
+		}
+		if (noLink) {
+			RenderedComponent = 'span';
+		}
+		return (
+			<RenderedComponent {...rest} className={linkStyle} onClick={this.handleClick} {...linkProps}>
+				{children}
+				{((href && !disableBlank) || noLink) && <TargetBlank className="Link__target-blank" />}
+			</RenderedComponent>
+		)
+	}
+}
+
 Link.defaultProps = {
 	to: undefined,
 	href: undefined,

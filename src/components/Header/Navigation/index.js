@@ -28,6 +28,13 @@ class Navigation extends Component {
 		}
 		return false;
 	};
+
+	handleClick = (e) => {
+		this.props.onClick && this.props.onClick(e);
+		if (typeof window !== 'undefined') {
+			window.isLocationChagned = true
+		}
+	}
 	render() {
 
 		return (
@@ -35,6 +42,7 @@ class Navigation extends Component {
 				{this.props.menu && this.props.menu.map(item => {
 					return (
 						<NavLink
+							onClick={this.handleClick}
 							exact={item.exact}
 							className="Navigation__item"
 							key={item.url}

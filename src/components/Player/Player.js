@@ -22,7 +22,12 @@ import './css.styl';
 import './Player.styl';
 
 let currentPlayer = null; // For pausing active player
-
+const checkLocationChenged = () => {
+	if (typeof window === 'undefined') {
+		return false;
+	}
+	return window.isLocationChagned;
+}
 // Calculate quality
 let calculatedQuality = undefined;
 const calculateQuality = new Promise((resolve, reject) => {
@@ -111,18 +116,19 @@ class Player extends Component {
 		changeQualityOpened: false,
 		muted: false,
 		isIosNotSupport: isIos() && iosVersion() <= 10,
-		isLocationChagned: undefined,
 	};
 	player = null;
 	componentDidMount = () => {
-		this.videojs = require('video.js');
-		if (this.props.autoPlay && !this.state.isIosNotSupport) {
-			this.autoPlay();
-		}
 		this.setState({
 			isIosNotSupport: isIos() && iosVersion() <= 10,
-			isLocationChagned: window.isLocationChagned,
 		});
+		this.videojs = require('video.js');
+		console.log('isLocationChagned', checkLocationChenged());
+
+		if (this.props.autoPlay && !this.state.isIosNotSupport && checkLocationChenged()) {
+			this.autoPlay();
+		}
+
 		if (!calculatedQuality) {
 			calculateQuality.then(typeQuality => {
 				if (this.player) {
@@ -226,9 +232,8 @@ class Player extends Component {
 				this._injectFullscreenIcon();
 			}
 		);
-		window.player = this.player;
 		if (this.optimisationOff()) {
-			(!this.props.autoPlay || !this.state.isLocationChagned) && this.player.poster(this.state.poster);
+			this.player.poster(this.state.poster);
 			this.poster = this.playerBox.getElementsByClassName('vjs-poster')[0];
 		}
 		this.player.on('play', this.onPlay);
@@ -390,7 +395,7 @@ class Player extends Component {
 
 				}, 10);
 			} else {
-				if (this.props.autoPlay && !this.state.isIosNotSupport) {
+				if (this.props.autoPlay && !this.state.isIosNotSupport && checkLocationChenged()) {
 					this.player.play();
 				}
 			}
@@ -495,12 +500,13 @@ class Player extends Component {
 		});
 		const setPoster = () => {
 			return (
-				(!this.props.autoPlay || !this.state.isLocationChagned) ? (this.state.poster
+				(!this.props.autoPlay || !checkLocationChenged()) ? (this.state.poster
 					? { backgroundImage: `url(${this.state.poster})` }
-					: undefined) : this.state.isIosNotSupport ? { backgroundImage: `url(${this.state.poster})` }
+					: undefined) : (isAndroid() || this.state.isIosNotSupport) ? { backgroundImage: `url(${this.state.poster})` }
 						: undefined
 			);
 		}
+
 
 		const renderInner = () => {
 			return (
@@ -511,7 +517,7 @@ class Player extends Component {
 							onClick={this.onClick}
 							className={posterStyle}
 							ref={this.getPosterNode}>
-							{(!this.props.autoPlay || !this.state.isLocationChagned) ? <button className="vjs-big-play-button" type="button">
+							{(!this.props.autoPlay || !checkLocationChenged()) ? <button className="vjs-big-play-button" type="button">
 								<PlayIcon />
 							</button> : this.state.isIosNotSupport && <button className="vjs-big-play-button" type="button">
 								<PlayIcon />
