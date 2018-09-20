@@ -1,4 +1,5 @@
 	<WorkItem {...{
+			onDark: true,
 	    video: {
 	      shareURL: 'https://chulakov.ru/video/raiffeisen',
 	      theme: 'dark',
