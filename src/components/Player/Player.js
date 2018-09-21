@@ -124,7 +124,6 @@ class Player extends Component {
 		});
 		this.videojs = require('video.js');
 		console.log('isLocationChagned', checkLocationChenged());
-
 		if (this.props.autoPlay && !this.state.isIosNotSupport && checkLocationChenged()) {
 			this.autoPlay();
 		}
@@ -212,7 +211,7 @@ class Player extends Component {
 				autoPlay: false,
 				controls: true,
 				loop: loop || playOnScroll,
-				muted,
+				muted: muted || playOnScroll,
 				sources: [
 					{
 						src:
@@ -226,12 +225,13 @@ class Player extends Component {
 				nativeControlsForTouch: banners ? false : iosVersion() >= 11
 			},
 			() => {
-				if (!muted) {
+				if (!muted || !playOnScroll) {
 					this._injectVolumeIcon();
 				}
 				this._injectFullscreenIcon();
 			}
 		);
+		window.player = this.player;
 		if (this.optimisationOff()) {
 			this.player.poster(this.state.poster);
 			this.poster = this.playerBox.getElementsByClassName('vjs-poster')[0];
@@ -425,15 +425,18 @@ class Player extends Component {
 		this.timer = setTimeout(() => {
 			this.initAndPlay();
 		}, 300);
-		console.log('on entered');
-		if (this.props.playOnScroll) {
-			console.log('on entered1212');
-			this.autoPlay();
-		}
 	};
 	onLeave = () => {
 		clearTimeout(this.timer);
 	};
+	playOnscrollEnter = () => {
+		this.autoPlay();
+		console.log('on entered');
+	}
+	playOnscrollLeave = () => {
+		this.player.pause();
+		console.log('on leaved', currentPlayer);
+	}
 
 	isPosterShow = () =>
 		!this.optimisationOff() && this.state.poster && !this.state.hideInitPoster;
@@ -461,28 +464,34 @@ class Player extends Component {
 		const videoStyle = classNames({
 			Player__video: true,
 		});
+
+		let videoReturn = this.props.playOnScroll ? <video
+			muted
+			data-vjs-player
+			ref={this.getPlayerNode}
+			className={videoStyle}
+		/> : <video
+				data-vjs-player
+				ref={this.getPlayerNode}
+				className={videoStyle}
+			/>;
+		console.log('videoReturn', videoReturn);
+
 		if (!this.optimisationOff()) {
 			if (this.state.renderedVideoNode)
 				return (
-					<video
-						data-vjs-player
-						ref={this.getPlayerNode}
-						className={videoStyle}
-					/>
+					videoReturn
 				);
 			return null;
 		}
 		return (
-			<video
-				data-vjs-player
-				ref={this.getPlayerNode}
-				className={videoStyle}
-			/>
+			videoReturn
 		);
+
 	};
 
 	renderPlayer = () => {
-		const { theme, fullhd, banners, shareURL, muted, origin, hideBar } = this.props;
+		const { theme, fullhd, banners, shareURL, muted, playOnScroll, origin, hideBar } = this.props;
 		const playerStyle = classNames({
 			Player: true,
 			player: true,
@@ -490,7 +499,7 @@ class Player extends Component {
 			[`player_theme_${theme}`]: theme,
 			Player_compact: this.state.compact,
 			Player_banners: banners,
-			Player_muted: muted,
+			Player_muted: muted || playOnScroll,
 			Player_hideBar: hideBar,
 			Player_originSize: origin,
 			Player_ios: iosVersion() >= 11,
@@ -565,7 +574,6 @@ class Player extends Component {
 			);
 	};
 	render() {
-		console.log('playerProps', this.props);
 
 		return isIos() ? (
 			<Waypoint
@@ -574,7 +582,7 @@ class Player extends Component {
 				{this.renderPlayer()}
 			</Waypoint>
 		) : this.props.playOnScroll ? (
-			<Waypoint>
+			<Waypoint onEnter={this.playOnscrollEnter} onLeave={this.playOnscrollLeave}>
 				{this.renderPlayer()}
 			</Waypoint>
 
