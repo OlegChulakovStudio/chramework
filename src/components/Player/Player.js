@@ -82,7 +82,7 @@ class Player extends Component {
 		shareURL: undefined,
 		hideBar: false,
 		muted: false,
-		mutedStart: false
+		playOnScroll: false,
 	};
 	static propTypes = {
 		compact: PropTypes.bool,
@@ -96,7 +96,7 @@ class Player extends Component {
 		hideBar: PropTypes.bool,
 		muted: PropTypes.bool,
 		autoPlay: PropTypes.bool,
-		mutedStart: PropTypes.bool,
+		playOnScroll: PropTypes.bool,
 	};
 	state = {
 		isCollapsed: !isPad() && this.props.compact,
@@ -202,7 +202,7 @@ class Player extends Component {
 		}
 	}
 	initPlayer = () => {
-		const { src, loop, banners, muted } = this.props;
+		const { src, loop, banners, muted, playOnScroll } = this.props;
 		if (typeof this.state.currentQuality === 'undefined') {
 		}
 		this.player = this.videojs(
@@ -211,7 +211,7 @@ class Player extends Component {
 				preload: 'none',
 				autoPlay: false,
 				controls: true,
-				loop,
+				loop: loop || playOnScroll,
 				muted,
 				sources: [
 					{
@@ -395,7 +395,7 @@ class Player extends Component {
 
 				}, 10);
 			} else {
-				if (this.props.autoPlay && !this.state.isIosNotSupport && checkLocationChenged()) {
+				if ((this.props.autoPlay && !this.state.isIosNotSupport && checkLocationChenged()) || this.props.playOnScroll) {
 					this.player.play();
 				}
 			}
@@ -425,6 +425,11 @@ class Player extends Component {
 		this.timer = setTimeout(() => {
 			this.initAndPlay();
 		}, 300);
+
+		if (this.props.playOnScroll) {
+			console.log('on entered');
+			this.autoPlay();
+		}
 	};
 	onLeave = () => {
 		clearTimeout(this.timer);
