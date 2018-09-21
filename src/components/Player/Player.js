@@ -425,9 +425,9 @@ class Player extends Component {
 		this.timer = setTimeout(() => {
 			this.initAndPlay();
 		}, 300);
-
+		console.log('on entered');
 		if (this.props.playOnScroll) {
-			console.log('on entered');
+			console.log('on entered1212');
 			this.autoPlay();
 		}
 	};
@@ -565,6 +565,7 @@ class Player extends Component {
 			);
 	};
 	render() {
+		console.log('playerProps', this.props);
 
 		return isIos() ? (
 			<Waypoint
@@ -572,9 +573,12 @@ class Player extends Component {
 				onLeave={!this.state.renderedVideoNode ? this.onLeave : this.noop}>
 				{this.renderPlayer()}
 			</Waypoint>
-		) : (
-				this.renderPlayer()
-			);
+		) : this.props.playOnScroll ? (
+			<Waypoint>
+				{this.renderPlayer()}
+			</Waypoint>
+
+		) : (this.renderPlayer());
 	}
 }
 export default Player;
