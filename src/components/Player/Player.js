@@ -123,7 +123,6 @@ class Player extends Component {
 			isIosNotSupport: isIos() && iosVersion() <= 10,
 		});
 		this.videojs = require('video.js');
-		console.log('isLocationChagned', checkLocationChenged());
 		if (this.props.autoPlay && !this.state.isIosNotSupport && checkLocationChenged()) {
 			this.autoPlay();
 		}
@@ -430,12 +429,17 @@ class Player extends Component {
 		clearTimeout(this.timer);
 	};
 	playOnscrollEnter = () => {
-		this.autoPlay();
-		console.log('on entered');
+		if (!this.firstPlay) {
+			this.autoPlay();
+			this.firstPlay = true;
+			console.log('on entered', currentPlayer, this.firstPlay);
+		}
 	}
 	playOnscrollLeave = () => {
-		this.player.pause();
-		console.log('on leaved', currentPlayer);
+		if (this.firstPlay) {
+			this.player.pause();
+			console.log('on leaved', currentPlayer, this.firstPlay);
+		}
 	}
 
 	isPosterShow = () =>
@@ -475,7 +479,6 @@ class Player extends Component {
 				ref={this.getPlayerNode}
 				className={videoStyle}
 			/>;
-		console.log('videoReturn', videoReturn);
 
 		if (!this.optimisationOff()) {
 			if (this.state.renderedVideoNode)
@@ -582,7 +585,7 @@ class Player extends Component {
 				{this.renderPlayer()}
 			</Waypoint>
 		) : this.props.playOnScroll ? (
-			<Waypoint onEnter={this.playOnscrollEnter} onLeave={this.playOnscrollLeave}>
+			<Waypoint threshold="0" bottomOffset="50%" onEnter={this.playOnscrollEnter} onLeave={this.playOnscrollLeave}>
 				{this.renderPlayer()}
 			</Waypoint>
 
