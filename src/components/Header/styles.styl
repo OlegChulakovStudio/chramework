@@ -126,7 +126,19 @@
 					background #fff
 				}
 			}
+
+			&_open {
+				.Hamburger__line {
+					background $textColor
+				}
+				&:hover {
+					.Hamburger__line {
+						background $linkColor
+					}
+				}
+			}
 		}
+		
 
 		& *::selection {
 			background alpha(#fff, 0.99)
