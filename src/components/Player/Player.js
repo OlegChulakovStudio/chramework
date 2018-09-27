@@ -436,7 +436,7 @@ class Player extends Component {
 		}
 	}
 	playOnscrollLeave = () => {
-		if (this.firstPlay) {
+		if (this.firstPlay && this.player) {
 			this.player.pause();
 			console.log('on leaved', currentPlayer, this.firstPlay);
 		}
@@ -494,7 +494,7 @@ class Player extends Component {
 	};
 
 	renderPlayer = () => {
-		const { theme, fullhd, banners, shareURL, muted, playOnScroll, origin, hideBar } = this.props;
+		const { theme, fullhd, banners, shareURL, muted, playOnScroll, origin, hideBar  } = this.props;
 		const playerStyle = classNames({
 			Player: true,
 			player: true,
@@ -503,7 +503,7 @@ class Player extends Component {
 			Player_compact: this.state.compact,
 			Player_banners: banners,
 			Player_muted: muted || playOnScroll,
-			Player_hideBar: hideBar,
+			Player_hideBar: hideBar || playOnScroll,
 			Player_originSize: origin,
 			Player_ios: iosVersion() >= 11,
 			Player_fullhd: fullhd,
@@ -578,7 +578,7 @@ class Player extends Component {
 	};
 	render() {
 
-		return isIos() ? (
+		return isIos() && !this.props.playOnScroll ? (
 			<Waypoint
 				onEnter={!this.state.renderedVideoNode ? this.onEnter : this.noop}
 				onLeave={!this.state.renderedVideoNode ? this.onLeave : this.noop}>
