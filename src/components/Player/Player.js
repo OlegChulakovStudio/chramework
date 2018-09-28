@@ -445,7 +445,7 @@ class Player extends Component {
 		}
 	}
 
-	isPosterShow = () =>
+	isPosterShow = () => 
 		!this.optimisationOff() && this.state.poster && !this.state.hideInitPoster;
 
 	toggleShare = () => {
@@ -517,6 +517,7 @@ class Player extends Component {
 		const posterStyle = classNames({
 			Player__poster: true,
 			Player__poster_hide: !this.isPosterShow(),
+			Player__poster_playOnScroll: this.props.playOnScroll,
 		});
 		const setPoster = () => {
 			return (
@@ -529,6 +530,7 @@ class Player extends Component {
 
 
 		const renderInner = () => {
+
 			return (
 				<div className={playerStyle} ref={this.getPlayerBox}>
 					{!this.optimisationOff() && (
@@ -537,9 +539,9 @@ class Player extends Component {
 							onClick={this.onClick}
 							className={posterStyle}
 							ref={this.getPosterNode}>
-							{(!this.props.autoPlay || !checkLocationChenged()) ? <button className="vjs-big-play-button" type="button">
+							{(!this.props.autoPlay || !checkLocationChenged()) && !this.props.playOnScroll ? <button className="vjs-big-play-button" type="button">
 								<PlayIcon />
-							</button> : this.state.isIosNotSupport && <button className="vjs-big-play-button" type="button">
+							</button> : this.state.isIosNotSupport && !this.props.playOnScroll && <button className="vjs-big-play-button" type="button">
 								<PlayIcon />
 							</button>}
 						</div>
@@ -580,9 +582,6 @@ class Player extends Component {
 			);
 	};
 	render() {
-		isIos() && !this.props.playOnScroll ? console.log('first') : this.props.playOnScroll ? console.log('playOnscroll') : console.log('last');
-		
-
 		return isIos() && !this.props.playOnScroll ? (
 			<Waypoint
 				onEnter={!this.state.renderedVideoNode ? this.onEnter : this.noop}

@@ -128,7 +128,6 @@ $compact-player-ratio = (275/960*100%)
 		background-repeat no-repeat
 		will-change opacity
 		z-index 2
-
 		@media $phone {
 			transition opacity 0.2s, visibility 0s
 
@@ -137,6 +136,9 @@ $compact-player-ratio = (275/960*100%)
 				opacity 0
 				transition opacity 0.2s, visibility 0s 0.2s
 			}
+		}
+		&_playOnScroll {
+			transition opacity 1.5s, visibility 1.5s	
 		}
 	}
 	.vjs-poster, .vjs-tech {
