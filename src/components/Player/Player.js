@@ -22,6 +22,7 @@ import './css.styl';
 import './Player.styl';
 
 let currentPlayer = null; // For pausing active player
+let paused;
 const checkLocationChenged = () => {
 	if (typeof window === 'undefined') {
 		return false;
@@ -220,8 +221,8 @@ class Player extends Component {
 						type: 'video/mp4'
 					}
 				],
-				playsinline: banners ? 'playsinline' : undefined,
-				nativeControlsForTouch: banners ? false : iosVersion() >= 11
+				playsinline: banners || playOnScroll ? 'playsinline' : undefined,
+				nativeControlsForTouch: banners || playOnScroll ? false : iosVersion() >= 11
 			},
 			() => {
 				if (!muted || !playOnScroll) {
@@ -434,10 +435,12 @@ class Player extends Component {
 			this.firstPlay = true;
 			console.log('on entered', currentPlayer, this.firstPlay);
 		}
+		paused && this.player.play();
 	}
 	playOnscrollLeave = () => {
 		if (this.firstPlay && this.player) {
 			this.player.pause();
+			paused = true;
 			console.log('on leaved', currentPlayer, this.firstPlay);
 		}
 	}
@@ -577,6 +580,8 @@ class Player extends Component {
 			);
 	};
 	render() {
+		isIos() && !this.props.playOnScroll ? console.log('first') : this.props.playOnScroll ? console.log('playOnscroll') : console.log('last');
+		
 
 		return isIos() && !this.props.playOnScroll ? (
 			<Waypoint
