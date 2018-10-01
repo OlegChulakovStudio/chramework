@@ -137,9 +137,7 @@ $compact-player-ratio = (275/960*100%)
 				transition opacity 0.2s, visibility 0s 0.2s
 			}
 		}
-		&_playOnScroll {
-			transition opacity 1.5s, visibility 1.5s	
-		}
+		
 	}
 	.vjs-poster, .vjs-tech {
 		position absolute
@@ -180,6 +178,19 @@ $compact-player-ratio = (275/960*100%)
 	&_hideVideo {
 		video {
 			opacity 0 !important
+		}
+	}
+	&_playOnScroll {
+		.Player__poster {
+		transition opacity 2s, visibility 2s
+		}
+		.Player__poster_hide {
+			transition opacity 2s, visibility 2s	
+		}
+		&.Player_banners {
+			.Player__video {
+				transition 2s	
+			}
 		}
 	}
 	&_ios {

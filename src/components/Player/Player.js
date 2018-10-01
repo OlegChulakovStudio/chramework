@@ -513,11 +513,11 @@ class Player extends Component {
 			Player_shrareOpened: this.state.shareOpened,
 			Player_changeQualityOpened: this.state.changeQualityOpened,
 			Player_hideVideo: this.state.hideVideo,
+			Player_playOnScroll: this.props.playOnScroll,
 		});
 		const posterStyle = classNames({
 			Player__poster: true,
 			Player__poster_hide: !this.isPosterShow(),
-			Player__poster_playOnScroll: this.props.playOnScroll,
 		});
 		const setPoster = () => {
 			return (
