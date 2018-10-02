@@ -283,7 +283,8 @@ class Player extends Component {
 	};
 
 	hidePoster = () => {
-		return TweenMax.to(this.poster, 0.2, { autoAlpha: 0 });
+		const transition = this.props.playOnScroll ? 1.5 : 0.2;
+		return TweenMax.to(this.poster, transition, { autoAlpha: 0 });
 	};
 
 	slideDown = () => {
@@ -443,6 +444,7 @@ class Player extends Component {
 			paused = true;
 			console.log('on leaved', currentPlayer, this.firstPlay);
 		}
+		
 	}
 
 	isPosterShow = () => 
@@ -498,6 +500,7 @@ class Player extends Component {
 
 	renderPlayer = () => {
 		const { theme, fullhd, banners, shareURL, muted, playOnScroll, origin, hideBar  } = this.props;
+		
 		const playerStyle = classNames({
 			Player: true,
 			player: true,
