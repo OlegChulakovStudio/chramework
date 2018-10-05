@@ -181,16 +181,9 @@ $compact-player-ratio = (275/960*100%)
 		}
 	}
 	&_playOnScroll {
-		.Player__poster {
-			transition opacity 1s, visibility 1s
-
-			@media $phone {
-				transition opacity 1.5s, visibility 1.5s	
-			}
-		}
-		.Player__poster_hide {
-			transition opacity 0.2s, visibility 0.2s
-		}
+		.vjs-big-play-button {
+			display none
+		}	
 	}
 	&_ios {
 		video {

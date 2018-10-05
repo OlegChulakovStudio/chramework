@@ -283,8 +283,8 @@ class Player extends Component {
 	};
 
 	hidePoster = () => {
-		const transition = this.props.playOnScroll ? 1.5 : 0.2;
-		return TweenMax.to(this.poster, transition, { autoAlpha: 0 });
+		const options = this.props.playOnScroll ? { 'z-index': -5 } : { autoAlpha: 0 };
+		return TweenMax.to(this.poster, 0.2, options);
 	};
 
 	slideDown = () => {
@@ -533,7 +533,8 @@ class Player extends Component {
 
 
 		const renderInner = () => {
-
+			console.log('props', this.props);
+			
 			return (
 				<div className={playerStyle} ref={this.getPlayerBox}>
 					{!this.optimisationOff() && (
@@ -542,9 +543,11 @@ class Player extends Component {
 							onClick={this.onClick}
 							className={posterStyle}
 							ref={this.getPosterNode}>
-							{(!this.props.autoPlay || !checkLocationChenged()) && !this.props.playOnScroll ? <button className="vjs-big-play-button" type="button">
+							{(!this.props.autoPlay || !checkLocationChenged()) && !this.props.playOnScroll ? 
+							<button className="vjs-big-play-button" type="button">
 								<PlayIcon />
-							</button> : this.state.isIosNotSupport && !this.props.playOnScroll && <button className="vjs-big-play-button" type="button">
+							</button> : this.state.isIosNotSupport && !this.props.playOnScroll && 
+							<button className="vjs-big-play-button" type="button">
 								<PlayIcon />
 							</button>}
 						</div>
