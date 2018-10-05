@@ -533,7 +533,6 @@ class Player extends Component {
 
 
 		const renderInner = () => {
-			console.log('props', this.props);
 			
 			return (
 				<div className={playerStyle} ref={this.getPlayerBox}>
