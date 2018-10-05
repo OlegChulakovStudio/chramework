@@ -406,7 +406,7 @@ class Player extends Component {
 	onPlay = () => {
 		this.setState({ hideVideo: false });
 		this.slideDown();
-		if (currentPlayer && currentPlayer !== this.player) {
+		if (!this.props.playOnScroll && currentPlayer && currentPlayer !== this.player) {
 			currentPlayer.pause();
 		}
 		currentPlayer = this.player;
@@ -434,7 +434,6 @@ class Player extends Component {
 		if (!this.firstPlay) {
 			this.autoPlay();
 			this.firstPlay = true;
-			console.log('on entered', currentPlayer, this.firstPlay);
 		}
 		paused && this.player.play();
 	}
@@ -442,7 +441,6 @@ class Player extends Component {
 		if (this.firstPlay && this.player) {
 			this.player.pause();
 			paused = true;
-			console.log('on leaved', currentPlayer, this.firstPlay);
 		}
 		
 	}
@@ -594,7 +592,7 @@ class Player extends Component {
 				{this.renderPlayer()}
 			</Waypoint>
 		) : this.props.playOnScroll ? (
-			<Waypoint threshold="0" bottomOffset="50%" onEnter={this.playOnscrollEnter} onLeave={this.playOnscrollLeave}>
+			<Waypoint onEnter={this.playOnscrollEnter} onLeave={this.playOnscrollLeave}>
 				{this.renderPlayer()}
 			</Waypoint>
 
