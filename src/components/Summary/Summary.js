@@ -12,8 +12,8 @@ const production = {
 	internal: { to: { pathname: '/life/top5', state: { fromHome: true } } }
 }
 const design = {
-	external: { href: 'https://chulakov.ru/life/top2' },
-	internal: { to: { pathname: '/life/top2', state: { fromHome: true } } }
+	external: { href: 'https://chulakov.ru/life/best-design-studio' },
+	internal: { to: { pathname: '/life/best-design-studio', state: { fromHome: true } } }
 }
 const usability = {
 	external: { href: 'https://chulakov.ru/life/best-usability' },
@@ -36,22 +36,22 @@ const Summary = ({ awards, className, external, ...rest }) => {
 	return (
 		<div {...rest} className={blockStyle}>
 			<div className="Summary__inner">
-			<Link {...usabilityLink} disableBlank className="Summary__item Summary__item_medal Summary__item_medal1">
+			<Link {...usabilityLink} disableBlank className="Summary__item Summary__item_medal Summary__item_medal1 Summary__item_goldenSite">
 				<div className="Summary__content">
 					<Paragraph mod="boldMedium" className="Summary__title">Лучший <nobr>usability / UX</nobr></Paragraph>
 				</div>
 			</Link>
-			<Link {...designLink} disableBlank className="Summary__item Summary__item_medal Summary__item_medal2">
+			<Link {...designLink} disableBlank className="Summary__item Summary__item_medal Summary__item_medal1 Summary__item_tagline">
 				<div className="Summary__content">
-					<Paragraph mod="boldMedium" className="Summary__title">Топ-2 <nobr>дизайн-студий</nobr></Paragraph>
+					<Paragraph mod="boldMedium" className="Summary__title">Лучшая <nobr>дизайн-студия</nobr></Paragraph>
 				</div>
 			</Link>
-			<Link {...productionLink} disableBlank className="Summary__item Summary__item_medal Summary__item_medal5">
+			<Link {...productionLink} disableBlank className="Summary__item Summary__item_medal Summary__item_medal5 Summary__item_tagline">
 				<div className="Summary__content">
 					<Paragraph mod="boldMedium" className="Summary__title">Топ-5 <nobr>digital production</nobr></Paragraph>
 				</div>
 			</Link>
-			<Link {...keypersonLink} disableBlank className="Summary__item Summary__item_medal Summary__item_medal9">
+			<Link {...keypersonLink} disableBlank className="Summary__item Summary__item_medal Summary__item_medal9 Summary__item_tagline">
 				<div className="Summary__content">
 					<Paragraph mod="boldMedium" className="Summary__title">Арт-директор в&nbsp;топ-10 ключевых персон Рунета</Paragraph>
 				</div>

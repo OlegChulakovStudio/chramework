@@ -68,6 +68,30 @@
 		@media $phone {
 			padding 0 8px
 		}
+		&_goldenSite {
+			& .Summary__title:after {
+				content '*'
+				color #9e9e9e
+				font-weight normal
+				font-size 14px
+				margin-right -5px
+				@media $phone {
+					font-size 16px
+				}
+			}
+		}
+		&_tagline {
+			& .Summary__title:after {
+				content '**'
+				color #9e9e9e
+				font-weight normal
+				font-size 14px
+				margin-right -10px
+				@media $phone {
+					font-size 16px
+				}
+			}
+		}
 		&_medal {
 			display inline-block
 			text-align center
@@ -104,16 +128,6 @@
 				&:before {
 					background-image url('medal_1.png')
 				}
-				& .Summary__title:after {
-					content '*'
-					color #9e9e9e
-					font-weight normal
-					font-size 14px
-					margin-right -5px
-					@media $phone {
-						font-size 16px
-					}
-				}
 			}
 			&2 {
 				// @media $verticalTablet {
@@ -125,16 +139,6 @@
 				}
 				&:before {
 					background-image url('medal_2.png')
-				}
-				& .Summary__title:after {
-					content '**'
-					color #9e9e9e
-					font-weight normal
-					font-size 14px
-					margin-right -10px
-					@media $phone {
-						font-size 16px
-					}
 				}
 			}
 			&25 {
@@ -158,16 +162,6 @@
 				&:before {
 					background-image url('medal_5.png')
 				}
-				& .Summary__title:after {
-					content '**'
-					color #9e9e9e
-					font-weight normal
-					font-size 14px
-					margin-right -10px
-					@media $phone {
-						font-size 16px
-					}
-				}
 			}
 			&9 {
 				@media $verticalTablet {
@@ -176,16 +170,6 @@
 				}
 				&:before {
 					background-image url('medal_9.png')
-				}
-				& .Summary__title:after {
-					content '**'
-					color #9e9e9e
-					font-weight normal
-					font-size 14px
-					margin-right -10px
-					@media $phone {
-						font-size 16px
-					}
 				}
 			}
 		}
