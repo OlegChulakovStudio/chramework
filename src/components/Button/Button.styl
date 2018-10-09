@@ -195,6 +195,43 @@
 			}
 		}
 	}
+	&--dark {
+		color $textColor
+		text-transform none
+
+		.Button__inner {
+			border-color $textColor
+		}
+		@media $withoutPhone {
+			&:hover, &.Button--hover {
+				color #fff !important
+				// faster()
+
+				.Button__inner {
+					background-color $textColor
+					border-color $textColor
+				}
+			}
+		}
+		@media $phone {
+			&:hover, &.Button--hover {
+				color $textColor
+
+				.Button__inner {
+					border-color $textColor
+				}
+			}
+		}
+		&.Button--active, &:active {
+			color #fff !important
+
+			.Button__inner {
+				transform none
+				background-color $textColor
+				border-color $textColor
+			}
+		}
+	}
 	&--uppercase {
 		text-transform uppercase
 		letter-spacing 0.4px

@@ -31,12 +31,14 @@ class Button extends Component {
 		/** click event handler */
 		onClick: PropTypes.func,
 		white: PropTypes.bool,
+		dark: PropTypes.bool,
 		uppercase: PropTypes.bool,
 	};
 
 	static defaultProps = {
 		className: undefined,
 		white: false,
+		dark: false,
 		disabled: false,
 		intent: undefined,
 		size: undefined,
@@ -62,7 +64,7 @@ class Button extends Component {
 		const RenderedComponent =
 			!this.props.to && !this.props.href ? 'button' : Link;
 
-		const { bordered, intent, white, size, arrow, className, text, type, uppercase, ...rest } = this.props;
+		const { bordered, intent, white, dark, size, arrow, className, text, type, uppercase, ...rest } = this.props;
 
 		return (
 			<RenderedComponent
@@ -76,6 +78,7 @@ class Button extends Component {
 						[`Button--${intent}`]: intent,
 						'Button--disabled': this.props.disabled,
 						'Button--white': white,
+						'Button--dark': dark,
 						'Button--uppercase': uppercase,
 						[`Button--${size}`]: size,
 					},
