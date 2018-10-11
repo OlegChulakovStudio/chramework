@@ -124,7 +124,7 @@ class Reviews extends Component {
 							{indexActive + 1 < 10 ? `0${indexActive + 1}` : indexActive + 1}
 						</div>
 						<span className="Reviews__pagination-divider">/</span>
-						<div className="Reviews__pagination__item">
+						<div className="Reviews__pagination__item Reviews__pagination__item--count">
 							{countSlides < 10 ? `0${countSlides}` : countSlides}
 						</div>
 					</div>
