@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import reactHtmlParser from 'react-html-parser';
 
 import Paragraph from '../Paragraph/Paragraph';
 import Link from '../Link/Link';
 
 import './Summary.styl';
+
+import defaultData from './data.json';
 
 const production = {
 	external: { href: 'https://chulakov.ru/life/top5' },
@@ -24,7 +27,9 @@ const keyperson = {
 	internal: { to: { pathname: '/life/top10', state: { fromHome: true } } }
 }
 
-const Summary = ({ awards, className, external, ...rest }) => {
+
+const Summary = ({ awards, className, external, data, ...rest }) => {
+	const mainData = data || defaultData;
 	const blockStyle = classNames(['Summary', className, {
 		'Summary_awards': awards
 	}]);
@@ -33,52 +38,63 @@ const Summary = ({ awards, className, external, ...rest }) => {
 	const designLink = external ? design.external : design.internal;
 	const usabilityLink = external ? usability.external : usability.internal;
 	const keypersonLink = external ? keyperson.external : keyperson.internal;
+	const links = {
+		usability: usabilityLink,
+		design: designLink,
+		production: productionLink,
+		keyperson: keypersonLink,
+	};
 	return (
 		<div {...rest} className={blockStyle}>
 			<div className="Summary__inner">
-			<Link {...usabilityLink} disableBlank className="Summary__item Summary__item_medal Summary__item_medal1 Summary__item_goldenSite">
-				<div className="Summary__content">
-					<Paragraph mod="boldMedium" className="Summary__title">Лучший <nobr>usability / UX</nobr></Paragraph>
-				</div>
-			</Link>
-			<Link {...designLink} disableBlank className="Summary__item Summary__item_medal Summary__item_medal1 Summary__item_tagline">
-				<div className="Summary__content">
-					<Paragraph mod="boldMedium" className="Summary__title">Лучшая <nobr>дизайн-студия</nobr></Paragraph>
-				</div>
-			</Link>
-			<Link {...productionLink} disableBlank className="Summary__item Summary__item_medal Summary__item_medal5 Summary__item_tagline">
-				<div className="Summary__content">
-					<Paragraph mod="boldMedium" className="Summary__title">Топ-5 <nobr>digital production</nobr></Paragraph>
-				</div>
-			</Link>
-			<Link {...keypersonLink} disableBlank className="Summary__item Summary__item_medal Summary__item_medal9 Summary__item_tagline">
-				<div className="Summary__content">
-					<Paragraph mod="boldMedium" className="Summary__title">Арт-директор в&nbsp;топ-10 ключевых персон Рунета</Paragraph>
-				</div>
-			</Link>
-			{!awards && <div className="Summary__item Summary__item_counter Summary__item_experience" key="counter2">
-				<div className="Summary__number">9</div>
-				<Paragraph className="Summary__title" mod="boldMedium">лет опыта</Paragraph>
-			</div>}
-			{!awards && <div className="Summary__item Summary__item_counter Summary__item_specialists" key="counter1">
-				<div className="Summary__number">70</div>
-				<Paragraph mod="boldMedium" className="Summary__title">специалистов</Paragraph>
-			</div>}
+				{mainData.items.map((item, key) => {
+					const itemKey = `keyItem-${key}`;
+					const linkProps = links[item.type] && links[item.type];
+					const notStat = item.type !== 'statistic';
+					const linkStyle = classNames(['Summary__item', {
+						'Summary__item_medal': item.medal,
+						'Summary__item_medal1': item.top1,
+						'Summary__item_medal5': item.top5,
+						'Summary__item_medal9': item.top9,
+						'Summary__item_goldenSite': item.goldenSite,
+						'Summary__item_tagline': item.tagline,
+						'Summary__item_counter': item.counter,
+						'Summary__item_experience': item.experience,
+						'Summary__item_specialists': item.specialists,
+					}]);
+					return (
+						notStat ? 
+						(
+							<Link key={itemKey} {...linkProps} disableBlank className={linkStyle}>
+								<div className="Summary__content">
+									<Paragraph mod="boldMedium" className="Summary__title">{reactHtmlParser(item.title)}</Paragraph>
+								</div>
+							</Link>
+						) : (
+							!awards && <div key={itemKey} className={linkStyle}>
+								<div className="Summary__number">{item.number}</div>
+								<Paragraph className="Summary__title" mod="boldMedium">{reactHtmlParser(item.title)}</Paragraph>
+							</div>
+						)
+					);
+				})}
 			</div>
 			<div className="Summary__notes">
-				<Paragraph><span>*</span> по&nbsp;версии &laquo;Золотого сайта&raquo;</Paragraph>
-				<Paragraph><span style={{marginLeft: '-5px'}}>**</span> по&nbsp;версии Tagline</Paragraph>
+				<Paragraph><span>*</span>{reactHtmlParser(` ${mainData.notes.first}`)}</Paragraph>
+				<Paragraph><span style={{marginLeft: '-5px'}}>**</span>{reactHtmlParser(` ${mainData.notes.second}`)}</Paragraph>
 			</div>
 		</div>
 	);
 };
 Summary.defaultProps = {
 	awards: undefined,
-	external: undefined
+	external: undefined,
+	data: undefined
 };
 Summary.propTypes = {
 	awards: PropTypes.bool,
-	external: PropTypes.bool
+	external: PropTypes.bool,
+	data: PropTypes.object,
 };
 
 export default Summary;

@@ -1,0 +1,50 @@
+{
+    "items": [
+        {
+            "type": "usability",
+            "title": "Лучший <nobr>usability / UX</nobr>",
+            "medal": true,
+            "top1": true,
+            "goldenSite": true
+        },
+        {
+            "type": "design",
+            "title": "Лучшая <nobr>дизайн-студия</nobr>",
+            "medal": true,
+            "top1": true,
+            "tagline": true
+        },
+        {
+            "type": "production",
+            "title": "Топ-5 <nobr>digital production</nobr>",
+            "medal": true,
+            "top5": true,
+            "tagline": true
+        },
+        {
+            "type": "keyperson",
+            "title": "Арт-директор в&nbsp;топ-10 ключевых персон Рунета",
+            "medal": true,
+            "top9": true,
+            "tagline": true
+        },
+        {
+            "type": "statistic",
+            "number": "9",
+            "title": "лет опыта",
+            "counter": true,
+            "experience": true
+        },
+        {
+            "type": "statistic",
+            "number": "70",
+            "title": "специалистов",
+            "counter": true,
+            "specialists": true
+        }
+    ],
+    "notes": {
+        "first": "по&nbsp;версии &laquo;Золотого сайта&raquo;",
+        "second": "по&nbsp;версии Tagline"
+    }
+}
