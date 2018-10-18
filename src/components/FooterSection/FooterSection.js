@@ -10,48 +10,40 @@ import moscow from '../../assets/contacts/moscow.svg';
 import rostov from '../../assets/contacts/rostov.svg';
 
 import './FooterSection.styl';
+import defaultData from './data.json';
 
-const data = [{
-	mod: 'moscow',
-	title: 'Московский офис',
-	icon: moscow,
-	address: 'Берсеневский пер., д.&nbsp;5, cтр.&nbsp;4, <nobr>3-й эт.</nobr>, Москва, 119072',
-	phone: '+7 495 268-06-61',
-	tel: '+74952680661'
-}, {
-	mod: 'rostov',
-	title: 'Ростовский офис',
-	icon: rostov,
-	address: 'Кировский пр-т., д.&nbsp;122, <nobr>3-й&nbsp;эт.</nobr>, Ростов-на-Дону, 344010',
-	phone: '+7 863 303-61-91',
-	tel: '+78633036191'
-}];
+const icons = {
+	moscow,
+	rostov
+};
 
 const socials = {
 	facebook: 'https://www.facebook.com/OlegChulakovStudio/',
 	vkontakte: 'https://vk.com/olegchulakovstudio',
 	instagram: 'https://www.instagram.com/chulakov.ru/'
-}
-const FooterSection = ({ text, light, offsetLeft, offsetRight, email, className, showButton, ...rest }) => {
+};
+
+const FooterSection = ({ text, light, offsetLeft, offsetRight, email, className, showButton, data, ...rest }) => {
 	const blockStyle = classNames('FooterSection', className, {
 		'FooterSection--light': light,
 		'FooterSection--offsetLeft': offsetLeft,
 		'FooterSection--offsetRight': offsetRight,
 	});
+	const currentData = data || defaultData;
 	return (
 		<div {...rest} className={blockStyle}>
 			<div className="FooterSection__container">
 				<div className="FooterSection__top">
-					<div className="FooterSection__top-title">{reactHtmlParser(text)}</div>
-					<a href={`mailto:${email}`} className="FooterSection__top-link">
-						{email}
+					<div className="FooterSection__top-title">{reactHtmlParser(currentData.mainTitle || text)}</div>
+					<a href={`mailto:${currentData.email || email}`} className="FooterSection__top-link">
+						{currentData.email || email}
 					</a>
 				</div>
 				<div className="FooterSection__content">
 					<div className="FooterSection__info">
-						{data.map((item, i) => {
+						{currentData.adresses.map((item, i) => {
 							const key = `footerItem${i}`;
-							const Icon = item.icon;
+							const Icon = icons[item.icon];
 							const iconStyle = classNames('FooterSection__icon', {
 								[`FooterSection__icon--${item.mod}`]: item.mod,
 							});
@@ -81,7 +73,7 @@ const FooterSection = ({ text, light, offsetLeft, offsetRight, email, className,
 					{showButton && <div className="FooterSection__feedback">
 						<Button
 							uppercase
-							text="Заполнить бриф"
+							text={currentData.buttonText || `Заполнить бриф`}
 							{...showButton}
 							className="FooterSection__feedback-button"
 						/>
@@ -89,9 +81,9 @@ const FooterSection = ({ text, light, offsetLeft, offsetRight, email, className,
 				</div>
 				<div className="FooterSection__bottom">
 					<div className="FooterSection__copyright">
-						<Copyright />
+						<Copyright text={currentData.copyright} />
 					</div>
-					<SocialNetworks data={socials} mod="white" />
+					<SocialNetworks data={currentData.socials || socials} mod="white" />
 				</div>
 			</div>
 		</div>
@@ -99,6 +91,7 @@ const FooterSection = ({ text, light, offsetLeft, offsetRight, email, className,
 };
 
 FooterSection.defaultProps = {
+	data: undefined,
 	text: 'Оставьте заявку',
 	email: 'hello@chulakov.ru',
 };
@@ -110,6 +103,7 @@ FooterSection.propTypes = {
 	offsetRight: PropTypes.bool,
 	showButton: PropTypes.object,
 	email: PropTypes.string,
+	data: PropTypes.object,
 };
 
 export default FooterSection;
