@@ -34,9 +34,9 @@ const FooterSection = ({ text, light, offsetLeft, offsetRight, email, className,
 		<div {...rest} className={blockStyle}>
 			<div className="FooterSection__container">
 				<div className="FooterSection__top">
-					<div className="FooterSection__top-title">{reactHtmlParser(currentData.mainTitle || text)}</div>
-					<a href={`mailto:${currentData.email || email}`} className="FooterSection__top-link">
-						{currentData.email || email}
+					<div className="FooterSection__top-title">{reactHtmlParser(text || currentData.mainTitle)}</div>
+					<a href={`mailto:${email || currentData.email}`} className="FooterSection__top-link">
+						{email || currentData.email}
 					</a>
 				</div>
 				<div className="FooterSection__content">
@@ -91,9 +91,7 @@ const FooterSection = ({ text, light, offsetLeft, offsetRight, email, className,
 };
 
 FooterSection.defaultProps = {
-	data: undefined,
-	text: 'Оставьте заявку',
-	email: 'hello@chulakov.ru',
+	data: undefined
 };
 
 FooterSection.propTypes = {
