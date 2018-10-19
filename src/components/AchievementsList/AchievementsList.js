@@ -38,15 +38,15 @@ Object.keys(data.awards).forEach(key => {
 	});
 });
 
-const primaryTitle = ['награда', 'награды', 'наград'];
+const defaultTitle = ['награда', 'награды', 'наград'];
 
-const AchievementsList = ({ mod, className, ...rest }) => {
+const AchievementsList = ({ mod, className, primaryTitle, ...rest }) => {
 	const blockStyle = classNames(['AchievementsList', className]);
-
+	const currentTitle = primaryTitle || defaultTitle;
 	return (
 		<div {...rest} className={blockStyle}>
 			<Paragraph mod={mod} className="AchievementsList__head">
-				{`${data.awards.length} ${pluralize(data.awards.length, primaryTitle)}`}
+				{`${data.awards.length} ${pluralize(data.awards.length, currentTitle)}`}
 			</Paragraph>
 			<div className="AchievementsList__wrapper">
 				{Object.keys(awardsList).map(key => {
@@ -73,9 +73,11 @@ const AchievementsList = ({ mod, className, ...rest }) => {
 
 AchievementsList.propTypes = {
 	mod: PropTypes.string,
+	primaryTitle: PropTypes.array,
 };
 AchievementsList.defaultProps = {
 	mod: 'subtitlePhone',
+	primaryTitle: undefined,
 };
 
 export default AchievementsList;
