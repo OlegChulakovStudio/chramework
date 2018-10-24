@@ -15,11 +15,12 @@ import ModalMenuContainer from './ModalMenuContainer';
 import { actions as uiActions } from '../modules/ui.js';
 import './styles.styl';
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state, ownProps) => ({
 	...state.ui,
 	modalIsOpened: state.modal.modalIsOpened,
 	pathname: get(state.router, 'location.pathname', ''),
 	menuIsOpened: state.ui.menuIsOpened,
+	...ownProps
 });
 const mapDispatchToProps = dispatch => ({
 	menuOpen: () => dispatch(uiActions.menuOpen()),
@@ -186,7 +187,6 @@ class Header extends Component {
 	render() {
 		const {
 			menuIsOpened,
-			mod,
 			page,
 			modalIsOpened,
 			scrollSize,
@@ -197,6 +197,7 @@ class Header extends Component {
 			linkProps,
 			scrollPanelOnPage,
 			madeinlab,
+			mod,
 		} = this.props;
 		const { localMod, scrollMod } = this.state;
 
@@ -214,7 +215,7 @@ class Header extends Component {
 			Header_ingroup: ingroup || madeinlab,
 		});
 		const logoMod = mod === 'dark' || mod === 'work' ? 'light' : '';
-
+		
 		return (
 			<header
 				className={styles}
@@ -260,7 +261,6 @@ class Header extends Component {
 }
 
 Header.defaultProps = {
-	mod: '',
 	menuIsOpened: false,
 	menuClose: () => { },
 	onHamburgerClick: () => { },
@@ -270,12 +270,12 @@ Header.defaultProps = {
 	scrollSize: undefined,
 	vacanciesCount: undefined,
 	filterList: undefined,
+	mod: '',
 	menu: undefined,
 	videoPlay: undefined,
 };
 
 Header.propTypes = {
-	mod: PropTypes.string,
 	menuIsOpened: PropTypes.bool,
 	menuClose: PropTypes.func,
 	onHamburgerClick: PropTypes.func,
@@ -285,6 +285,7 @@ Header.propTypes = {
 	scrollSize: PropTypes.number,
 	vacanciesCount: PropTypes.number,
 	filterList: PropTypes.array,
+	mod: PropTypes.string,
 	menu: PropTypes.array,
 	videoPlay: PropTypes.object,
 };

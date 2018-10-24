@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 import Header from '../Header/Header';
@@ -127,11 +128,11 @@ const videoPlay = {
 const HeaderWrap = () => {
 	return (
 		<Header
-			mod="workItem"
 			vacanciesCount={8}
 			redirectUrl={''}
 			menu={menu}
 			videoPlay={videoPlay}
+			mod="workItem"
 		/>
 	);
 }
