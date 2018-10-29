@@ -30,14 +30,14 @@
         },
         {
             "type": "statistic",
-            "number": "9",
+            "number": "10",
             "title": "лет опыта",
             "counter": true,
             "experience": true
         },
         {
             "type": "statistic",
-            "number": "70",
+            "number": "80",
             "title": "специалистов",
             "counter": true,
             "specialists": true
