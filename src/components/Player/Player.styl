@@ -3,6 +3,7 @@ $player-ratio = (9/16*100%)
 $player-ratio-4by3 = (3/4*100%)
 $player-ratio-hd = (1/2.35*100%)
 $compact-player-ratio = (275/960*100%)
+$cut-player-ratio = (798/1920*100%)
 
 .wrapper-player {
 	height 100%
@@ -228,6 +229,17 @@ $compact-player-ratio = (275/960*100%)
 
 			@media $tablet {
 				padding-bottom 56.25%
+			}
+		}
+	}
+	&_cut{
+		&:before {
+			padding-bottom 25.828%
+		}
+
+		.Player__video {
+			&:before {
+				padding-bottom $cut-player-ratio
 			}
 		}
 	}

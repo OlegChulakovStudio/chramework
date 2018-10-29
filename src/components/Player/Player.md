@@ -1,7 +1,6 @@
 	<Player {...{
 	  shareURL: 'https://chulakov.ru/video/raiffeisen',
 	  theme: 'dark',
-		playOnScroll: true,
 	  images: {
 	    poster: 'https://chulakov.ru/work/raiffeisen/images/poster.jpg',
 	    'poster-mini': 'https://chulakov.ru/work/raiffeisen/images/poster-mini.jpg',

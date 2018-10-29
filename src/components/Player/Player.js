@@ -84,6 +84,7 @@ class Player extends Component {
 		hideBar: false,
 		muted: false,
 		playOnScroll: false,
+		cut: false,
 	};
 	static propTypes = {
 		compact: PropTypes.bool,
@@ -98,9 +99,10 @@ class Player extends Component {
 		muted: PropTypes.bool,
 		autoPlay: PropTypes.bool,
 		playOnScroll: PropTypes.bool,
+		cut: PropTypes.bool,
 	};
 	state = {
-		isCollapsed: !isPad() && this.props.compact,
+		isCollapsed: !isPad() && (this.props.compact || this.props.cut),
 		compact: !isPad() && this.props.compact,
 
 		poster: undefined,
@@ -294,8 +296,8 @@ class Player extends Component {
 		}
 
 		this.setState({ isCollapsed: false });
-		const ratio = this.props.fullhd ? 2.35 / 1 : 840 / 475;
-
+		const ratio = this.props.fullhd ? 2.35 / 1 : this.props.cut ?  1920 / 798 : 840 / 475;
+		
 		const timeline = new TimelineMax();
 
 		timeline
@@ -515,6 +517,7 @@ class Player extends Component {
 			Player_changeQualityOpened: this.state.changeQualityOpened,
 			Player_hideVideo: this.state.hideVideo,
 			Player_playOnScroll: this.props.playOnScroll,
+			Player_cut: this.props.cut,
 		});
 		const posterStyle = classNames({
 			Player__poster: true,

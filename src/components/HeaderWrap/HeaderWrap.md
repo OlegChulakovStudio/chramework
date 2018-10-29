@@ -1,4 +1,0 @@
-    <div>
-      <HeaderWrap>
-      </HeaderWrap>
-    </div>
