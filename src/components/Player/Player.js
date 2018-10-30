@@ -151,7 +151,7 @@ class Player extends Component {
 			const { posterMini, poster, thumb } = this.props.images;
 			posterSrc = poster;
 
-			if (isMobile() || !this.props.compact) {
+			if (isMobile() || !this.props.compact || !this.props.cut) {
 				if (isPhone()) {
 					posterSrc = posterMini || poster;
 				}
