@@ -1,18 +1,18 @@
 {
     "items": [
         {
-            "type": "usability",
-            "title": "Лучший <nobr>usability / UX</nobr>",
-            "medal": true,
-            "top1": true,
-            "goldenSite": true
-        },
-        {
             "type": "design",
             "title": "<nobr>Дизайн-студия</nobr><br><nobr>&#8470;&nbsp;1 в&nbsp;России</nobr>",
             "medal": true,
             "top1": true,
             "tagline": true
+        },
+        {
+            "type": "usability",
+            "title": "Лучший <nobr>usability / UX</nobr>",
+            "medal": true,
+            "top1": true,
+            "goldenSite": true
         },
         {
             "type": "production",
