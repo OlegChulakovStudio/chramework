@@ -58,6 +58,7 @@ const calculateQuality = new Promise((resolve, reject) => {
 							currentPlayer.play();
 						} else {
 							currentPlayer.pause();
+			
 						}
 					}
 				}
@@ -100,6 +101,7 @@ class Player extends Component {
 		autoPlay: PropTypes.bool,
 		playOnScroll: PropTypes.bool,
 		cut: PropTypes.bool,
+		callbackOnPlay: PropTypes.func,
 	};
 	state = {
 		isCollapsed: !isPad() && (this.props.compact || this.props.cut),
@@ -269,6 +271,7 @@ class Player extends Component {
 			this.curentTime = this.player.currentTime();
 			this.setState({ hideVideo: true, currentQuality: type }, () => {
 				this.player.pause();
+
 				this.player.src(this.props.src[type]);
 				setTimeout(() => {
 					this.player.load();
@@ -408,6 +411,21 @@ class Player extends Component {
 	onPlay = () => {
 		this.setState({ hideVideo: false });
 		this.slideDown();
+		console.log('props', this.props);
+		
+		if (this.props.callbackOnPlay) {
+			
+			this.progress = setInterval(() => {
+				const currentTime = this.player.cache_.currentTime || 0;
+				const duration = this.player.cache_.duration || 1;
+				const progressTime = currentTime / duration;
+				console.log('progressTime', progressTime);
+				
+				this.props.callbackOnPlay(progressTime);
+			}, 100);
+		}
+		console.log('paused', this.player.paused());
+		
 		if (!this.props.playOnScroll && currentPlayer && currentPlayer !== this.player) {
 			currentPlayer.pause();
 		}
@@ -588,6 +606,7 @@ class Player extends Component {
 			);
 	};
 	render() {
+		
 		return isIos() && !this.props.playOnScroll ? (
 			<Waypoint
 				onEnter={!this.state.renderedVideoNode ? this.onEnter : this.noop}
