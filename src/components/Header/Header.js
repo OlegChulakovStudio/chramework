@@ -38,7 +38,6 @@ class Header extends Component {
 		};
 	}
 	componentDidMount() {
-		console.log(this.props.pinned);
 
 		if (this.props.menu || (this.props.pinned === 'desktop' && isPhone())) {
 			this.scroll = 0;

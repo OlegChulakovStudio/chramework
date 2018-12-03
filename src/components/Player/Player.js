@@ -411,7 +411,6 @@ class Player extends Component {
 	onPlay = () => {
 		this.setState({ hideVideo: false });
 		this.slideDown();
-		console.log('props', this.props);
 		
 		if (this.props.callbackOnPlay) {
 			
@@ -419,12 +418,10 @@ class Player extends Component {
 				const currentTime = this.player.cache_.currentTime || 0;
 				const duration = this.player.cache_.duration || 1;
 				const progressTime = currentTime / duration;
-				console.log('progressTime', progressTime);
 				
 				this.props.callbackOnPlay(progressTime);
 			}, 100);
 		}
-		console.log('paused', this.player.paused());
 		
 		if (!this.props.playOnScroll && currentPlayer && currentPlayer !== this.player) {
 			currentPlayer.pause();
