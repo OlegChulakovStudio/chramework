@@ -41,10 +41,6 @@ $ratio = 1.92;
 		position relative
 		will-change transform
 		transition-timing-function cubic-bezier(0.39, 0.58, 0.57, 1)
-
-		@media $phone {
-			margin-bottom 8px
-		}
 	}
 	&__navArea {
 		position absolute
@@ -74,6 +70,7 @@ $ratio = 1.92;
 		display flex
 
 		@media $phone {
+			display none
 			margin-top 0
 			font-size 12px
 			padding 0
@@ -117,7 +114,7 @@ $ratio = 1.92;
 			}
 		}
 	}
-	&__pagination {
+	&__navigation {
 		height 56px
 		font-size 12px
 		padding 8px 16px
@@ -142,6 +139,31 @@ $ratio = 1.92;
 		}
 		&-divider {
 			color $secondTextColor
+		}
+	}
+
+	&__pagination {
+		display none
+		position absolute
+		bottom 10px
+		left 50%
+		transform translateX(-50%)
+		justify-content center
+
+		@media $phone {
+			display flex	
+		}
+		&-dot {
+			width 7px
+			height 7px
+			border-radius 50%
+			background-color alpha(#fff, .4)
+			margin  0 2px
+			transition background-color $duration
+
+			&_active {
+				background-color #fff
+			}
 		}
 	}
 	&__footer {
@@ -196,3 +218,10 @@ $ratio = 1.92;
 		}
 	}
 }
+
+.swiper-container-horizontal > .Slider__pagination.swiper-pagination-bullets {
+	bottom 10px
+	left 50%
+	width 100%
+}
+

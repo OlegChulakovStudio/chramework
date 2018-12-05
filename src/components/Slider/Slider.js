@@ -60,6 +60,11 @@ class Slider extends Component {
 			loop: true,
 			spaceBetween: 16,
 			wrapperClass: "Slider__wrapper",
+			pagination: {
+				el: '.Slider__pagination',
+				bulletClass: 'Slider__pagination-dot',
+				bulletActiveClass: 'Slider__pagination-dot_active',
+			},
 			on: {
 				slideChange: () => {
 					if (this.swiper) {
@@ -104,12 +109,12 @@ class Slider extends Component {
 						<div className="Slider__nav-btn Slider__nav-btn_prev" onClick={this.slidePrev}>
 							<ArrowIcon />
 						</div>
-						<div className="Slider__pagination">
-							<div className="Slider__pagination__item">
+						<div className="Slider__navigation">
+							<div className="Slider__navigation__item">
 								{this.showIndex(indexActive)}
 							</div>
-							<span className="Slider__pagination-divider">/</span>
-							<div className="Slider__pagination__item Slider__pagination__item--count">
+							<span className="Slider__navigation-divider">/</span>
+							<div className="Slider__navigation__item Slider__navigation__item--count">
 								{countSlides < 10 ? `0${countSlides}` : countSlides}
 							</div>
 						</div>
