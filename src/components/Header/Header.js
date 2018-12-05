@@ -252,7 +252,6 @@ class Header extends Component {
 						/>
 					)}
 					{linkProps && !this.props.menu && this.renderLink()}
-					{this.props.children}
 				</div>
 				{this.props.menu && <ModalMenuContainer vacanciesCount={this.props.vacanciesCount} menu={this.props.menu} />}
 			</header>
@@ -288,6 +287,5 @@ Header.propTypes = {
 	mod: PropTypes.string,
 	menu: PropTypes.array,
 	videoPlay: PropTypes.object,
-	children: PropTypes.any,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
