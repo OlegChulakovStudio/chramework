@@ -81,9 +81,9 @@ const Summary = ({ awards, className, external, data, ...rest }) => {
 				})}
 			</div>
 			<div className="Summary__notes">
-				<Paragraph><span>*</span>{reactHtmlParser(` ${mainData.notes.first}`)}</Paragraph>
-				<Paragraph><span style={{marginLeft: '-5px'}}>**</span>{reactHtmlParser(` ${mainData.notes.second}`)}</Paragraph>
-				<Paragraph><span style={{marginLeft: '-12px'}}>***</span>{reactHtmlParser(` ${mainData.notes.third}`)}</Paragraph>
+				<Paragraph className="Summary__notes-item"><span>*</span>{reactHtmlParser(` ${mainData.notes.first}`)}</Paragraph>
+				<Paragraph className="Summary__notes-item"><span>**</span>{reactHtmlParser(` ${mainData.notes.second}`)}</Paragraph>
+				<Paragraph className="Summary__notes-item"><span>***</span>{reactHtmlParser(` ${mainData.notes.third}`)}</Paragraph>
 			</div>
 		</div>
 	);
