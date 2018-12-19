@@ -46,6 +46,8 @@ import FooterMini from './components/FooterMini/FooterMini';
 import Header from './components/Header/Header';
 import Hamburger from './components/Header/Hamburger';
 import HeaderWrap from './components/HeaderWrap/HeaderWrap';
+import ui from './components/modules/ui';
+import modal from './components/modules/modal';
 
 import AchievementsData from './components/AchievementsList/data.json';
 
@@ -97,4 +99,6 @@ export {
 	Header,
 	HeaderWrap,
 	Hamburger,
+	ui,
+	modal,
 };

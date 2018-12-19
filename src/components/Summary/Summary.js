@@ -23,7 +23,7 @@ const usability = {
 	internal: { to: { pathname: '/life/best-usability', state: { fromHome: true } } }
 }
 const keyperson = {
-	external: { href: 'https://chulakov.ru/life/top10' },
+	external: { href: 'https://www.facebook.com/tagline.digital/videos/703293873404333/' },
 	internal: { to: { pathname: '/life/top10', state: { fromHome: true } } }
 }
 
@@ -58,6 +58,7 @@ const Summary = ({ awards, className, external, data, ...rest }) => {
 						'Summary__item_medal9': item.top9,
 						'Summary__item_goldenSite': item.goldenSite,
 						'Summary__item_tagline': item.tagline,
+						'Summary__item_keyperson': item.keyperson,
 						'Summary__item_counter': item.counter,
 						'Summary__item_experience': item.experience,
 						'Summary__item_specialists': item.specialists,
@@ -82,6 +83,7 @@ const Summary = ({ awards, className, external, data, ...rest }) => {
 			<div className="Summary__notes">
 				<Paragraph><span>*</span>{reactHtmlParser(` ${mainData.notes.first}`)}</Paragraph>
 				<Paragraph><span style={{marginLeft: '-5px'}}>**</span>{reactHtmlParser(` ${mainData.notes.second}`)}</Paragraph>
+				<Paragraph><span style={{marginLeft: '-12px'}}>***</span>{reactHtmlParser(` ${mainData.notes.third}`)}</Paragraph>
 			</div>
 		</div>
 	);

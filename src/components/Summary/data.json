@@ -23,10 +23,10 @@
         },
         {
             "type": "keyperson",
-            "title": "Арт-директор в&nbsp;топ-10 ключевых персон Рунета",
+            "title": "Арт-директор в&nbsp;топ-5 ключевых персон digital-рынка России",
             "medal": true,
-            "top9": true,
-            "tagline": true
+            "top5": true,
+            "keyperson": true
         },
         {
             "type": "statistic",
@@ -45,6 +45,7 @@
     ],
     "notes": {
         "first": "по&nbsp;версии &laquo;Золотого сайта&raquo;",
-        "second": "по&nbsp;версии Tagline"
+        "second": "по&nbsp;версии Tagline",
+        "third": "Рейтинг ключевых персон российского рынка digital-маркетинга и&nbsp;веб-разработки 2018 по&nbsp;версии Tagline"
     }
 }
