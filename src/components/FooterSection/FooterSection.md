@@ -1,1 +1,1 @@
-	<FooterSection showButton={{href: 'https://chulakov.ru/brief'}} />
+    <FooterSection showButton={{href: 'https://chulakov.ru/brief'}} />
