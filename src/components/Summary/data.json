@@ -1,6 +1,5 @@
 {
-    "items": [
-        {
+    "items": [{
             "type": "design",
             "title": "<nobr>Дизайн-студия</nobr><br><nobr>&#8470;&nbsp;1 в&nbsp;России</nobr>",
             "medal": true,
@@ -23,7 +22,7 @@
         },
         {
             "type": "keyperson",
-            "title": "Арт-директор в&nbsp;топ-5 ключевых персон digital-рынка России",
+            "title": "Арт-директор в&nbsp;топ-5 ключевых персон в&nbsp;digital",
             "medal": true,
             "top5": true,
             "keyperson": true
