@@ -1,5 +1,5 @@
-
 if (typeof document !== 'undefined' && typeof window !== 'undefined') {
+	const test = 1;
 	const div = document.createElement('div');
 	div.style.overflowY = 'scroll';
 	div.style.width = '50px';
@@ -11,38 +11,43 @@ if (typeof document !== 'undefined' && typeof window !== 'undefined') {
 
 	var body = document.getElementsByTagName('body')[0];
 	var html = document.getElementsByTagName('html')[0];
+	var bodyScrollTop = null;
 	var locked = false;
 }
 
-export const getScrollSize = () => {
+export function getScrollSize() {
 	return scrollWidth;
-};
+}
 
-export const getBodyScrollTop = () => {
+export function getBodyScrollTop() {
 	return typeof window.pageYOffset !== 'undefined'
 		? window.pageYOffset
-		: (document.documentElement || document.body.parentNode || document.body).scrollTop;
-};
+		: (document.documentElement ||
+				document.body.parentNode ||
+				document.body
+			).scrollTop;
+}
 
-export const lockScroll = () => {
+export function lockScroll() {
 	if (!locked) {
 		window.lockScrollEvents = true;
 		if (body.offsetHeight < body.scrollHeight) {
-			body.style.paddingRight = `${scrollWidth}px`;
+			body.style.paddingRight = '' + scrollWidth + 'px';
 		}
 
+		bodyScrollTop = getBodyScrollTop();
 
 		body.classList.add('scroll-locked');
 		html.style.background = '#fff';
 		// body.style.top = `-${bodyScrollTop}px`;
 		locked = true;
-		setTimeout(() => {
+		setTimeout(function() {
 			window.lockScrollEvents = false;
 		}, 100);
 	}
-};
+}
 
-export const unlockScroll = () => {
+export function unlockScroll() {
 	if (locked) {
 		window.lockScrollEvents = true;
 		body.classList.remove('scroll-locked');
@@ -51,18 +56,18 @@ export const unlockScroll = () => {
 		// window.scrollTo(0, bodyScrollTop);
 		body.style.paddingRight = '';
 		locked = false;
-		setTimeout(() => {
+		setTimeout(function() {
 			window.lockScrollEvents = false;
 		}, 100);
 	}
-};
+}
 
-const onWheel = e => {
+function onWheel(e) {
 	e = e || window.event;
 	e.preventDefault ? e.preventDefault() : (e.returnValue = false);
-};
+}
 
-export const toggleLockWheelScroll = lock => {
+export function toggleLockWheelScroll(lock) {
 	if (document.addEventListener) {
 		if ('ontouchmove' in document) {
 			if (lock) {
@@ -97,4 +102,4 @@ export const toggleLockWheelScroll = lock => {
 		// IE8-
 		document.attachEvent('onmousewheel', onWheel);
 	}
-};
+}
