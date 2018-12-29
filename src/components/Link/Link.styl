@@ -33,4 +33,18 @@
 		position relative
 		padding-right 1.2em
 	}
+
+	&_grayBlank {
+		.Link__target-blank {
+			fill $lightTextColor
+			transition fill $duration
+		}
+
+		&:hover {
+			.Link__target-blank {
+				fill $linkHoverColor
+				faster()
+			}	
+		}
+	}
 }

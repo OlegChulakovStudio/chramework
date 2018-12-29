@@ -1,6 +1,6 @@
 Simple button with `onClick` handler:
 
-    <Link>Ссылка</Link>
+    <Link href="https://chulakov.ru/" grayBlank>Ссылка</Link>
 
 Bordered button with arrow
 
