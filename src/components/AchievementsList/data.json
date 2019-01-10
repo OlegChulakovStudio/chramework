@@ -1,6 +1,5 @@
 {
-	"statistic": [
-		{
+	"statistic": [{
 			"international": true,
 			"title": [
 				"Международная <br> награда",
@@ -27,7 +26,126 @@
 			]
 		}
 	],
-	"awards": [
+	"awards": [{
+			"name": "Tagline",
+			"link": "Золото",
+			"icon": "tagline",
+			"note": "Лучший ритейл-сайт",
+			"project": "Авито Доставка",
+			"international": false,
+			"russian": true,
+			"festival": false
+		},
+		{
+			"name": "Tagline",
+			"link": "Серебро",
+			"icon": "tagline",
+			"note": "Лучший сайт",
+			"project": "Авито Доставка",
+			"international": false,
+			"russian": true,
+			"festival": false
+		},
+		{
+			"name": "Tagline",
+			"link": "Бронза",
+			"icon": "tagline",
+			"note": "Лучший промосайт",
+			"project": "Авито Доставка",
+			"international": false,
+			"russian": true,
+			"festival": false
+		},
+		{
+			"name": "Tagline",
+			"link": "Серебро",
+			"icon": "tagline",
+			"note": "Лучший корпоративный сайт",
+			"project": "МегаФон.Банк",
+			"international": false,
+			"russian": true,
+			"festival": false
+		},
+		{
+			"name": "Tagline",
+			"link": "Бронза",
+			"icon": "tagline",
+			"note": "Лучший сайт финансовой компании",
+			"project": "МегаФон.Банк",
+			"international": false,
+			"russian": true,
+			"festival": false
+		},
+		{
+			"name": "Tagline",
+			"link": "Серебро",
+			"icon": "tagline",
+			"note": "Лучший сайт FMCG-бренда",
+			"project": "Нейродоз",
+			"international": false,
+			"russian": true,
+			"festival": false
+		},
+		{
+			"name": "Tagline",
+			"link": "Бронза",
+			"icon": "tagline",
+			"note": "Лучший сайт FMCG-бренда",
+			"project": "Вука Вука",
+			"international": false,
+			"russian": true,
+			"festival": false
+		},
+		{
+			"name": "Tagline",
+			"link": "Серебро",
+			"icon": "tagline",
+			"note": "Лучший сайт телеком / IT / интернет-компании",
+			"project": "МегаФон #Hello",
+			"international": false,
+			"russian": true,
+			"festival": false
+		},
+		{
+			"name": "Tagline",
+			"link": "Бронза",
+			"icon": "tagline",
+			"note": "Лучший промосайт",
+			"project": "Spires",
+			"international": false,
+			"russian": true,
+			"festival": false
+		},
+		{
+			"name": "Tagline",
+			"link": "Бронза",
+			"icon": "tagline",
+			"note": "Лучший mobile / AR / VR / IoT-проект",
+			"project": "МегаФон eMotion",
+			"international": false,
+			"russian": true,
+			"festival": false
+		},
+		{
+			"name": "Tagline",
+			"link": "Бронза",
+			"icon": "tagline",
+			"note": "Лучшее приложение для телеком&nbsp;/ IT&nbsp;/ интернет-компании",
+			"project": "МегаФон eMotion",
+			"international": false,
+			"russian": true,
+			"festival": false
+		},
+		{
+			"name": "Tagline",
+			"link": "Серебро",
+			"icon": "tagline",
+			"note": "Лучшее приложение для услуги",
+			"project": "Твой доктор",
+			"international": false,
+			"russian": true,
+			"festival": false
+		},
 		{
 			"name": "Рейтинг Рунета",
 			"link": "Золото",
