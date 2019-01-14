@@ -211,7 +211,7 @@ class Header extends Component {
     const styles = classNames({
       Header: true,
       [`Header_${mod}`]: mod,
-      Header_pinned: this.props.menu,
+      Header_pinned: this.props.menu || this.props.scrollMenu,
       Header_isLink: this.props.pinned === "desktop",
       [`Header_${page}`]: page,
       [`Header_${localMod}`]: localMod,
@@ -242,13 +242,14 @@ class Header extends Component {
               text={text}
             />
           </div>
-          {this.props.menu && !withoutMenu && (
+          {(this.props.menu || this.props.scrollMenu) && !withoutMenu && (
             <div className="Header__content">
               <div className="Header__content-inner">
                 <Navigation
                   filterList={this.props.filterList}
                   vacanciesCount={this.props.vacanciesCount}
                   menu={this.props.menu}
+                  scrollMenu={this.props.scrollMenu}
                 />
                 {this.props.videoPlay && (
                   <VideoPlay data={this.props.videoPlay} />
@@ -289,6 +290,7 @@ Header.defaultProps = {
   filterList: undefined,
   mod: "",
   menu: undefined,
+  scrollMenu: undefined,
   videoPlay: undefined
 };
 
@@ -304,6 +306,7 @@ Header.propTypes = {
   filterList: PropTypes.array,
   mod: PropTypes.string,
   menu: PropTypes.array,
+  scrollMenu: PropTypes.array,
   videoPlay: PropTypes.object,
   children: PropTypes.any
 };
