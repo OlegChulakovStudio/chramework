@@ -1,0 +1,93 @@
+.ScrollButton {
+    padding-left 80px
+
+    @media $tablet {
+        padding-left 24px
+    }
+
+    @media $phone {
+        position absolute
+        width 42px
+        height 42px
+        top 0
+        right 0
+        top 50%
+        margin-top -21px    
+        padding-left 0
+    }
+
+    &__link {
+        position relative
+        padding-left 58px
+        display flex
+        align-items center
+        cursor pointer
+
+        @media $tablet {
+           height 100%  
+        }
+
+        @media $phone {
+            padding-left 0    
+        }
+
+        &:hover {
+            .ScrollButton__icon {
+                background-color #fff
+                faster()
+                svg {
+                    fill $linkColor
+                    faster()
+                } 
+            }    
+
+            .ScrollButton__text {
+                color $linkHoverColor 
+                faster()   
+            }
+        }
+    }
+	&__icon {
+        position absolute
+        top 50%
+        left 0
+        margin-top -21px
+        display flex
+        width 42px
+        height 42px
+        background-color $linkColor
+        border-radius 50%
+        border 1px solid $linkColor
+        box-sizing border-box
+        transition background-color $duration
+
+        @media $tablet {
+            mt    
+        }
+
+        @media $phone {
+            position relative
+            top 0
+            left 0
+            margin-top 0    
+        }
+
+		svg {
+            fill #fff
+            margin auto
+            transition fill $duration
+		}
+	}
+
+    &__text {
+        color $linkColor
+        font-weight $bold
+        line-height 28px
+        font-size 14px
+        transition color $duration 
+
+        @media $tablet {
+            display none    
+        }
+    }
+}

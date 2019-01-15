@@ -9,6 +9,7 @@ import LinkScroll from "../LinkScroll";
 import Logo from "../Logo/Logo";
 import Link from "../Link/Link";
 import Navigation from "./Navigation";
+import ScrollButton from "./ScrollButton";
 import VideoPlay from "./VideoPlay";
 import Hamburger from "./Hamburger";
 import ModalMenuContainer from "./ModalMenuContainer";
@@ -213,6 +214,7 @@ class Header extends Component {
       [`Header_${mod}`]: mod,
       Header_pinned: this.props.menu || this.props.scrollMenu,
       Header_isLink: this.props.pinned === "desktop",
+      Header_linkScroll: this.props.linkScroll,
       [`Header_${page}`]: page,
       [`Header_${localMod}`]: localMod,
       [`Header_${scrollMod}`]: scrollMod,
@@ -254,6 +256,9 @@ class Header extends Component {
                 {this.props.videoPlay && (
                   <VideoPlay data={this.props.videoPlay} />
                 )}
+                {this.props.linkScroll && (
+                  <ScrollButton data={this.props.linkScroll} />
+                )}
               </div>
             </div>
           )}
@@ -291,7 +296,8 @@ Header.defaultProps = {
   mod: "",
   menu: undefined,
   scrollMenu: undefined,
-  videoPlay: undefined
+  videoPlay: undefined,
+  linkScroll: undefined
 };
 
 Header.propTypes = {
@@ -308,7 +314,8 @@ Header.propTypes = {
   menu: PropTypes.array,
   scrollMenu: PropTypes.array,
   videoPlay: PropTypes.object,
-  children: PropTypes.any
+  children: PropTypes.any,
+  linkScroll: PropTypes.object
 };
 export default connect(
   mapStateToProps,

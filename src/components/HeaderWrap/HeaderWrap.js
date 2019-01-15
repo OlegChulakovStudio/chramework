@@ -1,8 +1,6 @@
 import React from "react";
 
 import Header from "../Header/Header";
-import LinkScroll from "../LinkScroll";
-import Button from "../Button/Button";
 // import showreel from "./showreel.gif";
 // import pic1 from "./showreel_1.png";
 // import pic2 from "./showreel_2.png";
@@ -40,16 +38,11 @@ const menu = [
 
 const HeaderWrap = () => {
   return (
-    <Header redirectUrl={""} scrollMenu={menu}>
-      <LinkScroll
-        className="Scroll-button"
-        to="brief"
-        duration={550}
-        ease="easeInOutQuint"
-      >
-        <Button text="Записаться на курс" />
-      </LinkScroll>
-    </Header>
+    <Header
+      redirectUrl={""}
+      scrollMenu={menu}
+      linkScroll={{ url: "brief", text: "Подать заявку" }}
+    />
   );
 };
 

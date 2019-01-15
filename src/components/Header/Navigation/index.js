@@ -82,6 +82,7 @@ class Navigation extends Component {
                 className="Navigation__item"
                 key={item.url}
                 to={item.url}
+                offsetTop={84}
                 duration={550}
                 ease="easeInOutQuint"
                 active="Navigation__item_active"
