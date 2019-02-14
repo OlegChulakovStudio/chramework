@@ -41,6 +41,8 @@ const HeaderWrap = () => {
     <Header
       redirectUrl={""}
       scrollMenu={menu}
+      mod="white"
+      text="school"
       linkScroll={{ url: "brief", text: "Подать заявку" }}
     />
   );

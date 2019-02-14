@@ -83,6 +83,35 @@
 			opacity 0
 		}
 	}
+
+	&_white {
+		&:before {
+			opacity 0
+		}
+		.Logo__sufix {
+			color #fff
+		}
+
+		.Navigation__item {
+			color #fff
+
+			&:hover {
+				color $linkColor	
+			}
+		}
+
+		.ScrollButton__text {
+			color #fff	
+		}
+
+		.ScrollButton__link {
+			&:hover {
+				.ScrollButton__text {
+					color $linkColor
+				}	
+			}
+		}
+	}
 	&_news {
 		.Header__content {
 			visibility hidden

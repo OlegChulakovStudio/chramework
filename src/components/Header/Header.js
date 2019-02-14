@@ -223,7 +223,8 @@ class Header extends Component {
       Header_fix: menuIsOpened,
       Header_ingroup: ingroup || madeinlab
     });
-    const logoMod = mod === "dark" || mod === "work" ? "light" : "";
+    const logoMod =
+      mod === "dark" || mod === "work" || mod === "white" ? "light" : "";
 
     return (
       <header
@@ -242,6 +243,7 @@ class Header extends Component {
               ingroup={ingroup}
               madeinlab={madeinlab}
               text={text}
+              isBlue={mod === "white"}
             />
           </div>
           {(this.props.menu || this.props.scrollMenu) && !withoutMenu && (
