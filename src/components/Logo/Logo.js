@@ -5,7 +5,6 @@ import reactHtmlParser from "react-html-parser";
 
 import Link from "../Link/Link";
 import LogoIcon from "./assets/logo.svg";
-import LogoBlue from "./assets/logo-blue.svg";
 import consulting from "./assets/consulting.svg";
 import group from "./assets/group.svg";
 import handbook from "./assets/handbook.svg";
@@ -81,15 +80,12 @@ export default class Logo extends Component {
             [`Logo--${size}`]: size,
             [`Logo--${type}`]: type,
             [`Logo--${mod}`]: mod,
+            [`Logo--isBlue`]: isBlue,
             [`Logo--ingroup`]: ingroup || madeinlab
           }
         ])}
       >
-        {!isBlue ? (
-          <LogoIcon className="Logo__icon" width={120} height={28} />
-        ) : (
-          <LogoBlue className="Logo__icon" width={120} height={28} />
-        )}
+        <LogoIcon className="Logo__icon" width={120} height={28} />
         {text &&
           (TextIcon ? (
             <TextIcon height={28} className="Logo__iconSuffix" />
