@@ -205,7 +205,8 @@ class Header extends Component {
       linkProps,
       scrollPanelOnPage,
       madeinlab,
-      mod
+      mod,
+      longNav
     } = this.props;
     const { localMod, scrollMod } = this.state;
 
@@ -221,7 +222,8 @@ class Header extends Component {
       Header_topWork: page === "workItem" && localMod !== "light",
       Header_lab: page === "lab",
       Header_fix: menuIsOpened,
-      Header_ingroup: ingroup || madeinlab
+      Header_ingroup: ingroup || madeinlab,
+      Header_longNav: longNav
     });
     const logoMod =
       mod === "dark" || mod === "work" || mod === "white" ? "light" : "";
@@ -264,7 +266,7 @@ class Header extends Component {
               </div>
             </div>
           )}
-          {this.props.menu && (
+          {this.props.scrollMenu && (
             <Hamburger
               mod={mod}
               menuIsOpened={menuIsOpened || redirectUrl.length > 0}
@@ -317,7 +319,8 @@ Header.propTypes = {
   scrollMenu: PropTypes.array,
   videoPlay: PropTypes.object,
   children: PropTypes.any,
-  linkScroll: PropTypes.object
+  linkScroll: PropTypes.object,
+  longNav: PropTypes.bool
 };
 export default connect(
   mapStateToProps,

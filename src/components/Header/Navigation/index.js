@@ -88,6 +88,9 @@ class Navigation extends Component {
                 active="Navigation__item_active"
               >
                 {reactHtmlParser(item.name)}
+                {item.vacancies && (
+                  <VacanciesCount count={this.props.vacanciesCount} />
+                )}
               </LinkScroll>
             );
           })}
