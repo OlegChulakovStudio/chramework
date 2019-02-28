@@ -266,7 +266,7 @@ class Header extends Component {
               </div>
             </div>
           )}
-          {this.props.scrollMenu && (
+          {this.props.menu && (
             <Hamburger
               mod={mod}
               menuIsOpened={menuIsOpened || redirectUrl.length > 0}

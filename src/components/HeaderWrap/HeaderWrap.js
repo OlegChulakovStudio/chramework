@@ -11,31 +11,36 @@ import "../Header/styles.styl";
 const menu = [
   {
     name: "Компания",
-    url: "/",
+    url: "https://chulakov.ru/",
     exact: true,
-    main: true
+    main: true,
+    external: true
   },
   {
     name: "Проекты",
-    url: "/work",
-    activeFunc: true
+    url: "https://chulakov.ru//work",
+    activeFunc: true,
+    external: true
   },
   {
     name: "Работа у&nbsp;нас",
-    url: "/career",
+    url: "https://chulakov.ru/career",
     exact: true,
-    vacancies: true
+    vacancies: true,
+    external: true
   },
   {
     name: "Школа",
     url: "https://school.chulakov.ru/",
-    exact: true
+    hideInMenu: false,
+    external: true
   },
   {
     name: "Контакты",
-    url: "/contact",
+    url: "https://chulakov.ru/contact",
     exact: true,
-    main: true
+    main: true,
+    external: true
   }
 ];
 

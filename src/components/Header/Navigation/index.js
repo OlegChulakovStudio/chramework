@@ -39,13 +39,13 @@ class Navigation extends Component {
       <div className="Navigation">
         {this.props.menu &&
           this.props.menu.map(item => {
-            return (
+            return !item.hideInMenu ? (
               <NavLink
                 onClick={this.handleClick}
                 exact={item.exact}
                 className="Navigation__item"
-                key={item.url}
                 to={item.url}
+                key={item.url}
                 isActive={item.activeFunc ? this.isActiveWorks : undefined}
                 activeClassName="Navigation__item_active"
               >
@@ -54,6 +54,15 @@ class Navigation extends Component {
                   <VacanciesCount count={this.props.vacanciesCount} />
                 )}
               </NavLink>
+            ) : (
+              <Link
+                className="Navigation__item"
+                key={item.url}
+                href={item.url}
+                disableBlank
+              >
+                {reactHtmlParser(item.name)}
+              </Link>
             );
           })}
 
@@ -81,9 +90,9 @@ class Navigation extends Component {
               <LinkScroll
                 className="Navigation__item"
                 key={item.url}
-                to={item.url}
                 offsetTop={84}
                 duration={550}
+                to={item.url}
                 ease="easeInOutQuint"
                 active="Navigation__item_active"
               >
