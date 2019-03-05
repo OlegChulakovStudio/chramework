@@ -6,6 +6,7 @@ import reactHtmlParser from "react-html-parser";
 import SocialNetworks from "../SocialNetworks/SocialNetworks.js";
 import Button from "../Button/Button";
 import Copyright from "../Copyright/Copyright.js";
+import Link from "../Link/Link.js";
 import moscow from "../../assets/contacts/moscow.svg";
 import rostov from "../../assets/contacts/rostov.svg";
 
@@ -33,6 +34,7 @@ const FooterSection = ({
   showButton,
   data,
   docs,
+  sout,
   ...rest
 }) => {
   const blockStyle = classNames("FooterSection", className, {
@@ -83,6 +85,13 @@ const FooterSection = ({
                   >
                     {reactHtmlParser(item.phone)}
                   </a>
+                  {sout && item.sout && (
+                    <Link
+                      className="FooterSection__sout"
+                      href="https://chulakov.ru/СОУТ.pdf"
+                      disableBlank
+                    />
+                  )}
                 </div>
               );
             })}
