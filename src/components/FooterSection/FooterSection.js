@@ -58,9 +58,9 @@ const FooterSection = ({
           >
             {email || currentData.email}
           </a>
-          {(mainText || currentData.mainText) && (
+          {mainText && (
             <Paragraph mod="bodySmall" className="FooterSection__mainText">
-              {reactHtmlParser(mainText || currentData.mainText)}
+              {reactHtmlParser(mainText)}
             </Paragraph>
           )}
         </div>
