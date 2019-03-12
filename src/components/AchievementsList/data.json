@@ -27,6 +27,76 @@
 		}
 	],
 	"awards": [{
+			"name": "Золотой сайт",
+			"link": "Золото",
+			"icon": "goldensite",
+			"note": "Сайт ресторана/кафе/бара",
+			"project": "Papa John’s",
+			"international": false,
+			"russian": true,
+			"festival": false
+		},
+		{
+			"name": "Tagline",
+			"link": "Бронза",
+			"icon": "tagline",
+			"note": "Лучший сайт финансовой компании",
+			"project": "МегаФон.Банк",
+			"international": false,
+			"russian": true,
+			"festival": false
+		},
+		{
+			"name": "Tagline",
+			"link": "Серебро",
+			"icon": "tagline",
+			"note": "Лучший корпоративный сайт",
+			"project": "МегаФон.Банк",
+			"international": false,
+			"russian": true,
+			"festival": false
+		},
+		{
+			"name": "Tagline",
+			"link": "Бронза",
+			"icon": "tagline",
+			"note": "Лучший промосайт",
+			"project": "Spires",
+			"international": false,
+			"russian": true,
+			"festival": false
+		},
+		{
+			"name": "Tagline",
+			"link": "Бронза",
+			"icon": "tagline",
+			"note": "Лучшее приложение для телеком&nbsp;/ IT&nbsp;/ интернет-компании",
+			"project": "МегаФон eMotion",
+			"international": false,
+			"russian": true,
+			"festival": false
+		},
+		{
+			"name": "Tagline",
+			"link": "Бронза",
+			"icon": "tagline",
+			"note": "Лучший mobile&nbsp;/ AR&nbsp;/ VR&nbsp;/ IoT-проект",
+			"project": "МегаФон eMotion",
+			"international": false,
+			"russian": true,
+			"festival": false
+		},
+		{
+			"name": "Tagline",
+			"link": "Серебро",
+			"icon": "tagline",
+			"note": "Лучшее приложение для услуги",
+			"project": "Твой доктор",
+			"international": false,
+			"russian": true,
+			"festival": false
+		},
+		{
 			"name": "Tagline",
 			"link": "Золото",
 			"icon": "tagline",
