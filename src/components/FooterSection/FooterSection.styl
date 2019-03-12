@@ -46,14 +46,22 @@
 			margin-bottom 14px
 		}
 		&-link {
-			font-size 28px
+			display inline-block
+			font-size 58px
+			line-height 1
 			color #fff
 			font-weight $bold
-			line-height 1
+			margin-bottom 18px
 
-			@media $phone {
-				font-size 28px
+			&:last-child {
+				margin-bottom 0	
 			}
+
+			@media $notebook {
+				font-size 28px
+				margin-bottom 8px
+			}
+
 			&:hover {
 				color $linkColor
 			}
@@ -240,6 +248,12 @@
 				}
 			}
 		}
+	}
+	&__mainText {
+		color #8A8A8A
+		max-width 450px
+		margin 0 auto
+		text-align center	
 	}
 	&__bottom {
 		display flex

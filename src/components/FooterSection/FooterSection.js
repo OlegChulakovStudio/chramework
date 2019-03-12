@@ -7,6 +7,7 @@ import SocialNetworks from "../SocialNetworks/SocialNetworks.js";
 import Button from "../Button/Button";
 import Copyright from "../Copyright/Copyright.js";
 import Link from "../Link/Link.js";
+import Paragraph from "../Paragraph/Paragraph.js";
 import moscow from "../../assets/contacts/moscow.svg";
 import rostov from "../../assets/contacts/rostov.svg";
 
@@ -35,6 +36,7 @@ const FooterSection = ({
   data,
   docs,
   sout,
+  mainText,
   ...rest
 }) => {
   const blockStyle = classNames("FooterSection", className, {
@@ -56,6 +58,11 @@ const FooterSection = ({
           >
             {email || currentData.email}
           </a>
+          {(mainText || currentData.mainText) && (
+            <Paragraph mod="bodySmall" className="FooterSection__mainText">
+              {reactHtmlParser(mainText || currentData.mainText)}
+            </Paragraph>
+          )}
         </div>
         <div className="FooterSection__content">
           <div className="FooterSection__info">
@@ -130,7 +137,8 @@ FooterSection.propTypes = {
   showButton: PropTypes.object,
   email: PropTypes.string,
   data: PropTypes.object,
-  docs: PropTypes.object
+  docs: PropTypes.object,
+  mainText: PropTypes.string
 };
 
 export default FooterSection;
