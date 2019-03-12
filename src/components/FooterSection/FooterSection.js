@@ -37,12 +37,14 @@ const FooterSection = ({
   docs,
   sout,
   mainText,
+  bigTop,
   ...rest
 }) => {
   const blockStyle = classNames("FooterSection", className, {
     "FooterSection--light": light,
     "FooterSection--offsetLeft": offsetLeft,
-    "FooterSection--offsetRight": offsetRight
+    "FooterSection--offsetRight": offsetRight,
+    "FooterSection--bigTop": bigTop
   });
   const currentData = data || defaultData;
   return (
@@ -138,7 +140,8 @@ FooterSection.propTypes = {
   email: PropTypes.string,
   data: PropTypes.object,
   docs: PropTypes.object,
-  mainText: PropTypes.string
+  mainText: PropTypes.string,
+  bigTop: PropTypes.bool
 };
 
 export default FooterSection;
