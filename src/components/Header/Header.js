@@ -227,6 +227,8 @@ class Header extends Component {
     });
     const logoMod =
       mod === "dark" || mod === "work" || mod === "white" ? "light" : "";
+    console.log("styles", styles);
+    console.log("mod", mod);
 
     return (
       <header
