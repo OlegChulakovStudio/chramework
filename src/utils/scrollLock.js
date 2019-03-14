@@ -32,6 +32,8 @@ export function lockScroll() {
     }
 
     body.classList.add("scroll-locked");
+    html.classList.add("scroll-locked");
+    html.classList.add("scroll-locked");
     html.style.background = "#fff";
     locked = true;
     setTimeout(function() {
@@ -44,6 +46,7 @@ export function unlockScroll() {
   if (locked) {
     window.lockScrollEvents = true;
     body.classList.remove("scroll-locked");
+    html.classList.remove("scroll-locked");
     body.style.top = null;
     html.style.background = null;
     body.style.paddingRight = "";
