@@ -11,6 +11,7 @@ if (typeof document !== "undefined" && typeof window !== "undefined") {
   var body = document.getElementsByTagName("body")[0];
   var html = document.getElementsByTagName("html")[0];
   var locked = false;
+  var bodyScrollTop = null;
 }
 
 export function getScrollSize() {
@@ -30,11 +31,13 @@ export function lockScroll() {
     if (body.offsetHeight < body.scrollHeight) {
       body.style.paddingRight = "" + scrollWidth + "px";
     }
-
+    bodyScrollTop = getBodyScrollTop();
+    console.log("bodyScrollTop", bodyScrollTop);
     body.classList.add("scroll-locked");
-    html.classList.add("scroll-locked");
-    html.classList.add("scroll-locked");
+    window.scrollTo(bodyScrollTop, 0);
     html.style.background = "#fff";
+    body.style.top = `-${bodyScrollTop}px`;
+
     locked = true;
     setTimeout(function() {
       window.lockScrollEvents = false;
@@ -44,13 +47,14 @@ export function lockScroll() {
 
 export function unlockScroll() {
   if (locked) {
+    bodyScrollTop = getBodyScrollTop();
     window.lockScrollEvents = true;
     body.classList.remove("scroll-locked");
-    html.classList.remove("scroll-locked");
     body.style.top = null;
     html.style.background = null;
     body.style.paddingRight = "";
     locked = false;
+    window.scrollTo(0, bodyScrollTop);
     setTimeout(function() {
       window.lockScrollEvents = false;
     }, 100);
