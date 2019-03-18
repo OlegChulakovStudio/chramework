@@ -209,10 +209,14 @@ class Header extends Component {
       longNav
     } = this.props;
     const { localMod, scrollMod } = this.state;
+    const headerMod =
+      mod && typeof mod === "object"
+        ? mod.map(item => `Header_${item}`)
+        : mod
+        ? `Header_${mod}`
+        : "";
 
-    const styles = classNames({
-      Header: true,
-      [`Header_${mod}`]: mod,
+    const styles = classNames("Header", headerMod, {
       Header_pinned: this.props.menu || this.props.scrollMenu,
       Header_isLink: this.props.pinned === "desktop",
       Header_linkScroll: this.props.linkScroll,

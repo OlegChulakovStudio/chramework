@@ -62,6 +62,7 @@ const HeaderWrap = () => {
       text="school"
       videoPlay={videoPlay}
       longNav
+      mod={["lab", "dark"]}
     />
   );
 };
