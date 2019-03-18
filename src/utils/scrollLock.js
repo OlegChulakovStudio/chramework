@@ -32,7 +32,6 @@ export function lockScroll() {
       body.style.paddingRight = "" + scrollWidth + "px";
     }
     bodyScrollTop = getBodyScrollTop();
-    console.log("bodyScrollTop", bodyScrollTop);
     body.classList.add("scroll-locked");
     window.scrollTo(bodyScrollTop, 0);
     html.style.background = "#fff";
@@ -47,14 +46,13 @@ export function lockScroll() {
 
 export function unlockScroll() {
   if (locked) {
-    bodyScrollTop = getBodyScrollTop();
     window.lockScrollEvents = true;
     body.classList.remove("scroll-locked");
     body.style.top = null;
+    window.scrollTo(0, bodyScrollTop);
     html.style.background = null;
     body.style.paddingRight = "";
     locked = false;
-    window.scrollTo(0, bodyScrollTop);
     setTimeout(function() {
       window.lockScrollEvents = false;
     }, 100);
