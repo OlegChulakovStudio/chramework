@@ -206,21 +206,23 @@ class Header extends Component {
       scrollPanelOnPage,
       madeinlab,
       mod,
-      longNav
+      longNav,
+      mark
     } = this.props;
     const { localMod, scrollMod } = this.state;
-    const headerMod =
-      mod && typeof mod === "object"
-        ? mod.map(item => `Header_${item}`)
-        : mod
-        ? `Header_${mod}`
+    const headerMark =
+      mark && typeof mark === "object"
+        ? mark.map(item => `Header_${item}`)
+        : mark
+        ? `Header_${mark}`
         : "";
 
-    const styles = classNames("Header", headerMod, {
+    const styles = classNames("Header", headerMark, {
       Header_pinned: this.props.menu || this.props.scrollMenu,
       Header_isLink: this.props.pinned === "desktop",
       Header_linkScroll: this.props.linkScroll,
       [`Header_${page}`]: page,
+      [`Header_${mod}`]: mod,
       [`Header_${localMod}`]: localMod,
       [`Header_${scrollMod}`]: scrollMod,
       Header_topWork: page === "workItem" && localMod !== "light",
@@ -305,7 +307,8 @@ Header.defaultProps = {
   menu: undefined,
   scrollMenu: undefined,
   videoPlay: undefined,
-  linkScroll: undefined
+  linkScroll: undefined,
+  mark: undefined
 };
 
 Header.propTypes = {
@@ -324,7 +327,8 @@ Header.propTypes = {
   videoPlay: PropTypes.object,
   children: PropTypes.any,
   linkScroll: PropTypes.object,
-  longNav: PropTypes.bool
+  longNav: PropTypes.bool,
+  mark: PropTypes.any
 };
 export default connect(
   mapStateToProps,
