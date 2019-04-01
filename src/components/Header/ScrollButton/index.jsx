@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import LinkScroll from "../../LinkScroll";
-import Pencil from "../../../assets/pencil.svg";
+import Icon from "../../../assets/payment.svg";
 import "./styles.styl";
 
 const ScrollButton = ({ data }) => {
@@ -15,7 +15,7 @@ const ScrollButton = ({ data }) => {
     >
       <div className="ScrollButton__link">
         <div className="ScrollButton__icon">
-          <Pencil />
+          <Icon />
         </div>
         <div className="ScrollButton__text">{data.text}</div>
       </div>
