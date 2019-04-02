@@ -44,6 +44,29 @@ const menu = [
   }
 ];
 
+const navMenu = [
+  {
+    name: "Главный",
+    url: "main"
+  },
+  {
+    name: "Программа курса",
+    url: "programm"
+  },
+  {
+    name: "Для кого курс",
+    url: "help"
+  },
+  {
+    name: "Отзывы",
+    url: "graduates"
+  },
+  {
+    name: "Контакты",
+    url: "contacts"
+  }
+];
+
 const videoPlay = {
   text: "Showreel 2017",
   link: {
@@ -53,15 +76,22 @@ const videoPlay = {
   gif: showreel
 };
 
+const phone = {
+  number: "+7(863)5164134",
+  inner: "+7 (863) - 516 - 41 - 34"
+};
+
 const HeaderWrap = () => {
   return (
     <Header
-      redirectUrl={""}
-      scrollMenu={menu}
-      vacanciesCount={9}
+      linkScroll={{
+        url: "brief",
+        text: "Оплатить онлайн",
+        offsetTop: 0
+      }}
+      scrollMenu={navMenu}
       text="school"
-      videoPlay={videoPlay}
-      longNav
+      phone={phone}
       mod={["lab", "dark"]}
     />
   );

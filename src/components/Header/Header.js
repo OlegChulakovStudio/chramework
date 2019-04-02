@@ -266,6 +266,16 @@ class Header extends Component {
                 {this.props.videoPlay && (
                   <VideoPlay data={this.props.videoPlay} />
                 )}
+                {this.props.phone && (
+                  <Link
+                    href={`tel:${this.props.phone.number}`}
+                    className="Header__phone"
+                    disableBlank
+                    bold
+                  >
+                    {this.props.phone.inner}
+                  </Link>
+                )}
                 {this.props.linkScroll && (
                   <ScrollButton data={this.props.linkScroll} />
                 )}
@@ -308,6 +318,7 @@ Header.defaultProps = {
   scrollMenu: undefined,
   videoPlay: undefined,
   linkScroll: undefined,
+  phone: undefined,
   mark: undefined
 };
 
@@ -328,7 +339,8 @@ Header.propTypes = {
   children: PropTypes.any,
   linkScroll: PropTypes.object,
   longNav: PropTypes.bool,
-  mark: PropTypes.any
+  mark: PropTypes.any,
+  phone: PropTypes.object
 };
 export default connect(
   mapStateToProps,

@@ -67,6 +67,20 @@
 			display none
 		}
 	}
+	&__phone {
+		font-size 14px
+		line-height 28px
+		white-space nowrap
+		margin-left 100px
+
+		@media (max-width 1500px) {
+			margin-left 70px	
+		}
+
+		@media $notebook {
+			margin-left 20px
+		}
+	}
 	&_dark {
 		.Logo__sufix {
 			color #fff
@@ -367,5 +381,9 @@
 		.Header__content {
 			padding-right 0
 		}	
+
+		.Navigation {
+			display flex	
+		}
 	}
 }
