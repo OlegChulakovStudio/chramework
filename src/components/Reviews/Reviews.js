@@ -5,7 +5,7 @@ import Swiper from 'react-id-swiper';
 import reactHtmlParser from 'react-html-parser';
 
 import ArrowIcon from '../../assets/arrow.svg';
-import DemoIcon from '../../assets/clients/megalabs.svg';
+import DemoIcon from '../../assets/clients/rosbank.svg';
 import Paragraph from '../Paragraph/Paragraph.js';
 
 import 'react-id-swiper/src/styles/css/swiper.css';
