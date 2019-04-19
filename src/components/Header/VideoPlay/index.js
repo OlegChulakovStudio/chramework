@@ -17,7 +17,7 @@ class VideoPlay extends Component {
 	}
 	setRandomBg = () => {
 		const { data } = this.props;
-		const randomNumber = _.random(3);
+		const randomNumber = _.random(data.number - 1);
 		this.setState({
 			currentBg: data.randomBg[randomNumber]
 		});
@@ -29,11 +29,7 @@ class VideoPlay extends Component {
 		});
 	}
 	onMouseLeave = () => {
-		const { data } = this.props;
-		const randomNumber = _.random(3);
-		this.setState({
-			currentBg: data.randomBg[randomNumber]
-		});
+		this.setRandomBg();
 	}
 	render() {
 		const { data } = this.props;
