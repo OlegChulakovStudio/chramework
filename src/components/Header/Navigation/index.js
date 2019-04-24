@@ -59,9 +59,9 @@ class Navigation extends Component {
                 className="Navigation__item"
                 key={item.url}
                 href={item.url}
-                disableBlank
+                disableBlank={item.disableBlank}
               >
-                {reactHtmlParser(item.name)}
+              {reactHtmlParser(item.name)}
               </Link>
             );
           })}

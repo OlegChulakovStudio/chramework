@@ -127,14 +127,25 @@
 		}
 	}
 	&_longNav {
+
+		.Navigation__item {
+
+			@media $tablet {
+				padding-left 14px
+				padding-right 14px
+			}
+			&.Link_external {
+				padding-right 32px
+
+				@media $tablet {
+					padding-right 26px
+				}
+			}
+		}
 		@media $tablet {
 			.Header__inner {
 				padding-left 16px
 				padding-right 16px
-			}	
-			.Navigation__item {
-				padding-left 14px
-				padding-right 14px	
 			}
 			.Header__content {
 				padding-right 16px	
