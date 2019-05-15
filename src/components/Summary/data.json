@@ -36,7 +36,7 @@
         },
         {
             "type": "statistic",
-            "number": "80",
+            "number": "100",
             "title": "специалистов",
             "counter": true,
             "specialists": true
