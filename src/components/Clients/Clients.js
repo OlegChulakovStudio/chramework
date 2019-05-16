@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import Link from "../Link/Link";
-import Demo from "../../assets/clients/tele2.svg";
+import Demo from "../../assets/clients/tekta.svg";
 import "./Clients.styl";
 
 const filterDemo = {
