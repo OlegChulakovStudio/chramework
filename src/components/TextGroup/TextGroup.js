@@ -15,13 +15,13 @@ export default class TextGroup extends Component {
 		text: PropTypes.string,
 		className: PropTypes.string,
 		mod: PropTypes.string,
-		url: PropTypes.object
+		url: PropTypes.object,
 	}
 	static defaultProps = {
 		title: undefined,
 		subtitle: undefined,
 		text: undefined,
-		mod: undefined
+		mod: undefined,
 	}
 	render() {
 		const {
