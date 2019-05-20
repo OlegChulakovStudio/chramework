@@ -8,14 +8,18 @@
 		fullsize()
 		background-color #fff
 		border-radius 4px
+
+		@media $phone {
+			border-radius 0	
+		}
 	}
 	@media $tablet {
 		width 100%
 	}
 	@media $phone {
 		width auto
-		margin-left 0
-		margin-right 0
+		margin-left -16px
+		margin-right -16px
 
 		.swiper-container {
 			overflow visible
