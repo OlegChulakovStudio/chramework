@@ -19,6 +19,15 @@
 	}
 	&__visual {
 		margin-bottom 16px
+
+		@media $phone {
+			margin-left -16px
+			margin-right -16px
+		}
+
+		&:last-child {
+			margin-bottom 0	
+		}
 	}
 	&__head {
 		display flex
