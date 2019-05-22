@@ -73,6 +73,12 @@ class Reviews extends Component {
 						});
 					}
 				}
+			},
+			breakpoints: {
+				667: {
+					autoHeight: true,
+				  },
+			   
 			}
 		};
 		return (

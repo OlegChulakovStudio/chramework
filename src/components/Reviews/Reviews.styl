@@ -26,9 +26,14 @@
 		}
 	}
 	&__container {
+		position: relative
 		display flex
 		width 100%
 		transition-timing-function cubic-bezier(0.39, 0.58, 0.57, 1)
+
+		@media $phone {
+			align-items flex-start
+		}
 	}
 	&__item {
 		color $textColor
