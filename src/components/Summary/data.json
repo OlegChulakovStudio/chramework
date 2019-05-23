@@ -7,13 +7,6 @@
             "tagline": true
         },
         {
-            "type": "usability",
-            "title": "Лучший <nobr>usability / UX</nobr>",
-            "medal": true,
-            "top1": true,
-            "goldenSite": true
-        },
-        {
             "type": "production",
             "title": "Топ-5 <nobr>digital production</nobr>",
             "medal": true,
