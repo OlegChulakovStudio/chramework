@@ -60,51 +60,57 @@
 	&__inner {
 		position relative
 		display flex
+		flex-direction column
+		padding 0 60px
 
 		@media $phone {
 			display block
+			padding 0
 		}
 	}
 	&__avatar {
-		grid-width(2)
-		flex-shrink 0
-		box-sizing border-box
-		display block
 
-		@media $tablet {
-			box-sizing content-box
-			padding 0 15px
+		@media $phone {
+			margin-bottom 16px
 		}
+
 		img {
 			display block
-			margin 0 auto
 			border-radius 50%
 			width 83px
 			height 83px
-			margin-bottom 24px
 			overflow hidden
 		}
 	}
 	&__content {
 		flex-grow 1
 	}
-	&__footer {
+	&__top {
 		display flex
 		justify-content space-between
 		align-items center
-		padding-right 60px
+		margin-bottom 22px
+	}
+	&__info {
+		display flex
+		align-items center	
 
 		@media $phone {
-			padding-right 0
+			max-width 180px
+			flex-direction column
+			align-items flex-start	
+		}
+
+		&-text {
+			padding-left 16px	
+
+			@media $phone {
+				padding-left 0
+			}
 		}
 	}
-	&__info {}
 	&__name {
-		margin-bottom 16px
-
-		@media $phone {
-			margin-bottom 8px
-		}
+		margin-bottom 8px
 	}
 	&__logo {
 
@@ -114,6 +120,7 @@
 		@media $phone {
 			top 0
 			left 0
+			align-self flex-end
 
 			svg {
 				width 140px
@@ -126,15 +133,12 @@
 		margin 0 auto
 	}
 	&__text {
-		padding-right 60px
-		margin-bottom 27px
+		margin-bottom 0
 		text-align left
 		text-indent -0.54em
 
 		@media $phone {
 			body()
-			margin-bottom 16px
-			padding-right 0
 		}
 	}
 	&__pagination {
@@ -164,24 +168,21 @@
 	}
 	&__nav {
 		position relative
-		grid-width(2, 'left')
+		left 50%
 		z-index 100
 		position absolute
 		bottom 8px
-		transform translateX(-8px)
+		transform translateX(-50%)
 		height 56px
 		margin-top -10px
 		display flex
 
-		@media $tablet {
-			transform translateX(22px)
-		}
-		@media $phone {
-			margin-top 0
-			bottom 5px
-			left 50%
-			transform translateX(-50%)
-		}
+		// @media $phone {
+		// 	margin-top 0
+		// 	bottom 5px
+		// 	left 50%
+		// 	transform translateX(-50%)
+		// }
 		&-btn {
 			position relative
 			user-select none

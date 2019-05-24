@@ -12,7 +12,7 @@ import 'react-id-swiper/src/styles/css/swiper.css';
 import './Reviews.styl';
 
 const exampleReviews = [
-	{
+	{	icon: DemoIcon,
 		avatar: 'https://chulakov.ru/work/megalabs/images/avatar.jpg',
 		name: 'Ян Кухальский',
 		position: 'Генеральный Директор MegaLabs',
@@ -89,15 +89,12 @@ class Reviews extends Component {
 						return (
 							<div key={client.name} className="Reviews__item">
 								<div className="Reviews__inner">
-									<div className="Reviews__avatar">
-										<img src={client.avatar} alt="img" />
-									</div>
-									<div className="Reviews__content">
-										<Paragraph mod="subtitle" className="Reviews__text">
-											«{reactHtmlParser(client.text)}»
-										</Paragraph>
-										<div className="Reviews__footer">
-											<div className="Reviews__info">
+									<div className="Reviews__top">
+										<div className="Reviews__info">
+											<div className="Reviews__avatar">
+												<img src={client.avatar} alt="img" />
+											</div>
+											<div className="Reviews__info-text">
 												<Paragraph mod="boldMedium" className="Reviews__name">
 													{reactHtmlParser(client.name)}
 												</Paragraph>
@@ -107,12 +104,18 @@ class Reviews extends Component {
 													{reactHtmlParser(client.position)}
 												</Paragraph>
 											</div>
-											{Icon &&
-												<div className="Reviews__logo">
-													<Icon />
-												</div>
-											}
 										</div>
+										{Icon &&
+											<div className="Reviews__logo">
+												<Icon />
+											</div>
+										}
+									</div>
+									
+									<div className="Reviews__content">
+										<Paragraph mod="subtitle" className="Reviews__text">
+											«{reactHtmlParser(client.text)}»
+										</Paragraph>
 									</div>
 								</div>
 							</div>
