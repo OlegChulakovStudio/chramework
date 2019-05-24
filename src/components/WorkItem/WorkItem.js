@@ -33,6 +33,7 @@ class WorkItem extends Component {
 		tags: undefined,
 		awards: undefined,
 		icon: undefined,
+		iconSecond: undefined,
 	}
 
 	renderVisual = () => {
@@ -48,7 +49,7 @@ class WorkItem extends Component {
 			);
 	};
 	render() {
-		const { title, description, onDark, tags, url, video, posters, className, awards, icon, ...rest } = this.props;
+		const { title, description, onDark, tags, url, video, posters, className, awards, icon, iconSecond, ...rest } = this.props;
 		const workItemClasses = classNames(['WorkItem', className, {
 			WorkItem_video: video,
 			WorkItem_link: !video,
@@ -58,11 +59,12 @@ class WorkItem extends Component {
 		const dataAwards = awards || [];
 		const currentCountAwards = dataAwards.length === 1 ? dataAwards[0].link : `× ${dataAwards.length} <span class="WorkItem__awards-count__inner">${pluralize(dataAwards.length, ['награда', 'награды', 'наград'])}</span>`;
 		const Icon = icon;
+		const IconSecond = iconSecond;
 		const groupClasses = classNames(['WorkItem__group', {
 			WorkItem__group_singleLogo: dataAwards.length === 0,
-			WorkItem__group_singleAwards: !Icon,
+			WorkItem__group_singleAwards: !Icon && !IconSecond,
 		}]);
-		const groupBlock = dataAwards.length === 0 && !Icon
+		const groupBlock = dataAwards.length === 0 && !Icon && !IconSecond
 
 		return (
 			<div {...rest} className={workItemClasses}>
@@ -82,7 +84,8 @@ class WorkItem extends Component {
 								</Paragraph>}
 								{!groupBlock && <div className={groupClasses}>
 									{Icon && <Icon className="Icon WorkItem__logo" />}
-									{dataAwards.length > 0 && <div className="WorkItem__awards">
+									{IconSecond && <IconSecond className="Icon WorkItem__logo" />}
+									{!IconSecond && dataAwards.length > 0 && <div className="WorkItem__awards">
 										<div className="WorkItem__awards-wrapper">
 											<Cup />
 											<Paragraph TagName="div" mod="boldSmall" className="WorkItem__awards-count">
