@@ -65,6 +65,7 @@ class Reviews extends Component {
 			loop: true,
 			spaceBetween: 16,
 			wrapperClass: 'Reviews__container',
+			autoHeight: true,
 			on: {
 				slideChange: () => {
 					if (this.swiper) {
@@ -74,12 +75,6 @@ class Reviews extends Component {
 					}
 				}
 			},
-			breakpoints: {
-				667: {
-					autoHeight: true,
-				  },
-			   
-			}
 		};
 		return (
 			<div {...rest} className={classes}>
