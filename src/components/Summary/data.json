@@ -1,43 +1,44 @@
 {
-    "items": [{
-            "type": "design",
-            "title": "<nobr>Дизайн-студия</nobr><br><nobr>&#8470;&nbsp;1 в&nbsp;России</nobr>",
-            "medal": true,
-            "top1": true,
-            "tagline": true
-        },
-        {
-            "type": "production",
-            "title": "Топ-5 <nobr>digital production</nobr>",
-            "medal": true,
-            "top5": true,
-            "tagline": true
-        },
-        {
-            "type": "keyperson",
-            "title": "Арт-директор в&nbsp;топ-5 ключевых персон в&nbsp;digital",
-            "medal": true,
-            "top5": true,
-            "keyperson": true
-        },
-        {
-            "type": "statistic",
-            "number": "10",
-            "title": "лет опыта",
-            "counter": true,
-            "experience": true
-        },
-        {
-            "type": "statistic",
-            "number": "100",
-            "title": "специалистов",
-            "counter": true,
-            "specialists": true
-        }
-    ],
-    "notes": {
-        "first": "по&nbsp;версии Tagline",
-        "second": "по&nbsp;версии &laquo;Золотого сайта&raquo;",
-        "third": "Рейтинг ключевых персон российского рынка digital-маркетинга и&nbsp;веб-разработки 2018 по&nbsp;версии Tagline"
+  "items": [
+    {
+      "type": "design",
+      "title": "<nobr>Дизайн-студия</nobr><br><nobr>&#8470;&nbsp;1 в&nbsp;России</nobr>",
+      "medal": true,
+      "top1": true,
+      "tagline": true
+    },
+    {
+      "type": "production",
+      "title": "Топ-5 <nobr>digital production</nobr>",
+      "medal": true,
+      "top5": true,
+      "tagline": true
+    },
+    {
+      "type": "keyperson",
+      "title": "Олег Чулаков в&nbsp;топ-5 персон digital",
+      "medal": true,
+      "top5": true,
+      "keyperson": true
+    },
+    {
+      "type": "statistic",
+      "number": "10",
+      "title": "лет опыта",
+      "counter": true,
+      "experience": true
+    },
+    {
+      "type": "statistic",
+      "number": "100+",
+      "title": "специалистов",
+      "counter": true,
+      "specialists": true
     }
+  ],
+  "notes": {
+    "first": "по&nbsp;версии Tagline",
+    "second": "по&nbsp;версии &laquo;Золотого сайта&raquo;",
+    "third": "Рейтинг ключевых персон российского рынка digital-маркетинга и&nbsp;веб-разработки 2018 по&nbsp;версии Tagline"
+  }
 }
