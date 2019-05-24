@@ -109,10 +109,10 @@ const Summary = ({ awards, className, external, data, ...rest }) => {
           <span>**</span>
           {reactHtmlParser(` ${mainData.notes.second}`)}
         </Paragraph>
-        <Paragraph className="Summary__notes-item">
+        {/* <Paragraph className="Summary__notes-item">
           <span>***</span>
           {reactHtmlParser(` ${mainData.notes.third}`)}
-        </Paragraph>
+        </Paragraph> */}
       </div>
     </div>
   );
