@@ -25,10 +25,13 @@ class Link extends Component {
       noLink,
       noBlank,
       grayBlank,
+      enableLinkClass,
       ...rest
     } = this.props;
     const linkStyle = classNames([
-      "Link",
+      {
+        "Link": enableLinkClass
+      },
       className,
       {
         Link_bold: bold,
@@ -73,7 +76,8 @@ Link.defaultProps = {
   noLink: false,
   noBlank: false,
   disableBlank: false,
-  grayBlank: false
+  grayBlank: false,
+  enableLinkClass: true
 };
 
 Link.propTypes = {
@@ -86,6 +90,7 @@ Link.propTypes = {
   noLink: PropTypes.bool,
   noBlank: PropTypes.bool,
   disableBlank: PropTypes.bool,
+  enableLinkClass: PropTypes.bool,
   grayBlank: PropTypes.bool
 };
 

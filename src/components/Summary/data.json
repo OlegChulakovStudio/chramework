@@ -5,21 +5,32 @@
       "title": "<nobr>Дизайн-студия</nobr><br><nobr>&#8470;&nbsp;1 в&nbsp;России</nobr>",
       "medal": true,
       "top1": true,
-      "tagline": true
+      "tagline": true,
+      "clickable": true
     },
     {
       "type": "production",
-      "title": "Топ-5 <nobr>digital production</nobr>",
+      "title": "Топ-4 <nobr>digital production</nobr>",
       "medal": true,
-      "top5": true,
-      "tagline": true
+      "top4": true,
+      "tagline": true,
+      "clickable": false
     },
     {
       "type": "keyperson",
       "title": "Олег Чулаков в&nbsp;топ-5 персон digital",
       "medal": true,
       "top5": true,
-      "keyperson": true
+      "keyperson": true,
+      "clickable": true
+    },
+    {
+      "type": "mobile",
+      "title": "Топ-12<nobr> mobile production</nobr>",
+      "medal": true,
+      "top12": true,
+      "tagline": true,
+      "clickable": false
     },
     {
       "type": "statistic",

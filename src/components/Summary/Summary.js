@@ -50,7 +50,7 @@ const Summary = ({ awards, className, external, data, ...rest }) => {
   const links = {
     usability: usabilityLink,
     design: designLink,
-    production: productionLink,
+    // production: productionLink, // tempered disable
     keyperson: keypersonLink
   };
   return (
@@ -65,8 +65,10 @@ const Summary = ({ awards, className, external, data, ...rest }) => {
             {
               Summary__item_medal: item.medal,
               Summary__item_medal1: item.top1,
+              Summary__item_medal4: item.top4,
               Summary__item_medal5: item.top5,
               Summary__item_medal9: item.top9,
+              Summary__item_medal12: item.top12,
               Summary__item_goldenSite: item.goldenSite,
               Summary__item_tagline: item.tagline,
               Summary__item_keyperson: item.keyperson,
@@ -80,6 +82,7 @@ const Summary = ({ awards, className, external, data, ...rest }) => {
               key={itemKey}
               {...linkProps}
               disableBlank
+              enableLinkClass={item.clickable ? item.clickable : false}
               className={linkStyle}
             >
               <div className="Summary__content">
@@ -89,15 +92,15 @@ const Summary = ({ awards, className, external, data, ...rest }) => {
               </div>
             </Link>
           ) : (
-            !awards && (
-              <div key={itemKey} className={linkStyle}>
-                <div className="Summary__number">{item.number}</div>
-                <Paragraph className="Summary__title" mod="boldMedium">
-                  {reactHtmlParser(item.title)}
-                </Paragraph>
-              </div>
-            )
-          );
+              !awards && (
+                <div key={itemKey} className={linkStyle}>
+                  <div className="Summary__number">{item.number}</div>
+                  <Paragraph className="Summary__title" mod="boldMedium">
+                    {reactHtmlParser(item.title)}
+                  </Paragraph>
+                </div>
+              )
+            );
         })}
       </div>
       <div className="Summary__notes">

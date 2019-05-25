@@ -1,7 +1,7 @@
 .Summary {
 	font-size 0
 	layout1()
-	grid-width(8, max-width )
+	grid-width(8,max-width)
 
 	&__notes {
 		font-size 14px
@@ -21,8 +21,8 @@
 				margin-bottom 6px
 
 				&:last-child {
-					margin-bottom 0	
-				}	
+					margin-bottom 0
+				}
 			}
 
 			span {
@@ -35,28 +35,29 @@
 			&:first-child {
 				span {
 					left 9px
-				}	
+				}
 			}
 
 			&:nth-child(2) {
 				span {
 					left 3px
-				}	
+				}
 			}
 
 			&:last-child {
 				span {
 					left -3px
-				}	
+				}
 			}
 		}
 	}
+
 	&__inner {
 		padding-top 14px
 		display flex
 		justify-content space-around
 		margin-bottom 12px
-		
+
 		@media $verticalTablet {
 			justify-content flex-start
 			padding-top 0
@@ -66,11 +67,13 @@
 			margin 0 -8px
 		}
 	}
+
 	&__content {
 		display inline-block
 		vertical-align middle
 		width 100%
 	}
+
 	&__item {
 		min-width 120px
 		width 140px
@@ -80,21 +83,27 @@
 		color $textColor
 		// box-sizing border-box
 		padding 0 8px
+
 		&:hover.Link {
 			color $linkColor
 		}
+
 		&:last-child {
 			padding-right 0
+
 			@media $phone {
 				padding 0 8px
 			}
 		}
+
 		&:first-child {
 			padding-left 0
+
 			@media $phone {
 				padding 0 8px
 			}
 		}
+
 		@media $verticalTablet {
 			box-sizing border-box
 			width 50%
@@ -106,20 +115,22 @@
 				margin-right 0
 			}
 		}
+
 		@media $phone {
 			padding 0 8px
 		}
+
 		// &_goldenSite {
-		// 	& .Summary__title:after {
-		// 		content '**'
-		// 		color #9e9e9e
-		// 		font-weight normal
-		// 		font-size 14px
-		// 		margin-right -5px
-		// 		@media $phone {
-		// 			font-size 16px
-		// 		}
-		// 	}
+		// & .Summary__title:after {
+		// content '**'
+		// color #9e9e9e
+		// font-weight normal
+		// font-size 14px
+		// margin-right -5px
+		// @media $phone {
+		// font-size 16px
+		// }
+		// }
 		// }
 		&_tagline {
 			& .Summary__title:after {
@@ -128,11 +139,13 @@
 				font-weight normal
 				font-size 14px
 				margin-right -10px
+
 				@media $phone {
 					font-size 16px
 				}
 			}
 		}
+
 		&_keyperson {
 			& .Summary__title:after {
 				content '**'
@@ -140,11 +153,13 @@
 				font-weight normal
 				font-size 14px
 				margin-right -10px
+
 				@media $phone {
 					font-size 16px
 				}
 			}
 		}
+
 		&_medal {
 			display inline-block
 			text-align center
@@ -152,6 +167,7 @@
 			@media $verticalTablet {
 				min-width 0
 			}
+
 			&:before {
 				content ''
 				background-size contain
@@ -169,63 +185,89 @@
 				@media $verticalTablet {
 					margin-top 0
 				}
+
 				@media $phone {
 					margin-top 0
 					margin-bottom 6px
 				}
 			}
+
 			&1 {
 				// @media $verticalTablet {
-				// 	order 3
+				// order 3
 				// }
 				&:before {
 					background-image url('medal_1.png')
 				}
 			}
+
 			&2 {
 				// @media $verticalTablet {
-				// 	order 4
+				// order 4
 				// }
-
 				@media $verticalTablet {
 					display block
 				}
+
 				&:before {
 					background-image url('medal_2.png')
 				}
 			}
+
 			&25 {
 				// @media $verticalTablet {
-				// 	order 4
+				// order 4
 				// }
 				&:before {
 					background-image url('2-5.png')
 				}
+
 				@media $verticalTablet {
 					display none
 				}
 			}
+
+			&4 {
+				@media $verticalTablet {
+					display block
+				}
+
+				&:before {
+					background-image url('medal_4.png')
+				}
+			}
+
 			&5 {
 				// @media $verticalTablet {
-				// 	order 5
+				// order 5
 				// }
 				@media $verticalTablet {
 					display block
 				}
+
 				&:before {
 					background-image url('medal_5.png')
 				}
 			}
+
 			&9 {
 				@media $verticalTablet {
 					// order 6
 					// margin-bottom 0
 				}
+
 				&:before {
 					background-image url('medal_9.png')
 				}
 			}
+
+			&12 {
+				&:before {
+					background-image url('medal_12.png')
+				}
+			}
 		}
+
 		&_counter {
 			text-align center
 			font-weight bold
@@ -235,29 +277,34 @@
 			.Summary__text {
 				font-size 16px
 			}
+
 			@media $verticalTablet {
 				width 50%
 				margin 0
 				margin-bottom 40px
 			}
 		}
+
 		&_inline {
 			@media $phone {
 				float left
 				width 50%
 			}
 		}
+
 		&_experience {
 			@media $verticalTablet {
 				order 6
 			}
 		}
+
 		&_specialists {
 			@media $verticalTablet {
 				order 5
 			}
 		}
 	}
+
 	&__number {
 		font-size 45px
 		font-weight $bold
@@ -265,15 +312,16 @@
 		line-height 1
 		margin-top 4px
 
-
 		&__plus {
 			font-weight normal
 		}
+
 		@media $phone {
 			margin-bottom 6px
 			margin-top 0
 		}
 	}
+
 	&__text {
 		text-align center
 		margin 0 auto
@@ -284,12 +332,13 @@
 			align-items center
 		}
 	}
-	// &__text-link {
-	// 	line-height 1.25 !important
 
-	// 	@media $phone {
-	// 		font-size 16px
-	// 	}
+	// &__text-link {
+	// line-height 1.25 !important
+
+	// @media $phone {
+	// font-size 16px
+	// }
 	// }
 	&__count {
 		text-align center
@@ -299,12 +348,14 @@
 		@media $verticalTablet {
 			display inline-block
 		}
+
 		@media $phone {
 			.Text {
 				line-height 1.4
 			}
 		}
 	}
+
 	&__title {
 		text-align center
 		box-sizing border-box
@@ -317,6 +368,7 @@
 			padding-top 0
 			white-space normal
 		}
+
 		@media $phone {
 			max-width 160px
 			margin-left auto
@@ -325,6 +377,7 @@
 			font-size 16px
 		}
 	}
+
 	&_awards {
 		display block
 
@@ -338,9 +391,11 @@
 					margin-left 0
 					margin-right 0
 				}
+
 				&:first-child {
 					margin-left 0
 				}
+
 				&:last-child {
 					margin-right 0
 				}
