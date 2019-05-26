@@ -26,7 +26,7 @@
     },
     {
       "type": "mobile",
-      "title": "Топ-12<nobr> mobile production</nobr>",
+      "title": "Топ-12<br><nobr>mobile production</nobr>",
       "medal": true,
       "top12": true,
       "tagline": true,
