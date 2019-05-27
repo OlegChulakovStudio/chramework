@@ -20,6 +20,7 @@
 		width auto
 		margin-left -16px
 		margin-right -16px
+		padding-bottom 10px
 
 		.swiper-container {
 			overflow visible
@@ -40,8 +41,8 @@
 		grid-width(8)
 
 		@media $phone {
-			padding 20px
-			padding-bottom 90px
+			padding 32px 20px
+			padding-bottom 40px
 		}
 		svg {
 			max-width 100%
@@ -63,6 +64,30 @@
 		@media $phone {
 			display block
 			padding 0
+		}
+	}
+	&__pagination {
+		display flex
+		position absolute
+		bottom 10px
+		left 50%
+		transform translateX(-50%)
+		justify-content center
+
+		@media $phone {
+			display flex	
+		}
+		&-dot {
+			width 7px
+			height 7px
+			border-radius 50%
+			background-color alpha($textColor, .4)
+			margin  0 2px
+			transition background-color $duration
+
+			&_active {
+				background-color $textColor
+			}
 		}
 	}
 	&__avatar {
@@ -139,7 +164,6 @@
 		}
 	}
 	&__pagination {
-		height 56px
 		font-size 12px
 		padding 8px 16px
 		box-sizing border-box
@@ -210,5 +234,15 @@
 				transform scaleX(-1)
 			}
 		}
+	}
+}
+
+.swiper-container-horizontal > .Reviews__pagination.swiper-pagination-bullets {
+	bottom 18px
+	left 50%
+	width 100%
+
+	@media $phone {
+		bottom 0	
 	}
 }

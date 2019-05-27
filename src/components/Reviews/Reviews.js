@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import Swiper from 'react-id-swiper';
 import reactHtmlParser from 'react-html-parser';
 
-import ArrowIcon from '../../assets/arrow.svg';
+// import ArrowIcon from '../../assets/arrow.svg';
 import DemoIcon from '../../assets/clients/rosbank.svg';
 import Paragraph from '../Paragraph/Paragraph.js';
 
@@ -48,17 +48,17 @@ class Reviews extends Component {
 	slideNext = () => this.swiper.slideNext();
 	render() {
 		const { className, reviews, ...rest } = this.props;
-		const { indexActive } = this.state;
+		// const { indexActive } = this.state;
 		const currentReviews = reviews || exampleReviews;
-		const countSlides = currentReviews.length;
+		// const countSlides = currentReviews.length;
 		const classes = classNames(['Reviews', className]);
-		const nextBtnClass = classNames([
-			'Reviews__nav-btn',
-			'Reviews__nav-btn_next',
-			{
-				'Reviews__nav-btn_disable': indexActive === currentReviews.length - 1
-			}
-		]);
+		// const nextBtnClass = classNames([
+		// 	'Reviews__nav-btn',
+		// 	'Reviews__nav-btn_next',
+		// 	{
+		// 		'Reviews__nav-btn_disable': indexActive === currentReviews.length - 1
+		// 	}
+		// ]);
 		const props = {
 			slidesPerView: 1,
 			grabCursor: true,
@@ -66,6 +66,12 @@ class Reviews extends Component {
 			spaceBetween: 16,
 			wrapperClass: 'Reviews__container',
 			autoHeight: true,
+			pagination: {
+				el: '.Reviews__pagination',
+				clickable: true,
+				bulletClass: 'Reviews__pagination-dot',
+				bulletActiveClass: 'Reviews__pagination-dot_active',
+			},
 			on: {
 				slideChange: () => {
 					if (this.swiper) {
@@ -117,7 +123,7 @@ class Reviews extends Component {
 						);
 					})}
 				</Swiper>
-				<div className="Reviews__nav">
+				{/* <div className="Reviews__nav">
 					<div
 						className="Reviews__nav-btn Reviews__nav-btn_prev"
 						onClick={this.slidePrev}>
@@ -136,7 +142,7 @@ class Reviews extends Component {
 					<div className={nextBtnClass} onClick={this.slideNext}>
 						<ArrowIcon />
 					</div>
-				</div>
+				</div> */}
 			</div>
 		);
 	}
