@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import { TweenMax, TimelineMax, Cubic } from 'gsap';
+import { TweenMax, TimelineMax, Power2 } from 'gsap/TweenMax';
 import Waypoint from 'react-waypoint';
 import {
 	isPhone,
@@ -58,7 +58,7 @@ const calculateQuality = new Promise((resolve, reject) => {
 							currentPlayer.play();
 						} else {
 							currentPlayer.pause();
-			
+
 						}
 					}
 				}
@@ -299,8 +299,8 @@ class Player extends Component {
 		}
 
 		this.setState({ isCollapsed: false });
-		const ratio = this.props.fullhd ? 2.35 / 1 : this.props.cut ?  1920 / 798 : 840 / 475;
-		
+		const ratio = this.props.fullhd ? 2.35 / 1 : this.props.cut ? 1920 / 798 : 840 / 475;
+
 		const timeline = new TimelineMax();
 
 		timeline
@@ -309,7 +309,7 @@ class Player extends Component {
 			.add(this.hidePoster())
 			.to(this.playerBox, 0.3, {
 				height: !isPad() ? this.playerBox.offsetWidth / ratio : undefined,
-				ease: Cubic.easeOut
+				ease: Power2.easeOut
 			})
 			.to(this.videoJsBox, 0.3, { opacity: 1 }, '-=0.3');
 
@@ -327,7 +327,7 @@ class Player extends Component {
 			.to(this.poster, 0.3, { opacity: 1 }, 0)
 			.to(this.playerBox, 0.3, {
 				height: this.playerBox.offsetWidth / collapsedRatio,
-				ease: Cubic.easeOut
+				ease: Power2.easeOut
 			})
 			.to(this.video, 0.3, { opacity: 1 });
 
@@ -411,18 +411,18 @@ class Player extends Component {
 	onPlay = () => {
 		this.setState({ hideVideo: false });
 		this.slideDown();
-		
+
 		if (this.props.callbackOnPlay) {
-			
+
 			this.progress = setInterval(() => {
 				const currentTime = this.player.cache_.currentTime || 0;
 				const duration = this.player.cache_.duration || 1;
 				const progressTime = currentTime / duration;
-				
+
 				this.props.callbackOnPlay(progressTime);
 			}, 100);
 		}
-		
+
 		if (!this.props.playOnScroll && currentPlayer && currentPlayer !== this.player) {
 			currentPlayer.pause();
 		}
@@ -459,10 +459,10 @@ class Player extends Component {
 			this.player.pause();
 			paused = true;
 		}
-		
+
 	}
 
-	isPosterShow = () => 
+	isPosterShow = () =>
 		!this.optimisationOff() && this.state.poster && !this.state.hideInitPoster;
 
 	toggleShare = () => {
@@ -514,8 +514,8 @@ class Player extends Component {
 	};
 
 	renderPlayer = () => {
-		const { theme, fullhd, banners, shareURL, muted, playOnScroll, origin, hideBar  } = this.props;
-		
+		const { theme, fullhd, banners, shareURL, muted, playOnScroll, origin, hideBar } = this.props;
+
 		const playerStyle = classNames({
 			Player: true,
 			player: true,
@@ -549,7 +549,7 @@ class Player extends Component {
 
 
 		const renderInner = () => {
-			
+
 			return (
 				<div className={playerStyle} ref={this.getPlayerBox}>
 					{!this.optimisationOff() && (
@@ -558,13 +558,13 @@ class Player extends Component {
 							onClick={this.onClick}
 							className={posterStyle}
 							ref={this.getPosterNode}>
-							{(!this.props.autoPlay || !checkLocationChenged()) && !this.props.playOnScroll ? 
-							<button className="vjs-big-play-button" type="button">
-								<PlayIcon />
-							</button> : this.state.isIosNotSupport && !this.props.playOnScroll && 
-							<button className="vjs-big-play-button" type="button">
-								<PlayIcon />
-							</button>}
+							{(!this.props.autoPlay || !checkLocationChenged()) && !this.props.playOnScroll ?
+								<button className="vjs-big-play-button" type="button">
+									<PlayIcon />
+								</button> : this.state.isIosNotSupport && !this.props.playOnScroll &&
+								<button className="vjs-big-play-button" type="button">
+									<PlayIcon />
+								</button>}
 						</div>
 					)}
 					{this.renderVideoNode()}
@@ -603,7 +603,7 @@ class Player extends Component {
 			);
 	};
 	render() {
-		
+
 		return isIos() && !this.props.playOnScroll ? (
 			<Waypoint
 				onEnter={!this.state.renderedVideoNode ? this.onEnter : this.noop}
