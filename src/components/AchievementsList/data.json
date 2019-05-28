@@ -130,26 +130,6 @@
 			"name": "Tagline",
 			"link": "Серебро",
 			"icon": "tagline",
-			"note": "Лучший корпоративный сайт",
-			"project": "МегаФон.Банк",
-			"international": false,
-			"russian": true,
-			"festival": false
-		},
-		{
-			"name": "Tagline",
-			"link": "Бронза",
-			"icon": "tagline",
-			"note": "Лучший сайт финансовой компании",
-			"project": "МегаФон.Банк",
-			"international": false,
-			"russian": true,
-			"festival": false
-		},
-		{
-			"name": "Tagline",
-			"link": "Серебро",
-			"icon": "tagline",
 			"note": "Лучший сайт FMCG-бренда",
 			"project": "Нейродоз",
 			"international": false,
