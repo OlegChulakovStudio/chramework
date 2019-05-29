@@ -13,7 +13,6 @@ const Hamburger = ({ menuIsOpened, onClick, mod }) => {
 		<div className={blockClass} onClick={onClick}>
 			<span className="Hamburger__line" />
 			<span className="Hamburger__line" />
-			<span className="Hamburger__line" />
 		</div>
 	);
 };

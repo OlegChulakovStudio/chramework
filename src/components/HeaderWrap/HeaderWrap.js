@@ -84,15 +84,7 @@ const phone = {
 const HeaderWrap = () => {
   return (
     <Header
-      linkScroll={{
-        url: "brief",
-        text: "Оплатить онлайн",
-        offsetTop: 0
-      }}
-      scrollMenu={navMenu}
-      text="school"
-      phone={phone}
-      mod={["lab", "dark"]}
+      hamburger
     />
   );
 };
