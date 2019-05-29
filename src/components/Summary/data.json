@@ -10,7 +10,7 @@
     },
     {
       "type": "production",
-      "title": "Топ-4 <nobr>digital production</nobr>",
+      "title": "4 место <br><nobr>digital production</nobr>",
       "medal": true,
       "top4": true,
       "tagline": true,
@@ -26,7 +26,7 @@
     },
     {
       "type": "mobile",
-      "title": "Топ-12<br><nobr>mobile production</nobr>",
+      "title": "12 место<br><nobr>mobile production</nobr>",
       "medal": true,
       "top12": true,
       "tagline": true,
