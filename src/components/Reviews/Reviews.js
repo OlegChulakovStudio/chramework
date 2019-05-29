@@ -65,7 +65,6 @@ class Reviews extends Component {
 			loop: true,
 			spaceBetween: 16,
 			wrapperClass: 'Reviews__container',
-			autoHeight: true,
 			pagination: {
 				el: '.Reviews__pagination',
 				clickable: true,
