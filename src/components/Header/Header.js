@@ -34,8 +34,7 @@ class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      localMod: "",
-      testHamburgerOpened: false
+      localMod: ""
     };
   }
   componentDidMount() {
@@ -176,19 +175,6 @@ class Header extends Component {
   getHeaderNode = el => {
     this.block = el;
   };
-
-  testHamburgerOpen = () => {
-    if (!this.state.testHamburgerOpened) {
-      this.setState({
-        testHamburgerOpened: true
-      });
-    } else if  (this.state.testHamburgerOpened) {
-      this.setState({
-        testHamburgerOpened: false
-      });
-    }
-    
-  }
   renderLink = () => {
     const { linkProps } = this.props;
     const El = linkProps.scroll ? LinkScroll : Link;
@@ -296,17 +282,11 @@ class Header extends Component {
               </div>
             </div>
           )}
-          {/* {this.props.menu && (
+          {this.props.menu && (
             <Hamburger
               mod={mod}
               menuIsOpened={menuIsOpened || redirectUrl.length > 0}
               onClick={this.onClick}
-            />
-          )} */}
-          {this.props.hamburger && (
-            <Hamburger
-              menuIsOpened={this.state.testHamburgerOpened}
-              onClick={this.testHamburgerOpen}
             />
           )}
           {linkProps && !this.props.menu && this.renderLink()}
