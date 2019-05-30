@@ -3,7 +3,7 @@
 	display inline-block
 	cursor pointer
 	width 24px
-	height 13px
+	height 14px
 
 	&:before {
 		$space = 16px
@@ -22,7 +22,7 @@
 		background $textColor
 		left 50%
 		margin-left -12px
-		transition transform .3s, background-color 0.3s, opacity 0.3s
+		transition transform .5s cubic-bezier(0.75, 0, 0.25, 1), background-color 0.3s
 
 		.Hamburger_dark & {
 			background $lightTextColor
@@ -33,10 +33,6 @@
 		&:first-child {
 			top 0
 		}
-		// &:nth-child(2) {
-		// 	top 50%
-		// 	margin-top -1px
-		// }
 		&:last-child {
 			bottom 0
 		}
@@ -44,22 +40,18 @@
 	&:hover &__line {
 		background $linkColor
 
-		// .Hamburger_dark& {
-		// 	background: $logoMainColor
-		// }
 		.Hamburger_dark& {
 			background #fff
 		}
 	}
 	&_open &__line {
+		transition transform .6s cubic-bezier(0.75, 0, 0.25, 1), background-color 0.3s
+
 		&:first-child {
-			transform translateY(7px) rotate(45deg) translateZ(0)
+			transform translateY(5px) rotate(45deg) translateZ(0)
 		}
-		// &:nth-child(2) {
-		// 	opacity 0
-		// }
 		&:last-child {
-			transform translateY(-7px) rotate(-45deg) translateZ(0)
+			transform translateY(-5px) rotate(-45deg) translateZ(0)
 		}
 	}
 }
