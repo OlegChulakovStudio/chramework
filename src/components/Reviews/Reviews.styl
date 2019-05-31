@@ -67,25 +67,32 @@
 		}
 	}
 	&__pagination {
-		display flex
 		position absolute
 		bottom 10px
 		left 50%
 		transform translateX(-50%)
-		justify-content center
 
-		@media $phone {
-			display flex	
-		}
-		&-dot {
-			width 7px
-			height 7px
+		.swiper-pagination-bullet {
+			opacity 1
+			width 9px
+			height 9px
 			border-radius 50%
 			background-color alpha($textColor, .4)
-			margin  0 2px
+			margin  0 3px
 			transition background-color $duration
 
-			&_active {
+			&:after {
+				content ''
+				position absolute
+				z-index 1
+				left -3px
+				top -3px
+				width 15px
+				height 15px
+				cursor pointer
+			}
+
+			&-active {
 				background-color $textColor
 			}
 		}
@@ -163,30 +170,6 @@
 			body()
 		}
 	}
-	&__pagination {
-		font-size 12px
-		padding 8px 16px
-		box-sizing border-box
-		line-height 40px
-		color $textColor
-
-		@media $phone {
-			padding 8px 0
-		}
-		&__item {
-			display inline-block
-			box-sizing border-box
-			width 24px
-			text-align center
-
-			&--count {
-				color $secondTextColor
-			}
-		}
-		&-divider {
-			color $secondTextColor
-		}
-	}
 	&__nav {
 		position relative
 		left 50%
@@ -198,12 +181,6 @@
 		margin-top -10px
 		display flex
 
-		// @media $phone {
-		// 	margin-top 0
-		// 	bottom 5px
-		// 	left 50%
-		// 	transform translateX(-50%)
-		// }
 		&-btn {
 			position relative
 			user-select none
