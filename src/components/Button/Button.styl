@@ -296,4 +296,47 @@
 			background-color #222629
 		}
 	}
+
+	&--pale {
+		text-transform none
+		color #2869F6
+		font-weight 600
+		min-width 200px
+
+		&:before {
+			display none
+		}
+		.Button__inner {
+			padding 18px 22px
+			background-color #E8F3FF
+		}
+		.Button__arrow {
+			fill #2869F6	
+		}
+		@media $withoutPhone {
+			&:hover, &.Button--hover {
+				color #fff
+
+				.Button__inner {
+					background-color $linkHoverColor
+					faster()
+				}
+
+				.Button__arrow {
+					fill #fff
+				}
+			}
+		}
+		&.Button--active, &:active {
+			color #fff
+
+			.Button__inner {
+				background-color $linkHoverColor
+			}
+
+			.Button__arrow {
+				fill #fff
+			}
+		}
+	}
 }
