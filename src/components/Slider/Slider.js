@@ -13,11 +13,13 @@ class Slider extends Component {
 	static propTypes = {
 		slides: PropTypes.any.isRequired,
 		empty: PropTypes.bool,
-		description: PropTypes.object
+		description: PropTypes.object,
+		noLoop: PropTypes.bool,
 	};
 	state = {
 		indexActive: 0,
-		transformFix: true
+		transformFix: true,
+		hideArrows: false
 	};
 	componentDidMount() {
 		setTimeout(() => {
@@ -47,7 +49,7 @@ class Slider extends Component {
 	}
 
 	render() {
-		const { slides, description, className, ...rest } = this.props;
+		const { slides, description, className, noLoop, ...rest } = this.props;
 		const countSlides = this.countSlides();
 		const indexActive = this.state.indexActive;
 		const sliderClass = classNames(['Slider', className]);
@@ -57,23 +59,31 @@ class Slider extends Component {
 		const props = {
 			slidesPerView: 1,
 			grabCursor: true,
-			loop: true,
+			loop: !noLoop,
 			spaceBetween: 16,
 			wrapperClass: "Slider__wrapper",
 			pagination: {
 				el: '.Slider__pagination',
-				bulletClass: 'Slider__pagination-dot',
-				bulletActiveClass: 'Slider__pagination-dot_active',
+				clickable: true,
+				dynamicBullets: true,
+				dynamicMainBullets: 3
 			},
 			on: {
 				slideChange: () => {
 					if (this.swiper) {
-						this.setState({ indexActive: this.swiper.realIndex });
+						this.setState({ indexActive: this.swiper.realIndex, hideArrows: true });
 					}
 				}
 			}
 		};
-
+		const firstSlide = indexActive === 0;
+		const lastSlide = this.props.slides.length - 1 === indexActive;
+		const arrowPrevStyle = classNames('Slider__navArea Slider__navArea_prev', {
+			'Slider__navArea_hide': this.state.hideArrows
+		});
+		const arrowNextStyle = classNames('Slider__navArea Slider__navArea_next', {
+			'Slider__navArea_hide': this.state.hideArrows
+		});
 		return (
 			<div {...rest} className={sliderClass}>
 				<div
@@ -90,8 +100,8 @@ class Slider extends Component {
 							);
 						})}
 					</Swiper>
-					<div className="Slider__navArea" onClick={this.slidePrev} />
-					<div className="Slider__navArea" onClick={this.slideNext} />
+					{!firstSlide && <div className={arrowPrevStyle} onClick={this.slidePrev} ><ArrowIcon className="Slider__navArea-icon Slider__navArea-icon_left" /></div>}
+					{!lastSlide && <div className={arrowNextStyle} onClick={this.slideNext} ><ArrowIcon className="Slider__navArea-icon Slider__navArea-icon_right" /></div>}
 				</div>
 				<div className="Slider__bottom">
 					{(description || slides[0].description) &&
@@ -105,7 +115,7 @@ class Slider extends Component {
 							</div>
 						)
 					}
-					<div className={navStyle}>
+					{/* <div className={navStyle}>
 						<div className="Slider__nav-btn Slider__nav-btn_prev" onClick={this.slidePrev}>
 							<ArrowIcon />
 						</div>
@@ -121,7 +131,7 @@ class Slider extends Component {
 						<div className="Slider__nav-btn Slider__nav-btn_next" onClick={this.slideNext}>
 							<ArrowIcon />
 						</div>
-					</div>
+					</div> */}
 				</div>
 			</div>
 		);

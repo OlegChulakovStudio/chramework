@@ -45,15 +45,59 @@ $ratio = 1.92;
 	&__navArea {
 		position absolute
 		top 0
-		width 80px
+		width 105px
 		height 100%
-		left 0
 		z-index 1000
 		cursor pointer
 
-		&:last-child {
-			left auto
+		&:hover {
+			opacity 1
+			background: #00000024
+			transition: background 0.15s linear
+
+			@media $phone {
+				opacity: 0
+			}
+		}
+
+		&_prev {
+			left 0
+		}
+
+		&_next {
 			right 0
+		}
+
+		&_hide {
+			opacity 0	
+		}
+
+		&-icon {
+			position absolute
+			top 50%
+			margin-top -12px
+			height 24px
+			width 24px
+
+			animation-duration 1.8s;
+
+			animation-iteration-count infinite
+			animation-timing-function ease
+
+			& > path {
+				fill #ffffff
+				filter drop-shadow( 0 0 2px rgba(0, 0, 0, .7));
+				-webkit-svg-shadow: 0 0 2px rgba(0, 0, 0, .7);
+			}
+
+			&_left {
+				animation-name: MobileSlider__leftArrow;
+			}
+
+			&_right {
+				animation-name: MobileSlider__rightArrow;
+				transform: rotate(180deg);
+			}
 		}
 	}
 	& &__item {
@@ -143,27 +187,38 @@ $ratio = 1.92;
 	}
 
 	&__pagination {
-		display none
 		position absolute
 		bottom 10px
 		left 50%
 		transform translateX(-50%)
-		justify-content center
+		height 15px
+		padding 4px 0
 
-		@media $phone {
-			display flex	
-		}
-		&-dot {
-			width 7px
-			height 7px
+		.swiper-pagination-bullet {
+			opacity 1
+			width 9px
+			height 9px
 			border-radius 50%
 			background-color alpha(#fff, .4)
-			margin  0 2px
+			margin  0 3px
 			transition background-color $duration
+			box-shadow 0 0 4px 0 #00000050
 
-			&_active {
+			&:after {
+				content ''
+				position absolute
+				z-index 1
+				left -3px
+				top -3px
+				width 15px
+				height 15px
+				cursor pointer
+			}
+
+			&-active {
 				background-color #fff
 			}
+			
 		}
 	}
 	&__footer {
@@ -227,5 +282,34 @@ $ratio = 1.92;
 	bottom 10px
 	left 50%
 	width 100%
+}
+
+@keyframes MobileSlider__leftArrow {
+	0% {
+		left: 44px;
+	}
+
+	50% {
+		left: 32px;
+	}
+
+	100% {
+		left: 44px;
+	}
+}
+
+
+@keyframes MobileSlider__rightArrow {
+  0% {
+    right 44px
+  }
+
+  50% {
+    right 32px
+  }
+
+  100% {
+    right 44px
+  }
 }
 
