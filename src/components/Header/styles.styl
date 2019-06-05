@@ -274,7 +274,9 @@
 			justify-content space-between
 		}
 		@media $phone{
-			padding 16px 16px 0
+			padding 16px
+			height 100%
+			box-sizing border-box
 		}
 
 		.Header_transitionLock & {
@@ -396,5 +398,17 @@
 		.Navigation {
 			display flex	
 		}
+	}
+
+	&_videoPlay {
+		.Header__content {
+			.modal-entering &, .modal-entered & {
+				@media $phone {
+					opacity 1
+					visibility visible
+					pointer-events auto
+				}
+			}
+		}	
 	}
 }

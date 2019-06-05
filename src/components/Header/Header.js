@@ -207,7 +207,8 @@ class Header extends Component {
       madeinlab,
       mod,
       longNav,
-      mark
+      mark,
+      videoPlay,
     } = this.props;
     const { localMod, scrollMod } = this.state;
     const headerMark =
@@ -229,7 +230,8 @@ class Header extends Component {
       Header_lab: page === "lab",
       Header_fix: menuIsOpened,
       Header_ingroup: ingroup || madeinlab,
-      Header_longNav: longNav
+      Header_longNav: longNav,
+      Header_videoPlay: videoPlay
     });
     const logoMod =
       mod === "dark" || mod === "work" || mod === "white" ? "light" : "";
