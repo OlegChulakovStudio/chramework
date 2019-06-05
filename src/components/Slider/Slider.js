@@ -56,6 +56,7 @@ class Slider extends Component {
 		const navStyle = classNames(['Slider__nav', {
 			Slider__nav_empty: !description && !slides[0].description
 		}]);
+		const isDynamicBullets = slides.length > 4;
 		const props = {
 			slidesPerView: 1,
 			grabCursor: true,
@@ -65,7 +66,7 @@ class Slider extends Component {
 			pagination: {
 				el: '.Slider__pagination',
 				clickable: true,
-				dynamicBullets: true,
+				dynamicBullets: isDynamicBullets,
 				dynamicMainBullets: 3
 			},
 			on: {

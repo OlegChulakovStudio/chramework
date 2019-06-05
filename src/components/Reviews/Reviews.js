@@ -56,52 +56,79 @@ const exampleReviews = [
 		position: 'Директор департамента развития корпоративного бизнеса БКС',
 		text:
 			'Студия Олега Чулакова разрабатывает для АО&nbsp;&#8222;БКС&nbsp;Банк&#8221; онлайн-сервис Личный кабинет для малого бизнеса. За&nbsp;время сотрудничества компания зарекомендовала себя как эксперт в&nbsp;области разработки сложных сервисов и&nbsp;интегрированных систем'
+	},
+	{	icon: DemoIcon,
+		avatar: 'https://chulakov.ru/work/megalabs/images/avatar.jpg',
+		name: 'Ян Кухальский',
+		position: 'Генеральный Директор MegaLabs',
+		text:
+			'Хотелось&nbsp;бы отметить глубокую аналитическую работу, которая проводится перед выполнением каждой задачи. Это позволяет оптимизировать рабочий процесс и&nbsp;добиться высокого качества готового продукта. Рекомендуем Студию Олега Чулакова как надежного партнера в&nbsp;разработке веб-сайтов и&nbsp;сложных сервисных систем'
+	},
+	{
+		icon: DemoIcon,
+		avatar: 'https://chulakov.ru/work/bcs/images/avatar.jpg',
+		name: 'Дмитрий Костенко',
+		position: 'Директор департамента развития корпоративного бизнеса БКС',
+		text:
+			'Студия Олега Чулакова разрабатывает для АО&nbsp;&#8222;БКС&nbsp;Банк&#8221; онлайн-сервис Личный кабинет для малого бизнеса. За&nbsp;время сотрудничества компания зарекомендовала себя как эксперт в&nbsp;области разработки сложных сервисов и&nbsp;интегрированных систем'
+	},
+	{	icon: DemoIcon,
+		avatar: 'https://chulakov.ru/work/megalabs/images/avatar.jpg',
+		name: 'Ян Кухальский',
+		position: 'Генеральный Директор MegaLabs',
+		text:
+			'Хотелось&nbsp;бы отметить глубокую аналитическую работу, которая проводится перед выполнением каждой задачи. Это позволяет оптимизировать рабочий процесс и&nbsp;добиться высокого качества готового продукта. Рекомендуем Студию Олега Чулакова как надежного партнера в&nbsp;разработке веб-сайтов и&nbsp;сложных сервисных систем'
+	},
+	{
+		icon: DemoIcon,
+		avatar: 'https://chulakov.ru/work/bcs/images/avatar.jpg',
+		name: 'Дмитрий Костенко',
+		position: 'Директор департамента развития корпоративного бизнеса БКС',
+		text:
+			'Студия Олега Чулакова разрабатывает для АО&nbsp;&#8222;БКС&nbsp;Банк&#8221; онлайн-сервис Личный кабинет для малого бизнеса. За&nbsp;время сотрудничества компания зарекомендовала себя как эксперт в&nbsp;области разработки сложных сервисов и&nbsp;интегрированных систем'
 	}
 ];
 
 class Reviews extends Component {
+
 	static propTypes = {
 		className: PropTypes.string,
 		reviews: PropTypes.array
 	};
+
 	static defaultProps = {
 		className: undefined,
 		reviews: undefined
 	};
+
 	state = { indexActive: 0 };
+
 	getSwiperNode = node => {
 		if (node) {
 			this.swiper = node.swiper;
 		}
 	};
+
 	slidePrev = () => this.swiper.slidePrev();
+
 	slideNext = () => this.swiper.slideNext();
+
 	render() {
+
 		const { className, reviews, ...rest } = this.props;
-		// const { indexActive } = this.state;
 		const currentReviews = reviews || exampleReviews;
-		// const countSlides = currentReviews.length;
 		const classes = classNames(['Reviews', className]);
-		// const nextBtnClass = classNames([
-		// 	'Reviews__nav-btn',
-		// 	'Reviews__nav-btn_next',
-		// 	{
-		// 		'Reviews__nav-btn_disable': indexActive === currentReviews.length - 1
-		// 	}
-		// ]);
+		const isDynamicBullets = currentReviews.length > 4;
 		const props = {
 			slidesPerView: 1,
 			grabCursor: true,
-			// loop: true,
 			spaceBetween: 16,
 			wrapperClass: 'Reviews__container',
 			pagination: {
 				el: '.Reviews__pagination',
 				clickable: true,
-				dynamicBullets: true,
+				dynamicBullets: isDynamicBullets,
 				dynamicMainBullets: 3
-				// bulletClass: 'Reviews__pagination-dot',
-				// bulletActiveClass: 'Reviews__pagination-dot_active',
 			},
 			on: {
 				slideChange: () => {
@@ -113,6 +140,7 @@ class Reviews extends Component {
 				}
 			},
 		};
+
 		return (
 			<div {...rest} className={classes}>
 				<Swiper {...props} ref={this.getSwiperNode}>
@@ -154,26 +182,6 @@ class Reviews extends Component {
 						);
 					})}
 				</Swiper>
-				{/* <div className="Reviews__nav">
-					<div
-						className="Reviews__nav-btn Reviews__nav-btn_prev"
-						onClick={this.slidePrev}>
-						<ArrowIcon />
-					</div>
-					<div className="Reviews__pagination">
-						<div className="Reviews__pagination__item">
-							{indexActive + 1 < 10 ? `0${indexActive + 1}` : indexActive + 1}
-						</div>
-						<span className="Reviews__pagination-divider">/</span>
-						<div className="Reviews__pagination__item Reviews__pagination__item--count">
-							{countSlides < 10 ? `0${countSlides}` : countSlides}
-						</div>
-					</div>
-
-					<div className={nextBtnClass} onClick={this.slideNext}>
-						<ArrowIcon />
-					</div>
-				</div> */}
 			</div>
 		);
 	}
