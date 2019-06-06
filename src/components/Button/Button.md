@@ -1,6 +1,6 @@
 Simple button with `onClick` handler:
 
-    <Button text="Войти" onClick={() => {
+    <Button text="Подробнее" white arrow onClick={() => {
       alert('pushed');
     }}/>
 
