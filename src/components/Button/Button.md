@@ -1,17 +1,18 @@
-Simple button with `onClick` handler:
+White button with arrow:
 
     <Button text="Подробнее" white arrow onClick={() => {
       alert('pushed');
     }}/>
 
-Bordered button with arrow
+Button with arrow:
 
-    <Button text="Подробнее" arrow bordered />
+    <Button text="Подробнее" arrow />
 
-Bordered pale button with arrow
+Blue pale button with arrow:
 
-    <Button text="Подробнее" arrow pale />
+    <Button text="Подробнее" arrow bluePale />
 
-Small button
+White pale button with arrow:
 
-    <Button text="Подробнее" size="small" />
+    <Button text="Подробнее" arrow whitePale />
+

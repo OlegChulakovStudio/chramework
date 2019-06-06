@@ -26,6 +26,5 @@
 	"brand": "#FFF45F",
 	"brandHover": "#007d84",
 
-	"buttonBlue": "#2869F6",
-	"buttonBlueHove": "#1949AC"
+	"bluePaleButton": "#E8F3FF"
 }
