@@ -24,5 +24,7 @@
 	"linkHover": "#0047B3",
 
 	"brand": "#FFF45F",
-	"brandHover": "#007d84"
+	"brandHover": "#007d84",
+
+	"bluePaleButton": "#E8F3FF"
 }

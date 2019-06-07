@@ -23,15 +23,14 @@ class Button extends Component {
 		/** If this parameter set, button will turn into link with href equal to this prop.  */
 		to: PropTypes.string,
 		href: PropTypes.string,
-		/** If this parameter set, button will turn into link with href equal to this prop.  */
-		bordered: PropTypes.bool,
 		arrow: PropTypes.bool,
 		/** HTML 'type' attribute of button. Common values are 'button' and 'submit'. Note that this prop has no effect if 'to' was set */
 		type: PropTypes.string,
 		/** click event handler */
 		onClick: PropTypes.func,
 		white: PropTypes.bool,
-		pale: PropTypes.bool,
+		bluePale: PropTypes.bool,
+		whitePale: PropTypes.bool,
 		dark: PropTypes.bool,
 		uppercase: PropTypes.bool,
 	};
@@ -39,7 +38,8 @@ class Button extends Component {
 	static defaultProps = {
 		className: undefined,
 		white: false,
-		pale: false,
+		bluePale: false,
+		whitePale: false,
 		dark: false,
 		disabled: false,
 		intent: undefined,
@@ -47,7 +47,6 @@ class Button extends Component {
 		text: undefined,
 		to: undefined,
 		href: undefined,
-		bordered: false,
 		arrow: false,
 		type: 'button',
 		onClick: undefined,
@@ -66,7 +65,7 @@ class Button extends Component {
 		const RenderedComponent =
 			!this.props.to && !this.props.href ? 'button' : Link;
 
-		const { bordered, intent, white, pale, dark, size, arrow, className, text, type, uppercase, ...rest } = this.props;
+		const { intent, white, bluePale, whitePale, dark, size, arrow, className, text, type, uppercase, ...rest } = this.props;
 
 		return (
 			<RenderedComponent
@@ -75,12 +74,12 @@ class Button extends Component {
 					'Button',
 					{
 						'Button--active': this.state.active,
-						'Button--bordered': bordered,
 						'Button--arrow': arrow,
 						[`Button--${intent}`]: intent,
 						'Button--disabled': this.props.disabled,
 						'Button--white': white,
-						'Button--pale': pale,
+						'Button--bluePale': bluePale,
+						'Button--whitePale': whitePale,
 						'Button--dark': dark,
 						'Button--uppercase': uppercase,
 						[`Button--${size}`]: size,
