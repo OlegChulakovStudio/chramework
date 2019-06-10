@@ -17,20 +17,20 @@
       "clickable": false
     },
     {
-      "type": "keyperson",
-      "title": "Олег Чулаков в&nbsp;топ-5 персон",
-      "medal": true,
-      "top5": true,
-      "keyperson": true,
-      "clickable": true
-    },
-    {
       "type": "mobile",
       "title": "12 место<br><nobr>mobile production</nobr>",
       "medal": true,
       "top12": true,
       "tagline": true,
       "clickable": false
+    },
+    {
+      "type": "keyperson",
+      "title": "Олег Чулаков в&nbsp;топ-5 персон",
+      "medal": true,
+      "top5": true,
+      "keyperson": true,
+      "clickable": true
     },
     {
       "type": "statistic",
