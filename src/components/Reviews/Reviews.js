@@ -155,6 +155,7 @@ class Reviews extends Component {
 
 		const firstSlide = indexActive === 0;
 		const lastSlide = currentReviews.length - 1 === indexActive;
+		
 
 		const arrowPrevStyle = classNames('Reviews__navigation-item Reviews__navigation-item_prev', {
 			'Reviews__navigation-item_hide': this.state.hideArrows
