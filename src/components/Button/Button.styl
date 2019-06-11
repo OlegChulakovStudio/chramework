@@ -75,8 +75,8 @@
 		top 50%
 		margin-top -7.5px
 		right 24px
-		stroke currentColor
-		transition transform $duration, stroke $duration
+		fill currentColor
+		transition transform $duration, fill $duration
 		transition-timing-function $easeInOutSine
 		width 20px
 	}
@@ -250,7 +250,7 @@
 			background-color $bluePaleButtonColor
 		}
 		.Button__arrow {
-			stroke $linkColor
+			fill $linkColor
 		}
 		@media $withoutPhone {
 			&:hover, &.Button--hover {
@@ -262,7 +262,7 @@
 				}
 
 				.Button__arrow {
-					stroke #fff
+					fill #fff
 				}
 			}
 		}
@@ -270,14 +270,14 @@
 		@media $phone {
 			&:hover, &.Button--hover {
 				.Button__arrow {
-					stroke #fff
+					fill #fff
 				}
 			}	
 
 			&.Button--arrow {
 				&:hover, &.Button--hover {
 					.Button__arrow {
-						stroke #fff
+						fill #fff
 					}
 				}
 			}
@@ -291,7 +291,7 @@
 			}
 
 			.Button__arrow {
-				stroke #fff
+				fill #fff
 			}
 		}
 	}
@@ -305,7 +305,7 @@
 			background-color alpha(#FFFFFF, 20%)
 		}
 		.Button__arrow {
-			stroke #fff
+			fill #fff
 		}
 		@media $withoutPhone {
 			&:hover, &.Button--hover {
@@ -317,7 +317,7 @@
 				}
 
 				.Button__arrow {
-					stroke $linkHoverColor
+					fill $linkHoverColor
 				}
 			}
 		}
@@ -325,14 +325,14 @@
 		@media $phone {
 			&:hover, &.Button--hover {
 				.Button__arrow {
-					stroke #fff
+					fill #fff
 				}
 			}
 
 			&.Button--arrow {
 				&:hover, &.Button--hover {
 					.Button__arrow {
-						stroke #fff
+						fill #fff
 					}
 				}
 			}
@@ -348,7 +348,7 @@
 			}
 
 			.Button__arrow {
-				stroke $linkHoverColor
+				fill $linkHoverColor
 			}
 		}
 	}
