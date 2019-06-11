@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import Swiper from 'react-id-swiper';
 import reactHtmlParser from 'react-html-parser';
 
-// import ArrowIcon from '../../assets/arrow.svg';
+import ArrowIcon from '../../assets/arrow.svg';
 import DemoIcon from '../../assets/clients/rosbank.svg';
 import Paragraph from '../Paragraph/Paragraph.js';
 
@@ -101,11 +101,23 @@ class Reviews extends Component {
 		reviews: undefined
 	};
 
-	state = { indexActive: 0 };
+	state = { indexActive: 0, hideArrows: false };
 
 	getSwiperNode = node => {
 		if (node) {
 			this.swiper = node.swiper;
+		}
+	};
+
+	getLeftArrowNode = node => {
+		if (node) {
+			this.leftArrowNode = node;
+		}
+	};
+
+	getRigthArrowNode = node => {
+		if (node) {
+			this.rightArrowNode = node;
 		}
 	};
 
@@ -114,15 +126,14 @@ class Reviews extends Component {
 	slideNext = () => this.swiper.slideNext();
 
 	render() {
-
 		const { className, reviews, ...rest } = this.props;
+		const indexActive = this.state.indexActive;
 		const currentReviews = reviews || exampleReviews;
 		const classes = classNames(['Reviews', className]);
 		const isDynamicBullets = currentReviews.length > 4;
 		const props = {
 			slidesPerView: 1,
 			grabCursor: true,
-			spaceBetween: 16,
 			wrapperClass: 'Reviews__container',
 			pagination: {
 				el: '.Reviews__pagination',
@@ -134,12 +145,23 @@ class Reviews extends Component {
 				slideChange: () => {
 					if (this.swiper) {
 						this.setState({
-							indexActive: this.swiper.realIndex
+							indexActive: this.swiper.realIndex,
+							hideArrows: true
 						});
 					}
 				}
 			},
 		};
+
+		const firstSlide = indexActive === 0;
+		const lastSlide = currentReviews.length - 1 === indexActive;
+
+		const arrowPrevStyle = classNames('Reviews__navigation-item Reviews__navigation-item_prev', {
+			'Reviews__navigation-item_hide': this.state.hideArrows
+		});
+		const arrowNextStyle = classNames('Reviews__navigation-item Reviews__navigation-item_next', {
+			'Reviews__navigation-item_hide': this.state.hideArrows
+		});
 
 		return (
 			<div {...rest} className={classes}>
@@ -182,6 +204,14 @@ class Reviews extends Component {
 						);
 					})}
 				</Swiper>
+				<div className="Reviews__navigation">
+					{!firstSlide && <div ref={this.getLeftArrowNode} onClick={this.slidePrev} className={arrowPrevStyle}>
+						<ArrowIcon className="Reviews__navigation-icon Reviews__navigation-icon_left" />
+					</div>}
+					{!lastSlide && <div ref={this.getRigthArrowNode} onClick={this.slideNext} className={arrowNextStyle}>
+						<ArrowIcon className="Reviews__navigation-icon Reviews__navigation-icon_right" />
+					</div>}
+				</div>
 			</div>
 		);
 	}

@@ -116,23 +116,6 @@ class Slider extends Component {
 							</div>
 						)
 					}
-					{/* <div className={navStyle}>
-						<div className="Slider__nav-btn Slider__nav-btn_prev" onClick={this.slidePrev}>
-							<ArrowIcon />
-						</div>
-						<div className="Slider__navigation">
-							<div className="Slider__navigation__item">
-								{this.showIndex(indexActive)}
-							</div>
-							<span className="Slider__navigation-divider">/</span>
-							<div className="Slider__navigation__item Slider__navigation__item--count">
-								{countSlides < 10 ? `0${countSlides}` : countSlides}
-							</div>
-						</div>
-						<div className="Slider__nav-btn Slider__nav-btn_next" onClick={this.slideNext}>
-							<ArrowIcon />
-						</div>
-					</div> */}
 				</div>
 			</div>
 		);
