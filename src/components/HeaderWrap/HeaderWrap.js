@@ -85,6 +85,7 @@ const HeaderWrap = () => {
   return (
     <Header
       hamburger
+      scrollMenu={navMenu}
     />
   );
 };
