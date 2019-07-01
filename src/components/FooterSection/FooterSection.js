@@ -108,7 +108,6 @@ const FooterSection = ({
           {showButton && (
             <div className="FooterSection__feedback">
               <Button
-                uppercase
                 text={currentData.buttonText || `Заполнить бриф`}
                 {...showButton}
                 className="FooterSection__feedback-button"
