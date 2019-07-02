@@ -138,21 +138,16 @@
 	}
 
 	&__title {
-		display block
-		margin-bottom 8px
-		font-weight $bold
-		font-size 20px
-		line-height 1.1
-		// color currentColor
-		@media $phone {
-			font-size 20px
-			margin-bottom 4px
-			line-height (24/20)
+
+		&.Heading {
+			display block
+			font-size 22px
+			@media $phone {
+				font-size 20px
+				margin-bottom 4px
+				line-height (24/20)
+			}
 		}
-		// .WorkItem_link:hover &,
-		// .WorkItem__content:hover & {
-		// 	color currentColor
-		// }
 	}
 	&__tags {
 		opacity 0.3
