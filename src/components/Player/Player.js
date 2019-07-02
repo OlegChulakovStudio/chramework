@@ -423,7 +423,7 @@ class Player extends Component {
 			}, 100);
 		}
 
-		if (!this.props.playOnScroll && currentPlayer && currentPlayer !== this.player) {
+		if (currentPlayer && currentPlayer !== this.player) {
 			currentPlayer.pause();
 		}
 		currentPlayer = this.player;
@@ -448,6 +448,8 @@ class Player extends Component {
 		clearTimeout(this.timer);
 	};
 	playOnscrollEnter = () => {
+		console.log('playOnscrollEnter');
+		
 		if (!this.firstPlay) {
 			this.autoPlay();
 			this.firstPlay = true;
@@ -455,6 +457,7 @@ class Player extends Component {
 		paused && this.player.play();
 	}
 	playOnscrollLeave = () => {
+		console.log('playOnscrollLeave');
 		if (this.firstPlay && this.player) {
 			this.player.pause();
 			paused = true;
@@ -611,7 +614,7 @@ class Player extends Component {
 				{this.renderPlayer()}
 			</Waypoint>
 		) : this.props.playOnScroll ? (
-			<Waypoint onEnter={this.playOnscrollEnter} onLeave={this.playOnscrollLeave}>
+			<Waypoint scrollableAncestor="window" topOffset="48%" bottomOffset="48%" onEnter={this.playOnscrollEnter} onLeave={this.playOnscrollLeave}>
 				{this.renderPlayer()}
 			</Waypoint>
 
