@@ -1,23 +1,23 @@
 .Button {
 	position relative
 	display inline-block
-	vertical-align middle
-	box-sizing border-box
 	font $medium 14px / 20px $fontFamily
 	color #FFF
+	text-align center
+	vertical-align middle
 	white-space nowrap
 	cursor pointer
 	border none
 	outline none
 	border-radius 4px
 	user-select none
-	text-align center
 	background-color transparent
 	padding 0
 	box-shadow none
 	transition color $duration
 	text-transform none
 	min-width 200px
+	box-sizing border-box
 
 	&:hover, &--hover {
 		background-color transparent
@@ -42,6 +42,10 @@
 			background-attachment fixed
 			transform translateY(2px)
 			faster()
+
+			@media $phone {
+				background-color $linkColor
+			}
 		}
 	}
 
@@ -98,6 +102,7 @@
 		.Button__inner {
 			padding-right 80px
 		}
+
 		@media $withoutPhone {
 			&:hover, &.Button--hover {
 				.Button__arrow {
@@ -258,7 +263,6 @@
 
 				.Button__inner {
 					background-color $linkHoverColor
-					faster()
 				}
 
 				.Button__arrow {
@@ -307,13 +311,24 @@
 		.Button__arrow {
 			fill #fff
 		}
+
+		&.Button--active, &:active {
+			color $linkHoverColor
+
+			.Button__inner {
+				background-color #fff
+			}
+
+			.Button__arrow {
+				fill $linkHoverColor
+			}
+		}
 		@media $withoutPhone {
 			&:hover, &.Button--hover {
 				color $linkHoverColor
 
 				.Button__inner {
 					background-color #fff
-					faster()
 				}
 
 				.Button__arrow {
@@ -324,24 +339,33 @@
 
 		@media $phone {
 			&:hover, &.Button--hover {
+				color $linkHoverColor
+				
 				.Button__arrow {
-					fill #fff
+					fill $linkHoverColor
+				}
+				.Button__inner {
+					background-color #fff
 				}
 			}
 
 			&.Button--arrow {
 				&:hover, &.Button--hover {
+					color $linkHoverColor
+
 					.Button__arrow {
-						fill #fff
+						fill $linkHoverColor
+					}
+					.Button__inner {
+						background-color #fff
 					}
 				}
 			}
 		}
 
 
-
 		&.Button--active, &:active {
-			color $linkHoverColor
+			color $linkHoverColor !important
 
 			.Button__inner {
 				background-color #fff

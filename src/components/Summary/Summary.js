@@ -10,10 +10,6 @@ import "./Summary.styl";
 
 import defaultData from "./data.json";
 
-const production = {
-  external: { href: "https://chulakov.ru/life/top5" },
-  internal: { to: { pathname: "/life/top5", state: { fromHome: true } } }
-};
 const design = {
   external: { href: "https://chulakov.ru/life/best-design-studio" },
   internal: {
@@ -43,7 +39,6 @@ const Summary = ({ awards, className, external, data, ...rest }) => {
     }
   ]);
 
-  const productionLink = external ? production.external : production.internal;
   const designLink = external ? design.external : design.internal;
   const usabilityLink = external ? usability.external : usability.internal;
   const keypersonLink = external ? keyperson.external : keyperson.internal;
@@ -92,15 +87,15 @@ const Summary = ({ awards, className, external, data, ...rest }) => {
               </div>
             </Link>
           ) : (
-              !awards && (
-                <div key={itemKey} className={linkStyle}>
-                  <div className="Summary__number">{item.number}</div>
-                  <Paragraph className="Summary__title" mod="boldMedium">
-                    {reactHtmlParser(item.title)}
-                  </Paragraph>
-                </div>
-              )
-            );
+            !awards && (
+              <div key={itemKey} className={linkStyle}>
+                <div className="Summary__number">{item.number}</div>
+                <Paragraph className="Summary__title" mod="boldMedium">
+                  {reactHtmlParser(item.title)}
+                </Paragraph>
+              </div>
+            )
+          );
         })}
       </div>
       <div className="Summary__notes">
