@@ -1,6 +1,5 @@
 {
-  "items": [
-    {
+  "items": [{
       "type": "design",
       "title": "<nobr>Дизайн-студия</nobr><br><nobr>&#8470;&nbsp;1 в&nbsp;России</nobr>",
       "medal": true,
@@ -41,7 +40,7 @@
     },
     {
       "type": "statistic",
-      "number": "100+",
+      "number": "120+",
       "title": "специалистов",
       "counter": true,
       "specialists": true
