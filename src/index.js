@@ -45,6 +45,7 @@ import SocialNetworks from './components/SocialNetworks/SocialNetworks';
 import FooterMini from './components/FooterMini/FooterMini';
 import Header from './components/Header/Header';
 import Hamburger from './components/Header/Hamburger';
+import WorkTags from './components/WorkTags/WorkTags';
 import HeaderWrap from './components/HeaderWrap/HeaderWrap';
 import ui from './components/modules/ui';
 import modal from './components/modules/modal';
@@ -101,4 +102,5 @@ export {
 	Hamburger,
 	ui,
 	modal,
+	WorkTags
 };
