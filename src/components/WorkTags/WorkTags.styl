@@ -1,8 +1,12 @@
 .WorkTags {
-	text-transform lowercase
+	display flex
+	flex-wrap wrap
 
 	&__item {
-		color $secondTextColor
+		bodySmallGray()
+		white-space nowrap
+		text-transform lowercase
+		margin-right 0.28em
 
 		&:first-child {
 			text-transform capitalize
@@ -15,5 +19,11 @@
 		&:after {
 			content ', '
 		}
+
+		&_noLowerCase {
+			text-transform none
+		}
 	}
+
+	
 }
