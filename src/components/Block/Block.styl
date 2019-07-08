@@ -63,7 +63,20 @@
 
 	&_maxGrid {
 		.Block__inner {
-			grid-width(11)				
+			grid-width(10)	
+			padding-left 0
+			
+			@media $tablet {
+				width 100%
+				padding-left 64px
+				padding-right 64px
+				margin 0
+			}	
+
+			@media $phone {
+				padding-left 16px
+				padding-right 16px	
+			}		
 		}
 	}
 }
