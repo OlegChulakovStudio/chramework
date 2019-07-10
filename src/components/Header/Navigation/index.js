@@ -39,7 +39,7 @@ class Navigation extends Component {
       <div className="Navigation">
         {this.props.menu &&
           this.props.menu.map(item => {
-            return !item.hideInMenu ? (
+            return !item.hideInMenu && !item.onlyMobile ? (
               <NavLink
                 onClick={this.handleClick}
                 exact={item.exact}
@@ -55,32 +55,36 @@ class Navigation extends Component {
                 )}
               </NavLink>
             ) : (
-              <Link
-                className="Navigation__item"
-                key={item.url}
-                href={item.url}
-                disableBlank={item.disableBlank}
-              >
-              {reactHtmlParser(item.name)}
-              </Link>
+              !item.onlyMobile && (
+                <Link
+                  className="Navigation__item"
+                  key={item.url}
+                  href={item.url}
+                  disableBlank={item.disableBlank}
+                >
+                  {reactHtmlParser(item.name)}
+                </Link>
+              )
             );
           })}
 
         {this.props.listMenu &&
           this.props.listMenu.map(item => {
             return (
-              <Link
-                className="Navigation__item"
-                key={item.url}
-                href={item.url}
-                disableBlank
-                activeClassName="Navigation__item_active"
-              >
-                {reactHtmlParser(item.name)}
-                {item.vacancies && (
-                  <VacanciesCount count={this.props.vacanciesCount} />
-                )}
-              </Link>
+              !item.onlyMobile && (
+                <Link
+                  className="Navigation__item"
+                  key={item.url}
+                  href={item.url}
+                  disableBlank
+                  activeClassName="Navigation__item_active"
+                >
+                  {reactHtmlParser(item.name)}
+                  {item.vacancies && (
+                    <VacanciesCount count={this.props.vacanciesCount} />
+                  )}
+                </Link>
+              )
             );
           })}
 

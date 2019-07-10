@@ -208,7 +208,7 @@ class Header extends Component {
       mod,
       longNav,
       mark,
-      videoPlay,
+      videoPlay
     } = this.props;
     const { localMod, scrollMod } = this.state;
     const headerMark =
@@ -219,7 +219,8 @@ class Header extends Component {
         : "";
 
     const styles = classNames("Header", headerMark, {
-      Header_pinned: this.props.menu || this.props.scrollMenu,
+      Header_pinned:
+        this.props.menu || this.props.scrollMenu || this.props.mobileMenu,
       Header_isLink: this.props.pinned === "desktop",
       Header_linkScroll: this.props.linkScroll,
       [`Header_${page}`]: page,
@@ -298,6 +299,7 @@ class Header extends Component {
           <ModalMenuContainer
             vacanciesCount={this.props.vacanciesCount}
             menu={this.props.menu}
+            mobileMenu={this.props.mobileMenu}
           />
         )}
       </header>
@@ -317,6 +319,7 @@ Header.defaultProps = {
   filterList: undefined,
   mod: "",
   menu: undefined,
+  mobileMenu: undefined,
   scrollMenu: undefined,
   videoPlay: undefined,
   linkScroll: undefined,
@@ -336,6 +339,7 @@ Header.propTypes = {
   filterList: PropTypes.array,
   mod: PropTypes.string,
   menu: PropTypes.array,
+  mobileMenu: PropTypes.array,
   scrollMenu: PropTypes.array,
   videoPlay: PropTypes.object,
   children: PropTypes.any,

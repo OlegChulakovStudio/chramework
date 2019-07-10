@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import reactHtmlParser from "react-html-parser";
 import { connect } from "react-redux";
 import classNames from "classnames";
+import { isPhone } from "../../../utils/devices";
 
 import { NavLink } from "react-router-dom";
 import VacanciesCount from "../VacanciesCount";
@@ -17,14 +18,43 @@ const icons = {
   moscow: Moscow,
   rostov: Rostov
 };
+const isServer = typeof window === "undefined";
 
 const mapDispatchToProps = dispatch => ({
   menuClose: () => dispatch(actions.menuClose())
 });
 
 class MenuInner extends Component {
+  state = {
+    isPhone: isPhone()
+  };
+
+  componentDidMount() {
+    this.updateState();
+    if (!isServer) {
+      window.addEventListener("resize", this.onResize);
+    }
+  }
+
+  componentWillUnmount() {
+    if (!isServer) {
+      window.removeEventListener("resize", this.onResize);
+    }
+  }
   linkClick = () => {
     this.props.menuClose();
+  };
+
+  updateState = () => {
+    this.setState({ isPhone: isPhone() });
+  };
+
+  onResize = () => {
+    if (isPhone() && !this.state.isPhone) {
+      this.setState({ isPhone: true });
+    } else if (!isPhone() && this.state.isPhone) {
+      this.setState({ isPhone: false });
+    }
   };
 
   render() {
@@ -33,18 +63,26 @@ class MenuInner extends Component {
       MenuInner: true,
       MenuInner_notFound: notFound
     });
+    const menuStyle = classNames({
+      Menu: true,
+      Menu_notFound: notFound
+    });
 
     let menuData = [];
-    const menuArray = this.props.menu;
+    const menuArray = !this.state.isPhone
+      ? this.props.menu
+      : this.props.mobileMenu;
+
     menuArray.forEach(item => {
-      !item.hideInMenu && menuData.push(item);
+      !item.hideInMenu && !item.onlyMobile && menuData.push(item);
     });
+
     return (
-      <div className="Menu">
+      <div className={menuStyle}>
         <div className="Menu__inner">
           <div className={blockStyle}>
             <div className="MenuInner__container">
-              {this.props.menu &&
+              {(this.props.menu || this.props.mobileMenu) &&
                 menuData.map((item, i) => {
                   const subListStyle = classNames({
                     MenuInner__sublist: true,

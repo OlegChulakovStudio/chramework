@@ -10,7 +10,7 @@
 	}
 	@media $phone {
 		height auto
-		padding-top 24px
+		padding-top 40px
 	}
 	&__inner {
 		display flex
@@ -32,6 +32,25 @@
 			height auto
 			margin-top 0
 			padding 0 16px
+		}
+	}
+
+	&_notFound {
+		padding-top 80px
+		padding-bottom 0
+
+		@media $phone {
+			padding-top 40px	
+		}
+
+		.Menu__inner {
+			opacity 1
+			padding-bottom 0
+
+			@media $phone {
+				padding-left 0
+				padding-right 0	
+			}	
 		}
 	}
 }
@@ -121,7 +140,8 @@
 			font-size 20px
 		}
 		@media $phone {
-			font-size 32px
+			font-size 24px
+			line-height 1
 			margin-bottom 0
 		}
 		&.active {
@@ -151,6 +171,7 @@
 		font-size 14px
 		line-height (17/14)
 		margin-bottom 19px
+
 		&_hidden{
 			display none
 		}
@@ -169,10 +190,6 @@
 
 			@media $verticalTablet {
 				display: none
-			}
-
-			@media $phone {
-				display: block
 			}
 
 			svg {
@@ -194,12 +211,10 @@
 
 			&_inmobile {
 				display block
-				font-size 32px
-				// color $textColor
-				// font-weight $bold
-				margin-bottom 16px
-				padding-left 26px
+				margin-bottom 8px
+				padding-left 24px
 				font-size 20px
+				line-height 30px
 
 				&:last-child {
 					margin-bottom 0
@@ -243,7 +258,6 @@
 		}
 	}
 	&_notFound {
-		padding-top 80px
-		grid-width(0, padding-left)
+		padding 0
 	}
 }
