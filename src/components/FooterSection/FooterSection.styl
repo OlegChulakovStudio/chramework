@@ -23,8 +23,12 @@
 	&__top {
 		position relative
 		text-align center
-		padding-bottom 64px
+		padding-bottom 88px
 		margin-bottom 40px
+
+		@media $notebook {
+			padding-bottom 64px	
+		}
 
 		@media $phone {
 			padding-bottom 32px
@@ -71,10 +75,13 @@
 		grid-width(10)
 		margin 0 auto
 		box-sizing border-box
-		padding-top 80px
+		padding-top 104px
 		padding-bottom 32px
 
 		FooterSectionAdaptive() {
+			@media $notebook {
+				padding-top 80px	
+			}
 			@media $tablet {
 				padding-left 21px
 				padding-right 0
