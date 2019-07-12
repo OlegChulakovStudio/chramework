@@ -28,6 +28,10 @@ $ratio = 1.92;
 		margin-bottom 16px
 		transform translateZ(0)
 
+		&:last-child {
+			margin-bottom 0	
+		}
+
 		.swiper-container {
 			transform translateZ(0)
 		}
@@ -254,7 +258,12 @@ $ratio = 1.92;
 		}
 
 		.TextGroup__subtitle {
-			font-style normal	
+			font-style normal
+			user-select text
+
+			&	* {
+				user-select text
+			}
 		}
 	}
 	&__label {

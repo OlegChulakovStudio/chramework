@@ -448,7 +448,6 @@ class Player extends Component {
 		clearTimeout(this.timer);
 	};
 	playOnscrollEnter = () => {
-		console.log('playOnscrollEnter');
 		
 		if (!this.firstPlay) {
 			this.autoPlay();
@@ -457,7 +456,6 @@ class Player extends Component {
 		paused && this.player.play();
 	}
 	playOnscrollLeave = () => {
-		console.log('playOnscrollLeave');
 		if (this.firstPlay && this.player) {
 			this.player.pause();
 			paused = true;

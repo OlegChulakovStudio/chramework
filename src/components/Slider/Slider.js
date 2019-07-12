@@ -110,8 +110,8 @@ class Slider extends Component {
             </div>
           )}
         </div>
-        <div className="Slider__bottom">
-          {(description || slides[0].description) && (
+        {(description || slides[0].description) && (
+          <div className="Slider__bottom">
             <div className="Slider__content Slider__content--active">
               <TextGroup
                 title={
@@ -127,8 +127,8 @@ class Slider extends Component {
                 mod="boldTitle"
               />
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     );
   }
