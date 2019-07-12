@@ -205,7 +205,8 @@ class Player extends Component {
 		}
 	}
 	initPlayer = () => {
-		const { src, loop, banners, muted, playOnScroll } = this.props;
+		const { src, loop, banners, muted, mute, playOnScroll } = this.props;
+		
 		if (typeof this.state.currentQuality === 'undefined') {
 		}
 		this.player = this.videojs(
@@ -215,7 +216,7 @@ class Player extends Component {
 				autoPlay: false,
 				controls: true,
 				loop: loop || playOnScroll,
-				muted: muted || playOnScroll,
+				muted: muted || playOnScroll || mute,
 				sources: [
 					{
 						src:
@@ -229,7 +230,8 @@ class Player extends Component {
 				nativeControlsForTouch: banners || playOnScroll ? false : iosVersion() >= 11
 			},
 			() => {
-				if (!muted || !playOnScroll) {
+				if (!mute || !muted || !playOnScroll) {
+					
 					this._injectVolumeIcon();
 				}
 				this._injectFullscreenIcon();
@@ -515,7 +517,7 @@ class Player extends Component {
 	};
 
 	renderPlayer = () => {
-		const { theme, fullhd, banners, shareURL, muted, playOnScroll, origin, hideBar } = this.props;
+		const { theme, fullhd, banners, shareURL, muted, playOnScroll, origin, hideBar, mute } = this.props;
 
 		const playerStyle = classNames({
 			Player: true,
@@ -524,7 +526,7 @@ class Player extends Component {
 			[`player_theme_${theme}`]: theme,
 			Player_compact: this.state.compact,
 			Player_banners: banners,
-			Player_muted: muted || playOnScroll,
+			Player_muted: muted || playOnScroll || mute,
 			Player_hideBar: hideBar || playOnScroll,
 			Player_originSize: origin,
 			Player_ios: iosVersion() >= 11,
