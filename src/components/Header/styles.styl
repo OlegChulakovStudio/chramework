@@ -270,6 +270,11 @@
 		align-items center
 		padding 24px 64px 0
 		z-index 2
+
+		@media $notebook {
+			padding 24px 40px 0	
+		}
+
 		@media $verticalTablet {
 			justify-content space-between
 		}
@@ -374,6 +379,10 @@
 			visibility hidden
 			transition opacity .15s .1s, visibility 0s .2s
 			pointer-events none
+		}
+
+		@media $notebook {
+			padding-right 48px	
 		}
 		@media $tablet {
 			padding-right 56px
