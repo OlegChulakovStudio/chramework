@@ -110,6 +110,11 @@
 			}
 		}
 	}
+
+	&__logo {
+		margin-left auto
+	}
+
 	&__avatar {
 
 		@media $phone {
@@ -135,20 +140,30 @@
 	}
 	&__info {
 		display flex
-		align-items center	
+		align-items center
+		width 100%
 
 		@media $phone {
-			max-width 180px
 			flex-direction column
 			align-items flex-start	
 		}
 
-		&-text {
-			padding-left 16px	
+		&-content {
+			display flex
+			align-items center
+			padding-left 16px
+			width 100%	
 
 			@media $phone {
+				align-items flex-start
 				padding-left 0
 			}
+		}
+
+		&-text {
+			@media $phone {
+				max-width 180px
+			}	
 		}
 	}
 	&__name {
@@ -158,16 +173,6 @@
 
 		svg {
 			display block
-		}
-		@media $phone {
-			top 0
-			left 0
-			align-self flex-end
-
-			svg {
-				width 140px
-				height 62px
-			}
 		}
 	}
 	&__position {
