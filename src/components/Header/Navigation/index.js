@@ -61,6 +61,7 @@ class Navigation extends Component {
                   key={key}
                   className="Navigation__item"
                   disableBlank={item.disableBlank}
+                  activeClassName="Navigation__item_active"
                   {...item.url}
                 >
                   {reactHtmlParser(item.name)}
