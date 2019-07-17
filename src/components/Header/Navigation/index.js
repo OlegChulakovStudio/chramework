@@ -38,14 +38,15 @@ class Navigation extends Component {
     return (
       <div className="Navigation">
         {this.props.menu &&
-          this.props.menu.map(item => {
+          this.props.menu.map((item, i) => {
+            const key = `navLink-${i}`;
             return !item.hideInMenu && !item.onlyMobile ? (
               <NavLink
                 onClick={this.handleClick}
                 exact={item.exact}
                 className="Navigation__item"
                 to={item.url}
-                key={item.url}
+                key={key}
                 isActive={item.activeFunc ? this.isActiveWorks : undefined}
                 activeClassName="Navigation__item_active"
               >
@@ -57,10 +58,10 @@ class Navigation extends Component {
             ) : (
               !item.onlyMobile && (
                 <Link
+                  key={key}
                   className="Navigation__item"
-                  key={item.url}
-                  href={item.url}
                   disableBlank={item.disableBlank}
+                  {...item.url}
                 >
                   {reactHtmlParser(item.name)}
                 </Link>
