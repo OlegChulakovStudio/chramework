@@ -27,6 +27,16 @@
 		}
 	],
 	"awards": [{
+			"name": "Рейтинг Рунета",
+			"link": "Золото",
+			"icon": "ratingruneta",
+			"note": "Интернет-магазины",
+			"project": "Папа Джонс",
+			"international": false,
+			"russian": true,
+			"festival": false
+		},
+		{
 			"name": "Золотой сайт",
 			"link": "Золото",
 			"icon": "goldensite",
