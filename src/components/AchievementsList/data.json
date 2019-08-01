@@ -68,26 +68,6 @@
 		},
 		{
 			"name": "Tagline",
-			"link": "Бронза",
-			"icon": "tagline",
-			"note": "Лучшее приложение для телеком&nbsp;/ IT&nbsp;/ интернет-компании",
-			"project": "МегаФон eMotion",
-			"international": false,
-			"russian": true,
-			"festival": false
-		},
-		{
-			"name": "Tagline",
-			"link": "Серебро",
-			"icon": "tagline",
-			"note": "Лучшее приложение для услуги",
-			"project": "Твой доктор",
-			"international": false,
-			"russian": true,
-			"festival": false
-		},
-		{
-			"name": "Tagline",
 			"link": "Золото",
 			"icon": "tagline",
 			"note": "Лучший ритейл-сайт",
