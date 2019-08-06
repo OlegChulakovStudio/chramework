@@ -177,7 +177,7 @@ class Reviews extends Component {
       <div {...rest} className={classes}>
         <Swiper {...props} ref={this.getSwiperNode}>
           {currentReviews.map(client => {
-            const Icon = client.icon ? client.icon : null;
+            const clientIconSrc = client.icon ? client.icon : null;
             return (
               <div key={client.name} className="Reviews__item">
                 <div className="Reviews__inner">
@@ -198,9 +198,9 @@ class Reviews extends Component {
                             {reactHtmlParser(client.position)}
                           </Paragraph>
                         </div>
-                        {Icon && (
+                        {clientIconSrc && (
                           <div className="Reviews__logo">
-                            <Icon />
+                            <img src={clientIconSrc} alt="" />
                           </div>
                         )}
                       </div>

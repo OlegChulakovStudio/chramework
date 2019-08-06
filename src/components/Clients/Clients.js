@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import Link from "../Link/Link";
-import Demo from "../../assets/clients/sevenFlowers.svg";
 import "./Clients.styl";
+
+const Demo = "../../assets/clients/sevenFlowers.svg";
 
 const filterDemo = {
   finance: {
@@ -71,14 +72,12 @@ class Clients extends Component {
     className: PropTypes.string,
     filterOn: PropTypes.bool,
     list: PropTypes.object,
-    reverse: PropTypes.bool,
     row: PropTypes.bool
   };
   static defaultProps = {
     filter: undefined,
     filterOn: false,
     list: undefined,
-    reverse: undefined,
     className: undefined,
     row: undefined
   };
@@ -95,7 +94,7 @@ class Clients extends Component {
   };
 
   renderIcon = (client, key, activeFilter) => {
-    const Icon = client.icon;
+    const src = client.icon;
     const itemStyle = classNames([
       "Clients__item",
       {
@@ -104,28 +103,19 @@ class Clients extends Component {
     ]);
     return (
       <div key={key} className={itemStyle}>
-        <Icon className="Clients__icon" />
+        <img src={src} className="Clients__icon" alt="" />
       </div>
     );
   };
   render() {
     const { activeFilter } = this.state;
-    const {
-      filter,
-      filterOn,
-      reverse,
-      row,
-      className,
-      clients,
-      ...rest
-    } = this.props;
+    const { filter, filterOn, row, className, clients, ...rest } = this.props;
     const clientsList = clients || demo;
     const filterData = filter || filterDemo;
     const ClientsStyle = classNames([
       "Clients",
       className,
       {
-        Clients_reverse: reverse,
         Clients_filter: filterOn,
         Clients_row: row
       }
