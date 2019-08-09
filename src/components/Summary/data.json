@@ -37,13 +37,6 @@
       "title": "лет опыта",
       "counter": true,
       "experience": true
-    },
-    {
-      "type": "statistic",
-      "number": "120+",
-      "title": "специалистов",
-      "counter": true,
-      "specialists": true
     }
   ],
   "notes": {
