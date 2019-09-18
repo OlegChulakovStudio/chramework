@@ -10,7 +10,7 @@ import "./styles.styl";
 class Navigation extends Component {
   isActiveWorks = (match, location) => {
     if (this.props.filterList && match) {
-      const innerPage = location.pathname.split("/")[2];
+      const innerPage = location.pathname.split("/")[3];
       if (innerPage) {
         let findRusult = false;
         this.props.filterList.some(item => {
@@ -56,18 +56,18 @@ class Navigation extends Component {
                 )}
               </NavLink>
             ) : (
-              !item.onlyMobile && (
-                <Link
-                  key={key}
-                  className="Navigation__item"
-                  disableBlank={item.disableBlank}
-                  activeClassName="Navigation__item_active"
-                  {...item.url}
-                >
-                  {reactHtmlParser(item.name)}
-                </Link>
-              )
-            );
+                !item.onlyMobile && (
+                  <Link
+                    key={key}
+                    className="Navigation__item"
+                    disableBlank={item.disableBlank}
+                    activeClassName="Navigation__item_active"
+                    {...item.url}
+                  >
+                    {reactHtmlParser(item.name)}
+                  </Link>
+                )
+              );
           })}
 
         {this.props.listMenu &&
