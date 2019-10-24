@@ -1,8 +1,9 @@
 {
-  "notebook": 1440,
-  "tablet": 1200,
-  "verticalTablet": 992,
-  "phone": 667,
-  "verticalPhone": 480,
-  "smallPhone": 374
+	"notebook": 1440,
+	"tablet": 1200,
+	"verticalTablet": 992,
+	"smallTablet": 768,
+	"phone": 667,
+	"verticalPhone": 480,
+	"smallPhone": 374
 }
