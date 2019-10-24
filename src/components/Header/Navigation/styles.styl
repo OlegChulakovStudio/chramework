@@ -2,6 +2,7 @@
 	& {
 		vertical-align middle
 		text-align right
+		padding-right 0
 
 		@media $verticalTablet {
 			display none
@@ -11,28 +12,23 @@
 		display inline-block
 		vertical-align middle
 		color $linkColor
-		font-weight $bold
+		font-weight $medium
 		line-height 28px
 		font-size 14px
 		transition color $duration
 		position relative
 		cursor pointer
-		padding 0 20px
+		padding 0 28px
 		font-size 14px
 		position relative
 		// overflow hidden
 
+		@media $tablet {
+			padding 0 20px	
+		}
+
 		& .VacanciesCount__tooltip{
 			display inline
-		}
-			
-		.Link__target-blank {
-			bottom 7px
-			right 20px
-
-			@media $tablet {
-				right 14px	
-			}
 		}
 		&:hover {
 			color $linkHoverColor

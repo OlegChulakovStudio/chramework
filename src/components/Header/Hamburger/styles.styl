@@ -3,10 +3,10 @@
 	display inline-block
 	cursor pointer
 	width 24px
-	height 12px
+	height 16px
 
 	&:before {
-		$space = 16px
+		$space = 20px
 		content ''
 		position absolute
 		top (- $space)
@@ -18,40 +18,44 @@
 		position absolute
 		display block
 		width 100%
-		height 3px
-		background $textColor
+		height 2px
+		background-color $textColor
 		left 50%
 		margin-left -12px
-		transition transform 0.25s cubic-bezier(0.75, 0, 0.25, 1), background-color 0.3s
+		transition transform .3s, background-color 0.3s, opacity 0.3s
 
 		.Hamburger_dark & {
-			background $lightTextColor
+			background-color $lightTextColor !important
 		}
 		.Header_light & {
-			background $textColor
+			background-color $textColor
 		}
 		&:first-child {
 			top 0
+		}
+		&:nth-child(2) {
+			top 50%
+			margin-top -1px
 		}
 		&:last-child {
 			bottom 0
 		}
 	}
 	&:hover &__line {
-		background $linkColor
-
+		background-color $linkColor
 		.Hamburger_dark& {
-			background #fff
+			background-color #fff !important
 		}
 	}
 	&_open &__line {
-		transition transform 0.3s cubic-bezier(0.75, 0, 0.25, 1), background-color 0.3s
-
 		&:first-child {
-			transform translateY(5px) rotate(45deg) translateZ(0)
+			transform translateY(7px) rotate(45deg) translateZ(0)
+		}
+		&:nth-child(2) {
+			opacity 0
 		}
 		&:last-child {
-			transform translateY(-4px) rotate(-45deg) translateZ(0)
+			transform translateY(-7px) rotate(-45deg) translateZ(0)
 		}
 	}
 }

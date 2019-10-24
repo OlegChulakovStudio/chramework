@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 
-import Header from "../Header/Header";
+import Header from '../Header/Header';
 // import showreel from "./showreel.gif";
 // import pic1 from "./showreel_1.png";
 // import pic2 from "./showreel_2.png";
 // import pic3 from "./showreel_3.png";
 // import pic4 from "./showreel_4.png";
-import "../Header/styles.styl";
+import '../Header/styles.styl';
 
 // const menu = [
 //   {
@@ -45,26 +45,26 @@ import "../Header/styles.styl";
 // ];
 
 const navMenu = [
-  {
-    name: "Главный",
-    url: "main"
-  },
-  {
-    name: "Программа курса",
-    url: "programm"
-  },
-  {
-    name: "Для кого курс",
-    url: "help"
-  },
-  {
-    name: "Отзывы",
-    url: "graduates"
-  },
-  {
-    name: "Контакты",
-    url: "contacts"
-  }
+	{
+		name: 'Главный',
+		url: 'main'
+	},
+	{
+		name: 'Программа курса',
+		url: 'programm'
+	},
+	{
+		name: 'Для кого курс',
+		url: 'help'
+	},
+	{
+		name: 'Отзывы',
+		url: 'graduates'
+	},
+	{
+		name: 'Контакты',
+		url: 'contacts'
+	}
 ];
 
 // const videoPlay = {
@@ -82,7 +82,7 @@ const navMenu = [
 // };
 
 const HeaderWrap = () => {
-  return <Header hamburger scrollMenu={navMenu} />;
+	return <Header hamburger scrollMenu={navMenu} />;
 };
 
 export default HeaderWrap;
