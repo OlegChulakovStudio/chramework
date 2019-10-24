@@ -1,0 +1,223 @@
+$itemOffset = 15px
+$tabletItemOffset = 10px
+$mobileItemOffset = 6px
+
+.Awards {
+    * {
+        box-sizing: border-box;
+    }
+
+    & {
+        margin-bottom 128px
+
+        &:last-child {
+            margin-bottom 0
+        }
+
+        @media $tablet {
+            margin-bottom 80px
+        }
+
+        @media $phone {
+            margin-bottom 70px
+        }
+    }
+
+    &__wrapper {
+        margin-bottom 24px
+        padding-top 32px
+
+        @media $tablet {
+            padding-top 20px
+        }
+
+        @media $verticalTablet {
+            padding-top 12px
+        }
+    }
+
+    &__heading {
+        margin-bottom 64px
+
+        &-title {
+            title-2()
+        }
+    }
+
+    &__content {
+        display flex
+        margin-right (- $itemOffset)
+        margin-bottom -80px
+        margin-left (- $itemOffset)
+        flex-wrap wrap
+
+        @media $tablet {
+            margin-right (- $tabletItemOffset)
+            margin-bottom -56px
+            margin-left (- $tabletItemOffset)
+        }
+
+        @media $phone {
+            margin-right (- $mobileItemOffset)
+            margin-bottom -34px
+            margin-left (- $mobileItemOffset)
+        }
+    }
+
+    &__item {
+        width 25%
+        padding-right $itemOffset
+        padding-left $itemOffset
+        padding-bottom 80px
+
+        @media $tablet {
+            padding-right $tabletItemOffset
+            padding-left $tabletItemOffset
+            padding-bottom 56px
+        }
+
+        @media $verticalTablet {
+            width 50%
+        }
+
+        @media $phone {
+            padding-right $mobileItemOffset
+            padding-left $mobileItemOffset
+            padding-bottom 34px
+        }
+    }
+
+    &__item-wrapper {
+        display flex
+        height 180px
+        padding-right 44px
+        padding-left 42px
+        flex-direction column
+        background-color $lightBlueColor
+
+        @media $tablet {
+            min-height 164px
+            padding-right 32px
+            padding-left 32px
+        }
+
+        @media $phone {
+            height 154px
+            min-height auto
+            padding-right 26px
+            padding-left 20px
+        }
+    }
+
+    &__item-inner {
+        display flex
+        min-height 129px
+        flex-direction column
+        transform translateY(-20px)
+        justify-content space-between
+
+        @media $tablet {
+            min-height 124px
+        }
+
+        @media $phone {
+            min-height 105px
+        }
+    }
+
+    &__icon {
+        & {
+            display block
+            align-self flex-start
+
+            @media $phone {
+                width 100%
+                min-width 128px
+            }
+        }
+
+        &_number {
+            width auto
+            margin-bottom 20px
+
+            @media $phone {
+                width 132%
+            }
+        }
+    }
+
+    &__total {
+        font-weight $bold
+        font-size 24px
+        line-height 1
+        align-self flex-end
+    }
+
+    &__title {
+        display flex
+        margin-bottom 12px
+        align-items flex-end
+    }
+
+    &__pretitle {
+        padding-bottom 10px
+        padding-bottom 13px
+        font-weight $semiBold
+        font-size 30px
+        line-height 1
+    }
+
+    &__title-text {
+        font-weight $semiBold
+        font-size 100px
+        line-height 1
+    }
+
+    &__ratings {
+        &-item {
+            position relative
+            margin-bottom 8px
+            font-size 14px
+            line-height 20px
+            color $grayColor
+
+            &:last-child {
+                margin-bottom 0
+            }
+
+            &:before {
+                position absolute
+                top 1px
+                left -12px
+                content ''
+
+                @media $phone {
+                    left -8px
+                }
+            }
+
+            &_tagline {
+                &:before {
+                    content '*'
+                }
+            }
+
+            &_keyperson {
+                &:before {
+                    left -18px
+                    content '**'
+
+                    @media $phone {
+                        left -14px
+                    }
+                }
+            }
+        }
+    }
+
+    &__text {
+        @media $phone {
+            font-size 16px
+        }
+    }
+}
