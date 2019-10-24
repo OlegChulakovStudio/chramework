@@ -16,23 +16,37 @@ export default class Heading extends Component {
 	};
 
 	static defaultProps = {
-		level: 1,
-	}
+		level: 1
+	};
 	render() {
-		const { className, level, tagName, children, withoutText, ...rest } = this.props;
-		const RenderedComponent = tagName ? tagName : 'h' + level;
+		const {
+			className,
+			level,
+			tagName,
+			children,
+			withoutText,
+			...rest
+		} = this.props;
+		const RenderedComponent = tagName
+			? tagName
+			: Number(level)
+			? 'h' + level
+			: 'div';
 
 		return (
-			<RenderedComponent {...rest} className={classNames([
-				'Heading',
-				{
-					[`Heading--level-${level}`]: level,
-					[`Heading--withoutText`]: withoutText
-				},
-				className
-			])}>
+			<RenderedComponent
+				{...rest}
+				className={classNames([
+					'Heading',
+					{
+						[`Heading--level-${level}`]: level,
+						[`Heading--withoutText`]: withoutText
+					},
+					className
+				])}
+			>
 				{children}
 			</RenderedComponent>
-		)
+		);
 	}
 }
