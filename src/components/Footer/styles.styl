@@ -1,0 +1,213 @@
+.Footer {
+  padding-top 80px
+  padding-bottom 40px
+
+  &__inner {
+    grid-width()
+    display flex
+    margin 0 auto
+    padding-left auto
+    box-sizing border-box
+    justify-content space-between
+
+    @media $verticalTablet {
+      width 100%
+      padding 0 64px
+      padding-left auto
+    }
+
+    @media $tablet {
+      // padding-left 0
+    }
+
+    @media $phone {
+      padding 0 16px
+      flex-direction column
+    }
+  }
+
+  &__note {
+    width 189px
+
+    @media $phone {
+      margin-bottom 24px
+    }
+  }
+
+  &__company {
+    margin-bottom 8px
+    font-weight 700
+    line-height 24px
+  }
+
+  &__city {
+    font-size 12px
+    line-height 16px
+  }
+
+  &__contacts {
+    display flex
+    width 532px
+    padding-top 16px
+    align-items flex-start
+    justify-content space-between
+
+    @media $tablet {
+      width 480px
+    }
+
+    @media $verticalTablet {
+      width auto
+      flex-direction column
+    }
+
+    @media $phone {
+      margin-bottom 28px
+      padding-top 0
+    }
+  }
+
+  &__phone {
+    font-size 16px
+    color $textColor
+
+    &:hover {
+      color $linkColor
+    }
+
+    @media $verticalTablet {
+      margin-right 0
+      margin-bottom 4px
+    }
+
+    @media $phone {
+      margin-bottom 10px
+    }
+  }
+
+  &__email {
+    @media $verticalTablet {
+      margin-bottom 4px
+    }
+
+    @media $phone {
+      margin-bottom 10px
+    }
+  }
+
+  &__social {
+    display flex
+    padding-top 16px
+
+    @media $phone {
+      padding-top 0
+    }
+
+    &-item {
+      width 26px
+      height 26px
+      margin-right 22px
+      padding 4px
+      box-sizing border-box
+
+      &:hover {
+        svg {
+          fill $linkColor
+        }
+      }
+
+      &:last-child {
+        margin-right 0
+      }
+
+      &_vk {
+        width 32px
+        height 24px
+      }
+
+      svg {
+        transition fill $duration
+        fill $textColor
+      }
+    }
+  }
+
+  &_dark {
+    background-color $darkColor
+
+    .Footer__company {
+      color #fff
+
+      @media $phone {
+        display block
+      }
+    }
+
+    .Footer__city {
+      color #fff
+
+      @media $phone {
+        display block
+      }
+    }
+
+    .Footer__phone {
+      color #fff
+
+      @media $phone {
+        display block
+      }
+
+      &:hover {
+        color $linkColor
+      }
+    }
+
+    .Footer__email {
+      color #fff
+
+      &:hover {
+        color $linkColor
+      }
+    }
+
+    .Footer__rights {
+      color #fff
+
+      &:hover {
+        color $linkColor
+      }
+    }
+
+    .Footer__social-item {
+      svg {
+        fill #fff
+      }
+
+      &:hover {
+        svg {
+          fill $linkColor
+        }
+      }
+    }
+  }
+
+  &_isHome {
+    grid-width(1, padding-left)
+    padding-top 0
+
+    @media $notebook {
+      padding-top 80px
+      padding-bottom 20px
+    }
+
+    @media $tablet {
+      padding-left 0
+    }
+
+    @media $tablet {
+      padding-top 80px
+      padding-bottom 40px
+    }
+  }
+}

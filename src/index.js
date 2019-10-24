@@ -12,7 +12,6 @@ import CheckboxGroup from './components/CheckboxGroup/CheckboxGroup';
 import Clients from './components/Clients/Clients';
 import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
 import FileInput from './components/FileInput/FileInput.js';
-import FooterSection from './components/FooterSection/FooterSection';
 import FormCol from './components/FormCol/FormCol.js';
 import FormGroup from './components/FormGroup/FormGroup.js';
 import FormRow from './components/FormRow/FormRow.js';
@@ -43,7 +42,9 @@ import VideoBlock from './components/VideoBlock/VideoBlock';
 import WorkItem from './components/WorkItem/WorkItem';
 import Block from './components/Block/Block';
 import SocialNetworks from './components/SocialNetworks/SocialNetworks';
+import Footer from './components/Footer/Footer';
 import FooterMini from './components/FooterMini/FooterMini';
+import FooterSection from './components/FooterSection/FooterSection';
 import Header from './components/Header/Header';
 import MenuInner from './components/Header/MenuInner';
 import Hamburger from './components/Header/Hamburger';
@@ -67,7 +68,6 @@ export {
 	Clients,
 	ErrorBoundary,
 	FileInput,
-	FooterSection,
 	FormCol,
 	FormGroup,
 	FormRow,
@@ -98,7 +98,9 @@ export {
 	WorkItem,
 	Control,
 	SocialNetworks,
+	Footer,
 	FooterMini,
+	FooterSection,
 	Block,
 	Header,
 	HeaderWrap,
