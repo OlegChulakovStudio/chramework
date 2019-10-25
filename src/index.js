@@ -52,6 +52,8 @@ import WorkTags from './components/WorkTags/WorkTags';
 import HeaderWrap from './components/HeaderWrap/HeaderWrap';
 import ui from './components/modules/ui';
 import modal from './components/modules/modal';
+import InstallmentForm from './components/InstallmentForm/InstallmentForm';
+import ModalInfo from './components/ModalInfo/ModalInfo';
 
 import AchievementsData from './components/AchievementsList/data.json';
 
@@ -107,6 +109,8 @@ export {
 	Hamburger,
 	ui,
 	modal,
-	WorkTags
+	WorkTags,
+	ModalInfo,
+	InstallmentForm
 	// MenuInner
 };

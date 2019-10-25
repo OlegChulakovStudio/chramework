@@ -1,0 +1,3 @@
+Modal info:
+
+    <ModalInfo />
