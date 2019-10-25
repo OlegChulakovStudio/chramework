@@ -46,7 +46,7 @@ import Footer from './components/Footer/Footer';
 import FooterMini from './components/FooterMini/FooterMini';
 import FooterSection from './components/FooterSection/FooterSection';
 import Header from './components/Header/Header';
-import MenuInner from './components/Header/MenuInner';
+// import MenuInner from './components/Header/MenuInner';
 import Hamburger from './components/Header/Hamburger';
 import WorkTags from './components/WorkTags/WorkTags';
 import HeaderWrap from './components/HeaderWrap/HeaderWrap';
@@ -107,6 +107,6 @@ export {
 	Hamburger,
 	ui,
 	modal,
-	WorkTags,
-	MenuInner
+	WorkTags
+	// MenuInner
 };
