@@ -67,20 +67,6 @@
 			display none
 		}
 	}
-	&__phone {
-		font-size 14px
-		line-height 28px
-		white-space nowrap
-		margin-left 100px
-
-		@media (max-width 1500px) {
-			margin-left 70px	
-		}
-
-		@media $notebook {
-			margin-left 20px
-		}
-	}
 	&_dark {
 		.Logo__sufix {
 			color #fff
@@ -91,7 +77,7 @@
 			transition opacity 0.1, visibility 0s 0.1s
 		}
 		& > .Navigation__item:hover {
-			color $brandColor
+			color $linkColor
 		}
 		&:before {
 			opacity 0
@@ -110,48 +96,37 @@
 			color #fff
 
 			&:hover {
-				color $linkColor	
+				color $linkColor
 			}
 		}
 
 		.ScrollButton__text {
-			color #fff	
+			color #fff
 		}
 
 		.ScrollButton__link {
 			&:hover {
 				.ScrollButton__text {
 					color $linkColor
-				}	
+				}
 			}
 		}
 	}
 	&_longNav {
-
-		.Navigation__item {
-
-			@media $tablet {
-				padding-left 14px
-				padding-right 14px
-			}
-			&.Link_external {
-				padding-right 32px
-
-				@media $tablet {
-					padding-right 26px
-				}
-			}
-		}
 		@media $tablet {
 			.Header__inner {
 				padding-left 16px
 				padding-right 16px
 			}
+			.Navigation__item {
+				padding-left 14px
+				padding-right 14px
+			}
 			.Header__content {
-				padding-right 16px	
+				padding-right 16px
 			}
 		}
-		
+
 	}
 	&_news {
 		.Header__content {
@@ -160,82 +135,16 @@
 			transition opacity 0.1, visibility 0s 0.1s
 		}
 	}
-	&_topWork {
+	&_onTop {
 		position absolute
-		top 0 !important
+
 		&:before {
 			opacity 0
-		}
-		.Navigation__item {
-			color $lightTextColor
-		}
-		.VacanciesCount__inner {
-			background-color $lightTextColor
-			transition background-color $duration
-		}
-		.Navigation__item:hover, .Navigation__item_active {
-			color #fff
-
-			.VacanciesCount__inner {
-				background-color #fff
-				faster()
-			}
-		}
-		.VideoPlay {
-			color $lightTextColor
-			&:hover {
-				color #fff
-			}
-		}
-
-		.ModalMenuContainer_menu .VacanciesCount__inner {
-			@media $phone {
-				background-color #F2F2F2
-			}	
-		}
-
-		.Hamburger {
-
-			&__line {
-				background $lightTextColor
-			}
-
-			&:hover {
-				.Hamburger__line {
-					background #fff
-				}
-			}
-
-			&_open {
-				.Hamburger__line {
-					background $textColor
-				}
-				&:hover {
-					.Hamburger__line {
-						background $linkColor
-					}
-				}
-			}
-		}
-		
-
-		& *::selection {
-			background alpha(#fff, 0.99)
 		}
 	}
 	&_lab {
 		&:before {
 			background-color $lightColor
-		}
-	}
-	&_isGray {
-		&:before {
-			background-color $lightColor
-		}
-	}
-	&_light {
-		.Logo .Logo__rectBg {
-			fill #FFF45F
 		}
 	}
 	&_small {
@@ -245,6 +154,16 @@
 		.Logo__ingroup {
 			opacity 0
 			faster()
+		}
+	}
+	&_video {
+		.Logo .Logo__rectBg {
+			fill #fff
+			faster()
+		}
+
+		.Logo__icon .Logo__text {
+			fill $darkColor
 		}
 	}
 	&_menu {
@@ -271,17 +190,17 @@
 		padding 24px 64px 0
 		z-index 2
 
-		@media $notebook {
-			padding 24px 40px 0	
-		}
-
 		@media $verticalTablet {
 			justify-content space-between
 		}
-		@media $phone{
-			padding 16px
-			height 100%
-			box-sizing border-box
+
+    @media (max-width: 767px) {
+      padding-left 16px
+      padding-right 16px
+    }
+
+		@media $phone {
+			padding 0 16px
 		}
 
 		.Header_transitionLock & {
@@ -370,7 +289,7 @@
 		display inline-block
 		float left
 		flex 1
-		padding-right 80px
+		padding-right 0
 		visibility visible
 		transition opacity .15s .1s, visibility 0s
 
@@ -379,16 +298,6 @@
 			visibility hidden
 			transition opacity .15s .1s, visibility 0s .2s
 			pointer-events none
-		}
-
-		@media $notebook {
-			padding-right 48px	
-		}
-		@media $tablet {
-			padding-right 56px
-		}
-		@media $verticalTablet {
-			padding-right 24px
 		}
 
 		&-inner {
@@ -402,22 +311,6 @@
 	&_linkScroll {
 		.Header__content {
 			padding-right 0
-		}	
-
-		.Navigation {
-			display flex	
 		}
-	}
-
-	&_videoPlay {
-		.Header__content {
-			.modal-entering &, .modal-entered & {
-				@media $phone {
-					opacity 1
-					visibility visible
-					pointer-events auto
-				}
-			}
-		}	
 	}
 }

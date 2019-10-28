@@ -1,0 +1,189 @@
+$top = 20px
+
+.InputShort {
+	& {
+		display block
+		position relative
+		box-sizing border-box
+		padding-top $top
+		border none
+		border-bottom 1px solid $borderColor
+		transition opacity $duration
+		border-bottom 1px solid alpha(#000, 35%)
+		width 100%
+		max-width 280px
+		height 48px
+
+		&_fullWidth {
+			width 100%
+
+			@media $phone {
+				width 280px
+			}
+		}
+	}
+
+	&_disabled {
+		opacity 0.2
+		faster()
+	}
+
+	&_custom {
+		padding-top 0
+		height 28px
+		max-width 100%
+
+		.InputShort__field {
+			font-size 18px
+		}
+	}
+
+	&_hidden {
+		display none
+	}
+
+	&_cell&_disabled {
+		opacity 1
+		faster()
+		border-color transparent
+	}
+
+	&:after {
+		content ''
+		position absolute
+		top 100%
+		left 0
+		width 100%
+		height 2px
+		background $linkColor
+		transform scaleX(0)
+		transform-origin 0 0
+		transition transform $duration*0.5 $easeOutCubic
+	}
+
+	&__field {
+		position relative
+		box-sizing border-box
+		display block
+		width 100%
+		padding 0 0 3px
+		background transparent
+		border none
+		color $textColor
+		z-index 10
+
+		&::-ms-clear {
+			display none
+		}
+
+		&_iconed {
+			padding-right 27px
+		}
+	}
+
+	&__icon {
+		position absolute
+		right 0
+		bottom 6px
+		width 24px
+		height 24px
+		fill #E0E0E0
+		transition fill $duration
+	}
+
+	& textarea {
+		overflow hidden
+		word-wrap break-word
+	}
+
+	&__label {
+		position absolute
+		left 0
+		top $top
+		padding 0
+		max-width 100%
+		white-space nowrap
+		overflow hidden
+		text-overflow ellipsis
+		color alpha(#000, 35%)
+		font-size 16px
+		font-weight 300
+		pointer-events none
+		transform translateZ(0)
+		transform-origin 0 0
+		user-select none
+		cursor text
+		transition transform $duration*0.5 $easeOutCubic, color $duration*0.5 $easeOutCubic, font-size $duration*0.5 $easeOutCubic
+	}
+
+	&_focused:after {
+		transform scaleX(1)
+
+		.InputShort_textarea:after {
+			transform scaleX(1)
+		}
+	}
+
+	&_value &__label,
+	&_focused &__label {
+		transform translateY( (- $top) ) scale(0.75) translateZ(0)
+	}
+
+	&_focused {
+		.InputShort__icon {
+			fill #000
+		}
+	}
+
+	&_error {
+		border-color #f26b6c
+		&:after {
+			transform scaleX(1)
+			background-color  #f26b6c
+		}
+	}
+
+	&_textarea {
+		height auto
+		max-width 100%
+
+		@media $phone {
+			margin-bottom 16px !important
+		}
+
+		textarea {
+			border none
+			height auto
+			box-sizing border-box
+			display block
+			width 100%
+			padding 0 0 3px
+			background transparent
+			border none
+			color $textColor
+		}
+	}
+
+	&_white {
+		.InputShort__field {
+			color #fff
+		}
+
+		.InputShort__label {
+			color #fff
+		}
+
+		border-bottom 1px solid alpha(#fff, 35%)
+
+		&:after {
+			background-color #fff
+		}
+
+		&.InputShort_error {
+			&:after {
+				transform scaleX(1)
+				background-color  #f26b6c
+			}
+		}
+	}
+}

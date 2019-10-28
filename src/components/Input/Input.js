@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import TextArea from 'react-textarea-autosize';
+
 import './Input.styl';
 
 export default class Input extends Component {
@@ -40,17 +41,21 @@ export default class Input extends Component {
 
 	constructor(props) {
 		super(props);
+
 		const { input } = this.props;
+
 		this.state = {
 			value: input ? input.value : '',
 			focused: false,
 			error: false
 		};
 	}
-	state={
+
+	state = {
 		focused: false,
-		value: '',
-	}
+		value: ''
+	};
+
 	componentWillReceiveProps(nextProps) {
 		if (this.state.value !== nextProps.value) {
 			this.setState({
@@ -70,7 +75,7 @@ export default class Input extends Component {
 		}
 		this.setState({
 			focused: true
-		})
+		});
 	};
 
 	onBlur = e => {
@@ -83,7 +88,7 @@ export default class Input extends Component {
 		}
 		this.setState({
 			focused: false
-		})
+		});
 	};
 
 	onChange = e => {
@@ -99,6 +104,7 @@ export default class Input extends Component {
 			doChange(e.target.value, onChange);
 		}
 	};
+
 	render() {
 		const {
 			className,
@@ -124,7 +130,8 @@ export default class Input extends Component {
 					{
 						'Input--error': hasErrors || (meta && meta.touched && meta.error),
 						'Input--focus': (meta && meta.active) || this.state.focused,
-						'Input--value': (input && input.value) || this.state.value.length > 0,
+						'Input--value':
+							(input && input.value) || this.state.value.length > 0,
 						'Input--valid': meta && meta.touched && meta.valid,
 						'Input--disabled': disabled
 					},
