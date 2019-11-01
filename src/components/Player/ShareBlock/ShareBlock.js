@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
 import { iosVersion } from '../../../utils/devices.js';
+import shareHelper from '../../../utils/share.js';
 
-import FacebookProvider, { Share } from 'react-facebook';
 import ClipboardButton from 'react-clipboard.js';
 
 import FacebookIcon from '../../../assets/player/facebook.svg';
@@ -41,6 +41,11 @@ class ShareBlock extends Component {
 	};
 	getVkButtonNode = el => (this.vkButton = el);
 
+	onShareFB = () => {
+		const { url } = this.props;
+		shareHelper('fb', url);
+	}
+
 	render() {
 		const { url, isOpened, className } = this.props;
 		const { isOpen, clipboarded } = this.state;
@@ -55,13 +60,9 @@ class ShareBlock extends Component {
 				<div className={innerClass}>
 					<div className={containerClass}>
 						<div className="Share__containerInner">
-							<FacebookProvider appId="1767820740155733" language="ru_RU">
-								<Share href={url}>
-									<button type="button" className="Share__button">
-										<FacebookIcon />
-									</button>
-								</Share>
-							</FacebookProvider>
+							<button type="button" className="Share__button" onClick={this.onShareFB}>
+								<FacebookIcon />
+							</button>
 							<button type="button" className="Share__button">
 								<VkontakteIcon />
 								<div ref={this.getVkButtonNode} className="Share__button_hidden" />
