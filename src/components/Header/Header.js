@@ -235,7 +235,7 @@ class Header extends Component {
       Header_videoPlay: videoPlay
     });
     const logoMod =
-      mod === "dark" || mod === "work" || mod === "white" ? "light" : "";
+      mod === "dark" || mod === "white" ? "light" : "";
 
     return (
       <header
