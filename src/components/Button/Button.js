@@ -51,6 +51,7 @@ class Button extends Component {
 		type: 'button',
 		onClick: undefined,
 		uppercase: undefined,
+
 	};
 	state = {
 		active: false,

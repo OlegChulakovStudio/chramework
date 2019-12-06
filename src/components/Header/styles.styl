@@ -408,7 +408,7 @@
 
 			&:hover,
 			&_active {
-				color $lightTextColor
+				color alpha(#ffffff, 60%)
 
 				.VacanciesCount__inner {
 					background-color $lightTextColor
@@ -419,7 +419,7 @@
 
 		.VacanciesCount {
 			&__inner {
-				background-color #ffffff
+				background-color alpha(#ffffff, 60%)
 				transition background-color $duration
 			}
 		}
@@ -492,10 +492,10 @@
 
 			&:hover,
 			&_active {
-				color $linkHoverColor
+				color alpha($textColor, 60%)
 
 				.VacanciesCount__inner {
-					background-color $linkHoverColor
+					background-color alpha($textColor, 60%)
 					faster()
 				}
 			}

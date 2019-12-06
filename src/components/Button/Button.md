@@ -1,6 +1,6 @@
 White button with arrow:
 
-    <Button text="Подробнее" white arrow onClick={() => {
+    <Button text="Записаться" size="big" onClick={() => {
       alert('pushed');
     }}/>
 
