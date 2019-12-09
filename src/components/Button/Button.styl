@@ -1,113 +1,114 @@
 .Button {
-	position relative
-	display inline-block
-	font $medium 14px / 20px $fontFamily
-	color #FFF
-	text-align center
-	vertical-align middle
-	white-space nowrap
-	cursor pointer
-	border none
-	outline none
-	border-radius 4px
-	user-select none
-	background-color transparent
-	padding 0
-	box-shadow none
-	transition color $duration
-	text-transform none
-	min-width 200px
-	box-sizing border-box
+	position: relative;
+	display: inline-block;
+	font: $medium 14px / 20px $fontFamily;
+	color: #FFF;
+	text-align: center;
+	vertical-align: middle;
+	white-space: nowrap;
+	cursor: pointer;
+	border: none;
+	outline: none;
+	border-radius: 4px;
+	user-select: none;
+	background-color: transparent;
+	padding: 0;
+	box-shadow: none;
+	transition: color $duration;
+	text-transform: none;
+	min-width: 200px;
+	box-sizing: border-box;
 
 	&:hover, &--hover {
-		background-color transparent
-		color #fff
+		background-color: transparent;
+		color: #fff;
 
 		.Button__inner {
-			background-color $linkHoverColor
-			faster()
+			background-color: $linkHoverColor;
+			faster();
 
 			@media $phone {
-				background-color $linkColor
+				background-color: $linkColor;
 			}
 		}
 	}
 
 	&--active, &:active {
-		background-color transparent
-		color #fff
+		background-color: transparent;
+		color: #fff;
 
 		.Button__inner {
-			background-color $linkHoverColor
-			background-attachment fixed
-			transform translateY(2px)
-			faster()
+			background-color: $linkHoverColor;
+			background-attachment: fixed;
+			transform: translateY(2px);
+			faster();
 
 			@media $phone {
-				background-color $linkColor
+				background-color: $linkColor;
 			}
 		}
 	}
 
 	&:disabled {
-		cursor not-allowed
-		color #a3a5b1
+		cursor: not-allowed;
+		color: #a3a5b1;
 
 		.Button__inner {
-			background-color #f2f2f2
+			background-color: #f2f2f2;
 		}
+
 		&:hover, .Button--hover& {
 			.Button__inner {
-				background-color #f2f2f2
+				background-color: #f2f2f2;
 			}
 		}
 	}
 
 	&__inner {
-		position relative
-		display block
-		box-sizing border-box
-		padding 18px 22px
-		border-radius 4px
-		background-color $linkColor
-		transition background-color $duration, transform $duration, box-shadow $duration
-		z-index 1
+		position: relative;
+		display: block;
+		box-sizing: border-box;
+		padding: 18px 22px;
+		border-radius: 4px;
+		background-color: $linkColor;
+		transition: background-color $duration, transform $duration, box-shadow $duration;
+		z-index: 1;
 	}
 
 	&__arrow {
-		position absolute
-		top 50%
-		margin-top -7.5px
-		right 24px
-		fill currentColor
-		transition transform $duration, fill $duration
-		transition-timing-function $easeInOutSine
-		width 20px
+		position: absolute;
+		top: 50%;
+		margin-top: -7.5px;
+		right: 24px;
+		fill: currentColor;
+		transition: transform $duration, fill $duration;
+		transition-timing-function: $easeInOutSine;
+		width: 20px;
 	}
 
 	&__text {
-		display inline-block
-		transition transform $duration $easeInOutQuart
-		transform translateZ(0)
-		transform-origin center
+		display: inline-block;
+		transition: transform $duration $easeInOutQuart;
+		transform: translateZ(0);
+		transform-origin: center;
 	}
 
 	.Link__target-blank {
-		display none
+		display: none;
 	}
 
 	&--arrow {
-		text-align left
+		text-align: left;
 
 		.Button__inner {
-			padding-right 80px
+			padding-right: 80px;
 		}
 
 		@media $withoutPhone {
 			&:hover, &.Button--hover {
 				.Button__arrow {
-					transform translateX(3px) translateZ(0)
-					faster()
+					transform: translateX(3px) translateZ(0);
+					faster();
 				}
 			}
 		}
@@ -115,158 +116,165 @@
 		&:hover, &.Button--hover {
 			.Button__inner {
 				@media $phone {
-					background-color $linkHoverColor
+					background-color: $linkHoverColor;
 				}
 			}
 		}
 	}
 
 	&--small {
-		font-size 12px
+		font-size: 12px;
 
 		.Button__inner {
-			padding 15px 30px 14px
+			padding: 15px 30px 14px;
 		}
 	}
 
-
 	&--dark {
-		color $textColor
-		text-transform none
+		color: $textColor;
+		text-transform: none;
 
 		.Button__inner {
-			border-color $textColor
+			border-color: $textColor;
 		}
+
 		@media $withoutPhone {
 			&:hover, &.Button--hover {
-				color #fff !important
+				color: #fff !important;
 
 				.Button__inner {
-					background-color $textColor
-					border-color $textColor
+					background-color: $textColor;
+					border-color: $textColor;
 				}
 			}
 		}
+
 		@media $phone {
 			&:hover, &.Button--hover {
-				color $textColor
+				color: $textColor;
 
 				.Button__inner {
-					border-color $textColor
+					border-color: $textColor;
 				}
 			}
 		}
+
 		&.Button--active, &:active {
-			color #fff !important
+			color: #fff !important;
 
 			.Button__inner {
-				transform none
-				background-color $textColor
-				border-color $textColor
+				transform: none;
+				background-color: $textColor;
+				border-color: $textColor;
 			}
 		}
 	}
 
 	&--uppercase {
-		text-transform uppercase
-		letter-spacing 0.4px
+		text-transform: uppercase;
+		letter-spacing: 0.4px;
 	}
-
 
 	&--success {
 		&:before {
-			box-shadow: 0 2px 4px 0 $greenColor
+			box-shadow: 0 2px 4px 0 $greenColor;
 		}
+
 		.Button__inner {
-			background $greenColor
+			background: $greenColor;
 		}
+
 		&:hover, &.Button--hover {
 			.Button__inner {
-				background darken($greenColor, 15%)
+				background: darken($greenColor, 15%);
 			}
 		}
+
 		&:active, &.Button--active {
 			.Button__inner {
-				background-color darken($greenColor, 30%)
+				background-color: darken($greenColor, 30%);
 			}
 		}
 	}
 
 	&--danger {
 		.Button__inner {
-			background $redColor
+			background: $redColor;
 		}
 
 		&:hover, &.Button--hover {
 			.Button__inner {
-				background darken($redColor, 15%)
+				background: darken($redColor, 15%);
 			}
 		}
+
 		&:active, &.Button--active {
 			.Button__inner {
-				background-color darken($redColor, 30%)
+				background-color: darken($redColor, 30%);
 			}
 		}
 	}
 
 	&--secondary {
 		.Button__inner {
-			background-color #222629
+			background-color: #222629;
 		}
 	}
 
 	&--white {
-		color $linkColor
-		text-transform none
+		color: $linkColor;
+		text-transform: none;
 
 		.Button__inner {
-			background-color #fff
+			background-color: #fff;
 		}
 
 		&:hover, &.Button--hover {
-			color $linkHoverColor !important
+			color: $linkHoverColor !important;
 
 			.Button__inner {
-				background-color #fff !important
+				background-color: #fff !important;
 			}
 		}
-		
+
 		&.Button--active, &:active {
-			color $linkHoverColor !important
+			color: $linkHoverColor !important;
 
 			.Button__inner {
-				background-color #fff
+				background-color: #fff;
 			}
 		}
 
 		@media $phone {
 			&:hover, &.Button--hover {
-				color $linkHoverColor
+				color: $linkHoverColor;
 			}
 		}
 	}
 
 	&--bluePale {
-		text-transform none
-		color $linkColor
-		min-width 200px
+		text-transform: none;
+		color: $linkColor;
+		min-width: 200px;
 
 		.Button__inner {
-			background-color $bluePaleButtonColor
+			background-color: $bluePaleButtonColor;
 		}
+
 		.Button__arrow {
-			fill $linkColor
+			fill: $linkColor;
 		}
+
 		@media $withoutPhone {
 			&:hover, &.Button--hover {
-				color #fff
+				color: #fff;
 
 				.Button__inner {
-					background-color $linkColor
+					background-color: $linkColor;
 				}
 
 				.Button__arrow {
-					fill #fff
+					fill: #fff;
 				}
 			}
 		}
@@ -274,121 +282,133 @@
 		@media $phone {
 			&:hover, &.Button--hover {
 				.Button__arrow {
-					fill #fff
+					fill: #fff;
 				}
-			}	
+			}
 
 			&.Button--arrow {
 				&:hover, &.Button--hover {
 					.Button__arrow {
-						fill #fff
+						fill: #fff;
 					}
 				}
 			}
 		}
 
 		&.Button--active, &:active {
-			color #fff
+			color: #fff;
 
 			.Button__inner {
-				background-color $linkColor
+				background-color: $linkColor;
 			}
 
 			.Button__arrow {
-				fill #fff
+				fill: #fff;
 			}
 		}
 	}
 
 	&--whitePale {
-		text-transform none
-		color #fff
-		min-width 200px
+		text-transform: none;
+		color: #fff;
+		min-width: 200px;
 
 		.Button__inner {
-			background-color alpha(#FFFFFF, 20%)
+			background-color: alpha(#FFFFFF, 20%);
 		}
+
 		.Button__arrow {
-			fill #fff
+			fill: #fff;
 		}
 
 		&.Button--active, &:active {
-			color $linkHoverColor
+			color: $linkHoverColor;
 
 			.Button__inner {
-				background-color #fff
+				background-color: #fff;
 			}
 
 			.Button__arrow {
-				fill $linkHoverColor
+				fill: $linkHoverColor;
 			}
 		}
+
 		@media $withoutPhone {
 			&:hover, &.Button--hover {
-				color $linkHoverColor
+				color: $linkHoverColor;
 
 				.Button__inner {
-					background-color #fff
+					background-color: #fff;
 				}
 
 				.Button__arrow {
-					fill $linkHoverColor
+					fill: $linkHoverColor;
 				}
 			}
 		}
 
 		@media $phone {
 			&:hover, &.Button--hover {
-				color $linkHoverColor
-				
+				color: $linkHoverColor;
+
 				.Button__arrow {
-					fill $linkHoverColor
+					fill: $linkHoverColor;
 				}
+
 				.Button__inner {
-					background-color #fff
+					background-color: #fff;
 				}
 			}
 
 			&.Button--arrow {
 				&:hover, &.Button--hover {
-					color $linkHoverColor
+					color: $linkHoverColor;
 
 					.Button__arrow {
-						fill $linkHoverColor
+						fill: $linkHoverColor;
 					}
+
 					.Button__inner {
-						background-color #fff
+						background-color: #fff;
 					}
 				}
 			}
 		}
 
-
 		&.Button--active, &:active {
-			color $linkHoverColor !important
+			color: $linkHoverColor !important;
 
 			.Button__inner {
-				background-color #fff
+				background-color: #fff;
 			}
 
 			.Button__arrow {
-				fill $linkHoverColor
+				fill: $linkHoverColor;
 			}
 		}
 	}
 
 	&--big {
-		font-size 28px
-		line-height 38px
-		min-width 360px
+		font-size: 28px;
+		line-height: 38px;
+		min-width: 360px;
 
-		@media $phone {
-			min-width 280px	
+		@media $tablet {
+			font-size: 14px;
+			line-height: 20px;
+			width: 100%;
+			max-width: 277px;
+			min-width: auto;
 		}
 
 		.Button__inner {
-			padding 41px 22px
-			border-radius 8px
+			padding: 41px 22px;
+			border-radius: 8px;
+
+			@media $tablet {
+				padding: 18px 30px;
+				border-radius: 4px;
+			}
 		}
 	}
 }
