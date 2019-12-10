@@ -1,26 +1,26 @@
 .Header {
 	& {
-		position absolute
-		z-index 10001
-		top 0
-		left 0
-		right 0
-		box-sizing border-box
-		width 100%
-		height 76px
-		transform translateZ(0)
-		transition height $duration*0.5
+		position: absolute;
+		z-index: 10001;
+		top: 0;
+		left: 0;
+		right: 0;
+		box-sizing: border-box;
+		width: 100%;
+		height: 76px;
+		transform: translateZ(0);
+		transition: height $duration * 0.5;
 
 		@media $verticalTablet {
-			padding-left env(safe-area-inset-left)
-			padding-right constant(safe-area-inset-right)
+			padding-left: env(safe-area-inset-left);
+			padding-right: constant(safe-area-inset-right);
 		}
 
-		@media $phone{
-			height 56px
+		@media $phone {
+			height: 56px;
 
 			&_ingroup {
-				height 64px
+				height: 64px;
 			}
 		}
 
@@ -30,359 +30,394 @@
 	}
 
 	&:before {
-		content ''
-		position absolute
-		top 0
-		left 0
-		width 100%
-		height 100%
-		background-color #fff
-		opacity 1
-		transition: background-color 0.2s ease-in
-		z-index -1
-		pointer-events none
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: #fff;
+		opacity: 1;
+		transition: background-color 0.2s ease-in;
+		z-index: -1;
+		pointer-events: none;
 	}
 
 	&__phone {
-		font-size 14px
-		line-height 28px
-		white-space nowrap
-		margin-left 100px
+		font-size: 14px;
+		line-height: 28px;
+		white-space: nowrap;
+		margin-left: 100px;
 
-		@media (max-width 1500px) {
-			margin-left 70px
+		@media (max-width: 1500px) {
+			margin-left: 70px;
 		}
 
 		@media $notebook {
-			margin-left 20px
+			margin-left: 20px;
 		}
 	}
+
 	&__inner {
 		& {
-			display flex
-			justify-content space-between
-			position relative
-			align-items center
-			padding 24px 64px 0
-			z-index 2
+			display: flex;
+			justify-content: space-between;
+			position: relative;
+			align-items: center;
+			padding: 24px 64px 0;
+			z-index: 2;
 
 			@media $notebook {
-				padding 24px 40px 0
+				padding: 24px 40px 0;
 			}
 
 			@media $verticalTablet {
-				justify-content space-between
+				justify-content: space-between;
 			}
 
-			@media $phone{
-				padding 16px
-				height 100%
-				box-sizing border-box
+			@media $phone {
+				padding: 16px;
+				height: 100%;
+				box-sizing: border-box;
 			}
 		}
 
 		.Header_transitionLock & {
-			transition none
+			transition: none;
 		}
 	}
+
 	&__logo {
 		& {
-			display inline-block
+			display: inline-block;
 		}
 
 		.Logo {
 			& {
-				height 28px
+				height: 28px;
 
 				@media $phone {
-					height 24px
+					height: 24px;
 				}
 			}
 
 			&__icon {
-				width auto
-				width 120px
-				height 100%
+				width: auto;
+				width: 120px;
+				height: 100%;
 
 				@media $phone {
-					width 104px
+					width: 104px;
 				}
 			}
 
 			&__sufix {
 				@media $phone {
-					font-size 14.4px
-					padding-top 5.5px
+					font-size: 14.4px;
+					padding-top: 5.5px;
 				}
 			}
 
 			svg {
 				@media $phone {
-					height 24px
-					width auto
+					height: 24px;
+					width: auto;
 				}
 			}
 		}
 	}
+
 	&__close {
 		& {
-			position absolute
-			top 20px
-			right 20px
-			cursor pointer
-			padding 0
-			border none
-			display inline-block
-			cursor pointer
-			width 24px
-			height 16px
-			background none
-			margin-top -15px
+			position: absolute;
+			top: 20px;
+			right: 20px;
+			cursor: pointer;
+			padding: 0;
+			border: none;
+			display: inline-block;
+			cursor: pointer;
+			width: 24px;
+			height: 16px;
+			background: none;
+			margin-top: -15px;
 		}
 
 		&:before {
-			$space = 20px
-			content ''
-			position absolute
-			top (- $space)
-			left (- $space)
-			bottom (- $space)
-			right (- $space)
+			$space = 20px;
+			content: '';
+			position: absolute;
+			top: (- $space);
+			left: (- $space);
+			bottom: (- $space);
+			right: (- $space);
 		}
+
 		&__line {
-			position absolute
-			display block
-			width 100%
-			height 2px
-			background #FFFFFF
-			left 50%
-			margin-left -12px
-			transition transform $duration, background-color $duration, opacity $duration
+			position: absolute;
+			display: block;
+			width: 100%;
+			height: 2px;
+			background: #FFFFFF;
+			left: 50%;
+			margin-left: -12px;
+			transition: transform $duration, background-color $duration, opacity $duration;
 
 			&:first-child {
-				top 0
-				transform translateY(7px) rotate(45deg) translateZ(0)
+				top: 0;
+				transform: translateY(7px) rotate(45deg) translateZ(0);
 			}
+
 			&:nth-child(2) {
-				top 50%
-				opacity 0
-				margin-top -1px
+				top: 50%;
+				opacity: 0;
+				margin-top: -1px;
 			}
+
 			&:last-child {
-				bottom 0
-				transform translateY(-7px) rotate(-45deg) translateZ(0)
+				bottom: 0;
+				transform: translateY(-7px) rotate(-45deg) translateZ(0);
 			}
 		}
+
 		&:hover &__line {
-			background $linkColor
+			background: $linkColor;
 		}
 	}
+
 	&__content {
-		display inline-block
-		float left
-		flex 1
-		padding-right 80px
-		visibility visible
-		transition opacity .15s .1s, visibility 0s
+		display: inline-block;
+		float: left;
+		flex: 1;
+		padding-right: 80px;
+		visibility: visible;
+		transition: opacity 0.15s 0.1s, visibility 0s;
 
 		.modal-entering &, .modal-entered & {
-			opacity 0
-			visibility hidden
-			transition opacity .15s .1s, visibility 0s .2s
-			pointer-events none
+			opacity: 0;
+			visibility: hidden;
+			transition: opacity 0.15s 0.1s, visibility 0s 0.2s;
+			pointer-events: none;
 		}
 
 		@media $notebook {
-			padding-right 48px
+			padding-right: 48px;
 		}
+
 		@media $tablet {
-			padding-right 56px
+			padding-right: 56px;
 		}
+
 		@media $verticalTablet {
-			padding-right 24px
+			padding-right: 24px;
 		}
 
 		&-inner {
-			position relative
-			display flex
-			justify-content flex-end
-			height 28px
+			position: relative;
+			display: flex;
+			justify-content: flex-end;
+			height: 28px;
 		}
 	}
 
 	&_pinned {
-		position fixed
-		width 100vw
+		position: fixed;
+		width: 100vw;
 	}
+
 	&_isLink {
-		position fixed
-		width 100vw
+		position: fixed;
+		width: 100vw;
+
 		@media $phone {
-			position absolute
-			width 100%
+			position: absolute;
+			width: 100%;
 		}
 	}
+
 	&_fix {
-		position fixed !important
-		top 0 !important
-		transition top .15s ease-out
+		position: fixed !important;
+		top: 0 !important;
+		transition: top 0.15s ease-out;
 
 		.Navigation__item {
-			transition 25s
+			transition: 25s;
 		}
 	}
+
 	&_notFound {
-		.Header__content{
-			display none
+		.Header__content {
+			display: none;
 		}
+
 		.Hamburger {
-			display none
+			display: none;
 		}
 	}
+
 	&_dark {
 		.Logo__sufix {
-			color #fff
+			color: #fff;
 		}
+
 		.Header__content {
-			visibility hidden
-			opacity 0
-			transition opacity 0.1, visibility 0s 0.1s
+			visibility: hidden;
+			opacity: 0;
+			transition: opacity 0.1, visibility 0s 0.1s;
 		}
+
 		& > .Navigation__item:hover {
-			color $brandColor
+			color: $brandColor;
 		}
+
 		&:before {
-			opacity 0
+			opacity: 0;
 		}
 	}
+
 	&_white {
 		&:before {
-			opacity 0
+			opacity: 0;
 		}
+
 		.Logo__sufix {
-			color #fff
+			color: #fff;
 		}
 
 		.Navigation__item {
-			color #fff
+			color: #fff;
 
 			&:hover {
-				color $linkColor
+				color: $linkColor;
 			}
 		}
 
 		.ScrollButton__text {
-			color #fff
+			color: #fff;
 		}
 
 		.ScrollButton__link {
 			&:hover {
 				.ScrollButton__text {
-					color $linkColor
+					color: $linkColor;
 				}
 			}
 		}
 	}
+
 	&_longNav {
-
 		.Navigation__item {
-
 			@media $tablet {
-				padding-left 14px
-				padding-right 14px
+				padding-left: 14px;
+				padding-right: 14px;
 			}
+
 			&.Link_external {
-				padding-right 32px
+				padding-right: 32px;
 
 				@media $tablet {
-					padding-right 26px
+					padding-right: 26px;
 				}
 			}
 		}
+
 		@media $tablet {
 			.Header__inner {
-				padding-left 16px
-				padding-right 16px
+				padding-left: 16px;
+				padding-right: 16px;
 			}
+
 			.Header__content {
-				padding-right 16px
+				padding-right: 16px;
 			}
 		}
-
 	}
+
 	&_news {
 		.Header__content {
-			visibility hidden
-			opacity 0
-			transition opacity 0.1, visibility 0s 0.1s
+			visibility: hidden;
+			opacity: 0;
+			transition: opacity 0.1, visibility 0s 0.1s;
 		}
 	}
+
 	&_topWork {
 		& {
-			position absolute
-			top 0 !important
+			position: absolute;
+			top: 0 !important;
 		}
 
 		&:before {
-			opacity 0
+			opacity: 0;
 		}
 	}
+
 	&_lab {
 		&:before {
-			background-color $lightColor
+			background-color: $lightColor;
 		}
 	}
+
 	&_isGray {
 		&:before {
-			background-color $lightColor
+			background-color: $lightColor;
 		}
 	}
+
 	&_light {
 		.Logo .Logo__rectBg {
-			fill #FFF45F
+			fill: #FFF45F;
 		}
 	}
+
 	&_small {
 		@media $phone {
-			height 56px
+			height: 56px;
 		}
+
 		.Logo__ingroup {
-			opacity 0
-			faster()
+			opacity: 0;
+			faster();
 		}
 	}
+
 	&_menu {
-		z-index 20001
+		z-index: 20001;
+
 		&:before {
-			background-color #fff
-			z-index 2
-			transition: z-index .2s 0.6s, background 0.2s ease-out 0.4s
+			background-color: #fff;
+			z-index: 2;
+			transition: z-index 0.2s 0.6s, background 0.2s ease-out 0.4s;
 		}
 	}
+
 	&_transitionLock {
 		.Logo path, .Icon, .Navigation__item, .Hamburger__line {
-			transition none
+			transition: none;
 		}
+
 		&:before {
-			transition none
+			transition: none;
 		}
 	}
+
 	&_linkScroll {
 		.Header__content {
-			padding-right 0
+			padding-right: 0;
 		}
 
 		.Navigation {
-			display flex
+			display: flex;
 		}
 	}
+
 	&_videoPlay {
 		.Header__content {
 			.modal-entering &, .modal-entered & {
 				@media $phone {
-					opacity 1
-					visibility visible
-					pointer-events auto
+					opacity: 1;
+					visibility: visible;
+					pointer-events: auto;
 				}
 			}
 		}
@@ -393,82 +428,86 @@
 			&__icon {
 				.Logo {
 					&__text {
-						fill $textColor
+						fill: $textColor;
 					}
 
 					&__rectBg {
-						fill #ffffff
+						fill: #ffffff;
 					}
 				}
 			}
 		}
 
 		.Navigation__item {
-			color #ffffff
+			color: #ffffff;
+			transition: opacity $duration;
 
-			&:hover,
-			&_active {
-				color alpha(#ffffff, 60%)
-
-				.VacanciesCount__inner {
-					background-color $lightTextColor
-					faster()
-				}
+			&:hover, &_active {
+				opacity: 0.6;
+				faster();
 			}
 		}
 
 		.VacanciesCount {
 			&__inner {
-				background-color alpha(#ffffff, 60%)
-				transition background-color $duration
+				background-color: alpha(#ffffff, 60%);
+				transition: background-color $duration;
 			}
 		}
 
 		.VideoPlay {
 			& {
-				color #ffffff
+				color: #ffffff;
 
 				&:hover {
-					color $lightTextColor
+					color: $lightTextColor;
 				}
 			}
 
 			&__inner {
-				background-color $textColor
+				background-color: $textColor;
 			}
 		}
 
 		.ModalMenuContainer_menu .VacanciesCount__inner {
 			@media $phone {
-				background-color #F2F2F2
+				background-color: #F2F2F2;
 			}
 		}
 
 		.Hamburger {
+			transition: opacity $duration;
+
 			&__line {
-				background #ffffff
+				background: #ffffff;
 			}
 
 			&:hover {
+				opacity: 0.6;
+				faster();
+
 				.Hamburger__line {
-					background $lightTextColor
+					background: #ffffff;
 				}
 			}
 
 			&_open {
 				.Hamburger__line {
-					background $textColor
+					background: $textColor;
 				}
+
 				&:hover {
+					opacity: 1;
+
 					.Hamburger__line {
-						background $linkColor
+						background: $linkColor;
 					}
 				}
 			}
 		}
 
 		& *::selection {
-			background alpha(#fff, 0.99)
+			background: alpha(#fff, 0.99);
 		}
 	}
 
@@ -477,54 +516,81 @@
 			&__icon {
 				.Logo {
 					&__text {
-						fill #ffffff
+						fill: #ffffff;
 					}
 
 					&__rectBg {
-						fill $textColor
+						fill: $textColor;
 					}
 				}
 			}
 		}
 
 		.Navigation__item {
-			color $textColor
+			color: $textColor;
+			transition: opacity $duration;
 
-			&:hover,
-			&_active {
-				color alpha($textColor, 60%)
-
-				.VacanciesCount__inner {
-					background-color alpha($textColor, 60%)
-					faster()
-				}
+			&:hover, &_active {
+				opacity: 0.5;
+				faster();
 			}
 		}
 
 		.VacanciesCount {
 			&__inner {
-				color #ffffff
-				background-color $textColor
-				transition background-color $duration
+				color: #ffffff;
+				background-color: $textColor;
+				transition: background-color $duration;
 			}
 		}
 
 		.VideoPlay {
 			& {
-				color $textColor
+				color: $textColor;
 
 				&:hover {
-					color $linkHoverColor
+					color: $linkHoverColor;
 				}
 			}
 
 			&__inner {
-				background-color #ffffff
+				background-color: #ffffff;
+			}
+		}
+
+		.Hamburger {
+			transition: opacity $duration;
+
+			&__line {
+				background: $textColor;
+			}
+
+			&:hover {
+				opacity: 0.5;
+				faster();
+
+				.Hamburger__line {
+					background: $textColor;
+				}
+			}
+
+			&_open {
+				.Hamburger__line {
+					background: $textColor;
+				}
+
+				&:hover {
+					opacity: 1;
+
+					.Hamburger__line {
+						background: $linkColor;
+					}
+				}
 			}
 		}
 	}
 
 	.modal-exiting & {
-		z-index 20001
+		z-index: 20001;
 	}
 }
