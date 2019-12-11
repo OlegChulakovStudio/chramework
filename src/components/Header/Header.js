@@ -180,15 +180,15 @@ class Header extends Component {
     const El = linkProps.scroll ? LinkScroll : Link;
     const props = linkProps.scroll
       ? {
-          className: "Link Link_bold",
-          to: linkProps.to,
-          offsetTop: 80
-        }
+        className: "Link Link_bold",
+        to: linkProps.to,
+        offsetTop: 80
+      }
       : {
-          bold: true,
-          disableBlank: true,
-          [linkProps.to ? "to" : "href"]: linkProps.to || linkProps.href
-        };
+        bold: true,
+        disableBlank: true,
+        [linkProps.to ? "to" : "href"]: linkProps.to || linkProps.href
+      };
     return <El {...props}>{linkProps.text}</El>;
   };
 
@@ -215,8 +215,8 @@ class Header extends Component {
       mark && typeof mark === "object"
         ? mark.map(item => `Header_${item}`)
         : mark
-        ? `Header_${mark}`
-        : "";
+          ? `Header_${mark}`
+          : "";
 
     const styles = classNames("Header", headerMark, {
       Header_pinned:
@@ -250,6 +250,7 @@ class Header extends Component {
             <Logo
               linkProps={page ? { to: "/" } : undefined}
               mod={logoMod}
+              mark={mark}
               onClick={this.menuClose}
               ingroup={ingroup}
               madeinlab={madeinlab}
@@ -309,10 +310,10 @@ class Header extends Component {
 
 Header.defaultProps = {
   menuIsOpened: false,
-  menuClose: () => {},
-  onHamburgerClick: () => {},
+  menuClose: () => { },
+  onHamburgerClick: () => { },
   redirectUrl: "",
-  menuOpen: () => {},
+  menuOpen: () => { },
   modalIsOpened: false,
   scrollSize: undefined,
   vacanciesCount: undefined,

@@ -5,6 +5,7 @@ import reactHtmlParser from "react-html-parser";
 
 import Link from "../Link/Link";
 import LogoIcon from "./assets/logo.svg";
+import LogoTransparent from "./assets/logo-transparent.svg";
 import consulting from "./assets/consulting.svg";
 import group from "./assets/group.svg";
 import handbook from "./assets/handbook.svg";
@@ -30,6 +31,8 @@ export default class Logo extends Component {
     size: PropTypes.string,
     /** Avaliable values: ['light',''] */
     mod: PropTypes.string,
+    /** Avaliable values: ['wh','bl'] */
+    mark: PropTypes.string,
     /** Avaliable values: ['black',''] */
     type: PropTypes.string,
 
@@ -49,7 +52,8 @@ export default class Logo extends Component {
     text: undefined,
     ingroup: undefined,
     linkProps: undefined,
-    madeinlab: undefined
+    madeinlab: undefined,
+    mark: undefined
   };
 
   render() {
@@ -63,6 +67,7 @@ export default class Logo extends Component {
       madeinlab,
       ingroup,
       isBlue,
+      mark,
       ...rest
     } = this.props;
     const currentGroupText =
@@ -80,18 +85,21 @@ export default class Logo extends Component {
             [`Logo--${size}`]: size,
             [`Logo--${type}`]: type,
             [`Logo--${mod}`]: mod,
+            [`Logo--${mark}`]: mark,
             [`Logo--isBlue`]: isBlue,
             [`Logo--ingroup`]: ingroup || madeinlab
           }
         ])}
       >
-        <LogoIcon className="Logo__icon" width={120} height={28} />
+        {mark ? <LogoTransparent className="Logo__icon" width={120} height={28} /> : <LogoIcon className="Logo__icon" width={120} height={28} />}
+
+
         {text &&
           (TextIcon ? (
             <TextIcon height={28} className="Logo__iconSuffix" />
           ) : (
-            <span className="Logo__sufix">{text}</span>
-          ))}
+              <span className="Logo__sufix">{text}</span>
+            ))}
         {linkProps && (
           <Link {...linkProps} disableBlank className="Logo__link" />
         )}

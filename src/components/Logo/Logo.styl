@@ -1,132 +1,166 @@
 .Logo {
-	position relative
-	display inline-block
-	vertical-align top
-	text-decoration none
-	height 28px
-	font-size 0
-	user-select none
+	position: relative;
+	display: inline-block;
+	vertical-align: top;
+	text-decoration: none;
+	height: 28px;
+	font-size: 0;
+	user-select: none;
+
 	&__sufix {
-		font-weight $bold
-		text-transform uppercase
-		letter-spacing 0.06em
-		font-size 16px
-		padding-top 7px
-		padding-left 6px
-		display inline-block
-		vertical-align top
-		line-height 1
+		font-weight: $bold;
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+		font-size: 16px;
+		padding-top: 7px;
+		padding-left: 6px;
+		display: inline-block;
+		vertical-align: top;
+		line-height: 1;
 
 		@media $phone {
-			padding-top 4.5px
-			font-size 11.8px
-			padding-left 4px
-			transform translateY(2%) translateZ(0)
+			padding-top: 4.5px;
+			font-size: 11.8px;
+			padding-left: 4px;
+			transform: translateY(2%) translateZ(0);
 		}
 	}
+
 	&__iconSuffix {
-		fill $textColor
+		fill: $textColor;
 	}
+
 	&__link {
-		fullsize()
+		fullsize();
 	}
+
 	&__icon {
-		fill #FFF45F
-		display inline-block
-		width 120px
-		height 28px
-		font-size 0
+		fill: #FFF45F;
+		display: inline-block;
+		width: 120px;
+		height: 28px;
+		font-size: 0;
 
 		@media $phone {
-			width 86px
-			height 20px
+			width: 86px;
+			height: 20px;
 		}
+
 		.Logo__rectBg {
-			transition fill 0.2s 0.1s
-			fill $brandColor
+			transition: fill 0.2s 0.1s;
+			fill: $brandColor;
 		}
+
 		.Logo__text {
-			fill $textColor
+			fill: $textColor;
 		}
+
 		.Logo--light & {
 			.Logo__rectBg {
-				fill #fff
-				transition fill 0.2s
+				fill: #fff;
+				transition: fill 0.2s;
 			}
 		}
+
 		.Logo--black & {
 			.Logo__rectBg {
-				fill $textColor
+				fill: $textColor;
 			}
+
 			.Logo__text {
-				fill #fff
+				fill: #fff;
 			}
 		}
 	}
 
 	&--small {
-		height 25px
+		height: 25px;
 
 		.Logo__icon {
-			height 25px
-			width 110px
+			height: 25px;
+			width: 110px;
 		}
+
 		.Logo__sufix {
-			font-size 15px
-			padding-left 4px
-			padding-top 6px
+			font-size: 15px;
+			padding-left: 4px;
+			padding-top: 6px;
 		}
 	}
+
 	&--light {
 		.Logo__ingroup {
-			color #ffffff
+			color: #ffffff;
+
 			a {
-				color #ffffff
+				color: #ffffff;
+
 				&:hover {
-					color $linkColor
+					color: $linkColor;
 				}
 			}
 		}
+
 		.Logo__iconSuffix {
-			fill #ffffff
+			fill: #ffffff;
 		}
 	}
+
 	&--isBlue {
 		.Logo__icon {
-			fill #fff
-		}	
+			fill: #fff;
+		}
+
 		.Logo__text {
-			fill $blueColor	
+			fill: $blueColor;
 		}
 	}
+
 	&--ingroup {
-		height auto
+		height: auto;
 	}
+
+	&--wh {
+		.Logo__icon {
+			fill: #fff;
+		}
+	}
+
+	&--bl {
+		.Logo__icon {
+			fill: #000;
+		}
+	}
+
 	&__ingroup {
-		position relative
-		z-index 10
-		font-size 9px
-		line-height 1
-		color $secondTextColor
-		display block
-		text-transform uppercase
-		letter-spacing: 1.55px
-		padding-top 8px
-		transition opacity $duration
+		position: relative;
+		z-index: 10;
+		font-size: 9px;
+		line-height: 1;
+		color: $secondTextColor;
+		display: block;
+		text-transform: uppercase;
+		letter-spacing: 1.55px;
+		padding-top: 8px;
+		transition: opacity $duration;
+
 		@media $phone {
-			font-size 8.3px
-			padding-top 7px
+			font-size: 8.3px;
+			padding-top: 7px;
 		}
 
 		a {
-			color $linkColor
+			color: $linkColor;
+
 			@media $phone {
-				color $secondTextColor
+				color: $secondTextColor;
 			}
+
 			&:hover {
-				color $linkHoverColor
+				color: $linkHoverColor;
+
 				@media $phone {
-					color $linkColor
+					color: $linkColor;
 				}
 			}
 		}
