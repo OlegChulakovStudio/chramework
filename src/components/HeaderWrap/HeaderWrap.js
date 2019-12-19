@@ -82,7 +82,7 @@ const navMenu = [
 // };
 
 const HeaderWrap = () => {
-  return <Header hamburger scrollMenu={navMenu} />;
+  return <Header mark="wh" menuIsOpened hamburger scrollMenu={navMenu} />;
 };
 
 export default HeaderWrap;

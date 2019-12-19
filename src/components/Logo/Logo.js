@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import reactHtmlParser from "react-html-parser";
 
+
 import Link from "../Link/Link";
 import LogoIcon from "./assets/logo.svg";
 import LogoTransparent from "./assets/logo-transparent.svg";
@@ -15,6 +16,7 @@ import partners from "./assets/partners.svg";
 import mobile from "./assets/mobile.svg";
 
 import "./Logo.styl";
+
 
 const icons = {
   consulting,
@@ -42,7 +44,8 @@ export default class Logo extends Component {
     /** set this param to true, if you want to add text after logo */
     ingroup: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
     madeinlab: PropTypes.bool,
-    isBlue: PropTypes.bool
+    isBlue: PropTypes.bool,
+    menuIsOpened: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -53,7 +56,8 @@ export default class Logo extends Component {
     ingroup: undefined,
     linkProps: undefined,
     madeinlab: undefined,
-    mark: undefined
+    mark: undefined,
+    menuIsOpened: undefined
   };
 
   render() {
@@ -68,6 +72,7 @@ export default class Logo extends Component {
       ingroup,
       isBlue,
       mark,
+      menuIsOpened,
       ...rest
     } = this.props;
     const currentGroupText =
@@ -75,6 +80,7 @@ export default class Logo extends Component {
     const currentGroupLink =
       typeof ingroup === "object" ? ingroup.url : "https://group.chulakov.ru/";
     const TextIcon = icons[text];
+
     return (
       <div
         {...rest}
@@ -91,7 +97,7 @@ export default class Logo extends Component {
           }
         ])}
       >
-        {mark ? <LogoTransparent className="Logo__icon" width={120} height={28} /> : <LogoIcon className="Logo__icon" width={120} height={28} />}
+        {mark && !menuIsOpened ? <LogoTransparent className="Logo__icon" width={120} height={28} /> : <LogoIcon className="Logo__icon" width={120} height={28} />}
 
 
         {text &&

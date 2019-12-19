@@ -1,5 +1,6 @@
 {
-	"statistic": [{
+	"statistic": [
+		{
 			"international": true,
 			"title": [
 				"Международная <br> награда",
@@ -26,7 +27,98 @@
 			]
 		}
 	],
-	"awards": [{
+	"awards": [
+		{
+			"name": "Tagline",
+			"link": "Золото",
+			"icon": "tagline",
+			"note": "Лучший digital-офис",
+			"project": "Офис Студии Олега Чулакова",
+			"international": false,
+			"russian": true,
+			"festival": false
+		},
+		{
+			"name": "Tagline",
+			"link": "Серебро",
+			"icon": "tagline",
+			"note": "Лучший сайт финансовой компании",
+			"project": "Совкомбанк",
+			"international": false,
+			"russian": true,
+			"festival": false
+		},
+		{
+			"name": "Tagline",
+			"link": "Бронза",
+			"icon": "tagline",
+			"note": "Лучший сайт финансовой компании",
+			"project": "Дизайн-концепция Альфа-Капитал",
+			"international": false,
+			"russian": true,
+			"festival": false
+		},
+		{
+			"name": "Tagline",
+			"link": "Бронза",
+			"icon": "tagline",
+			"note": "Лучшая кампания для телеком&nbsp;/ IT&nbsp;/ интернет-бизнеса",
+			"project": "Креатив для Okko",
+			"international": false,
+			"russian": true,
+			"festival": false
+		},
+		{
+			"name": "Tagline",
+			"link": "Бронза",
+			"icon": "tagline",
+			"note": "Лучшая разработка / интеграция",
+			"project": "РЖД Экспресс",
+			"international": false,
+			"russian": true,
+			"festival": false
+		},
+		{
+			"name": "Tagline",
+			"link": "Бронза",
+			"icon": "tagline",
+			"note": "Лучший баннер",
+			"project": "Баннеры Ренессанс страхование",
+			"international": false,
+			"russian": true,
+			"festival": false
+		},
+		{
+			"name": "Золотой сайт",
+			"link": "Серебро",
+			"icon": "goldensite",
+			"note": "Сайт в&nbsp;сфере транспорта, логистики и&nbsp;доставки",
+			"project": "РЖД Экспресс",
+			"international": false,
+			"russian": true,
+			"festival": false
+		},
+		{
+			"name": "Золотой сайт",
+			"link": "Бронза",
+			"icon": "goldensite",
+			"note": "Сайт девелоперской или строительной компании",
+			"project": "Tekta",
+			"international": false,
+			"russian": true,
+			"festival": false
+		},
+		{
+			"name": "Рейтинг Рунета",
+			"link": "Бронза",
+			"icon": "ratingruneta",
+			"note": "Финансы, инвестиции, банки",
+			"project": "Совкомбанк",
+			"international": false,
+			"russian": true,
+			"festival": false
+		},
+		{
 			"name": "Рейтинг Рунета",
 			"link": "Золото",
 			"icon": "ratingruneta",

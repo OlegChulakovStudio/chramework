@@ -256,6 +256,7 @@ class Header extends Component {
               madeinlab={madeinlab}
               text={text}
               isBlue={mod === "white"}
+              menuIsOpened={menuIsOpened}
             />
           </div>
           {(this.props.menu || this.props.scrollMenu) && !withoutMenu && (
