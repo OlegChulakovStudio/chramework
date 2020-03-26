@@ -19,3 +19,7 @@ With text:
 With subline:
 
     <Logo linkProps={{href: "http://chulakov.ru"}} text="media" ingroup />
+
+With mark:
+
+    <Logo linkProps={{href: "http://chulakov.ru"}} mark="black" />
