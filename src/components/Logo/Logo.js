@@ -6,6 +6,7 @@ import reactHtmlParser from "react-html-parser";
 
 import Link from "../Link/Link";
 import LogoIcon from "./assets/logo.svg";
+import LogoСoronavirusIcon from "./assets/logo-coronavirus.svg";
 import LogoTransparent from "./assets/logo-transparent.svg";
 import consulting from "./assets/consulting.svg";
 import group from "./assets/group.svg";
@@ -97,8 +98,13 @@ export default class Logo extends Component {
           }
         ])}
       >
-        {mark && !menuIsOpened ? <LogoTransparent className="Logo__icon" width={120} height={28} /> : <LogoIcon className="Logo__icon" width={120} height={28} />}
-
+        {
+          mark && !menuIsOpened ?
+              <LogoTransparent className="Logo__icon" width={120} height={28} /> :
+            !text ?
+                <LogoСoronavirusIcon className="Logo__icon Logo__icon_coronavirus" width={230} height={28} /> :
+                <LogoIcon  className="Logo__icon" width={120} height={28} />
+        }
 
         {text &&
           (TextIcon ? (
