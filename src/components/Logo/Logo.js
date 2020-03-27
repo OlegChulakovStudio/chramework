@@ -87,7 +87,7 @@ export default class Logo extends Component {
       <div
         {...rest}
         className={classNames([
-          "Logo",
+          "Logo Logo_coronavirus",
           className,
           {
             [`Logo--${size}`]: size,
