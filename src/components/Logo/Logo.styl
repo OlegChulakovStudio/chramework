@@ -74,6 +74,12 @@
 
 		&_coronavirus {
 			width 202px
+
+			.Logo--light & {
+				.Logo__text {
+					fill: #fff;
+				}
+			}
 		}
 	}
 
@@ -166,14 +172,6 @@
 				@media $phone {
 					color: $linkColor;
 				}
-			}
-		}
-	}
-
-	&_coronavirus {
-		& ^[0]--light {
-			& ^[0]__icon {
-				fill #fff
 			}
 		}
 	}
