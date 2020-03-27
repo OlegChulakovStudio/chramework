@@ -102,10 +102,10 @@ export default class Logo extends Component {
         {
           mark && !menuIsOpened ?
             !text ?
-              <LogoСoronavirusTransparentIcon className="Logo__icon Logo__icon_coronavirus" width={230} height={28} /> :
+              <LogoСoronavirusTransparentIcon className="Logo__icon Logo__icon_coronavirus" width={202} height={28} /> :
               <LogoTransparent className="Logo__icon" width={120} height={28} /> :
             !text ?
-              <LogoСoronavirusIcon className="Logo__icon Logo__icon_coronavirus" width={230} height={28} /> :
+              <LogoСoronavirusIcon className="Logo__icon Logo__icon_coronavirus" width={202} height={28} /> :
               <LogoIcon  className="Logo__icon" width={120} height={28} />
         }
 
