@@ -23,3 +23,11 @@ With subline:
 With mark:
 
     <Logo linkProps={{href: "http://chulakov.ru"}} mark="black" />
+
+With --bl mode:
+
+    <Logo linkProps={{href: "http://chulakov.ru"}} mark="bl" />
+
+With --wh mode:
+
+    <Logo linkProps={{href: "http://chulakov.ru"}} mark="wh" />
