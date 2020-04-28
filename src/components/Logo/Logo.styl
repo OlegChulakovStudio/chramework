@@ -71,16 +71,6 @@
 				fill: #fff;
 			}
 		}
-
-		&_coronavirus {
-			width 202px
-
-			.Logo--light & {
-				.Logo__text {
-					fill: #fff;
-				}
-			}
-		}
 	}
 
 	&--small {
@@ -133,20 +123,34 @@
 	&--wh {
 		.Logo__icon {
 			fill: #fff;
-
-			&_coronavirus {
-				fill none
-
-				.Logo__text {
-					fill: #fff;
-				}
-			}
 		}
 	}
 
 	&--bl {
 		.Logo__icon {
 			fill: #000;
+		}
+	}
+
+	&--coronavirus {
+		.Logo__icon {
+			width 202px
+
+			.Logo--light & {
+				.Logo__text {
+					fill: #fff;
+				}
+			}
+		}
+
+		&.Logo--wh {
+			.Logo__icon {
+				fill none
+
+				.Logo__text {
+					fill: #fff;
+				}
+			}
 		}
 	}
 

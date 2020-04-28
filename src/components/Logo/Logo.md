@@ -31,3 +31,15 @@ With --bl mode:
 With --wh mode:
 
     <Logo linkProps={{href: "http://chulakov.ru"}} mark="wh" />
+
+Coronavirus:
+
+    <Logo linkProps={{href: "http://chulakov.ru"}} coronavirus />
+
+Coronavirus With mark:
+
+    <Logo linkProps={{href: "http://chulakov.ru"}} coronavirus mark="black" />
+
+Coronavirus With --bl mode:
+
+    <Logo linkProps={{href: "http://chulakov.ru"}} coronavirus mark="wh" />

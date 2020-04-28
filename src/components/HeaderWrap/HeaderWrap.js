@@ -82,7 +82,7 @@ const navMenu = [
 // };
 
 const HeaderWrap = () => {
-  return <Header mark="wh" menuIsOpened hamburger scrollMenu={navMenu} />;
+  return <Header menuIsOpened hamburger coronavirus scrollMenu={navMenu} />;
 };
 
 export default HeaderWrap;

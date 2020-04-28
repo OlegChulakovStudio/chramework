@@ -208,7 +208,8 @@ class Header extends Component {
       mod,
       longNav,
       mark,
-      videoPlay
+      videoPlay,
+      coronavirus,
     } = this.props;
     const { localMod, scrollMod } = this.state;
     const headerMark =
@@ -232,7 +233,8 @@ class Header extends Component {
       Header_fix: menuIsOpened,
       Header_ingroup: ingroup || madeinlab,
       Header_longNav: longNav,
-      Header_videoPlay: videoPlay
+      Header_videoPlay: videoPlay,
+      Header_coronavirus: coronavirus
     });
     const logoMod =
       mod === "dark" || mod === "white" ? "light" : "";
@@ -257,6 +259,7 @@ class Header extends Component {
               text={text}
               isBlue={mod === "white"}
               menuIsOpened={menuIsOpened}
+              coronavirus={coronavirus}
             />
           </div>
           {(this.props.menu || this.props.scrollMenu) && !withoutMenu && (

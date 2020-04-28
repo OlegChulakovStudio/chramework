@@ -75,6 +75,7 @@ export default class Logo extends Component {
       isBlue,
       mark,
       menuIsOpened,
+      coronavirus,
       ...rest
     } = this.props;
     const currentGroupText =
@@ -95,18 +96,21 @@ export default class Logo extends Component {
             [`Logo--${mod}`]: mod,
             [`Logo--${mark}`]: mark,
             [`Logo--isBlue`]: isBlue,
-            [`Logo--ingroup`]: ingroup || madeinlab
+            [`Logo--ingroup`]: ingroup || madeinlab,
+            [`Logo--coronavirus`]: coronavirus,
           }
         ])}
       >
         {
-          mark && !menuIsOpened ?
-            !text ?
-              <LogoСoronavirusTransparentIcon className="Logo__icon Logo__icon_coronavirus" width={202} height={28} /> :
-              <LogoTransparent className="Logo__icon" width={120} height={28} /> :
-            !text ?
-              <LogoСoronavirusIcon className="Logo__icon Logo__icon_coronavirus" width={202} height={28} /> :
-              <LogoIcon  className="Logo__icon" width={120} height={28} />
+          coronavirus ? (
+            mark && !menuIsOpened ?
+              <LogoСoronavirusTransparentIcon className="Logo__icon" width={202} height={28} /> :
+              <LogoСoronavirusIcon className="Logo__icon" width={202} height={28} />
+          ) : (
+            mark && !menuIsOpened ?
+            <LogoTransparent className="Logo__icon" width={120} height={28} /> :
+            <LogoIcon className="Logo__icon" width={120} height={28} />
+          )
         }
 
         {text &&
