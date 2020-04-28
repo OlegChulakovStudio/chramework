@@ -40,6 +40,14 @@ Coronavirus With mark:
 
     <Logo linkProps={{href: "http://chulakov.ru"}} coronavirus mark="black" />
 
-Coronavirus With --bl mode:
+Coronavirus With --wh mode:
 
     <Logo linkProps={{href: "http://chulakov.ru"}} coronavirus mark="wh" />
+
+Coronavirus With --bl mode:
+
+    <Logo linkProps={{href: "http://chulakov.ru"}} coronavirus mark="bl" />
+
+Coronavirus With --light mode:
+
+    <Logo linkProps={{href: "http://chulakov.ru"}} coronavirus mark="light" />
