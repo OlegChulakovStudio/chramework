@@ -20,7 +20,7 @@ const icons = {
 };
 
 const socials = {
-  facebook: "https://www.facebook.com/OlegChulakovStudio/",
+  facebook: "https://www.facebook.com/ChulakovStudio/",
   vkontakte: "https://vk.com/olegchulakovstudio",
   instagram: "https://www.instagram.com/chulakov.ru/"
 };
