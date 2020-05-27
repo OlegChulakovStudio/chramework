@@ -19,7 +19,7 @@ const styles = ({ color, fontFamily, fontSize, sidebarWidth, mq, space, maxWidth
   },
   content: {
     // maxWidth,
-    padding: [[space[2], space[4]]],
+    padding: [['64px', space[4]]],
     margin: [[0, 'auto']],
     [mq.small]: {
       padding: space[2],
