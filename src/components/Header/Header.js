@@ -194,6 +194,7 @@ class Header extends Component {
 
   render() {
     const {
+      logoLink,
       menuIsOpened,
       page,
       modalIsOpened,
@@ -239,6 +240,9 @@ class Header extends Component {
     const logoMod =
       mod === "dark" || mod === "white" ? "light" : "";
 
+    const link = logoLink ? { href: logoLink } : { to: "/" }
+    const logoLinkProp = page ? link : undefined
+
     return (
       <header
         className={styles}
@@ -250,7 +254,7 @@ class Header extends Component {
         <div className="Header__inner">
           <div className="Header__logo">
             <Logo
-              linkProps={page ? { to: "/" } : undefined}
+              linkProps={logoLinkProp}
               mod={logoMod}
               mark={mark}
               onClick={this.menuClose}
@@ -313,6 +317,7 @@ class Header extends Component {
 }
 
 Header.defaultProps = {
+  logoLink: "",
   menuIsOpened: false,
   menuClose: () => { },
   onHamburgerClick: () => { },
@@ -333,6 +338,7 @@ Header.defaultProps = {
 };
 
 Header.propTypes = {
+  logoLink: PropTypes.string,
   menuIsOpened: PropTypes.bool,
   menuClose: PropTypes.func,
   onHamburgerClick: PropTypes.func,
