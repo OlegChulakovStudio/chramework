@@ -82,7 +82,7 @@ const navMenu = [
 // };
 
 const HeaderWrap = () => {
-  return <Header menuIsOpened hamburger coronavirus scrollMenu={navMenu} mod="dark" />;
+  return <Header menuIsOpened hamburger coronavirus scrollMenu={navMenu} mod="dark"/>;
 };
 
 export default HeaderWrap;
