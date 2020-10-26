@@ -1,5 +1,6 @@
 {
-  "items": [{
+  "items": [
+    {
       "type": "design",
       "title": "<nobr>Дизайн-студия</nobr><br><nobr>&#8470;&nbsp;1 в&nbsp;России</nobr>",
       "medal": true,
@@ -9,7 +10,7 @@
     },
     {
       "type": "production",
-      "title": "4 место <br><nobr>digital production</nobr>",
+      "title": "4-е место <br><nobr>digital production</nobr>",
       "medal": true,
       "top4": true,
       "tagline": true,
@@ -17,7 +18,7 @@
     },
     {
       "type": "mobile",
-      "title": "12 место<br><nobr>mobile production</nobr>",
+      "title": "12-е место<br><nobr>mobile production</nobr>",
       "medal": true,
       "top12": true,
       "tagline": true,
